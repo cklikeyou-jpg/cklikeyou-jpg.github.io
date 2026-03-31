@@ -7,7 +7,11 @@
   <meta name="description" content="발열성 물질 검출을 위한 MAT 시험 서비스. 의약품등 시험·검사 인증기관 Biostream 시험분석센터에서 제약, 바이오, 혈액제제 제품의 안전성을 검증합니다.">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init('VBUAv0CbejDxLQYED');</script>
+  <script>
+    window.addEventListener('load', function() {
+      emailjs.init({ publicKey: 'VBUAv0CbejDxLQYED' }); // Public Key 동일
+    });
+  </script>
   <script>
     tailwind.config = {
       theme: {
@@ -77,6 +81,7 @@
           <a href="#regulatory"  class="text-gray-600 hover:text-primary font-medium text-xs">규제</a>
           <a href="#process"     class="text-gray-600 hover:text-primary font-medium text-xs">절차</a>
           <a href="#faq"         class="text-gray-600 hover:text-primary font-medium text-xs">FAQ</a>
+          <a href="#news"        class="text-gray-600 hover:text-primary font-medium text-xs">MAT 뉴스</a>
           <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark font-medium text-xs">문의하기</a>
         </nav>
         <button class="lg:hidden p-2 rounded-lg text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -97,6 +102,7 @@
           <a href="#regulatory"  class="text-gray-600 hover:text-primary">규제 현황</a>
           <a href="#process"     class="text-gray-600 hover:text-primary">시험 절차</a>
           <a href="#faq"         class="text-gray-600 hover:text-primary">FAQ</a>
+          <a href="#news"        class="text-gray-600 hover:text-primary">MAT 뉴스</a>
           <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg text-center">문의하기</a>
         </nav>
       </div>
@@ -1211,7 +1217,7 @@
       <div class="max-w-4xl mx-auto space-y-6">
         <div class="flex gap-6 md:gap-10">
           <div class="flex flex-col items-center"><div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">1</div><div class="w-0.5 bg-gray-200 flex-1 mt-2"></div></div>
-          <div class="pb-6 flex-1"><div class="bg-primary-light rounded-xl p-6"><h3 class="text-lg font-bold text-dark mb-2">사전 상담 및 시험 설계 / NEP QRM 검토</h3><p class="text-gray-600 text-sm mb-3">시험 목적, 시료 특성, 적용 규제 확인. <strong>NEP 위험 수준 사전 검토(QRM)</strong>를 통해 BET 단독 또는 MAT 병행 전략 결정.</p><ul class="text-sm text-gray-500 space-y-1"><li>• 시료 적합성 사전 검토 (간섭물질, LER 위험 유무)</li><li>• 적용 약전/규제 기준 확인 (EP, FDA, MFDS 등)</li><li>• 시험 방법 선택 (PBMC vs 전혈, PSV 필요 여부)</li><li>• NEP QRM 기반 시험전략 결정</li></ul><span class="inline-block mt-3 text-xs bg-primary/10 text-primary px-2 py-1 rounded">예상 소요: 1~2일</span></div></div>
+          <div class="pb-6 flex-1"><div class="bg-primary-light rounded-xl p-6"><h3 class="text-lg font-bold text-dark mb-2">사전 상담 및 시험 설계 / NEP QRM 검토</h3><p class="text-gray-600 text-sm mb-3">시험 목적, 시료 특성, 적용 규제 확인. <strong>NEP 위험 수준 사전 검토(QRM)</strong>를 통해 BET 단독 또는 MAT 병행 전략 결정.</p><ul class="text-sm text-gray-500 space-y-1"><li>• 시료 적합성 사전 검토 (간섭물질, LER 위험 유무)</li><li>• 적용 약전/규제 기준 확인 (EP, FDA, MFDS 등)</li><li>• 시험 방법 선택 (PBMC vs 전혈, PSV 필요 여부)</li><li>• NEP QRM 기반 시험전략 결정</li></ul><span class="inline-block mt-3 text-xs bg-primary/10 text-primary px-2 py-1 rounded">예상 소요: 2주</span></div></div>
         </div>
         <div class="flex gap-6 md:gap-10">
           <div class="flex flex-col items-center"><div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">2</div><div class="w-0.5 bg-gray-200 flex-1 mt-2"></div></div>
@@ -1223,7 +1229,7 @@
         </div>
         <div class="flex gap-6 md:gap-10">
           <div class="flex flex-col items-center"><div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">4</div><div class="w-0.5 bg-gray-200 flex-1 mt-2"></div></div>
-          <div class="pb-6 flex-1"><div class="bg-gray-50 rounded-xl p-6"><h3 class="text-lg font-bold text-dark mb-2">PSV 수행 (최초 시험 시) + MAT 시험 수행</h3><p class="text-gray-600 text-sm mb-2">세포 독성 시험, 간섭 시험(LPS/NEP Spike) → PSV 완료 후 의약품등 시험·검사 인증기관 기준 MAT 시험 수행 (PBMC co-incubation 16~24h, ELISA).</p><span class="inline-block mt-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">예상 소요: 3~7일</span></div></div>
+          <div class="pb-6 flex-1"><div class="bg-gray-50 rounded-xl p-6"><h3 class="text-lg font-bold text-dark mb-2">PSV 수행 (최초 시험 시) + MAT 시험 수행</h3><p class="text-gray-600 text-sm mb-2">세포 독성 시험, 간섭 시험(LPS/NEP Spike) → PSV 완료 후 의약품등 시험·검사 인증기관 기준 MAT 시험 수행 (PBMC co-incubation 16~24h, ELISA).</p><span class="inline-block mt-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">예상 소요: 3주</span></div></div>
         </div>
         <div class="flex gap-6 md:gap-10">
           <div class="flex flex-col items-center"><div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">5</div><div class="w-0.5 bg-gray-200 flex-1 mt-2"></div></div>
@@ -1236,8 +1242,12 @@
       </div>
       <div class="mt-12 bg-primary-light rounded-2xl p-8 text-center max-w-2xl mx-auto">
         <h3 class="text-xl font-bold mb-2 text-dark">총 예상 소요 기간</h3>
-        <div class="text-5xl font-bold text-primary mb-2">10~15일</div>
-        <p class="text-gray-500 text-sm">* PSV 포함 시 3~7일 추가 소요될 수 있습니다.<br>긴급 의뢰의 경우 별도 문의 바랍니다.</p>
+        <div class="flex justify-center gap-12 my-4">
+          <div><div class="text-4xl font-bold text-primary">2주</div><div class="text-sm text-gray-500 mt-1">PSV 제외 시</div></div>
+          <div class="border-l border-primary/20"></div>
+          <div><div class="text-4xl font-bold text-primary">6주</div><div class="text-sm text-gray-500 mt-1">PSV 포함 시</div></div>
+        </div>
+        <p class="text-gray-500 text-sm">* 긴급 의뢰의 경우 별도 문의 바랍니다.</p>
       </div>
     </div>
   </section>
@@ -1261,10 +1271,8 @@
       <!-- 인증 현황 -->
       <div class="bg-white rounded-2xl p-8 shadow-sm">
         <h3 class="text-2xl font-bold mb-8 text-center text-dark">인증 및 인허가 현황</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid md:grid-cols-2 gap-8 max-w-lg mx-auto">
           <div class="text-center"><div class="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-lg font-bold text-primary" style="font-size:0.75rem;text-align:center;line-height:1.2">의약품등<br>시험검사<br>인증</span></div><h4 class="font-semibold text-dark mb-2">비임상시험관리기준</h4><p class="text-sm text-gray-500">식품의약품안전처 인증</p></div>
-          <div class="text-center"><div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl font-bold text-secondary">ISO</span></div><h4 class="font-semibold text-dark mb-2">ISO 17025</h4><p class="text-sm text-gray-500">시험기관 인정</p></div>
-          <div class="text-center"><div class="w-20 h-20 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-xl font-bold text-purple-600">KOLAS</span></div><h4 class="font-semibold text-dark mb-2">KOLAS 인정</h4><p class="text-sm text-gray-500">한국인정기구</p></div>
           <div class="text-center"><div class="w-20 h-20 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-xl font-bold text-amber-600">EP</span></div><h4 class="font-semibold text-dark mb-2">유럽약전 기준</h4><p class="text-sm text-gray-500">EP 2.6.30 준수</p></div>
         </div>
       </div>
@@ -1272,6 +1280,14 @@
   </section>
 
   <!-- ===== FAQ 섹션 ===== -->
+  <style>
+    details.faq-item { background:#F8FAFC; border-radius:0.75rem; overflow:hidden; margin-bottom:1rem; }
+    details.faq-item summary { display:flex; justify-content:space-between; align-items:center; padding:1.5rem; cursor:pointer; font-weight:600; color:#1E293B; list-style:none; }
+    details.faq-item summary::-webkit-details-marker { display:none; }
+    details.faq-item summary::after { content:'+'; font-size:1.4rem; font-weight:300; color:#0369A1; flex-shrink:0; margin-left:1rem; transition:transform 0.3s; }
+    details.faq-item[open] summary::after { content:'×'; }
+    details.faq-item .faq-body { padding:0 1.5rem 1.5rem; color:#4B5563; font-size:0.875rem; line-height:1.75; }
+  </style>
   <section id="faq" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
@@ -1279,73 +1295,267 @@
         <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">자주 묻는 질문</h2>
         <p class="text-gray-600 text-lg">MAT 시험에 대해 고객들이 가장 많이 묻는 질문들을 모았습니다.</p>
       </div>
-      <div class="space-y-4">
-        <div class="bg-gray-50 rounded-xl overflow-hidden">
-          <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
-            <span class="font-semibold text-dark pr-4">MAT 시험이 LAL(내독소) 시험을 완전히 대체할 수 있나요?</span>
-            <svg class="faq-icon w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-6">
-            <p class="text-gray-600 text-sm leading-relaxed">MAT는 내독소 외에 NEP까지 검출할 수 있는 포괄적인 시험법입니다. 유럽약전(EP)에서는 PSV 후 RPT를 MAT로 대체하도록 권장하고 있습니다. 특히 NEP 위험이 있는 제품(혈액제제, 바이오의약품, 세포치료제, 의료기기)에서는 MAT가 LAL보다 더 포괄적인 안전성 정보를 제공합니다. 전문가 상담을 통해 제품에 최적화된 시험 전략을 수립하시기 바랍니다.</p>
-          </div>
-        </div>
-        <div class="bg-gray-50 rounded-xl overflow-hidden">
-          <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
-            <span class="font-semibold text-dark pr-4">혈액제제에 MAT가 왜 특히 중요한가요?</span>
-            <svg class="faq-icon w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-6">
-            <p class="text-gray-600 text-sm leading-relaxed">혈액제제는 두 가지 이유로 MAT가 특히 중요합니다. 첫째, 혈장의 citrate, phosphate, 단백질 성분이 LAL 반응을 방해하는 LER(저내독소 회수율) 현상이 빈번히 발생합니다. 이 경우 BET 결과가 음성이더라도 실제 내독소가 존재할 수 있어 False Negative 위험이 있습니다. 둘째, 혈액 유래 제품은 그람양성균 유래 NEP(Peptidoglycan, LTA) 오염 위험이 있으며 이는 LAL로 검출 불가합니다. Biostream은 BST-TMG-16 QRM 절차에 따라 혈액제제를 NEP 고위험군으로 분류하여 BET+MAT 병행 전략을 권장합니다.</p>
-          </div>
-        </div>
-        <div class="bg-gray-50 rounded-xl overflow-hidden">
-          <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
-            <span class="font-semibold text-dark pr-4">MAT 시험 전 제품별 검증(PSV)이 반드시 필요한가요?</span>
-            <svg class="faq-icon w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-6">
-            <p class="text-gray-600 text-sm leading-relaxed">EP 2.6.30에 따르면 규제 목적의 배치 출하 시험에는 PSV가 필요합니다. PSV에서는 시료의 세포 독성 유무, 간섭 물질(LPS/NEP 회수율 50~200%), 배치 간 재현성 등을 확인합니다. 연구 목적이나 방법 개발 단계에서는 PSV 없이도 탐색적 시험이 가능합니다. Biostream은 PSV 수행부터 배치 출하 시험까지 전 과정을 지원합니다.</p>
-          </div>
-        </div>
-        <div class="bg-gray-50 rounded-xl overflow-hidden">
-          <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
-            <span class="font-semibold text-dark pr-4">MAT 시험에서 LER(저내독소 회수율) 문제가 발생하지 않나요?</span>
-            <svg class="faq-icon w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-6">
-            <p class="text-gray-600 text-sm leading-relaxed">LER은 LAL 시험에서 citrate, phosphate 완충액이나 polysorbate 등 계면활성제가 내독소와 결합하여 LAL 반응을 방해하는 현상입니다. MAT는 ELISA 방식으로 사이토카인을 측정하기 때문에 LAL 특이적 간섭에 영향을 받지 않아 LER 문제를 근본적으로 극복할 수 있습니다. 다만 시료 자체가 세포 독성을 가지거나 사이토카인 측정을 방해하는 물질이 있는 경우 별도의 간섭 테스트(PSV)를 통해 시료 적합성을 확인합니다.</p>
-          </div>
-        </div>
-        <div class="bg-gray-50 rounded-xl overflow-hidden">
-          <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
-            <span class="font-semibold text-dark pr-4">세포치료제(CAR-T, 줄기세포)에 MAT 적용 시 특별한 고려사항이 있나요?</span>
-            <svg class="faq-icon w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-6">
-            <p class="text-gray-600 text-sm leading-relaxed">세포치료제의 경우 살아있는 세포가 자체적으로 IL-6 등 사이토카인을 분비할 수 있어 시험 설계 시 세포 자체의 배경 사이토카인 분비량을 측정하는 블랭크(Blank) 보정이 필수적입니다. 또한 세포치료제에 포함된 배지 성분, 성장인자, 동결보호제(DMSO 등)가 PBMC에 독성을 나타낼 수 있어 세포 독성 평가와 적합 희석배수 결정이 중요합니다. Biostream은 세포치료제 특성에 맞춘 맞춤형 PSV 프로토콜을 제공합니다.</p>
-          </div>
-        </div>
-        <div class="bg-gray-50 rounded-xl overflow-hidden">
-          <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
-            <span class="font-semibold text-dark pr-4">MAT 시험 결과가 MFDS/FDA/EMA에 제출 가능한가요?</span>
-            <svg class="faq-icon w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-6">
-            <p class="text-gray-600 text-sm leading-relaxed">유럽(EMA/EP 2.6.30)에서는 PSV 후 MAT 결과가 공식 인정됩니다. 미국 FDA에서도 적절한 검증 데이터 제공 시 MAT 결과를 사례별로 수용합니다. 한국 MFDS의 경우 현재 MAT 도입을 검토 중으로 사전 협의를 권장드립니다. Biostream은 의약품등 시험·검사 인증기관 기준에 따른 성적서를 발행하며 규제 제출에 필요한 문서 작성을 지원합니다.</p>
-          </div>
-        </div>
-        <div class="bg-gray-50 rounded-xl overflow-hidden">
-          <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
-            <span class="font-semibold text-dark pr-4">시험 비용과 기간은 어떻게 되나요?</span>
-            <svg class="faq-icon w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-6">
-            <p class="text-gray-600 text-sm leading-relaxed">시험 비용과 기간은 시험 목적(탐색적/규제용/PSV 포함), 시료 수, 시험 방법, 긴급 여부 등에 따라 다릅니다. 일반적인 MAT 배치 출하 시험은 10~15 영업일이 소요됩니다. PSV 포함 시 3~7일이 추가될 수 있습니다. 정확한 비용과 기간은 시료 정보와 시험 목적을 공유해 주시면 상세 견적을 제공해 드립니다.</p>
-          </div>
-        </div>
+      <div>
+        <details class="faq-item">
+          <summary>MAT 시험이 LAL(내독소) 시험을 완전히 대체할 수 있나요?</summary>
+          <div class="faq-body">MAT는 내독소 외에 NEP까지 검출할 수 있는 포괄적인 시험법입니다. 유럽약전(EP)에서는 PSV 후 RPT를 MAT로 대체하도록 권장하고 있습니다. 특히 NEP 위험이 있는 제품(혈액제제, 바이오의약품, 세포치료제, 의료기기)에서는 MAT가 LAL보다 더 포괄적인 안전성 정보를 제공합니다. 전문가 상담을 통해 제품에 최적화된 시험 전략을 수립하시기 바랍니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>혈액제제에 MAT가 왜 특히 중요한가요?</summary>
+          <div class="faq-body">혈액제제는 두 가지 이유로 MAT가 특히 중요합니다. 첫째, 혈장의 citrate, phosphate, 단백질 성분이 LAL 반응을 방해하는 LER(저내독소 회수율) 현상이 빈번히 발생합니다. 이 경우 BET 결과가 음성이더라도 실제 내독소가 존재할 수 있어 False Negative 위험이 있습니다. 둘째, 혈액 유래 제품은 그람양성균 유래 NEP(Peptidoglycan, LTA) 오염 위험이 있으며 이는 LAL로 검출 불가합니다. Biostream은 BST-TMG-16 QRM 절차에 따라 혈액제제를 NEP 고위험군으로 분류하여 BET+MAT 병행 전략을 권장합니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>MAT 시험 전 제품별 검증(PSV)이 반드시 필요한가요?</summary>
+          <div class="faq-body">EP 2.6.30에 따르면 규제 목적의 배치 출하 시험에는 PSV가 필요합니다. PSV에서는 시료의 세포 독성 유무, 간섭 물질(LPS/NEP 회수율 50~200%), 배치 간 재현성 등을 확인합니다. 연구 목적이나 방법 개발 단계에서는 PSV 없이도 탐색적 시험이 가능합니다. Biostream은 PSV 수행부터 배치 출하 시험까지 전 과정을 지원합니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>MAT 시험에서 LER(저내독소 회수율) 문제가 발생하지 않나요?</summary>
+          <div class="faq-body">LER은 LAL 시험에서 citrate, phosphate 완충액이나 polysorbate 등 계면활성제가 내독소와 결합하여 LAL 반응을 방해하는 현상입니다. MAT는 ELISA 방식으로 사이토카인을 측정하기 때문에 LAL 특이적 간섭에 영향을 받지 않아 LER 문제를 근본적으로 극복할 수 있습니다. 다만 시료 자체가 세포 독성을 가지거나 사이토카인 측정을 방해하는 물질이 있는 경우 별도의 간섭 테스트(PSV)를 통해 시료 적합성을 확인합니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>세포치료제(CAR-T, 줄기세포)에 MAT 적용 시 특별한 고려사항이 있나요?</summary>
+          <div class="faq-body">세포치료제의 경우 살아있는 세포가 자체적으로 IL-6 등 사이토카인을 분비할 수 있어 시험 설계 시 세포 자체의 배경 사이토카인 분비량을 측정하는 블랭크(Blank) 보정이 필수적입니다. 또한 세포치료제에 포함된 배지 성분, 성장인자, 동결보호제(DMSO 등)가 PBMC에 독성을 나타낼 수 있어 세포 독성 평가와 적합 희석배수 결정이 중요합니다. Biostream은 세포치료제 특성에 맞춘 맞춤형 PSV 프로토콜을 제공합니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>MAT 시험 결과가 MFDS/FDA/EMA에 제출 가능한가요?</summary>
+          <div class="faq-body">유럽(EMA/EP 2.6.30)에서는 PSV 후 MAT 결과가 공식 인정됩니다. 미국 FDA에서도 적절한 검증 데이터 제공 시 MAT 결과를 사례별로 수용합니다. 한국 MFDS의 경우 현재 MAT 도입을 검토 중으로 사전 협의를 권장드립니다. Biostream은 의약품등 시험·검사 인증기관 기준에 따른 성적서를 발행하며 규제 제출에 필요한 문서 작성을 지원합니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>시험 비용과 기간은 어떻게 되나요?</summary>
+          <div class="faq-body">시험 비용과 기간은 시험 목적(탐색적/규제용/PSV 포함), 시료 수, 시험 방법, 긴급 여부 등에 따라 다릅니다. PSV 제외 시 약 2주, PSV 포함 시 약 6주가 소요됩니다. 정확한 비용과 기간은 시료 정보와 시험 목적을 공유해 주시면 상세 견적을 제공해 드립니다.</div>
+        </details>
       </div>
     </div>
   </section>
+
+  <!-- ===== 최신 MAT 뉴스 섹션 ===== -->
+  <section id="news" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Latest News</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">최신 MAT 뉴스</h2>
+        <p class="text-gray-600 text-lg">MAT 시험 및 발열성 물질 관련 최신 규제·학술 동향을 소개합니다.</p>
+        <!-- 관리자 버튼 -->
+        <button onclick="openAdminLogin()" class="mt-6 inline-flex items-center gap-2 text-xs text-gray-400 hover:text-primary border border-gray-200 hover:border-primary px-4 py-2 rounded-full transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          관리자
+        </button>
+      </div>
+      <!-- 뉴스 카드 목록 -->
+      <div id="news-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <p id="news-empty" class="text-center text-gray-400 py-16 hidden">등록된 뉴스가 없습니다.</p>
+    </div>
+  </section>
+
+  <!-- ===== 관리자 로그인 모달 ===== -->
+  <div id="adminLoginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-8 relative">
+      <button onclick="closeAdminLogin()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+      <h3 class="text-xl font-bold text-dark mb-6 text-center">관리자 로그인</h3>
+      <input id="adminPwInput" type="password" placeholder="비밀번호 입력" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary mb-4" onkeydown="if(event.key==='Enter')checkAdminPw()">
+      <button onclick="checkAdminPw()" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">로그인</button>
+      <p id="adminPwError" class="text-red-500 text-sm text-center mt-3 hidden">비밀번호가 올바르지 않습니다.</p>
+    </div>
+  </div>
+
+  <!-- ===== 뉴스 작성/수정 모달 ===== -->
+  <div id="newsEditorModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg p-8 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeNewsEditor()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+      <h3 id="editorTitle" class="text-xl font-bold text-dark mb-6">뉴스 추가</h3>
+      <input type="hidden" id="editNewsId">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-dark mb-1">카테고리 *</label>
+          <select id="newsCategory" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
+            <option value="규제 동향">규제 동향</option>
+            <option value="학술 동향">학술 동향</option>
+            <option value="국내 동향">국내 동향</option>
+            <option value="Biostream 소식">Biostream 소식</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-dark mb-1">날짜 *</label>
+          <input id="newsDate" type="month" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-dark mb-1">제목 *</label>
+          <input id="newsTitle" type="text" placeholder="뉴스 제목을 입력하세요" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-dark mb-1">내용 *</label>
+          <textarea id="newsContent" rows="4" placeholder="뉴스 내용을 입력하세요" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-dark mb-1">외부 링크 (선택)</label>
+          <input id="newsLink" type="url" placeholder="https://..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="saveNews()" class="flex-1 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">저장</button>
+        <button onclick="closeNewsEditor()" class="flex-1 bg-gray-100 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-200 transition">취소</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ===== 뉴스 관리 스크립트 =====
+  var ADMIN_PW = 'biostream2025'; // ← 비밀번호 (원하시면 변경)
+  var isAdmin = false;
+
+  var DEFAULT_NEWS = [
+    { id:1, category:'Biostream 소식', date:'2025-03', title:'Biostream, MAT 시험 서비스 정식 개시', content:'Biostream 시험분석센터가 EP 2.6.30 기준 MAT 시험 서비스를 정식 개시하였습니다. 혈액제제, 바이오의약품, 세포치료제 등 다양한 제품에 대한 PSV 및 배치 출하 시험을 지원합니다.', link:'' },
+    { id:2, category:'규제 동향', date:'2025-01', title:'유럽약전(EP) 2.6.30 MAT 개정판 적용 확대', content:'EP 10판에서 MAT(Monocyte Activation Test)가 발열성 물질 시험의 공식 대안법으로 확정되었으며, 혈액제제 및 바이오의약품에 대한 적용 권고가 강화되었습니다.', link:'' },
+    { id:3, category:'학술 동향', date:'2024-11', title:'CAR-T 세포치료제 MAT 적용 가이드라인 발표', content:'세포치료제 특성에 맞춘 PSV 프로토콜 및 배경 사이토카인 보정 방법에 관한 국제 가이드라인이 발표되어 CAR-T 제품의 안전성 시험 기준이 정립되고 있습니다.', link:'' },
+    { id:4, category:'국내 동향', date:'2024-09', title:'식약처(MFDS) MAT 도입 검토 본격화', content:'한국 식품의약품안전처가 비임상 안전성 시험에서 MAT 활용 가능성에 대한 공식 검토를 시작하였으며, 의약품 허가 신청 시 MAT 데이터 제출 기준 마련이 예상됩니다.', link:'' },
+    { id:5, category:'규제 동향', date:'2024-07', title:'FDA, LER 문제 제품에 MAT 사용 권고 강화', content:'미국 FDA가 저내독소 회수율(LER) 현상이 보고된 의약품에 대해 LAL 단독 시험의 한계를 인정하고, MAT 병행 시험을 적극 권고하는 지침을 발표하였습니다.', link:'' },
+    { id:6, category:'학술 동향', date:'2024-05', title:'NEP(비내독소성 발열원) 위험성 연구 증가', content:'그람양성균 유래 Peptidoglycan, Lipoteichoic acid 등 NEP가 임상에서 발열 반응을 유발한 사례 보고가 증가하며, MAT를 통한 포괄적 발열원 검출의 중요성이 재조명되고 있습니다.', link:'' },
+  ];
+
+  var CATEGORY_STYLE = {
+    '규제 동향':     { bar:'#0369A1', badge:'background:#E0F2FE;color:#0369A1' },
+    '학술 동향':     { bar:'#0F766E', badge:'background:#D1FAE5;color:#0F766E' },
+    '국내 동향':     { bar:'#F59E0B', badge:'background:#FEF3C7;color:#B45309' },
+    'Biostream 소식':{ bar:'#C41E3A', badge:'background:#FEE2E2;color:#B91C1C' },
+    '기타':          { bar:'#64748B', badge:'background:#F1F5F9;color:#475569' },
+  };
+
+  function getNews() {
+    try {
+      var stored = localStorage.getItem('mat_news');
+      return stored ? JSON.parse(stored) : DEFAULT_NEWS;
+    } catch(e) { return DEFAULT_NEWS; }
+  }
+
+  function setNews(list) {
+    try { localStorage.setItem('mat_news', JSON.stringify(list)); } catch(e) {}
+  }
+
+  function formatDate(d) {
+    if (!d) return '';
+    var parts = d.split('-');
+    return parts[0] + '. ' + parts[1];
+  }
+
+  function renderNews() {
+    var list = getNews();
+    var grid = document.getElementById('news-grid');
+    var empty = document.getElementById('news-empty');
+    grid.innerHTML = '';
+    if (!list.length) { empty.classList.remove('hidden'); return; }
+    empty.classList.add('hidden');
+    // 최신순 정렬
+    list.slice().sort(function(a,b){ return b.date > a.date ? 1 : -1; }).forEach(function(item) {
+      var style = CATEGORY_STYLE[item.category] || CATEGORY_STYLE['기타'];
+      var adminBtns = isAdmin ? '<div class="flex gap-2 mt-4">'
+        + '<button onclick="editNews('+item.id+')" style="font-size:0.75rem;padding:4px 12px;border-radius:6px;background:#E0F2FE;color:#0369A1;border:none;cursor:pointer;">✏️ 수정</button>'
+        + '<button onclick="deleteNews('+item.id+')" style="font-size:0.75rem;padding:4px 12px;border-radius:6px;background:#FEE2E2;color:#B91C1C;border:none;cursor:pointer;">🗑 삭제</button>'
+        + '</div>' : '';
+      var linkBtn = item.link ? '<a href="'+item.link+'" target="_blank" style="display:inline-block;margin-top:12px;font-size:0.75rem;color:#0369A1;text-decoration:underline;">🔗 원문 보기</a>' : '';
+      grid.innerHTML += '<div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover" style="display:flex;flex-direction:column;">'
+        + '<div style="height:4px;background:'+style.bar+'"></div>'
+        + '<div class="p-6" style="flex:1">'
+        + '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">'
+        + '<span style="font-size:0.7rem;font-weight:600;padding:3px 8px;border-radius:4px;'+style.badge+'">'+item.category+'</span>'
+        + '<span style="font-size:0.7rem;color:#9CA3AF;">'+formatDate(item.date)+'</span>'
+        + '</div>'
+        + '<h3 style="font-weight:700;color:#1E293B;font-size:0.95rem;margin-bottom:8px;line-height:1.4;">'+item.title+'</h3>'
+        + '<p style="color:#4B5563;font-size:0.85rem;line-height:1.7;">'+item.content+'</p>'
+        + linkBtn + adminBtns
+        + '</div></div>';
+    });
+    // 관리자 모드일 때 뉴스 추가 버튼 표시
+    if (isAdmin) {
+      document.getElementById('addNewsBtn') && (document.getElementById('addNewsBtn').style.display = 'flex');
+    }
+  }
+
+  function openAdminLogin() {
+    if (isAdmin) { openNewsEditor(); return; }
+    document.getElementById('adminLoginModal').classList.remove('hidden');
+    document.getElementById('adminPwInput').value = '';
+    document.getElementById('adminPwError').classList.add('hidden');
+    setTimeout(function(){ document.getElementById('adminPwInput').focus(); }, 100);
+  }
+
+  function closeAdminLogin() {
+    document.getElementById('adminLoginModal').classList.add('hidden');
+  }
+
+  function checkAdminPw() {
+    var pw = document.getElementById('adminPwInput').value;
+    if (pw === ADMIN_PW) {
+      isAdmin = true;
+      closeAdminLogin();
+      renderNews();
+      document.getElementById('addNewsBtn').style.display = 'flex';
+      document.querySelector('button[onclick="openAdminLogin()"]').textContent = '✚ 뉴스 추가';
+      document.querySelector('button[onclick="openAdminLogin()"]').style.color = '#0369A1';
+    } else {
+      document.getElementById('adminPwError').classList.remove('hidden');
+    }
+  }
+
+  function openNewsEditor(item) {
+    document.getElementById('newsEditorModal').classList.remove('hidden');
+    document.getElementById('editorTitle').textContent = item ? '뉴스 수정' : '뉴스 추가';
+    document.getElementById('editNewsId').value = item ? item.id : '';
+    document.getElementById('newsCategory').value = item ? item.category : '규제 동향';
+    document.getElementById('newsDate').value = item ? item.date : '';
+    document.getElementById('newsTitle').value = item ? item.title : '';
+    document.getElementById('newsContent').value = item ? item.content : '';
+    document.getElementById('newsLink').value = item ? item.link : '';
+  }
+
+  function closeNewsEditor() {
+    document.getElementById('newsEditorModal').classList.add('hidden');
+  }
+
+  function editNews(id) {
+    var list = getNews();
+    var item = list.find(function(n){ return n.id === id; });
+    if (item) openNewsEditor(item);
+  }
+
+  function deleteNews(id) {
+    if (!confirm('이 뉴스를 삭제하시겠습니까?')) return;
+    var list = getNews().filter(function(n){ return n.id !== id; });
+    setNews(list);
+    renderNews();
+  }
+
+  function saveNews() {
+    var title = document.getElementById('newsTitle').value.trim();
+    var content = document.getElementById('newsContent').value.trim();
+    var date = document.getElementById('newsDate').value;
+    if (!title || !content || !date) { alert('제목, 날짜, 내용은 필수입니다.'); return; }
+    var list = getNews();
+    var editId = document.getElementById('editNewsId').value;
+    if (editId) {
+      list = list.map(function(n) {
+        return n.id == editId ? { id:n.id, category:document.getElementById('newsCategory').value, date:date, title:title, content:content, link:document.getElementById('newsLink').value.trim() } : n;
+      });
+    } else {
+      var newId = Date.now();
+      list.push({ id:newId, category:document.getElementById('newsCategory').value, date:date, title:title, content:content, link:document.getElementById('newsLink').value.trim() });
+    }
+    setNews(list);
+    closeNewsEditor();
+    renderNews();
+  }
+
+  // 뉴스 추가 플로팅 버튼
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.createElement('button');
+    btn.id = 'addNewsBtn';
+    btn.onclick = function(){ openNewsEditor(); };
+    btn.style.cssText = 'display:none;position:fixed;bottom:32px;right:32px;z-index:100;background:#0369A1;color:white;border:none;border-radius:50px;padding:14px 24px;font-size:0.9rem;font-weight:600;cursor:pointer;box-shadow:0 4px 16px rgba(3,105,161,0.4);align-items:center;gap:8px;';
+    btn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> 뉴스 추가';
+    document.body.appendChild(btn);
+    renderNews();
+  });
+  </script>
 
   <!-- ===== 문의 섹션 ===== -->
   <section id="contact" class="py-20 bg-gray-50">
@@ -1397,7 +1607,38 @@
               </select>
             </div>
             <div class="mb-6"><label class="block text-sm font-medium text-dark mb-2">문의 내용 *</label><textarea id="f_message" required rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none" placeholder="시험 목적, 시료 정보, 요청사항 등을 자유롭게 작성해주세요."></textarea></div>
-            <div class="mb-6"><label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" required class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"><span class="text-sm text-gray-600">개인정보 수집 및 이용에 동의합니다. <a href="#" class="text-primary hover:underline">자세히 보기</a></span></label></div>
+            <div class="mb-6"><label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" required class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"><span class="text-sm text-gray-600">개인정보 수집 및 이용에 동의합니다. <a href="#" class="text-primary hover:underline" onclick="document.getElementById('privacyModal').classList.remove('hidden');return false;">자세히 보기</a></span></label></div>
+
+  <!-- 개인정보 모달 -->
+  <div id="privacyModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full p-8 relative max-h-[80vh] overflow-y-auto">
+      <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+      <h3 class="text-xl font-bold text-dark mb-6">개인정보 수집 및 이용 동의</h3>
+      <div class="text-sm text-gray-600 space-y-4 leading-relaxed">
+        <div>
+          <p class="font-semibold text-dark mb-1">1. 수집하는 개인정보 항목</p>
+          <p>회사명, 담당자명, 이메일 주소, 연락처, 문의 내용</p>
+        </div>
+        <div>
+          <p class="font-semibold text-dark mb-1">2. 개인정보 수집 및 이용 목적</p>
+          <p>MAT 시험 문의 및 견적 요청에 대한 상담, 답변 및 안내</p>
+        </div>
+        <div>
+          <p class="font-semibold text-dark mb-1">3. 개인정보 보유 및 이용 기간</p>
+          <p>문의 처리 완료 후 3년간 보관 후 파기. 단, 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-dark mb-1">4. 동의 거부 권리 및 불이익</p>
+          <p>개인정보 수집·이용에 동의하지 않으실 수 있으나, 동의를 거부하실 경우 문의 접수 및 상담 서비스 이용이 제한될 수 있습니다.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-dark mb-1">5. 개인정보 처리 책임자</p>
+          <p>Biostream 시험분석센터 | 이메일: ckjung@biostream.co.kr</p>
+        </div>
+      </div>
+      <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="mt-6 w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">확인</button>
+    </div>
+  </div>
             <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg font-semibold hover:bg-primary-dark transition">문의하기</button>
           </form>
         </div>
@@ -1462,24 +1703,28 @@
       btn.textContent = '전송 중...';
       btn.disabled = true;
 
-      emailjs.send('service_3yawdy9', 'qlzko6n', {
+      const params = {
+        to_email:     'ckjung@biostream.co.kr',
         company:      document.getElementById('f_company').value,
         name:         document.getElementById('f_name').value,
         from_email:   document.getElementById('f_email').value,
+        email:        document.getElementById('f_email').value,
         tel:          document.getElementById('f_tel').value,
         inquiry_type: document.getElementById('f_type').value,
-        sample:       document.getElementById('f_sample').value,
+        sample:       document.getElementById('f_sample').value || '미선택',
         message:      document.getElementById('f_message').value,
-      })
-      .then(() => {
+      };
+
+      emailjs.send('service_3yawdy9', 'template_p84vc2p', params)
+      .then(function(response) {
         alert('문의가 성공적으로 전송되었습니다!\n빠른 시일 내에 연락드리겠습니다.');
         document.getElementById('contactForm').reset();
         btn.textContent = '문의하기';
         btn.disabled = false;
       })
-      .catch((err) => {
-        alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-        console.error(err);
+      .catch(function(err) {
+        alert('전송 오류: ' + JSON.stringify(err) + '\n\n직접 문의: ckjung@biostream.co.kr');
+        console.error('EmailJS 오류:', err);
         btn.textContent = '문의하기';
         btn.disabled = false;
       });
@@ -1488,8 +1733,21 @@
     function toggleFaq(btn) {
       const content = btn.nextElementSibling;
       const icon = btn.querySelector('.faq-icon');
-      content.classList.toggle('active');
-      icon.classList.toggle('active');
+      const isOpen = content.style.display === 'block';
+
+      // 모든 FAQ 닫기
+      document.querySelectorAll('.faq-content').forEach(function(el) {
+        el.style.display = 'none';
+      });
+      document.querySelectorAll('.faq-icon').forEach(function(el) {
+        el.style.transform = 'rotate(0deg)';
+      });
+
+      // 클릭한 항목만 열기 (이미 열려있으면 닫힘)
+      if (!isOpen) {
+        content.style.display = 'block';
+        icon.style.transform = 'rotate(45deg)';
+      }
     }
     const sLabels = ['','영향 없음','임상적 무시 가능','경증 부작용/배치 재시험','입원·의료개입 필요','생명위협·전 배치 리콜'];
     const oLabels = ['','매우 드묾(이론적)','낮음(강한 통제)','가능성 있음','드물게/5년 내 다회','자주/연 1회 이상'];
