@@ -1282,12 +1282,26 @@
   <!-- ===== FAQ 섹션 ===== -->
   <style>
     details.faq-item { background:#F8FAFC; border-radius:0.75rem; overflow:hidden; margin-bottom:1rem; }
-    details.faq-item summary { display:flex; justify-content:space-between; align-items:center; padding:1.5rem; cursor:pointer; font-weight:600; color:#1E293B; list-style:none; }
+    details.faq-item summary { display:flex; justify-content:space-between; align-items:center; padding:1.5rem; cursor:pointer; font-weight:600; color:#1E293B; list-style:none; user-select:none; -webkit-user-select:none; }
     details.faq-item summary::-webkit-details-marker { display:none; }
-    details.faq-item summary::after { content:'+'; font-size:1.4rem; font-weight:300; color:#0369A1; flex-shrink:0; margin-left:1rem; transition:transform 0.3s; }
+    details.faq-item summary::after { content:'+'; font-size:1.4rem; font-weight:300; color:#0369A1; flex-shrink:0; margin-left:1rem; }
     details.faq-item[open] summary::after { content:'×'; }
     details.faq-item .faq-body { padding:0 1.5rem 1.5rem; color:#4B5563; font-size:0.875rem; line-height:1.75; }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var faqs = document.querySelectorAll('details.faq-item');
+      faqs.forEach(function(faq) {
+        faq.addEventListener('toggle', function() {
+          if (faq.open) {
+            faqs.forEach(function(other) {
+              if (other !== faq && other.open) other.removeAttribute('open');
+            });
+          }
+        });
+      });
+    });
+  </script>
   <section id="faq" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
