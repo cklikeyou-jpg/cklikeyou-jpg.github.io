@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta name="google-site-verification" content="yu5JVJTDri-tsIKORIolbXw-Folh-U5vhGQNRHaXU1M" />  
 <link rel="icon" href="favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -350,6 +349,100 @@
               <h4 class="font-semibold text-dark mb-2">🔬 TLR 신호전달 메커니즘</h4>
               <p class="text-gray-600 text-sm leading-relaxed">내독소(LPS)는 TLR4, 그람양성균 유래 물질(LTA, Peptidoglycan)은 TLR2, 바이러스 dsRNA는 TLR3를 통해 각각 단핵구를 활성화합니다. MAT는 이 다양한 TLR 경로를 모두 커버합니다.</p>
             </div>
+
+            <!-- TLR 종류별 Ligand 표 -->
+            <div class="rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div class="bg-gradient-to-r from-primary to-secondary px-5 py-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                <h4 class="font-bold text-white text-sm">Ligand 종류에 따른 TLR 결합 위치 및 역할</h4>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs">
+                  <thead>
+                    <tr class="bg-slate-700 text-white">
+                      <th class="px-3 py-2.5 text-left font-semibold w-16">TLR</th>
+                      <th class="px-3 py-2.5 text-left font-semibold">주요 Ligand</th>
+                      <th class="px-3 py-2.5 text-left font-semibold">유래</th>
+                      <th class="px-3 py-2.5 text-left font-semibold">세포 내 위치</th>
+                      <th class="px-3 py-2.5 text-left font-semibold">신호전달 경로</th>
+                      <th class="px-3 py-2.5 text-left font-semibold">MAT 검출</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-100">
+                    <tr class="bg-blue-50 hover:bg-blue-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-blue-600 text-white font-bold px-2 py-0.5 rounded text-xs">TLR1</span></td>
+                      <td class="px-3 py-2.5 text-gray-700">트리아실리포펩타이드 (TLR2와 헤테로다이머)</td>
+                      <td class="px-3 py-2.5 text-gray-600">그람음성균, 마이코박테리아</td>
+                      <td class="px-3 py-2.5"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">세포 표면</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">MyD88 → NF-κB → IL-6, TNF-α</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC</span></td>
+                    </tr>
+                    <tr class="bg-red-50 hover:bg-red-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-red-600 text-white font-bold px-2 py-0.5 rounded text-xs">TLR2</span></td>
+                      <td class="px-3 py-2.5 text-gray-700 font-medium">LTA, Peptidoglycan, HKSA, Lipoprotein</td>
+                      <td class="px-3 py-2.5 text-gray-600 font-semibold text-red-700">그람양성균 (NEP 핵심)</td>
+                      <td class="px-3 py-2.5"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">세포 표면</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">MyD88 → NF-κB → IL-6, IL-1β, TNF-α</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC</span></td>
+                    </tr>
+                    <tr class="bg-purple-50 hover:bg-purple-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-purple-600 text-white font-bold px-2 py-0.5 rounded text-xs">TLR3</span></td>
+                      <td class="px-3 py-2.5 text-gray-700 font-medium">dsRNA (폴리 I:C)</td>
+                      <td class="px-3 py-2.5 text-gray-600">바이러스 (NEP 핵심)</td>
+                      <td class="px-3 py-2.5"><span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-medium">엔도솜 내부</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">TRIF → IRF3/NF-κB → IFN-β, IL-6</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC</span></td>
+                    </tr>
+                    <tr class="bg-amber-50 hover:bg-amber-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-amber-500 text-white font-bold px-2 py-0.5 rounded text-xs">TLR4</span></td>
+                      <td class="px-3 py-2.5 text-gray-700 font-bold">LPS (내독소) ★</td>
+                      <td class="px-3 py-2.5 text-gray-600 font-semibold">그람음성균 (ET 핵심)</td>
+                      <td class="px-3 py-2.5"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">세포 표면 + 엔도솜</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">MyD88/TRIF → NF-κB → IL-6, TNF-α (강력)</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC/WB</span></td>
+                    </tr>
+                    <tr class="bg-teal-50 hover:bg-teal-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-teal-600 text-white font-bold px-2 py-0.5 rounded text-xs">TLR5</span></td>
+                      <td class="px-3 py-2.5 text-gray-700">Flagellin (편모 단백질)</td>
+                      <td class="px-3 py-2.5 text-gray-600">편모 보유 세균</td>
+                      <td class="px-3 py-2.5"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">세포 표면</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">MyD88 → NF-κB → IL-6, TNF-α</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC</span></td>
+                    </tr>
+                    <tr class="bg-blue-50 hover:bg-blue-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-blue-500 text-white font-bold px-2 py-0.5 rounded text-xs">TLR6</span></td>
+                      <td class="px-3 py-2.5 text-gray-700">디아실리포펩타이드 (TLR2와 헤테로다이머)</td>
+                      <td class="px-3 py-2.5 text-gray-600">마이코플라즈마</td>
+                      <td class="px-3 py-2.5"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">세포 표면</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">MyD88 → NF-κB → IL-6</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC</span></td>
+                    </tr>
+                    <tr class="bg-indigo-50 hover:bg-indigo-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-indigo-600 text-white font-bold px-2 py-0.5 rounded text-xs">TLR7/8</span></td>
+                      <td class="px-3 py-2.5 text-gray-700">ssRNA</td>
+                      <td class="px-3 py-2.5 text-gray-600">바이러스 ssRNA (NEP)</td>
+                      <td class="px-3 py-2.5"><span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-medium">엔도솜 내부</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">MyD88 → NF-κB/IRF7 → IL-6, IFN-α</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC</span></td>
+                    </tr>
+                    <tr class="bg-green-50 hover:bg-green-100 transition">
+                      <td class="px-3 py-2.5"><span class="inline-block bg-green-700 text-white font-bold px-2 py-0.5 rounded text-xs">TLR9</span></td>
+                      <td class="px-3 py-2.5 text-gray-700">CpG DNA (비메틸화)</td>
+                      <td class="px-3 py-2.5 text-gray-600">세균·바이러스 DNA (NEP)</td>
+                      <td class="px-3 py-2.5"><span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-medium">엔도솜 내부</span></td>
+                      <td class="px-3 py-2.5 text-gray-600">MyD88 → NF-κB/IRF7 → IL-6, IFN-α</td>
+                      <td class="px-3 py-2.5"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded font-semibold">✓ PBMC</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="bg-slate-50 px-4 py-2.5 flex flex-wrap gap-4 text-xs text-gray-500 border-t border-gray-200">
+                <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 bg-blue-200 rounded"></span>세포 표면 TLR (TLR1,2,4,5,6): 세포 외부 병원체 인식</span>
+                <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 bg-orange-200 rounded"></span>엔도솜 TLR (TLR3,7,8,9): 세포 내부 핵산 인식</span>
+                <span class="flex items-center gap-1.5"><span class="font-bold text-amber-600">★ TLR4</span>: LAL/BET 검출 대상 (LPS)</span>
+                <span class="flex items-center gap-1.5"><span class="font-bold text-red-600">NEP</span>: TLR2,3,5,6,7,8,9 경로 — LAL 검출 불가, MAT 전용</span>
+              </div>
+            </div>
             <div class="bg-gray-50 rounded-xl p-5">
               <h4 class="font-semibold text-dark mb-2">⚠️ NEP가 특히 문제가 되는 제품군</h4>
               <ul class="text-gray-600 text-sm space-y-2">
@@ -444,62 +537,7 @@
       </div>
     </div>
   </section>
-<div class="mt-8 overflow-hidden rounded-xl border border-slate-200 shadow-sm">
-  <table class="w-full text-sm text-left border-collapse bg-white">
-    <thead class="bg-slate-50 text-slate-700 font-semibold">
-      <tr>
-        <th class="px-4 py-3 border-b">TLR 종류</th>
-        <th class="px-4 py-3 border-b">주요 리간드 (발열원)</th>
-        <th class="px-4 py-3 border-b">유래 및 특징</th>
-        <th class="px-4 py-3 border-b">주요 역할</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-slate-100">
-      <tr class="bg-blue-50/50">
-        <td class="px-4 py-4 font-bold text-primary italic">TLR4</td>
-        <td class="px-4 py-4">
-          <span class="inline-block bg-primary text-white text-[10px] px-2 py-0.5 rounded-full mb-1">KEY TARGET</span><br>
-          <strong class="text-blue-900 text-base">LPS (Endotoxin)</strong>
-        </td>
-        <td class="px-4 py-4 text-slate-600">그람음성균 외막 성분.<br>가장 대표적이고 강력한 발열 유도물질</td>
-        <td class="px-4 py-4 font-medium text-slate-700">내독소 인식 및 강력한<br>염증성 사이토카인 분비 유도</td>
-      </tr>
-      <tr>
-        <td class="px-4 py-3 font-semibold text-slate-700 italic">TLR1/2 & 2/6</td>
-        <td class="px-4 py-3 text-red-700">LTA, Peptidoglycan</td>
-        <td class="px-4 py-3 text-slate-600">그람양성균 유래 NEP</td>
-        <td class="px-4 py-3 text-slate-600">세균 세포벽 성분 인식</td>
-      </tr>
-      <tr>
-        <td class="px-4 py-3 font-semibold text-slate-700 italic">TLR3</td>
-        <td class="px-4 py-3 text-amber-700">dsRNA (Poly I:C)</td>
-        <td class="px-4 py-3 text-slate-600">바이러스 복제 과정 산물</td>
-        <td class="px-4 py-3 text-slate-600">항바이러스 면역반응 개시</td>
-      </tr>
-      <tr>
-        <td class="px-4 py-3 font-semibold text-slate-700 italic">TLR5</td>
-        <td class="px-4 py-3 text-emerald-700">Flagellin</td>
-        <td class="px-4 py-3 text-slate-600">세균의 편모 단백질</td>
-        <td class="px-4 py-3 text-slate-600">운동성 세균 침입 감지</td>
-      </tr>
-      <tr>
-        <td class="px-4 py-3 font-semibold text-slate-700 italic">TLR7/8</td>
-        <td class="px-4 py-3 text-orange-700">ssRNA</td>
-        <td class="px-4 py-3 text-slate-600">바이러스 유래 단일가닥 RNA</td>
-        <td class="px-4 py-3 text-slate-600">세포 내 바이러스 증식 감시</td>
-      </tr>
-      <tr>
-        <td class="px-4 py-3 font-semibold text-slate-700 italic">TLR9</td>
-        <td class="px-4 py-3 text-purple-700">CpG DNA</td>
-        <td class="px-4 py-3 text-slate-600">세균/바이러스 비메틸화 DNA</td>
-        <td class="px-4 py-3 text-slate-600">병원체 유전물질 인식</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<p class="mt-3 text-xs text-slate-500 italic">* MAT(Monocyte Activation Test)는 인간 단핵구를 사용하여 위와 같은 모든 TLR 경로를 통한 발열 반응을 종합적으로 검출합니다.</p>
-  <p class="mt-2 text-[11px] text-gray-500">* MAT 시험은 위와 같은 다양한 TLR 경로를 모두 활성화하여 내독소와 모든 종류의 NEP를 검출합니다.</p>
-</div>
+
   <!-- ===== MAT VALIDATION 섹션 (NEW) ===== -->
   <section id="validation" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -718,52 +756,7 @@
             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full flex-shrink-0"></span>직접접촉 또는 용출액 방법 적용</li>
           </ul>
         </div>
-🔬 TLR 신호전달 메커니즘
 
-          <div class="mt-10 overflow-x-auto">
-  <table class="w-full text-sm rounded-xl overflow-hidden shadow">
-    <thead>
-      <tr class="bg-gradient-to-r from-blue-600 to-teal-600 text-white">
-        <th class="py-3 px-4 text-left">Ligand</th>
-        <th class="py-3 px-4 text-left">TLR</th>
-        <th class="py-3 px-4 text-left">위치</th>
-        <th class="py-3 px-4 text-left">역할</th>
-      </tr>
-    </thead>
-    <tbody class="bg-white">
-      <tr class="border-b hover:bg-blue-50">
-        <td class="py-3 px-4">LPS</td>
-        <td class="py-3 px-4 font-semibold text-blue-600">TLR4</td>
-        <td class="py-3 px-4">Cell surface</td>
-        <td class="py-3 px-4">Gram-negative bacteria 인식</td>
-      </tr>
-      <tr class="border-b hover:bg-blue-50">
-        <td class="py-3 px-4">Lipoprotein</td>
-        <td class="py-3 px-4 font-semibold text-blue-600">TLR2</td>
-        <td class="py-3 px-4">Cell surface</td>
-        <td class="py-3 px-4">Gram-positive bacteria 인식</td>
-      </tr>
-      <tr class="border-b hover:bg-blue-50">
-        <td class="py-3 px-4">dsRNA</td>
-        <td class="py-3 px-4 font-semibold text-blue-600">TLR3</td>
-        <td class="py-3 px-4">Endosome</td>
-        <td class="py-3 px-4">바이러스 RNA 인식</td>
-      </tr>
-      <tr class="border-b hover:bg-blue-50">
-        <td class="py-3 px-4">ssRNA</td>
-        <td class="py-3 px-4 font-semibold text-blue-600">TLR7/8</td>
-        <td class="py-3 px-4">Endosome</td>
-        <td class="py-3 px-4">바이러스 RNA 인식</td>
-      </tr>
-      <tr class="hover:bg-blue-50">
-        <td class="py-3 px-4">CpG DNA</td>
-        <td class="py-3 px-4 font-semibold text-blue-600">TLR9</td>
-        <td class="py-3 px-4">Endosome</td>
-        <td class="py-3 px-4">세균 DNA 인식</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
         </div><!-- end NEP 고위험군 grid -->
       </div><!-- end NEP 고위험군 block -->
 
@@ -1118,10 +1111,6 @@
         </div>
       </div>
 
-<h2 class="flex justify-between items-center">
-  MAT 뉴스
-  <button onclick="adminLogin()" class="text-sm text-gray-400">관리자</button>
-</h2>
       <!-- FMEA 위험분석 방법론 -->
       <div class="mb-14">
         <h3 class="text-2xl font-bold mb-8 text-center text-dark">FMEA 기반 위험분석 방법론</h3>
@@ -1153,7 +1142,6 @@
                 <tr><td class="py-1.5 text-gray-400">O1</td><td class="py-1.5 text-gray-400">매우 드묾 / 이론적 수준</td></tr>
               </tbody>
             </table>
-       
           </div>
           <!-- 검출성 -->
           <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
@@ -1464,13 +1452,37 @@
           📋 규제 및 동향
         </button>
         <button id="tab-academic" onclick="switchNewsTab('academic')"
-          class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-primary hover:text-primary">
+          class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-green-600 hover:text-green-600">
           🔬 제약/바이오계 MAT 학술동향
         </button>
-        <button onclick="openNewsForm(null)"
-          class="px-5 py-2.5 rounded-full font-semibold text-sm transition-all bg-green-600 text-white hover:bg-green-700 shadow-md">
-          ✚ 새 글 작성
+        <button onclick="openAdminModal()"
+          class="px-5 py-2.5 rounded-full font-semibold text-sm transition-all bg-slate-700 text-white hover:bg-slate-800 shadow-md flex items-center gap-1.5">
+          🔒 관리자
         </button>
+      </div>
+
+      <!-- 관리자 비밀번호 모달 -->
+      <div id="adminModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-8 relative">
+          <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+          <div class="text-center mb-6">
+            <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-dark">관리자 로그인</h3>
+            <p class="text-sm text-gray-500 mt-1">게시판 글쓰기 권한이 필요합니다</p>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-dark mb-2">비밀번호</label>
+            <input id="admin-pw-input" type="password" placeholder="관리자 비밀번호 입력"
+              class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              onkeydown="if(event.key==='Enter') checkAdminPw()">
+          </div>
+          <p id="admin-pw-error" class="text-red-500 text-sm mb-3 hidden">비밀번호가 올바르지 않습니다.</p>
+          <button onclick="checkAdminPw()" class="w-full bg-slate-700 text-white py-3 rounded-lg font-semibold hover:bg-slate-800 transition">
+            확인
+          </button>
+        </div>
       </div>
       <!-- 게시판 -->
       <div id="news-board" class="max-w-4xl mx-auto">
@@ -1571,10 +1583,12 @@
   }
   function switchNewsTab(tab) {
     currentTab = tab;
-    var active = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-primary text-white shadow-md';
-    var inactive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-primary hover:text-primary';
-    document.getElementById('tab-regulatory').className = tab==='regulatory' ? active : inactive;
-    document.getElementById('tab-academic').className = tab==='academic' ? active : inactive;
+    var regActive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-primary text-white shadow-md';
+    var regInactive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-primary hover:text-primary';
+    var acaActive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-green-600 text-white shadow-md';
+    var acaInactive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-green-600 hover:text-green-600';
+    document.getElementById('tab-regulatory').className = tab==='regulatory' ? regActive : regInactive;
+    document.getElementById('tab-academic').className = tab==='academic' ? acaActive : acaInactive;
     showNewsList();
   }
   function formatNewsDate(d) {
@@ -1622,13 +1636,38 @@
     document.getElementById('news-detail-view').classList.remove('hidden');
     document.getElementById('news-form-view').classList.add('hidden');
   }
+  var ADMIN_PW = 'biostream2025';
+  function openAdminModal() {
+    document.getElementById('adminModal').classList.remove('hidden');
+    document.getElementById('admin-pw-input').value = '';
+    document.getElementById('admin-pw-error').classList.add('hidden');
+    setTimeout(function(){ document.getElementById('admin-pw-input').focus(); }, 100);
+  }
+  function closeAdminModal() {
+    document.getElementById('adminModal').classList.add('hidden');
+  }
+  function checkAdminPw() {
+    var pw = document.getElementById('admin-pw-input').value;
+    if(pw === ADMIN_PW) {
+      closeAdminModal();
+      openNewsForm(null);
+    } else {
+      document.getElementById('admin-pw-error').classList.remove('hidden');
+      document.getElementById('admin-pw-input').value = '';
+      document.getElementById('admin-pw-input').focus();
+    }
+  }
   function editCurrentPost() {
+    var pw = prompt('관리자 비밀번호를 입력하세요:');
+    if(pw !== ADMIN_PW) { alert('비밀번호가 올바르지 않습니다.'); return; }
     var list = getNewsList(currentTab);
     var item = list.find(function(x){ return x.id===currentPostId; });
     if(!item) return;
     openNewsForm(item);
   }
   function deleteCurrentPost() {
+    var pw = prompt('관리자 비밀번호를 입력하세요:');
+    if(pw !== ADMIN_PW) { alert('비밀번호가 올바르지 않습니다.'); return; }
     if(!confirm('이 게시글을 삭제하시겠습니까?')) return;
     var list = getNewsList(currentTab).filter(function(x){ return x.id!==currentPostId; });
     setNewsList(currentTab, list);
@@ -1678,7 +1717,7 @@
         <div>
           <div class="space-y-6 mb-8">
             <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div><div><h4 class="font-semibold text-dark">전화 문의</h4><p class="text-gray-600">010-2320-3157</p><p class="text-sm text-gray-500">평일 09:00 - 18:00</p></div></div>
-            <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><h4 class="font-semibold text-dark">이메일</h4><p class="text-gray-600"><a href="/cdn-cgi/l/email-protection#3c5f575649525b7c5e55534f484e595d51125f5312574e"><span class="__cf_email__" data-cfemail="3b5850514e555c7b595254484f495e5a56155854155049">[email&#160;protected]</span></a></p></div></div>
+            <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><h4 class="font-semibold text-dark">이메일</h4><p class="text-gray-600"><a href="mailto:ckjung@biostream.co.kr" class="hover:text-primary transition">ckjung@biostream.co.kr</a></p></div></div>
             <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div><h4 class="font-semibold text-dark">주소</h4><p class="text-gray-600">경기도 용인시 기흥구 중부대로 184<br>기흥힉스유타워 2004호</p></div></div>
           </div>
           <div class="bg-primary-light rounded-2xl p-6">
@@ -1698,7 +1737,7 @@
               <div><label class="block text-sm font-medium text-dark mb-2">담당자명 *</label><input id="f_name" type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="담당자명"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-6 mb-6">
-              <div><label class="block text-sm font-medium text-dark mb-2"> *</label><input id="f_email" type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="example@company.com"></div>
+              <div><label class="block text-sm font-medium text-dark mb-2">이메일 *</label><input id="f_email" type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="example@company.com"></div>
               <div><label class="block text-sm font-medium text-dark mb-2">연락처 *</label><input id="f_tel" type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="010-XXXX-XXXX"></div>
             </div>
             <div class="mb-6">
@@ -1742,7 +1781,7 @@
         </div>
         <div>
           <p class="font-semibold text-dark mb-1">5. 개인정보 처리 책임자</p>
-          <p>Biostream 시험분석센터 | 이메일: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ef8c84859a8188af8d86809c9b9d8a8e82c18c80c1849d">[email&#160;protected]</a></p>
+          <p>Biostream 시험분석센터 | 이메일: <a href="mailto:ckjung@biostream.co.kr" class="text-primary hover:underline">ckjung@biostream.co.kr</a></p>
         </div>
       </div>
       <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="mt-6 w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">확인</button>
@@ -1783,7 +1822,7 @@
           <h4 class="font-semibold text-white mb-4">연락처</h4>
           <ul class="space-y-2 text-sm">
             <li>전화: 010-2320-3157</li>
-            <li>이메일: <a href="/cdn-cgi/l/email-protection#51323a3b243f361133383e22252334303c7f323e7f3a23"><span class="__cf_email__" data-cfemail="a6c5cdccd3c8c1e6c4cfc9d5d2d4c3c7cb88c5c988cdd4">[email&#160;protected]</span></a></li>
+            <li>이메일: <a href="mailto:ckjung@biostream.co.kr" class="hover:text-white transition">ckjung@biostream.co.kr</a></li>
             <li>경기도 용인시 기흥구 중부대로 184<br>기흥힉스유타워 2004호</li>
           </ul>
           <div class="mt-6">
