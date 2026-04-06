@@ -81,6 +81,7 @@
           <a href="#qrm"         class="text-gray-600 hover:text-primary font-medium text-xs">QRM</a>
           <a href="#regulatory"  class="text-gray-600 hover:text-primary font-medium text-xs">규제</a>
           <a href="#process"     class="text-gray-600 hover:text-primary font-medium text-xs">절차</a>
+          <a href="#glossary"     class="text-gray-600 hover:text-primary font-medium text-xs">약어집</a>
           <a href="#faq"         class="text-gray-600 hover:text-primary font-medium text-xs">FAQ</a>
           <a href="#news"        class="text-gray-600 hover:text-primary font-medium text-xs">MAT 뉴스</a>
           <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark font-medium text-xs">문의하기</a>
@@ -102,6 +103,7 @@
           <a href="#qrm"         class="text-gray-600 hover:text-primary">NEP QRM</a>
           <a href="#regulatory"  class="text-gray-600 hover:text-primary">규제 현황</a>
           <a href="#process"     class="text-gray-600 hover:text-primary">시험 절차</a>
+          <a href="#glossary"     class="text-gray-600 hover:text-primary">약어집</a>
           <a href="#faq"         class="text-gray-600 hover:text-primary">FAQ</a>
           <a href="#news"        class="text-gray-600 hover:text-primary">MAT 뉴스</a>
           <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg text-center">문의하기</a>
@@ -1509,6 +1511,396 @@
       });
     });
   </script>
+  <!-- ===== 약어집 섹션 ===== -->
+  <section id="glossary" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Glossary of Abbreviations</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">약어 모음</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">본 페이지에 사용된 주요 약어의 영문 전체명과 한국어 설명을 정리하였습니다.</p>
+      </div>
+
+      <!-- 카테고리 필터 버튼 -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10" id="gloss-filters">
+        <button onclick="filterGloss('all')" class="gloss-btn active px-4 py-1.5 rounded-full text-sm font-semibold bg-primary text-white transition">전체</button>
+        <button onclick="filterGloss('test')" class="gloss-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition">시험법</button>
+        <button onclick="filterGloss('bio')" class="gloss-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition">생물학/면역</button>
+        <button onclick="filterGloss('reg')" class="gloss-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition">규제/약전</button>
+        <button onclick="filterGloss('qms')" class="gloss-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition">품질/관리</button>
+        <button onclick="filterGloss('product')" class="gloss-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition">제품군</button>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-md border border-gray-200">
+        <!-- 표 헤더 -->
+        <div class="bg-gradient-to-r from-primary-dark via-primary to-secondary px-6 py-4 grid grid-cols-12 gap-4 text-white text-sm font-bold">
+          <div class="col-span-2">약어</div>
+          <div class="col-span-4">영문 전체명</div>
+          <div class="col-span-2">한국어명</div>
+          <div class="col-span-4">설명</div>
+        </div>
+
+        <!-- 표 본문 -->
+        <div id="gloss-table" class="divide-y divide-gray-100 text-sm">
+
+          <!-- ── 시험법 ── -->
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-blue-50 hover:bg-blue-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-primary text-white font-bold px-2.5 py-1 rounded-lg text-xs">MAT</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Monocyte Activation Test</div>
+            <div class="col-span-2 text-gray-800 font-semibold">단핵구 활성 시험</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">인간 말초혈액 단핵구(PBMC)를 이용해 발열성 물질(내독소 + NEP)을 동시 검출하는 <em>in vitro</em> 시험법. RPT의 공식 대체 시험.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-orange-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">RPT</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Rabbit Pyrogen Test</div>
+            <div class="col-span-2 text-gray-800 font-semibold">토끼 발열성 시험</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">토끼에 시험물질을 정맥 투여 후 체온 상승을 측정하는 동물실험법. EP 2.6.8 삭제로 MAT에 의해 완전 대체됨.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-blue-50 hover:bg-blue-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-secondary text-white font-bold px-2.5 py-1 rounded-lg text-xs">BET</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Bacterial Endotoxin Test</div>
+            <div class="col-span-2 text-gray-800 font-semibold">세균 내독소 시험</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">LAL(투구게 혈액 추출물)을 이용한 내독소 검출 시험. NEP는 검출 불가. EP 2.6.14 해당.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-secondary text-white font-bold px-2.5 py-1 rounded-lg text-xs">LAL</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Limulus Amebocyte Lysate</div>
+            <div class="col-span-2 text-gray-800 font-semibold">투구게 아메보사이트 용해물</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">미국 투구게(Limulus polyphemus) 혈액에서 추출한 용해물. BET 시험의 핵심 시약. 내독소(LPS)와 반응해 겔화 또는 발색 반응 발생.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-blue-50 hover:bg-blue-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-purple-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">ELISA</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Enzyme-Linked Immunosorbent Assay</div>
+            <div class="col-span-2 text-gray-800 font-semibold">효소결합 면역흡착 분석법</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">항원-항체 반응을 효소 발색으로 정량하는 분석법. MAT에서 IL-6 등 사이토카인 농도 측정에 사용.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-indigo-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">PSV</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Product Specific Validation</div>
+            <div class="col-span-2 text-gray-800 font-semibold">제품별 검증</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">특정 제품(시료)에 MAT 시험이 적합한지 확인하는 검증 절차. 세포 독성, 간섭 시험(LPS·NEP Spike) 포함. EP 2.6.30 배치 출하 필수 요건.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-blue-50 hover:bg-blue-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-teal-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">MVC</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Maximum Valid Concentration</div>
+            <div class="col-span-2 text-gray-800 font-semibold">최대 유효 농도</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">세포 독성 없이 간섭 없이 MAT 시험에 적용 가능한 시료의 최대 농도. PSV를 통해 결정.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-cyan-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">MTT</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide assay</div>
+            <div class="col-span-2 text-gray-800 font-semibold">세포 생존율 분석법</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">살아있는 세포의 미토콘드리아 효소 활성을 이용한 세포 독성 평가법. PSV의 세포 독성 시험에 활용.</div>
+          </div>
+
+          <div data-cat="test" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-blue-50 hover:bg-blue-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-amber-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">PFW</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Pyrogen-Free Water</div>
+            <div class="col-span-2 text-gray-800 font-semibold">발열원 불검출수</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">발열성 물질(내독소 및 NEP)이 제거된 정제수. MAT 시험에서 시료 희석 및 음성 대조군으로 사용.</div>
+          </div>
+
+          <!-- ── 생물학/면역 ── -->
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-red-50 hover:bg-red-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-red-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">NEP</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Non-Endotoxin Pyrogen</div>
+            <div class="col-span-2 text-gray-800 font-semibold">비엔도톡신성 발열성 물질</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">엔도톡신(LPS) 이외의 물질로 발열성을 유발하는 물질의 총칭. 그람양성균 유래 LTA·Peptidoglycan, 바이러스 dsRNA, 진균 β-glucan 등이 해당. LAL/BET로 검출 불가, MAT만이 검출 가능.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-amber-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">LPS</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Lipopolysaccharide</div>
+            <div class="col-span-2 text-gray-800 font-semibold">지질다당류 (내독소)</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">그람음성균 외막의 주요 구성 성분. 가장 강력한 발열원으로 TLR4 수용체를 통해 단핵구를 활성화. BET/LAL 및 MAT 모두 검출 가능.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-red-50 hover:bg-red-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-red-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">LTA</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Lipoteichoic Acid</div>
+            <div class="col-span-2 text-gray-800 font-semibold">리포테이코산</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">그람양성균(Staphylococcus, Streptococcus 등) 세포벽의 주요 구성 성분. TLR2를 통해 단핵구를 활성화하는 대표적 NEP. LAL 검출 불가.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-orange-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">HKSA</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Heat-Killed Staphylococcus aureus</div>
+            <div class="col-span-2 text-gray-800 font-semibold">열불활화 황색포도상구균</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">가열로 불활화한 황색포도상구균. MAT에서 NEP 양성 대조군으로 사용. TLR2 경로 활성화 확인에 활용.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-red-50 hover:bg-red-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-blue-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">PBMC</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Peripheral Blood Mononuclear Cell</div>
+            <div class="col-span-2 text-gray-800 font-semibold">말초혈액 단핵구 세포</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">인간 말초혈액에서 분리한 단핵구 및 림프구 세포군. MAT의 표준 세포 소스로 TLR을 발현해 발열원에 반응, IL-6 등 사이토카인 분비.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-teal-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">TLR</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Toll-like Receptor</div>
+            <div class="col-span-2 text-gray-800 font-semibold">톨-유사 수용체</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">선천면역계의 핵심 패턴인식 수용체. 병원체 관련 분자 패턴(PAMP)을 인식해 염증 신호를 활성화. TLR4(LPS), TLR2(LTA/PGN), TLR3(dsRNA) 등이 MAT와 관련.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-red-50 hover:bg-red-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-violet-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">IL-6</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Interleukin-6</div>
+            <div class="col-span-2 text-gray-800 font-semibold">인터루킨-6</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">단핵구가 발열원에 반응 시 분비하는 대표적 염증성 사이토카인. MAT의 1차 측정 지표로 ELISA로 정량.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-violet-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">TNF-α</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Tumor Necrosis Factor-alpha</div>
+            <div class="col-span-2 text-gray-800 font-semibold">종양괴사인자-알파</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">발열원 자극 시 단핵구가 분비하는 염증성 사이토카인. MAT에서 IL-6의 보조 지표로 활용 가능.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-red-50 hover:bg-red-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-slate-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">ET</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Endotoxin</div>
+            <div class="col-span-2 text-gray-800 font-semibold">내독소</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">그람음성균 외막 성분인 LPS의 동의어. 가장 강력한 발열원으로 극미량(0.01 EU/mL 수준)으로도 발열 반응 유발 가능.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-rose-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">LER</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Low Endotoxin Recovery</div>
+            <div class="col-span-2 text-gray-800 font-semibold">저내독소 회수율</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">특정 시료(주로 단백질 제제, 계면활성제 포함 제제)에서 LPS가 마스킹되어 LAL 시험의 회수율이 비정상적으로 낮아지는 현상. MAT는 LER 영향이 낮아 해결책으로 주목.</div>
+          </div>
+
+          <div data-cat="bio" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-red-50 hover:bg-red-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-indigo-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">IFN</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Interferon</div>
+            <div class="col-span-2 text-gray-800 font-semibold">인터페론</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">바이러스 감염 시 세포가 분비하는 항바이러스성 사이토카인. TLR3·TLR7/8·TLR9 경로 활성화 시 IFN-β, IFN-α 등이 분비.</div>
+          </div>
+
+          <!-- ── 규제/약전 ── -->
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-green-50 hover:bg-green-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-blue-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">EP</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">European Pharmacopoeia</div>
+            <div class="col-span-2 text-gray-800 font-semibold">유럽약전</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">유럽의약품품질관리국(EDQM)이 발행하는 의약품 품질기준서. MAT(EP 2.6.30), 내독소(EP 2.6.14), NEP 리스크 평가(EP 5.1.10), RPT 대체(EP 5.1.13) 규정 포함.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-red-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">FDA</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Food and Drug Administration</div>
+            <div class="col-span-2 text-gray-800 font-semibold">미국 식품의약국</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">미국의 의약품·의료기기 규제 기관. 2012년 가이던스에서 PSV 후 MAT 사용 인정. 과학적 타당성 기반 사전 협의 시 MAT 허용.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-green-50 hover:bg-green-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-slate-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">USP</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">United States Pharmacopeia</div>
+            <div class="col-span-2 text-gray-800 font-semibold">미국약전</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">미국의 의약품 품질기준서. USP &lt;151&gt; 발열성 시험, USP &lt;85&gt; 내독소 시험 수재. 검증된 동등 in vitro 시험으로 MAT 대체 가능 명시.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-green-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">ISO</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">International Organization for Standardization</div>
+            <div class="col-span-2 text-gray-800 font-semibold">국제표준화기구</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">국제 표준 제정 기관. ISO 10993-1/11은 의료기기 생물학적 안전성 평가 기준으로 MAT 적용 근거 포함.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-green-50 hover:bg-green-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-red-800 text-white font-bold px-2.5 py-1 rounded-lg text-xs">MFDS</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Ministry of Food and Drug Safety</div>
+            <div class="col-span-2 text-gray-800 font-semibold">식품의약품안전처</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">대한민국 식품·의약품·의료기기 규제 기관. 3R 원칙 기반 동물대체시험법 도입 정책 추진 중이며 MAT 도입 검토 중.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-red-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">KP</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Korean Pharmacopoeia</div>
+            <div class="col-span-2 text-gray-800 font-semibold">대한민국약전</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">대한민국 식약처가 제정·고시하는 의약품 품질기준서. 별첨 조항으로 단핵구 활성 시험(General Information) 신설 추진 중.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-green-50 hover:bg-green-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-orange-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">ICH</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use</div>
+            <div class="col-span-2 text-gray-800 font-semibold">의약품 규제 국제조화회의</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">미국·EU·일본 등 주요국 규제기관과 제약업계의 의약품 기술 기준 조화 기구. ICH Q9(R1)은 품질위험관리(QRM) 가이드라인으로 NEP QRM의 근거.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-blue-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">ECVAM</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">European Centre for the Validation of Alternative Methods</div>
+            <div class="col-span-2 text-gray-800 font-semibold">유럽 대체시험법 검증센터</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">동물 대체 시험법의 과학적 검증을 담당하는 EU 기관. 2006년 MAT를 공식 인정. 현재 EURL ECVAM으로 개편.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-green-50 hover:bg-green-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-slate-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">ICCVAM</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Interagency Coordinating Committee on the Validation of Alternative Methods</div>
+            <div class="col-span-2 text-gray-800 font-semibold">미국 대체시험법 검증조정위원회</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">미국 연방기관 간 대체 시험법 검증·조정 기구. 2007년 MAT를 공식 인정.</div>
+          </div>
+
+          <div data-cat="reg" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-slate-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">CDRH</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Center for Devices and Radiological Health</div>
+            <div class="col-span-2 text-gray-800 font-semibold">FDA 의료기기 방사선보건센터</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">FDA 산하 의료기기 규제 담당 부서. 2016년 가이던스에서 RPT 동등 검증 방법으로 MAT 수용.</div>
+          </div>
+
+          <!-- ── 품질/관리 ── -->
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-yellow-50 hover:bg-yellow-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-primary text-white font-bold px-2.5 py-1 rounded-lg text-xs">QRM</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Quality Risk Management</div>
+            <div class="col-span-2 text-gray-800 font-semibold">품질위험 관리</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">ICH Q9(R1) 기반 의약품 품질 위험을 체계적으로 식별·평가·통제하는 절차. Biostream의 NEP QRM(BST-TMG-16)은 NEP 오염 위험을 원료~완제품 전 단계에서 관리.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-orange-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">FMEA</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Failure Mode and Effects Analysis</div>
+            <div class="col-span-2 text-gray-800 font-semibold">고장 유형 및 영향 분석</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">공정·제품의 잠재적 고장 유형과 영향을 사전에 분석하는 위험 평가 기법. S(심각도)×O(발생빈도)×D(검출가능성)=RPN으로 위험 수준 정량화.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-yellow-50 hover:bg-yellow-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-red-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">RPN</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Risk Priority Number</div>
+            <div class="col-span-2 text-gray-800 font-semibold">위험 우선순위 지수</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">FMEA에서 심각도(S)×발생빈도(O)×검출가능성(D)으로 산출하는 위험 지수(1~125). RPN ≥75 고위험, 40~74 중위험, &lt;40 저위험으로 분류.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-secondary text-white font-bold px-2.5 py-1 rounded-lg text-xs">QA</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Quality Assurance</div>
+            <div class="col-span-2 text-gray-800 font-semibold">품질보증</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">제품·서비스가 규정된 품질 기준을 충족함을 보장하기 위한 체계적 활동. GLP/GMP 환경에서 시험 결과의 신뢰성 확보에 필수.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-yellow-50 hover:bg-yellow-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-secondary text-white font-bold px-2.5 py-1 rounded-lg text-xs">QC</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Quality Control</div>
+            <div class="col-span-2 text-gray-800 font-semibold">품질관리</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">시험·검사를 통해 제품이 규격을 충족하는지 확인하는 활동. MAT 시험에서 표준곡선, 대조군, 시약 적합성 등을 관리.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-slate-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">SOP</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Standard Operating Procedure</div>
+            <div class="col-span-2 text-gray-800 font-semibold">표준 작업 지침서</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">반복 수행 작업의 표준화된 절차를 기술한 문서. GLP 환경에서 모든 시험 단계는 SOP에 따라 수행되어야 함.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-yellow-50 hover:bg-yellow-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-slate-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">SD</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Study Director</div>
+            <div class="col-span-2 text-gray-800 font-semibold">시험 책임자</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">GLP 기준에 따라 비임상시험의 전 과정을 책임지고 관리하는 자. Biostream의 MAT 시험은 시험 책임자(SD) 및 독립 QA 체제로 운영.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-gray-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">CV</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Coefficient of Variation</div>
+            <div class="col-span-2 text-gray-800 font-semibold">변동계수</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">표준편차를 평균으로 나눈 백분율. 분석법의 정밀도(재현성)를 나타내는 지표. MAT 검증에서 CV ≤20% 기준 적용.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-yellow-50 hover:bg-yellow-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-teal-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">NDA</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Non-Disclosure Agreement</div>
+            <div class="col-span-2 text-gray-800 font-semibold">비밀유지계약</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">시험 의뢰 시 시료 및 관련 정보의 기밀을 보장하는 계약서. Biostream 시험 의뢰 절차의 첫 단계에 포함.</div>
+          </div>
+
+          <div data-cat="qms" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-amber-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">PQR</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Product Quality Review</div>
+            <div class="col-span-2 text-gray-800 font-semibold">제품 품질 검토</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">의약품의 일관된 품질과 공정을 연 1회 이상 검토하는 활동. NEP 위험 저위험 제품의 MAT 주기적 재검토 기준으로 활용.</div>
+          </div>
+
+          <!-- ── 제품군 ── -->
+          <div data-cat="product" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-purple-50 hover:bg-purple-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-purple-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">CGT</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Cell and Gene Therapy</div>
+            <div class="col-span-2 text-gray-800 font-semibold">세포·유전자 치료제</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">살아있는 세포 또는 유전자 변형을 이용한 치료제. 복잡한 바이오 매트릭스로 NEP 오염 위험이 높아 MAT 적용이 강력 권장되는 제품군.</div>
+          </div>
+
+          <div data-cat="product" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-red-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">CAR-T</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Chimeric Antigen Receptor T-cell</div>
+            <div class="col-span-2 text-gray-800 font-semibold">키메릭 항원 수용체 T세포</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">환자 T세포에 암세포 인식 수용체를 유전자 도입한 세포치료제. 복잡한 제조공정으로 NEP 오염 위험이 높아 개발 단계부터 MAT 적용 권장.</div>
+          </div>
+
+          <div data-cat="product" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-purple-50 hover:bg-purple-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-slate-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">API</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Active Pharmaceutical Ingredient</div>
+            <div class="col-span-2 text-gray-800 font-semibold">원료의약품</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">의약품의 유효 성분으로, 약리 효과를 나타내는 화학적 또는 생물학적 물질. 완제의약품 제조의 원료. MAT 시험 시료 유형 중 하나.</div>
+          </div>
+
+          <div data-cat="product" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-teal-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">MMP</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Material-Mediated Pyrogen</div>
+            <div class="col-span-2 text-gray-800 font-semibold">재료 매개 발열원</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">의료기기 재료(실리콘, 고무, 금속 등)에서 용출되는 발열성 물질. ISO 10993-11에 따라 의료기기 발열성 평가 시 MAT가 권장.</div>
+          </div>
+
+          <div data-cat="product" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-purple-50 hover:bg-purple-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-indigo-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">LNP</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Lipid Nanoparticle</div>
+            <div class="col-span-2 text-gray-800 font-semibold">지질 나노입자</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">mRNA 등 핵산 의약품의 세포 내 전달을 위한 지질 기반 나노 캐리어. mRNA 백신(COVID-19 등)의 전달체. LER 발생 가능성이 높아 MAT 적용 권장.</div>
+          </div>
+
+          <div data-cat="product" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 hover:bg-gray-50 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-violet-700 text-white font-bold px-2.5 py-1 rounded-lg text-xs">AAV</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Adeno-Associated Virus</div>
+            <div class="col-span-2 text-gray-800 font-semibold">아데노 연관 바이러스</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">유전자 치료제의 전달 벡터로 가장 널리 사용되는 바이러스. 바이러스 유래 NEP 오염 위험이 있어 MAT를 통한 발열성 시험 권장.</div>
+          </div>
+
+          <div data-cat="product" class="gloss-row grid grid-cols-12 gap-4 px-6 py-3.5 bg-purple-50 hover:bg-purple-100 transition items-start">
+            <div class="col-span-2"><span class="inline-block bg-pink-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">BSC</span></div>
+            <div class="col-span-4 text-gray-700 font-medium">Biological Safety Cabinet</div>
+            <div class="col-span-2 text-gray-800 font-semibold">생물안전작업대</div>
+            <div class="col-span-4 text-gray-600 text-xs leading-relaxed">HEPA 필터로 무균 환경을 제공하는 생물안전 캐비닛. Biostream의 MAT 시험에서 PBMC 조작 및 세포 배양 시 사용하는 Class II BSC.</div>
+          </div>
+
+        </div><!-- /gloss-table -->
+      </div><!-- /rounded-2xl -->
+
+      <!-- 하단 안내 -->
+      <p class="text-center text-xs text-gray-400 mt-5">* 본 약어집은 EP 2.6.30, ICH Q9(R1), ISO 10993 등 최신 규제 문서 기준으로 작성되었습니다.</p>
+
+    </div>
+  </section>
+
+  <script>
+  /* ===== 약어집 필터 ===== */
+  function filterGloss(cat) {
+    document.querySelectorAll('.gloss-row').forEach(function(row) {
+      row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+    });
+    document.querySelectorAll('.gloss-btn').forEach(function(btn) {
+      btn.classList.remove('bg-primary','text-white','shadow-md');
+      btn.classList.add('bg-white','border','border-gray-300','text-gray-600');
+    });
+    var active = event.target;
+    active.classList.add('bg-primary','text-white','shadow-md');
+    active.classList.remove('bg-white','border','border-gray-300','text-gray-600');
+  }
+  </script>
+
   <section id="faq" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
