@@ -33,7 +33,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
     body { font-family: 'Noto Sans KR', sans-serif; }
-    .gradient-bg { background: linear-gradient(135deg, #0C2340 0%, #0369A1 60%, #0F766E 100%); }
+    .gradient-bg { background: linear-gradient(160deg, #050d1f 0%, #0a1f5c 30%, #1565C0 65%, #64B5F6 100%); }
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
     .faq-content { display: none; }
@@ -50,6 +50,56 @@
     .fmea-table th { background: #1E293B; color: white; font-weight: 600; padding: 10px 12px; font-size: 0.78rem; }
     .fmea-table td { padding: 9px 12px; font-size: 0.78rem; border-bottom: 1px solid #E2E8F0; }
     .fmea-table tr:nth-child(even) { background: #F8FAFC; }
+
+    /* ===== 탭 네비게이션 스타일 ===== */
+    .nav-tab {
+      background: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.1s;
+      font-family: 'Noto Sans KR', sans-serif;
+      white-space: nowrap;
+    }
+    .nav-tab:hover { background: #374151; transform: translateY(-1px); }
+    .nav-tab.tab-active { background: #1d4ed8; }
+    .tab-contact { background: #C41E3A !important; }
+    .tab-contact:hover { background: #9b1630 !important; }
+    .tab-contact.tab-active { background: #9b1630 !important; }
+    .lang-btn {
+      background: #374151;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .lang-btn:hover { background: #1d4ed8; }
+    .mobile-nav-btn {
+      background: #111827;
+      color: white;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: background 0.18s;
+      width: 100%;
+    }
+    .mobile-nav-btn:hover { background: #374151; }
+    .tab-page { display: none; }
+    .tab-page.tab-visible { display: block; }
   </style>
 </head>
 <body class="bg-light text-dark">
@@ -57,9 +107,9 @@
   <!-- ===== 헤더 네비게이션 ===== -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+      <div class="flex justify-between items-center py-2 gap-3">
         <!-- Biostream Logo -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 flex-shrink-0">
           <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
             <rect width="44" height="44" rx="8" fill="#C41E3A"/>
             <text x="4" y="19" font-family="Arial Black,Arial" font-weight="900" font-size="13" fill="white">BIO</text>
@@ -71,20 +121,22 @@
             <div class="text-xs text-gray-500">시험분석센터 | Analytics Center</div>
           </div>
         </div>
-        <nav class="hidden lg:flex items-center gap-5">
-          <a href="#overview"    class="text-gray-600 hover:text-primary font-medium text-xs">시험 개요</a>
-          <a href="#history"     class="text-gray-600 hover:text-primary font-medium text-xs">역사/배경</a>
-          <a href="#nep"         class="text-gray-600 hover:text-primary font-medium text-xs">NEP</a>
-          <a href="#method"      class="text-gray-600 hover:text-primary font-medium text-xs">시험 방법</a>
-          <a href="#validation"  class="text-gray-600 hover:text-primary font-medium text-xs">Validation</a>
-          <a href="#applications" class="text-gray-600 hover:text-primary font-medium text-xs">적용 분야</a>
-          <a href="#qrm"         class="text-gray-600 hover:text-primary font-medium text-xs">QRM</a>
-          <a href="#regulatory"  class="text-gray-600 hover:text-primary font-medium text-xs">규제</a>
-          <a href="#process"     class="text-gray-600 hover:text-primary font-medium text-xs">절차</a>
-          <a href="#glossary"     class="text-gray-600 hover:text-primary font-medium text-xs">약어집</a>
-          <a href="#faq"         class="text-gray-600 hover:text-primary font-medium text-xs">FAQ</a>
-          <a href="#news"        class="text-gray-600 hover:text-primary font-medium text-xs">MAT 뉴스</a>
-          <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark font-medium text-xs">문의하기</a>
+        <!-- 데스크탑 탭 네비게이션 -->
+        <nav class="hidden lg:flex items-center gap-1 flex-wrap justify-end flex-1">
+          <button onclick="showTab('overview')"     data-tab="overview"     class="nav-tab tab-active">시험 개요</button>
+          <button onclick="showTab('history')"      data-tab="history"      class="nav-tab">역사/배경</button>
+          <button onclick="showTab('nep')"          data-tab="nep"          class="nav-tab">NEP</button>
+          <button onclick="showTab('method')"       data-tab="method"       class="nav-tab">시험 방법</button>
+          <button onclick="showTab('validation')"   data-tab="validation"   class="nav-tab">Validation</button>
+          <button onclick="showTab('applications')" data-tab="applications" class="nav-tab">적용 분야</button>
+          <button onclick="showTab('qrm')"          data-tab="qrm"          class="nav-tab">QRM</button>
+          <button onclick="showTab('regulatory')"   data-tab="regulatory"   class="nav-tab">규제</button>
+          <button onclick="showTab('process')"      data-tab="process"      class="nav-tab">절차</button>
+          <button onclick="showTab('glossary')"     data-tab="glossary"     class="nav-tab">약어집</button>
+          <button onclick="showTab('faq')"          data-tab="faq"          class="nav-tab">FAQ</button>
+          <button onclick="showTab('news')"         data-tab="news"         class="nav-tab">MAT 뉴스</button>
+          <button onclick="showTab('contact')"      data-tab="contact"      class="nav-tab tab-contact">문의하기</button>
+          <button onclick="toggleLang(this)" id="lang-btn" class="lang-btn ml-2">EN</button>
         </nav>
         <button class="lg:hidden p-2 rounded-lg text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,28 +144,32 @@
           </svg>
         </button>
       </div>
+      <!-- 모바일 메뉴 -->
       <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
-        <nav class="flex flex-col gap-3 text-sm">
-          <a href="#overview"    class="text-gray-600 hover:text-primary">시험 개요</a>
-          <a href="#history"     class="text-gray-600 hover:text-primary">역사/배경</a>
-          <a href="#nep"         class="text-gray-600 hover:text-primary">NEP 발열원</a>
-          <a href="#method"      class="text-gray-600 hover:text-primary">시험 방법</a>
-          <a href="#validation"  class="text-gray-600 hover:text-primary">MAT Validation</a>
-          <a href="#applications" class="text-gray-600 hover:text-primary">적용 분야</a>
-          <a href="#qrm"         class="text-gray-600 hover:text-primary">NEP QRM</a>
-          <a href="#regulatory"  class="text-gray-600 hover:text-primary">규제 현황</a>
-          <a href="#process"     class="text-gray-600 hover:text-primary">시험 절차</a>
-          <a href="#glossary"     class="text-gray-600 hover:text-primary">약어집</a>
-          <a href="#faq"         class="text-gray-600 hover:text-primary">FAQ</a>
-          <a href="#news"        class="text-gray-600 hover:text-primary">MAT 뉴스</a>
-          <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg text-center">문의하기</a>
+        <div class="flex justify-end mb-3">
+          <button onclick="toggleLang(this)" id="lang-btn-mobile" class="lang-btn">EN</button>
+        </div>
+        <nav class="flex flex-col gap-2">
+          <button onclick="showTab('overview');closeMobile()"     class="mobile-nav-btn">시험 개요</button>
+          <button onclick="showTab('history');closeMobile()"      class="mobile-nav-btn">역사/배경</button>
+          <button onclick="showTab('nep');closeMobile()"          class="mobile-nav-btn">NEP 발열원</button>
+          <button onclick="showTab('method');closeMobile()"       class="mobile-nav-btn">시험 방법</button>
+          <button onclick="showTab('validation');closeMobile()"   class="mobile-nav-btn">MAT Validation</button>
+          <button onclick="showTab('applications');closeMobile()" class="mobile-nav-btn">적용 분야</button>
+          <button onclick="showTab('qrm');closeMobile()"          class="mobile-nav-btn">NEP QRM</button>
+          <button onclick="showTab('regulatory');closeMobile()"   class="mobile-nav-btn">규제 현황</button>
+          <button onclick="showTab('process');closeMobile()"      class="mobile-nav-btn">시험 절차</button>
+          <button onclick="showTab('glossary');closeMobile()"     class="mobile-nav-btn">약어집</button>
+          <button onclick="showTab('faq');closeMobile()"          class="mobile-nav-btn">FAQ</button>
+          <button onclick="showTab('news');closeMobile()"         class="mobile-nav-btn">MAT 뉴스</button>
+          <button onclick="showTab('contact');closeMobile()"      class="mobile-nav-btn" style="background:#C41E3A;">문의하기</button>
         </nav>
       </div>
     </div>
   </header>
 
   <!-- ===== 히어로 섹션 ===== -->
-  <section class="gradient-bg text-white py-20 lg:py-28 relative overflow-hidden">
+  <section id="hero-section" class="gradient-bg text-white py-20 lg:py-28 relative overflow-hidden">
     <!-- subtle background pattern -->
     <div class="absolute inset-0 opacity-5">
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -191,7 +247,7 @@
   </section>
 
   <!-- ===== 시험 개요 섹션 ===== -->
-  <section id="overview" class="py-20 bg-white">
+  <section id="overview" class="tab-page py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Test Overview</span>
@@ -264,7 +320,7 @@
   </section>
 
   <!-- ===== 역사/배경 섹션 ===== -->
-  <section id="history" class="py-20 bg-gray-50">
+  <section id="history" class="tab-page py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">History &amp; Background</span>
@@ -409,7 +465,7 @@
   </section>
 
   <!-- ===== NEP 비내독소성 발열원 섹션 ===== -->
-  <section id="nep" class="py-20 bg-white">
+  <section id="nep" class="tab-page py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Non-Endotoxin Pyrogens</span>
@@ -577,7 +633,7 @@
     </div>
   </section>
   <!-- ===== 시험 방법 상세 섹션 ===== -->
-  <section id="method" class="py-20 bg-gray-50">
+  <section id="method" class="tab-page py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Test Methods</span>
@@ -653,7 +709,7 @@
   </section>
 
   <!-- ===== MAT VALIDATION 섹션 (NEW) ===== -->
-  <section id="validation" class="py-20 bg-white">
+  <section id="validation" class="tab-page py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">MAT Validation</span>
@@ -771,7 +827,7 @@
   </section>
 
   <!-- ===== 적용 분야 섹션 ===== -->
-  <section id="applications" class="py-20 bg-gray-50">
+  <section id="applications" class="tab-page py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Applications</span>
@@ -944,7 +1000,7 @@
   </section>
 
   <!-- ===== NEP 품질 위험성 관리 (QRM) 섹션 (NEW) ===== -->
-  <section id="qrm" class="py-20 bg-white">
+  <section id="qrm" class="tab-page py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <div class="flex items-center justify-center gap-3 mb-4">
@@ -1351,7 +1407,7 @@
   </section>
 
   <!-- ===== 규제 현황 섹션 ===== -->
-  <section id="regulatory" class="py-20 bg-gray-50">
+  <section id="regulatory" class="tab-page py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Regulatory Framework</span>
@@ -1416,7 +1472,7 @@
   </section>
 
   <!-- ===== 시험 절차 섹션 ===== -->
-  <section id="process" class="py-20 bg-white">
+  <section id="process" class="tab-page py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Test Process</span>
@@ -1462,7 +1518,7 @@
   </section>
 
   <!-- ===== 장비 및 시설 섹션 ===== -->
-  <section id="facilities" class="py-20 bg-gray-50">
+  <section id="facilities" class="tab-page py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Facilities &amp; Equipment</span>
@@ -1496,6 +1552,56 @@
     details.faq-item summary::after { content:'+'; font-size:1.4rem; font-weight:300; color:#0369A1; flex-shrink:0; margin-left:1rem; }
     details.faq-item[open] summary::after { content:'×'; }
     details.faq-item .faq-body { padding:0 1.5rem 1.5rem; color:#4B5563; font-size:0.875rem; line-height:1.75; }
+
+    /* ===== 탭 네비게이션 스타일 ===== */
+    .nav-tab {
+      background: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.1s;
+      font-family: 'Noto Sans KR', sans-serif;
+      white-space: nowrap;
+    }
+    .nav-tab:hover { background: #374151; transform: translateY(-1px); }
+    .nav-tab.tab-active { background: #1d4ed8; }
+    .tab-contact { background: #C41E3A !important; }
+    .tab-contact:hover { background: #9b1630 !important; }
+    .tab-contact.tab-active { background: #9b1630 !important; }
+    .lang-btn {
+      background: #374151;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .lang-btn:hover { background: #1d4ed8; }
+    .mobile-nav-btn {
+      background: #111827;
+      color: white;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: background 0.18s;
+      width: 100%;
+    }
+    .mobile-nav-btn:hover { background: #374151; }
+    .tab-page { display: none; }
+    .tab-page.tab-visible { display: block; }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1512,7 +1618,7 @@
     });
   </script>
   <!-- ===== 약어집 섹션 ===== -->
-  <section id="glossary" class="py-20 bg-white">
+  <section id="glossary" class="tab-page py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Glossary of Abbreviations</span>
@@ -1901,7 +2007,7 @@
   }
   </script>
 
-  <section id="faq" class="py-20 bg-white">
+  <section id="faq" class="tab-page py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">FAQ</span>
@@ -1942,7 +2048,7 @@
   </section>
 
   <!-- ===== 최신 MAT 뉴스 섹션 ===== -->
-  <section id="news" class="py-20 bg-gray-50">
+  <section id="news" class="tab-page py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Latest News</span>
@@ -2210,7 +2316,7 @@
   </script>
 
   <!-- ===== 문의 섹션 ===== -->
-  <section id="contact" class="py-20 bg-gray-50">
+  <section id="contact" class="tab-page py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Contact Us</span>
@@ -2221,7 +2327,7 @@
         <div>
           <div class="space-y-6 mb-8">
             <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div><div><h4 class="font-semibold text-dark">전화 문의</h4><p class="text-gray-600">010-2320-3157</p><p class="text-sm text-gray-500">평일 09:00 - 18:00</p></div></div>
-            <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><h4 class="font-semibold text-dark">이메일</h4><p class="text-gray-600"><a href="mailto:ckjung@biostream.co.kr" class="hover:text-primary transition">ckjung@biostream.co.kr</a></p></div></div>
+            <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><h4 class="font-semibold text-dark">이메일</h4><p class="text-gray-600"><a href="/cdn-cgi/l/email-protection#e6858d8c938881a6848f8995929483878bc88589c88d94" class="hover:text-primary transition"><span class="__cf_email__" data-cfemail="c8aba3a2bda6af88aaa1a7bbbcbaada9a5e6aba7e6a3ba">[email&#160;protected]</span></a></p></div></div>
             <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div><h4 class="font-semibold text-dark">주소</h4><p class="text-gray-600">경기도 용인시 기흥구 중부대로 184<br>기흥힉스유타워 2004호</p></div></div>
           </div>
           <div class="bg-primary-light rounded-2xl p-6">
@@ -2285,7 +2391,7 @@
         </div>
         <div>
           <p class="font-semibold text-dark mb-1">5. 개인정보 처리 책임자</p>
-          <p>Biostream 시험분석센터 | 이메일: <a href="mailto:ckjung@biostream.co.kr" class="text-primary hover:underline">ckjung@biostream.co.kr</a></p>
+          <p>Biostream 시험분석센터 | 이메일: <a href="/cdn-cgi/l/email-protection#8cefe7e6f9e2ebcceee5e3fff8fee9ede1a2efe3a2e7fe" class="text-primary hover:underline"><span class="__cf_email__" data-cfemail="9bf8f0f1eef5fcdbf9f2f4e8efe9fefaf6b5f8f4b5f0e9">[email&#160;protected]</span></a></p>
         </div>
       </div>
       <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="mt-6 w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">확인</button>
@@ -2326,7 +2432,7 @@
           <h4 class="font-semibold text-white mb-4">연락처</h4>
           <ul class="space-y-2 text-sm">
             <li>전화: 010-2320-3157</li>
-            <li>이메일: <a href="mailto:ckjung@biostream.co.kr" class="hover:text-white transition">ckjung@biostream.co.kr</a></li>
+            <li>이메일: <a href="/cdn-cgi/l/email-protection#dab9b1b0afb4bd9ab8b3b5a9aea8bfbbb7f4b9b5f4b1a8" class="hover:text-white transition"><span class="__cf_email__" data-cfemail="ea8981809f848daa888385999e988f8b87c48985c48198">[email&#160;protected]</span></a></li>
             <li>경기도 용인시 기흥구 중부대로 184<br>기흥힉스유타워 2004호</li>
           </ul>
           <div class="mt-6">
@@ -2348,7 +2454,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ===== FAQ 토글 =====
     function toggleFaq(btn) {
       var content = btn.nextElementSibling;
@@ -2483,24 +2589,101 @@
       }
     }
 
-    // ===== 네비게이션 스무스 스크롤 (새 페이지 이동 방지) =====
-    document.addEventListener('DOMContentLoaded', function() {
-      // FMEA 초기화
-      updateFMEA();
+    // ===== 탭 페이지 전환 =====
+    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','news','contact'];
+    var currentLang = 'ko';
 
-      // 모든 앵커 링크에 스무스 스크롤 적용
+    function showTab(tabId) {
+      // 히어로 섹션: overview일 때만 표시
+      var hero = document.getElementById('hero-section');
+      if (hero) hero.style.display = (tabId === 'overview') ? '' : 'none';
+
+      // 모든 탭 숨기기
+      ALL_TABS.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) { el.classList.remove('tab-visible'); el.style.display = 'none'; }
+      });
+
+      // 선택 탭 표시
+      var target = document.getElementById(tabId);
+      if (target) { target.classList.add('tab-visible'); target.style.display = ''; }
+
+      // 버튼 활성화
+      document.querySelectorAll('.nav-tab').forEach(function(btn) {
+        btn.classList.remove('tab-active');
+        if (btn.getAttribute('data-tab') === tabId) btn.classList.add('tab-active');
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeMobile() {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }
+
+    // ===== 언어 전환 (KO <-> EN) =====
+    var KO_EN = {
+      // 탭 버튼
+      '시험 개요': 'Overview', '역사/배경': 'History/Background', 'NEP': 'NEP',
+      'NEP 발열원': 'NEP Pyrogens', '시험 방법': 'Test Method', 'Validation': 'Validation',
+      '적용 분야': 'Applications', 'QRM': 'QRM', 'NEP QRM': 'NEP QRM',
+      '규제': 'Regulatory', '규제 현황': 'Regulatory Status', '절차': 'Process',
+      '시험 절차': 'Test Process', '약어집': 'Glossary', 'FAQ': 'FAQ',
+      'MAT 뉴스': 'MAT News', '문의하기': 'Contact',
+      'MAT Validation': 'MAT Validation',
+    };
+    var EN_KO = {};
+    Object.keys(KO_EN).forEach(function(k){ EN_KO[KO_EN[k]] = k; });
+
+    function toggleLang() {
+      currentLang = (currentLang === 'ko') ? 'en' : 'ko';
+      var btn = document.getElementById('lang-btn');
+      var btnM = document.getElementById('lang-btn-mobile');
+      if (btn) btn.textContent = (currentLang === 'ko') ? 'EN' : 'KO';
+      if (btnM) btnM.textContent = (currentLang === 'ko') ? 'EN' : 'KO';
+
+      // Update all [data-ko] / [data-en] elements
+      document.querySelectorAll('[data-ko]').forEach(function(el) {
+        if (currentLang === 'en' && el.getAttribute('data-en')) {
+          el.textContent = el.getAttribute('data-en');
+        } else if (currentLang === 'ko' && el.getAttribute('data-ko')) {
+          el.textContent = el.getAttribute('data-ko');
+        }
+      });
+
+      // Update nav-tab and mobile-nav-btn text via KO_EN map
+      var allBtns = document.querySelectorAll('.nav-tab, .mobile-nav-btn');
+      allBtns.forEach(function(btn) {
+        var txt = btn.textContent.trim();
+        if (currentLang === 'en' && KO_EN[txt]) { btn.textContent = KO_EN[txt]; }
+        else if (currentLang === 'ko' && EN_KO[txt]) { btn.textContent = EN_KO[txt]; }
+      });
+
+      // Show language notice
+      var notice = document.getElementById('lang-notice');
+      if (!notice) {
+        notice = document.createElement('div');
+        notice.id = 'lang-notice';
+        notice.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#1d4ed8;color:white;padding:10px 18px;border-radius:8px;font-size:0.9rem;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.2)';
+        document.body.appendChild(notice);
+      }
+      notice.textContent = currentLang === 'en' ? '🌐 Language: English' : '🌐 언어: 한국어';
+      notice.style.display = 'block';
+      setTimeout(function(){ notice.style.display = 'none'; }, 2000);
+    }
+
+    // ===== DOMContentLoaded =====
+    document.addEventListener('DOMContentLoaded', function() {
+      updateFMEA();
+      showTab('overview');
+
+      // 히어로 내부 링크도 탭 전환으로
       document.querySelectorAll('a[href^="#"]').forEach(function(link) {
         link.addEventListener('click', function(e) {
-          var href = link.getAttribute('href');
-          if (href && href.length > 1) {
-            var target = document.querySelector(href);
-            if (target) {
-              e.preventDefault();
-              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              // 모바일 메뉴 닫기
-              var mm = document.getElementById('mobile-menu');
-              if (mm) mm.classList.add('hidden');
-            }
+          var tabId = this.getAttribute('href').replace('#','');
+          if (ALL_TABS.indexOf(tabId) !== -1) {
+            e.preventDefault();
+            showTab(tabId);
           }
         });
       });
