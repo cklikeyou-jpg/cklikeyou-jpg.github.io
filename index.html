@@ -2861,8 +2861,9 @@
 
       if (typeof emailjs !== 'undefined') {
         emailjs.send('service_3yawdy9', 'template_p84vc2p', params)
+        emailjs.send('service_3yawdy9', 'template_9vgsdfr', params)
           .then(function() {
-            alert('지금 문의하신 내용이 성공적으로 전송되었습니다!\n 빠른 시일 내에 이메일 또는 전화 연락드리겠습니다.');
+            alert('지금 문의하신 내용이 성공적으로 전송되었습니다!\n 빠른 시일 내에 이메일 또는 전화로 24시간내 연락드리겠습니다.');
             document.getElementById('contactForm').reset();
             btn.textContent = origText;
             btn.disabled = false;
