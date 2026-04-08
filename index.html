@@ -70,55 +70,143 @@
     .fmea-table td { padding: 9px 12px; font-size: 0.78rem; border-bottom: 1px solid #E2E8F0; }
     .fmea-table tr:nth-child(even) { background: #F8FAFC; }
 
-    /* ===== 탭 네비게이션 스타일 ===== */
-    .nav-tab {
-      background: #38BDF8 !important;
-      color: #ffffff !important;
+    /* ===== 드롭다운 네비게이션 스타일 ===== */
+    .tab-page { display: none; }
+    .tab-page.tab-visible { display: block; }
+
+    /* 메인 카테고리 버튼 */
+    .dd-cat {
+      position: relative;
+      display: inline-block;
+    }
+    .dd-btn {
+      background: transparent;
+      color: #1e293b;
       border: none;
-      padding: 7px 12px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 400 !important;
+      padding: 10px 18px;
+      font-size: 0.92rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.18s, transform 0.1s;
       font-family: 'Noto Sans KR', sans-serif;
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
     }
-    .nav-tab:hover { background: #0EA5E9 !important; transform: translateY(-1px); }
-    .nav-tab.tab-active { background: #0284C7 !important; font-weight: 500 !important; }
-    .tab-contact { background: #C41E3A !important; }
-    .tab-contact:hover { background: #9b1630 !important; }
-    .tab-contact.tab-active { background: #9b1630 !important; }
-    .lang-btn {
-      background: #374151;
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 20px;
+    .dd-btn:hover, .dd-btn.cat-active {
+      background: #e0f2fe;
+      color: #0284C7;
+    }
+    .dd-btn.cat-active { color: #0284C7; }
+    .dd-btn svg { transition: transform 0.2s; }
+    .dd-btn.open svg { transform: rotate(180deg); }
+
+    /* 드롭다운 패널 */
+    .dd-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 200px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      z-index: 1000;
+      overflow: hidden;
+      animation: ddFade 0.18s ease;
+    }
+    .dd-panel.open { display: block; }
+    @keyframes ddFade {
+      from { opacity:0; transform:translateY(-6px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    /* 드롭다운 항목 */
+    .dd-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 18px;
       font-size: 0.88rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #334155;
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+    }
+    .dd-item:hover { background: #f0f9ff; color: #0284C7; }
+    .dd-item.item-active { background: #e0f2fe; color: #0284C7; font-weight: 600; }
+    .dd-item .dd-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+    /* 카테고리별 색상 강조선 */
+    .dd-panel-1 { border-top: 3px solid #0284C7; }
+    .dd-panel-2 { border-top: 3px solid #0f766e; }
+    .dd-panel-3 { border-top: 3px solid #7c3aed; }
+    .dd-panel-4 { border-top: 3px solid #db2777; }
+
+    /* 문의하기 버튼 */
+    .contact-btn {
+      background: #C41E3A;
+      color: #fff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: background 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .contact-btn:hover { background: #9b1630; transform: translateY(-1px); }
+
+    /* 언어 버튼 */
+    .lang-btn {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.18s;
+      transition: background 0.18s, color 0.18s;
       font-family: 'Noto Sans KR', sans-serif;
     }
-    .lang-btn:hover { background: #1d4ed8; }
+    .lang-btn:hover { background: #0284C7; color: #fff; border-color: #0284C7; }
+
+    /* 모바일 메뉴 */
+    .mob-cat-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 12px 4px;
+      color: #94a3b8;
+    }
     .mobile-nav-btn {
-      background: #38BDF8 !important;
-      color: white;
+      background: transparent;
+      color: #334155;
       border: none;
-      padding: 11px 16px;
+      padding: 10px 14px;
       border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.93rem;
+      font-weight: 500;
       cursor: pointer;
       text-align: left;
       font-family: 'Noto Sans KR', sans-serif;
-      transition: background 0.18s;
+      transition: background 0.15s, color 0.15s;
       width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .mobile-nav-btn:hover { background: #0EA5E9 !important; }
-    .tab-page { display: none; }
-    .tab-page.tab-visible { display: block; }
+    .mobile-nav-btn:hover { background: #e0f2fe; color: #0284C7; }
+    .mobile-nav-btn.item-active { background: #e0f2fe; color: #0284C7; font-weight: 600; }
 
     /* ===== 배경색 오버라이드 (Tailwind 우선순위 제압) ===== */
     body { background-color: #EEF2F7 !important; }
@@ -174,21 +262,89 @@
             <div class="text-xs text-gray-500">시험분석센터 | Analytics Center</div>
           </div>
         </div>
-        <!-- 데스크탑 탭 네비게이션 -->
-        <nav class="hidden lg:flex items-center gap-1 flex-wrap justify-end flex-1">
-          <button onclick="showTab('overview')"     data-tab="overview"     class="nav-tab tab-active">시험 개요</button>
-          <button onclick="showTab('history')"      data-tab="history"      class="nav-tab">역사/배경</button>
-          <button onclick="showTab('nep')"          data-tab="nep"          class="nav-tab">NEP</button>
-          <button onclick="showTab('method')"       data-tab="method"       class="nav-tab">시험 방법</button>
-          <button onclick="showTab('validation')"   data-tab="validation"   class="nav-tab">Validation</button>
-          <button onclick="showTab('applications')" data-tab="applications" class="nav-tab">적용 분야</button>
-          <button onclick="showTab('qrm')"          data-tab="qrm"          class="nav-tab">QRM</button>
-          <button onclick="showTab('regulatory')"   data-tab="regulatory"   class="nav-tab">규제</button>
-          <button onclick="showTab('process')"      data-tab="process"      class="nav-tab">절차</button>
-          <button onclick="showTab('glossary')"     data-tab="glossary"     class="nav-tab">약어집</button>
-          <button onclick="showTab('faq')"          data-tab="faq"          class="nav-tab">FAQ</button>
-          <button onclick="showTab('news')"         data-tab="news"         class="nav-tab">MAT 뉴스</button>
-          <button onclick="showTab('contact')"      data-tab="contact"      class="nav-tab tab-contact">문의하기</button>
+        <!-- 데스크탑 드롭다운 네비게이션 -->
+        <nav class="hidden lg:flex items-center gap-1 flex-1 justify-end" id="main-nav">
+
+          <!-- 1. MAT 소개 -->
+          <div class="dd-cat" id="cat1">
+            <button class="dd-btn" onclick="toggleDD('cat1')" id="cat1-btn">
+              <span>📘 MAT 소개</span>
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="dd-panel dd-panel-1" id="cat1-panel">
+              <button class="dd-item" onclick="showTab('overview');closeDD()" data-tab="overview">
+                <span class="dd-icon">🔬</span> 시험 개요
+              </button>
+              <button class="dd-item" onclick="showTab('history');closeDD()" data-tab="history">
+                <span class="dd-icon">📜</span> 역사/배경
+              </button>
+              <button class="dd-item" onclick="showTab('nep');closeDD()" data-tab="nep">
+                <span class="dd-icon">⚠️</span> NEP 발열원
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. 기술 및 서비스 -->
+          <div class="dd-cat" id="cat2">
+            <button class="dd-btn" onclick="toggleDD('cat2')" id="cat2-btn">
+              <span>⚗️ 기술 및 서비스</span>
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="dd-panel dd-panel-2" id="cat2-panel">
+              <button class="dd-item" onclick="showTab('method');closeDD()" data-tab="method">
+                <span class="dd-icon">🧫</span> 시험 방법
+              </button>
+              <button class="dd-item" onclick="showTab('validation');closeDD()" data-tab="validation">
+                <span class="dd-icon">✅</span> Validation
+              </button>
+              <button class="dd-item" onclick="showTab('applications');closeDD()" data-tab="applications">
+                <span class="dd-icon">🏭</span> 적용 분야
+              </button>
+              <button class="dd-item" onclick="showTab('process');closeDD()" data-tab="process">
+                <span class="dd-icon">📊</span> 시험 절차
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. 규제 및 품질 -->
+          <div class="dd-cat" id="cat3">
+            <button class="dd-btn" onclick="toggleDD('cat3')" id="cat3-btn">
+              <span>🛡️ 규제 및 품질</span>
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="dd-panel dd-panel-3" id="cat3-panel">
+              <button class="dd-item" onclick="showTab('regulatory');closeDD()" data-tab="regulatory">
+                <span class="dd-icon">📋</span> 규제 현황
+              </button>
+              <button class="dd-item" onclick="showTab('qrm');closeDD()" data-tab="qrm">
+                <span class="dd-icon">🛡️</span> QRM 관리
+              </button>
+              <button class="dd-item" onclick="showTab('glossary');closeDD()" data-tab="glossary">
+                <span class="dd-icon">📖</span> 약어집
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. 고객 지원 -->
+          <div class="dd-cat" id="cat4">
+            <button class="dd-btn" onclick="toggleDD('cat4')" id="cat4-btn">
+              <span>💬 고객 지원</span>
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="dd-panel dd-panel-4" id="cat4-panel">
+              <button class="dd-item" onclick="showTab('faq');closeDD()" data-tab="faq">
+                <span class="dd-icon">💬</span> FAQ
+              </button>
+              <button class="dd-item" onclick="showTab('news');closeDD()" data-tab="news">
+                <span class="dd-icon">📰</span> MAT 뉴스
+              </button>
+            </div>
+          </div>
+
+          <!-- 문의하기 강조 버튼 -->
+          <button onclick="showTab('contact');closeDD()" class="contact-btn ml-2" data-tab="contact">📩 문의하기</button>
+
+          <!-- 언어 전환 -->
           <button onclick="toggleLang(this)" id="lang-btn" class="lang-btn ml-2">EN</button>
         </nav>
         <button class="lg:hidden p-2 rounded-lg text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -198,24 +354,37 @@
         </button>
       </div>
       <!-- 모바일 메뉴 -->
-      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
-        <div class="flex justify-end mb-3">
+      <div id="mobile-menu" class="hidden lg:hidden py-3 border-t" style="background:#fff;">
+        <div class="flex justify-between items-center px-2 mb-3">
+          <span style="font-size:0.75rem;color:#94a3b8;font-weight:700;letter-spacing:0.05em;">MENU</span>
           <button onclick="toggleLang(this)" id="lang-btn-mobile" class="lang-btn">EN</button>
         </div>
-        <nav class="flex flex-col gap-2">
-          <button onclick="showTab('overview');closeMobile()"     class="mobile-nav-btn">시험 개요</button>
-          <button onclick="showTab('history');closeMobile()"      class="mobile-nav-btn">역사/배경</button>
-          <button onclick="showTab('nep');closeMobile()"          class="mobile-nav-btn">NEP 발열원</button>
-          <button onclick="showTab('method');closeMobile()"       class="mobile-nav-btn">시험 방법</button>
-          <button onclick="showTab('validation');closeMobile()"   class="mobile-nav-btn">MAT Validation</button>
-          <button onclick="showTab('applications');closeMobile()" class="mobile-nav-btn">적용 분야</button>
-          <button onclick="showTab('qrm');closeMobile()"          class="mobile-nav-btn">NEP QRM</button>
-          <button onclick="showTab('regulatory');closeMobile()"   class="mobile-nav-btn">규제 현황</button>
-          <button onclick="showTab('process');closeMobile()"      class="mobile-nav-btn">시험 절차</button>
-          <button onclick="showTab('glossary');closeMobile()"     class="mobile-nav-btn">약어집</button>
-          <button onclick="showTab('faq');closeMobile()"          class="mobile-nav-btn">FAQ</button>
-          <button onclick="showTab('news');closeMobile()"         class="mobile-nav-btn">MAT 뉴스</button>
-          <button onclick="showTab('contact');closeMobile()"      class="mobile-nav-btn" style="background:#C41E3A;">문의하기</button>
+        <nav class="flex flex-col gap-0.5 px-1">
+          <!-- MAT 소개 -->
+          <div class="mob-cat-label">📘 MAT 소개</div>
+          <button onclick="showTab('overview');closeMobile()" class="mobile-nav-btn" data-tab="overview"><span>🔬</span>시험 개요</button>
+          <button onclick="showTab('history');closeMobile()"  class="mobile-nav-btn" data-tab="history"><span>📜</span>역사/배경</button>
+          <button onclick="showTab('nep');closeMobile()"      class="mobile-nav-btn" data-tab="nep"><span>⚠️</span>NEP 발열원</button>
+          <!-- 기술 및 서비스 -->
+          <div class="mob-cat-label" style="margin-top:8px;">⚗️ 기술 및 서비스</div>
+          <button onclick="showTab('method');closeMobile()"       class="mobile-nav-btn" data-tab="method"><span>🧫</span>시험 방법</button>
+          <button onclick="showTab('validation');closeMobile()"   class="mobile-nav-btn" data-tab="validation"><span>✅</span>Validation</button>
+          <button onclick="showTab('applications');closeMobile()" class="mobile-nav-btn" data-tab="applications"><span>🏭</span>적용 분야</button>
+          <button onclick="showTab('process');closeMobile()"      class="mobile-nav-btn" data-tab="process"><span>📊</span>시험 절차</button>
+          <!-- 규제 및 품질 -->
+          <div class="mob-cat-label" style="margin-top:8px;">🛡️ 규제 및 품질</div>
+          <button onclick="showTab('regulatory');closeMobile()" class="mobile-nav-btn" data-tab="regulatory"><span>📋</span>규제 현황</button>
+          <button onclick="showTab('qrm');closeMobile()"        class="mobile-nav-btn" data-tab="qrm"><span>🛡️</span>QRM 관리</button>
+          <button onclick="showTab('glossary');closeMobile()"   class="mobile-nav-btn" data-tab="glossary"><span>📖</span>약어집</button>
+          <!-- 고객 지원 -->
+          <div class="mob-cat-label" style="margin-top:8px;">💬 고객 지원</div>
+          <button onclick="showTab('faq');closeMobile()"  class="mobile-nav-btn" data-tab="faq"><span>💬</span>FAQ</button>
+          <button onclick="showTab('news');closeMobile()" class="mobile-nav-btn" data-tab="news"><span>📰</span>MAT 뉴스</button>
+          <!-- 문의하기 -->
+          <button onclick="showTab('contact');closeMobile()" class="mobile-nav-btn" data-tab="contact"
+            style="margin-top:10px;background:#C41E3A;color:#fff;font-weight:700;border-radius:8px;">
+            📩 문의하기
+          </button>
         </nav>
       </div>
     </div>
@@ -2693,7 +2862,7 @@
       if (typeof emailjs !== 'undefined') {
         emailjs.send('service_3yawdy9', 'template_p84vc2p', params)
           .then(function() {
-            alert('문의가 성공적으로 전송되었습니다!\n빠른 시일 내에 연락드리겠습니다.');
+            alert('지금 문의하신 내용이 성공적으로 전송되었습니다!\n 빠른 시일 내에 이메일 또는 전화 연락드리겠습니다.');
             document.getElementById('contactForm').reset();
             btn.textContent = origText;
             btn.disabled = false;
@@ -2751,14 +2920,56 @@
       var target = document.getElementById(tabId);
       if (target) { target.classList.add('tab-visible'); target.style.display = ''; }
 
-      // 버튼 활성화
-      document.querySelectorAll('.nav-tab').forEach(function(btn) {
-        btn.classList.remove('tab-active');
-        if (btn.getAttribute('data-tab') === tabId) btn.classList.add('tab-active');
+      // dd-item 활성화
+      document.querySelectorAll('.dd-item, .mobile-nav-btn').forEach(function(btn) {
+        btn.classList.remove('item-active');
+        if (btn.getAttribute('data-tab') === tabId) btn.classList.add('item-active');
       });
+
+      // 카테고리 버튼 활성화 표시
+      var catMap = {
+        overview:'cat1', history:'cat1', nep:'cat1',
+        method:'cat2', validation:'cat2', applications:'cat2', process:'cat2',
+        regulatory:'cat3', qrm:'cat3', glossary:'cat3',
+        faq:'cat4', news:'cat4', contact:null
+      };
+      document.querySelectorAll('.dd-btn').forEach(function(b){ b.classList.remove('cat-active'); });
+      var catId = catMap[tabId];
+      if (catId) {
+        var catBtn = document.getElementById(catId + '-btn');
+        if (catBtn) catBtn.classList.add('cat-active');
+      }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // ── 드롭다운 열기/닫기 ──
+    var openCat = null;
+    function toggleDD(catId) {
+      var panel = document.getElementById(catId + '-panel');
+      var btn   = document.getElementById(catId + '-btn');
+      if (!panel) return;
+      var isOpen = panel.classList.contains('open');
+      closeDD();
+      if (!isOpen) {
+        panel.classList.add('open');
+        btn.classList.add('open');
+        openCat = catId;
+      }
+    }
+    function closeDD() {
+      ['cat1','cat2','cat3','cat4'].forEach(function(id) {
+        var p = document.getElementById(id + '-panel');
+        var b = document.getElementById(id + '-btn');
+        if (p) p.classList.remove('open');
+        if (b) b.classList.remove('open');
+      });
+      openCat = null;
+    }
+    // 외부 클릭 시 드롭다운 닫기
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.dd-cat')) closeDD();
+    });
 
     function closeMobile() {
       document.getElementById('mobile-menu').classList.add('hidden');
@@ -2832,5 +3043,20 @@
       });
     });
   </script>
+
+  <!-- ===== 플로팅 문의하기 버튼 ===== -->
+  <button onclick="showTab('contact')"
+    style="position:fixed;bottom:28px;right:24px;z-index:9999;
+           background:linear-gradient(135deg,#C41E3A,#f43f5e);
+           color:#fff;border:none;border-radius:50px;
+           padding:14px 22px;font-size:0.95rem;font-weight:700;
+           box-shadow:0 6px 24px rgba(196,30,58,0.45);
+           cursor:pointer;font-family:'Noto Sans KR',sans-serif;
+           display:flex;align-items:center;gap:8px;
+           transition:transform 0.2s,box-shadow 0.2s;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 30px rgba(196,30,58,0.5)';"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(196,30,58,0.45)';">
+    📩 <span>문의하기</span>
+  </button>
 </body>
 </html>
