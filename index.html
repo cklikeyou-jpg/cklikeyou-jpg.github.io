@@ -74,16 +74,29 @@
     .nav-tab {
       background: #38BDF8 !important;
       color: #ffffff !important;
-      border: none;
-      padding: 7px 12px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 400 !important;
-      cursor: pointer;
-      transition: background 0.18s, transform 0.1s;
-      font-family: 'Noto Sans KR', sans-serif;
-      white-space: nowrap;
-    }
+      .nav-tab {
+  background: linear-gradient(135deg, #1E3A8A, #2563EB);
+  color: #ffffff !important;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: 'Noto Sans KR', sans-serif;
+  white-space: nowrap;
+}
+
+.nav-tab:hover {
+  background: linear-gradient(135deg, #1D4ED8, #3B82F6);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.3);
+}
+
+.nav-tab.tab-active {
+  background: linear-gradient(135deg, #1E40AF, #2563EB);
+}
     .nav-tab:hover { background: #0EA5E9 !important; transform: translateY(-1px); }
     .nav-tab.tab-active { background: #0284C7 !important; font-weight: 500 !important; }
     .tab-contact { background: #C41E3A !important; }
@@ -175,22 +188,53 @@
           </div>
         </div>
         <!-- 데스크탑 탭 네비게이션 -->
-        <nav class="hidden lg:flex items-center gap-1 flex-wrap justify-end flex-1">
-          <button onclick="showTab('overview')"     data-tab="overview"     class="nav-tab tab-active">시험 개요</button>
-          <button onclick="showTab('history')"      data-tab="history"      class="nav-tab">역사/배경</button>
-          <button onclick="showTab('nep')"          data-tab="nep"          class="nav-tab">NEP</button>
-          <button onclick="showTab('method')"       data-tab="method"       class="nav-tab">시험 방법</button>
-          <button onclick="showTab('validation')"   data-tab="validation"   class="nav-tab">Validation</button>
-          <button onclick="showTab('applications')" data-tab="applications" class="nav-tab">적용 분야</button>
-          <button onclick="showTab('qrm')"          data-tab="qrm"          class="nav-tab">QRM</button>
-          <button onclick="showTab('regulatory')"   data-tab="regulatory"   class="nav-tab">규제</button>
-          <button onclick="showTab('process')"      data-tab="process"      class="nav-tab">절차</button>
-          <button onclick="showTab('glossary')"     data-tab="glossary"     class="nav-tab">약어집</button>
-          <button onclick="showTab('faq')"          data-tab="faq"          class="nav-tab">FAQ</button>
-          <button onclick="showTab('news')"         data-tab="news"         class="nav-tab">MAT 뉴스</button>
-          <button onclick="showTab('contact')"      data-tab="contact"      class="nav-tab tab-contact">문의하기</button>
-          <button onclick="toggleLang(this)" id="lang-btn" class="lang-btn ml-2">EN</button>
-        </nav>
+        <nav class="hidden lg:flex items-center gap-4 flex-1 justify-end">
+
+  <div class="relative group">
+    <button class="nav-tab">MAT 소개</button>
+    <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+   <div class="bg-white shadow-xl rounded-lg w-52 py-2">
+      <button onclick="showTab('overview')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">시험 개요</button>
+      <button onclick="showTab('history')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">역사/배경</button>
+      <button onclick="showTab('nep')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">NEP</button>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <button class="nav-tab">기술 및 서비스</button>
+    <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+    <div class="bg-white shadow-xl rounded-lg w-52 py-2">
+      <button onclick="showTab('method')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">시험 방법</button>
+      <button onclick="showTab('validation')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Validation</button>
+      <button onclick="showTab('applications')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">적용 분야</button>
+      <button onclick="showTab('process')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">시험 절차</button>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <button class="nav-tab">규제 및 품질</button>
+    <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+    <div class="bg-white shadow-xl rounded-lg w-52 py-2">
+      <button onclick="showTab('regulatory')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">규제</button>
+      <button onclick="showTab('qrm')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">QRM</button>
+      <button onclick="showTab('glossary')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">약어집</button>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+    <div class="bg-white shadow-xl rounded-lg w-52 py-2">
+    <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 w-48 z-50">
+      <button onclick="showTab('faq')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">FAQ</button>
+      <button onclick="showTab('news')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">MAT 뉴스</button>
+    </div>
+  </div>
+
+  <button onclick="showTab('contact')" class="nav-tab tab-contact ml-2">문의하기</button>
+
+  <button onclick="toggleLang(this)" id="lang-btn" class="lang-btn ml-2">EN</button>
+
+</nav>
         <button class="lg:hidden p-2 rounded-lg text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
