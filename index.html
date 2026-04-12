@@ -3170,7 +3170,7 @@
           background:#fff;border:2px solid #e2e8f0;border-radius:12px;
           box-shadow:0 4px 16px rgba(0,0,0,0.08);
         ">
-          <img id="qr-img" src="" alt="QR Code" style="width:200px;height:200px;display:block;">
+          <div id="qr-img" style="width:200px;height:200px;"></div>
         </div>
         <p style="color:#475569;font-size:0.82rem;margin:14px 0 4px;">
           📱 카메라로 스캔하면 바로 접속됩니다
@@ -3194,15 +3194,30 @@
     </div>
   </div>
 
+  <!-- QRCode.js 라이브러리 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
     var QR_URL = "https://cklikeyou-jpg.github.io/biostream.github.io/";
+    var _qrGenerated = false;
 
     function showQR() {
       var modal = document.getElementById("qr-modal");
-      var img   = document.getElementById("qr-img");
-      // Google Charts QR API (무료, 인터넷 연결 시 작동)
-      img.src = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=" + encodeURIComponent(QR_URL) + "&choe=UTF-8";
       modal.style.display = "flex";
+
+      // QR 한 번만 생성
+      if (!_qrGenerated) {
+        var container = document.getElementById("qr-img");
+        container.innerHTML = "";
+        new QRCode(container, {
+          text: QR_URL,
+          width: 200,
+          height: 200,
+          colorDark: "#0a1f5c",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        _qrGenerated = true;
+      }
     }
 
     function closeQR() {
@@ -3215,9 +3230,13 @@
       }, 300);
     }
 
-    // 모달 바깥 클릭시 닫기
-    document.getElementById("qr-modal").addEventListener("click", function(e){
-      if (e.target === this) closeQR();
+    window.addEventListener("load", function() {
+      var modal = document.getElementById("qr-modal");
+      if (modal) {
+        modal.addEventListener("click", function(e){
+          if (e.target === modal) closeQR();
+        });
+      }
     });
   </script>
 
