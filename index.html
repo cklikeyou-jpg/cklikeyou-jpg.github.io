@@ -3219,16 +3219,25 @@
     document.getElementById("qr-modal").addEventListener("click", function(e){
       if (e.target === this) closeQR();
     });
-  <\/script>
+  </script>
 
   <!-- ===== 팝업 스크립트 ===== -->
   <script>
+    // 닫기 함수 - 전역으로 선언
+    function closePopup() {
+      var el = document.getElementById('launch-popup');
+      if (!el) return;
+      el.style.transition = 'opacity 0.35s';
+      el.style.opacity = '0';
+      setTimeout(function() { el.style.display = 'none'; }, 370);
+    }
+
     // 카운트다운
-    var _popupTarget = new Date('2026-05-04T00:00:00+09:00');
     function _updateCountdown() {
       var el = document.getElementById('popup-countdown');
       if (!el) return;
-      var diff = _popupTarget - new Date();
+      var target = new Date('2026-05-04T00:00:00+09:00');
+      var diff = target - new Date();
       if (diff <= 0) {
         el.textContent = '🎉 정식 오픈! Grand Open!';
         return;
@@ -3240,31 +3249,24 @@
       el.textContent = d + '일 ' + h + '시간 ' + m + '분 ' + s + '초 남음';
     }
 
-    // 닫기 함수
-    function closePopup() {
-      var el = document.getElementById('launch-popup');
-      if (!el) return;
-      el.style.transition = 'opacity 0.3s';
-      el.style.opacity = '0';
-      setTimeout(function() { el.style.display = 'none'; }, 320);
-    }
-
-    // DOM 준비 후 실행
-    document.addEventListener('DOMContentLoaded', function() {
-      // 닫기 버튼 연결
-      var btn = document.getElementById('popup-close-btn');
-      if (btn) btn.addEventListener('click', closePopup);
-
-      // 카운트다운 시작
+    // 페이지 완전 로드 후 실행
+    window.addEventListener('load', function() {
+      // 카운트다운 즉시 시작
       _updateCountdown();
       setInterval(_updateCountdown, 1000);
 
-      // 팝업 외부 클릭 닫기
+      // 닫기 버튼 - onclick 직접 연결
+      var btn = document.getElementById('popup-close-btn');
+      if (btn) {
+        btn.onclick = function() { closePopup(); return false; };
+      }
+
+      // 팝업 바깥 클릭시 닫기
       var popup = document.getElementById('launch-popup');
       if (popup) {
-        popup.addEventListener('click', function(e) {
+        popup.onclick = function(e) {
           if (e.target === popup) closePopup();
-        });
+        };
       }
     });
   </script>
