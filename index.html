@@ -1,44 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta name="naver-site-verification" content="b1fc6ff6bcf9e09cac9651291c0ffb3bbba9c94f" />
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F5BCLXR3YP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-F5BCLXR3YP');
-</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pyrogen detected by PBMC MAT | Biostream 시험분석센터</title>
-  <!-- Favicon - 하늘색 M 아이콘 -->
-  <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="favicon.png" type="image/png" sizes="16x16">
-  <link rel="shortcut icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <!-- SEO Meta -->
-  <meta name="description" content="Pyrogen detected by PBMC MAT (Monocyte Activation Test). 발열성 물질 검출을 위한 MAT 시험 서비스. 의약품등 시험·검사 인증기관 Biostream 시험분석센터에서 제약, 바이오, 혈액제제 제품의 안전성을 검증합니다.">
-  <meta name="keywords" content="Pyrogen detected by PBMC MAT, MAT validation, MAT 시험, Monocyte Activation Test, PBMC, 단핵구활성시험, Cytokine IL-6, Pyrogen test, 발열원 시험">
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <link rel="canonical" href="https://cklikeyou-jpg.github.io/biostream.github.io/">
-  <!-- Open Graph / Google 검색 결과 -->
-  <meta property="og:site_name" content="Biostream 시험분석센터">
-  <meta property="og:title" content="Pyrogen detected by PBMC MAT | Biostream 시험분석센터">
-  <meta property="og:description" content="Pyrogen detected by PBMC MAT. MAT validation 및 Cytokine IL-6 기반 발열원 시험 대체 솔루션. 제약·바이오·혈액제제 제품의 안전성 검증 전문 기관.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cklikeyou-jpg.github.io/biostream.github.io/">
-  <meta property="og:image" content="https://cklikeyou-jpg.github.io/biostream.github.io/favicon.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Pyrogen detected by PBMC MAT | Biostream 시험분석센터">
-  <meta name="twitter:description" content="Pyrogen detected by PBMC MAT. MAT validation 및 Cytokine IL-6 기반 발열원 시험 대체 솔루션.">
-  <meta name="twitter:image" content="https://cklikeyou-jpg.github.io/biostream.github.io/favicon.png">
+  <title>MAT 시험 (Monocyte Activation Test) | Biostream 시험분석센터</title>
+  <meta name="description" content="발열성 물질 검출을 위한 MAT 시험 서비스. 의약품등 시험·검사 인증기관 Biostream 시험분석센터에서 제약, 바이오, 혈액제제 제품의 안전성을 검증합니다.">
+<link rel="icon" type="image/png" href="Fabicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
@@ -65,8 +32,8 @@
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Noto Sans KR', sans-serif; background-color: #EEF2F7; }
-    .gradient-bg { background: linear-gradient(160deg, #050d1f 0%, #0a1f5c 30%, #1565C0 65%, #64B5F6 100%); }
+    body { font-family: 'Noto Sans KR', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #0C2340 0%, #0369A1 60%, #0F766E 100%); }
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
     .faq-content { display: none; }
@@ -83,350 +50,41 @@
     .fmea-table th { background: #1E293B; color: white; font-weight: 600; padding: 10px 12px; font-size: 0.78rem; }
     .fmea-table td { padding: 9px 12px; font-size: 0.78rem; border-bottom: 1px solid #E2E8F0; }
     .fmea-table tr:nth-child(even) { background: #F8FAFC; }
-
-    /* ===== 드롭다운 네비게이션 스타일 ===== */
-    .tab-page { display: none; }
-    .tab-page.tab-visible { display: block; }
-
-    /* 메인 카테고리 버튼 */
-    .dd-cat {
-      position: relative;
-      display: inline-block;
-    }
-    .dd-btn {
-      background: transparent;
-      color: #1e293b;
-      border: none;
-      padding: 10px 18px;
-      font-size: 0.92rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Noto Sans KR', sans-serif;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      border-radius: 8px;
-      transition: background 0.15s, color 0.15s;
-    }
-    .dd-btn:hover, .dd-btn.cat-active {
-      background: #e0f2fe;
-      color: #0284C7;
-    }
-    .dd-btn.cat-active { color: #0284C7; }
-    .dd-btn svg { transition: transform 0.2s; }
-    .dd-btn.open svg { transform: rotate(180deg); }
-
-    /* 드롭다운 패널 */
-    .dd-panel {
-      display: none;
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      min-width: 200px;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      z-index: 1000;
-      overflow: hidden;
-      animation: ddFade 0.18s ease;
-    }
-    .dd-panel.open { display: block; }
-    @keyframes ddFade {
-      from { opacity:0; transform:translateY(-6px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-    /* 드롭다운 항목 */
-    .dd-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 18px;
-      font-size: 0.88rem;
-      font-family: 'Noto Sans KR', sans-serif;
-      color: #334155;
-      cursor: pointer;
-      transition: background 0.12s, color 0.12s;
-      border: none;
-      background: transparent;
-      width: 100%;
-      text-align: left;
-    }
-    .dd-item:hover { background: #f0f9ff; color: #0284C7; }
-    .dd-item.item-active { background: #e0f2fe; color: #0284C7; font-weight: 600; }
-    .dd-item .dd-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
-    /* 카테고리별 색상 강조선 */
-    .dd-panel-1 { border-top: 3px solid #0284C7; }
-    .dd-panel-2 { border-top: 3px solid #0f766e; }
-    .dd-panel-3 { border-top: 3px solid #7c3aed; }
-    .dd-panel-4 { border-top: 3px solid #db2777; }
-
-    /* 문의하기 버튼 */
-    .contact-btn {
-      background: #C41E3A;
-      color: #fff;
-      border: none;
-      padding: 9px 20px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Noto Sans KR', sans-serif;
-      transition: background 0.15s, transform 0.1s;
-      white-space: nowrap;
-    }
-    .contact-btn:hover { background: #9b1630; transform: translateY(-1px); }
-
-    /* 언어 버튼 */
-    .lang-btn {
-      background: #f1f5f9;
-      color: #475569;
-      border: 1px solid #e2e8f0;
-      padding: 7px 14px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.18s, color 0.18s;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    .lang-btn:hover { background: #0284C7; color: #fff; border-color: #0284C7; }
-
-    /* 모바일 메뉴 */
-    .mob-cat-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 10px 12px 4px;
-      color: #94a3b8;
-    }
-    .mobile-nav-btn {
-      background: transparent;
-      color: #334155;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.93rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-align: left;
-      font-family: 'Noto Sans KR', sans-serif;
-      transition: background 0.15s, color 0.15s;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .mobile-nav-btn:hover { background: #e0f2fe; color: #0284C7; }
-    .mobile-nav-btn.item-active { background: #e0f2fe; color: #0284C7; font-weight: 600; }
-
-    /* ===== 배경색 오버라이드 (Tailwind 우선순위 제압) ===== */
-    body { background-color: #EEF2F7 !important; }
-    .tab-page { background-color: #F7F9FC !important; }
-    #history, #applications, #regulatory, #facilities, #news, #contact {
-      background-color: #EEF2F7 !important;
-    }
-    header { background-color: #F0F5FA !important; }
-    /* 섹션 내부 흰색 카드는 그대로 유지 */
-
-    /* ===== 탭 섹션 그라데이션 배너 ===== */
-    .tab-banner {
-      position: relative;
-      overflow: hidden;
-    }
-    .tab-banner::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-      height: 32px;
-      background: #F7F9FC;
-      clip-path: ellipse(55% 100% at 50% 100%);
-    }
-    /* 교대 배경 섹션은 다른 색 */
-    #history .tab-banner::after,
-    #method .tab-banner::after,
-    #applications .tab-banner::after,
-    #regulatory .tab-banner::after,
-    #news .tab-banner::after,
-    #contact .tab-banner::after {
-      background: #EEF2F7;
-    }
-    /* 섹션 내 컨텐츠 위쪽 여백 */
-    [id] > .tab-banner + div.max-w-7xl,
-    [id] > div[style*="padding:48px"] > .max-w-7xl {
-      padding-top: 8px;
-    }
   </style>
 </head>
-<body class="text-dark" style="background-color:#EEF2F7;">
-  <!-- ===== 오픈 예정 팝업 ===== -->
-  <div id="launch-popup" style="position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(10,20,50,0.72);backdrop-filter:blur(4px);">
-    <div style="background:#fff;border-radius:20px;max-width:480px;width:90%;box-shadow:0 24px 64px rgba(0,0,0,0.25);overflow:hidden;">
-      <div style="background:linear-gradient(135deg,#0a1f5c 0%,#1565C0 60%,#42a5f5 100%);padding:28px 32px 22px;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-          <span style="font-size:1.5rem;">🔬</span>
-          <span style="color:#fff;font-weight:800;font-size:1.2rem;">
-            <span style="color:#f87171;">Bio</span>stream 시험분석센터
-          </span>
-        </div>
-        <div style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;">ANALYTICS CENTER WITH MAT</div>
-      </div>
-      <div style="padding:28px 32px;">
-        <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #e2e8f0;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="font-size:1.1rem;">🇰🇷</span>
-            <span style="font-weight:700;color:#1e293b;font-size:0.95rem;">안내말씀</span>
-          </div>
-          <p style="color:#334155;font-size:0.92rem;line-height:1.75;margin:0;">
-            현재 <strong style="color:#1565C0;">웹페이지를 개선 중</strong>이지만,<br>
-            모든 <strong>내용을 보시는 데 문제 없습니다.</strong><br>
-            <span style="color:#C41E3A;font-weight:700;">2026년 5월 4일</span>에 정식 오픈합니다.
-          </p>
-        </div>
-        <div style="margin-bottom:24px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="font-size:1.1rem;">🇺🇸</span>
-            <span style="font-weight:700;color:#1e293b;font-size:0.95rem;">Notice</span>
-          </div>
-          <p style="color:#334155;font-size:0.92rem;line-height:1.75;margin:0;">
-            Our website is currently <strong style="color:#1565C0;">under improvement</strong>,<br>
-            but you can <strong>browse all content without any issues.</strong><br>
-            Official launch: <span style="color:#C41E3A;font-weight:700;">May 4, 2026</span>.
-          </p>
-        </div>
-        <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:14px 18px;margin-bottom:22px;text-align:center;">
-          <div style="color:#0369a1;font-size:0.78rem;font-weight:600;margin-bottom:6px;">🗓️ D-DAY COUNTDOWN</div>
-          <div id="popup-countdown" style="color:#0c2461;font-weight:800;font-size:1.1rem;letter-spacing:0.05em;">-</div>
-        </div>
-        <button id="popup-close-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#C41E3A,#f43f5e);color:#fff;border:none;border-radius:10px;font-size:0.97rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
-          확인했습니다 &nbsp;/&nbsp; Got it ✓
-        </button>
-      </div>
-    </div>
-  </div>
-
-  
+<body class="bg-light text-dark">
 
   <!-- ===== 헤더 네비게이션 ===== -->
-  <header class="shadow-sm sticky top-0 z-50" style="background:#F0F5FA;">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-2 gap-3">
+      <div class="flex justify-between items-center h-16">
         <!-- Biostream Logo -->
-       <a href="/" class="flex items-center gap-2 flex-shrink-0 hover:opacity-80 transition-opacity" style="text-decoration: none;">
-          
+        <div class="flex items-center gap-2">
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <rect width="44" height="44" rx="8" fill="#C41E3A"/>
+            <text x="4" y="19" font-family="Arial Black,Arial" font-weight="900" font-size="13" fill="white">BIO</text>
+            <rect x="4" y="22" width="36" height="1.5" fill="white" opacity="0.6"/>
+            <text x="2" y="36" font-family="Arial,sans-serif" font-weight="700" font-size="9.5" fill="white" letter-spacing="1">STREAM</text>
+          </svg>
           <div class="leading-tight">
-            <div class="font-bold text-dark" style="font-size:1.25rem;"><span style="color:#C41E3A;">Bio</span>stream</div>
-            <div class="text-gray-600 font-medium" style="font-size:0.95rem;">시험분석센터 | Analytics Center</div>
-            <div class="font-bold" style="font-size:0.82rem;color:#1565C0;">의약품등 시험·검사 인증 시험기관</div>
-          </div>
-        </a>
+            <div class="font-bold text-base text-dark">Biostream</div>
+            <div class="text-xs text-gray-500">시험분석센터 | Analytics Center</div>
           </div>
         </div>
-        <!-- 데스크탑 드롭다운 네비게이션 -->
-        <nav class="hidden lg:flex items-center gap-1 flex-1 justify-end" id="main-nav">
-
-          <!-- 1. MAT 소개 -->
-          <div class="dd-cat" id="cat1">
-            <button class="dd-btn" onclick="toggleDD('cat1')" id="cat1-btn">
-              <span>📘 MAT 소개</span>
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="dd-panel dd-panel-1" id="cat1-panel">
-              <button class="dd-item" onclick="showTab('overview');closeDD()" data-tab="overview">
-                <span class="dd-icon">🔬</span> 시험 개요
-              </button>
-              <button class="dd-item" onclick="showTab('history');closeDD()" data-tab="history">
-                <span class="dd-icon">📜</span> 역사/배경
-              </button>
-              <button class="dd-item" onclick="showTab('nep');closeDD()" data-tab="nep">
-                <span class="dd-icon">⚠️</span> NEP 발열원
-              </button>
-            </div>
-          </div>
-
-          <!-- 2. 기술 및 서비스 -->
-          <div class="dd-cat" id="cat2">
-            <button class="dd-btn" onclick="toggleDD('cat2')" id="cat2-btn">
-              <span>⚗️ 기술 및 서비스</span>
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="dd-panel dd-panel-2" id="cat2-panel">
-              <button class="dd-item" onclick="showTab('method');closeDD()" data-tab="method">
-                <span class="dd-icon">🧫</span> 시험 방법
-              </button>
-              <button class="dd-item" onclick="showTab('validation');closeDD()" data-tab="validation">
-                <span class="dd-icon">✅</span> Validation
-              </button>
-              <button class="dd-item" onclick="showTab('applications');closeDD()" data-tab="applications">
-                <span class="dd-icon">🏭</span> 적용 분야
-              </button>
-              <button class="dd-item" onclick="showTab('process');closeDD()" data-tab="process">
-                <span class="dd-icon">📊</span> 시험 절차
-              </button>
-            </div>
-          </div>
-
-          <!-- 3. 규제 및 품질 -->
-          <div class="dd-cat" id="cat3">
-            <button class="dd-btn" onclick="toggleDD('cat3')" id="cat3-btn">
-              <span>🛡️ 규제 및 품질</span>
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="dd-panel dd-panel-3" id="cat3-panel">
-              <button class="dd-item" onclick="showTab('regulatory');closeDD()" data-tab="regulatory">
-                <span class="dd-icon">📋</span> 규제 현황
-              </button>
-              <button class="dd-item" onclick="showTab('qrm');closeDD()" data-tab="qrm">
-                <span class="dd-icon">🛡️</span> QRM 관리
-              </button>
-              <button class="dd-item" onclick="showTab('glossary');closeDD()" data-tab="glossary">
-                <span class="dd-icon">📖</span> 약어집
-              </button>
-            </div>
-          </div>
-
-          <!-- 4. 고객 지원 -->
-          <div class="dd-cat" id="cat4">
-            <button class="dd-btn" onclick="toggleDD('cat4')" id="cat4-btn">
-              <span>💬 고객 지원</span>
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="dd-panel dd-panel-4" id="cat4-panel">
-              <button class="dd-item" onclick="showTab('faq');closeDD()" data-tab="faq">
-                <span class="dd-icon">💬</span> FAQ
-              </button>
-              <button class="dd-item" onclick="showTab('news');closeDD()" data-tab="news">
-                <span class="dd-icon">📰</span> MAT 뉴스
-              </button>
-            </div>
-          </div>
-
-          <!-- 문의하기 강조 버튼 -->
-          <button onclick="showTab('contact');closeDD()" class="contact-btn ml-2" data-tab="contact">📩 문의하기</button>
-
-          <!-- QR코드 버튼 -->
-          <button onclick="showQR()" id="qr-btn" title="QR코드로 접속" style="
-            background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;
-            padding:7px 14px;border-radius:20px;font-size:0.82rem;font-weight:700;
-            cursor:pointer;transition:background 0.18s,color 0.18s;
-            font-family:'Noto Sans KR',sans-serif;display:flex;align-items:center;gap:6px;
-          " onmouseover="this.style.background='#0284C7';this.style.color='#fff';this.style.borderColor='#0284C7'"
-             onmouseout="this.style.background='#f1f5f9';this.style.color='#475569';this.style.borderColor='#e2e8f0'">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-              <rect x="3" y="14" width="7" height="7" rx="1"/>
-              <rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/>
-              <rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/>
-            </svg>
-            QR
-          </button>
-
-          <!-- 언어 전환 -->
-          <button onclick="toggleLang(this)" id="lang-btn" class="lang-btn ml-2">EN</button>
+        <nav class="hidden lg:flex items-center gap-5">
+          <a href="#overview"    class="text-gray-600 hover:text-primary font-medium text-xs">시험 개요</a>
+          <a href="#history"     class="text-gray-600 hover:text-primary font-medium text-xs">역사/배경</a>
+          <a href="#nep"         class="text-gray-600 hover:text-primary font-medium text-xs">NEP</a>
+          <a href="#method"      class="text-gray-600 hover:text-primary font-medium text-xs">시험 방법</a>
+          <a href="#validation"  class="text-gray-600 hover:text-primary font-medium text-xs">Validation</a>
+          <a href="#applications" class="text-gray-600 hover:text-primary font-medium text-xs">적용 분야</a>
+          <a href="#qrm"         class="text-gray-600 hover:text-primary font-medium text-xs">QRM</a>
+          <a href="#regulatory"  class="text-gray-600 hover:text-primary font-medium text-xs">규제</a>
+          <a href="#process"     class="text-gray-600 hover:text-primary font-medium text-xs">절차</a>
+          <a href="#glossary"     class="text-gray-600 hover:text-primary font-medium text-xs">약어집</a>
+          <a href="#faq"         class="text-gray-600 hover:text-primary font-medium text-xs">FAQ</a>
+          <a href="#news"        class="text-gray-600 hover:text-primary font-medium text-xs">MAT 뉴스</a>
+          <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark font-medium text-xs">문의하기</a>
         </nav>
         <button class="lg:hidden p-2 rounded-lg text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -434,45 +92,28 @@
           </svg>
         </button>
       </div>
-      <!-- 모바일 메뉴 -->
-      <div id="mobile-menu" class="hidden lg:hidden py-3 border-t" style="background:#fff;">
-        <div class="flex justify-between items-center px-2 mb-3">
-          <span style="font-size:0.75rem;color:#94a3b8;font-weight:700;letter-spacing:0.05em;">MENU</span>
-          <button onclick="toggleLang(this)" id="lang-btn-mobile" class="lang-btn">EN</button>
-        </div>
-        <nav class="flex flex-col gap-0.5 px-1">
-          <!-- MAT 소개 -->
-          <div class="mob-cat-label">📘 MAT 소개</div>
-          <button onclick="showTab('overview');closeMobile()" class="mobile-nav-btn" data-tab="overview"><span>🔬</span>시험 개요</button>
-          <button onclick="showTab('history');closeMobile()"  class="mobile-nav-btn" data-tab="history"><span>📜</span>역사/배경</button>
-          <button onclick="showTab('nep');closeMobile()"      class="mobile-nav-btn" data-tab="nep"><span>⚠️</span>NEP 발열원</button>
-          <!-- 기술 및 서비스 -->
-          <div class="mob-cat-label" style="margin-top:8px;">⚗️ 기술 및 서비스</div>
-          <button onclick="showTab('method');closeMobile()"       class="mobile-nav-btn" data-tab="method"><span>🧫</span>시험 방법</button>
-          <button onclick="showTab('validation');closeMobile()"   class="mobile-nav-btn" data-tab="validation"><span>✅</span>Validation</button>
-          <button onclick="showTab('applications');closeMobile()" class="mobile-nav-btn" data-tab="applications"><span>🏭</span>적용 분야</button>
-          <button onclick="showTab('process');closeMobile()"      class="mobile-nav-btn" data-tab="process"><span>📊</span>시험 절차</button>
-          <!-- 규제 및 품질 -->
-          <div class="mob-cat-label" style="margin-top:8px;">🛡️ 규제 및 품질</div>
-          <button onclick="showTab('regulatory');closeMobile()" class="mobile-nav-btn" data-tab="regulatory"><span>📋</span>규제 현황</button>
-          <button onclick="showTab('qrm');closeMobile()"        class="mobile-nav-btn" data-tab="qrm"><span>🛡️</span>QRM 관리</button>
-          <button onclick="showTab('glossary');closeMobile()"   class="mobile-nav-btn" data-tab="glossary"><span>📖</span>약어집</button>
-          <!-- 고객 지원 -->
-          <div class="mob-cat-label" style="margin-top:8px;">💬 고객 지원</div>
-          <button onclick="showTab('faq');closeMobile()"  class="mobile-nav-btn" data-tab="faq"><span>💬</span>FAQ</button>
-          <button onclick="showTab('news');closeMobile()" class="mobile-nav-btn" data-tab="news"><span>📰</span>MAT 뉴스</button>
-          <!-- 문의하기 -->
-          <button onclick="showTab('contact');closeMobile()" class="mobile-nav-btn" data-tab="contact"
-            style="margin-top:10px;background:#C41E3A;color:#fff;font-weight:700;border-radius:8px;">
-            📩 문의하기
-          </button>
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
+        <nav class="flex flex-col gap-3 text-sm">
+          <a href="#overview"    class="text-gray-600 hover:text-primary">시험 개요</a>
+          <a href="#history"     class="text-gray-600 hover:text-primary">역사/배경</a>
+          <a href="#nep"         class="text-gray-600 hover:text-primary">NEP 발열원</a>
+          <a href="#method"      class="text-gray-600 hover:text-primary">시험 방법</a>
+          <a href="#validation"  class="text-gray-600 hover:text-primary">MAT Validation</a>
+          <a href="#applications" class="text-gray-600 hover:text-primary">적용 분야</a>
+          <a href="#qrm"         class="text-gray-600 hover:text-primary">NEP QRM</a>
+          <a href="#regulatory"  class="text-gray-600 hover:text-primary">규제 현황</a>
+          <a href="#process"     class="text-gray-600 hover:text-primary">시험 절차</a>
+          <a href="#glossary"     class="text-gray-600 hover:text-primary">약어집</a>
+          <a href="#faq"         class="text-gray-600 hover:text-primary">FAQ</a>
+          <a href="#news"        class="text-gray-600 hover:text-primary">MAT 뉴스</a>
+          <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg text-center">문의하기</a>
         </nav>
       </div>
     </div>
   </header>
 
   <!-- ===== 히어로 섹션 ===== -->
-  <section id="hero-section" class="gradient-bg text-white py-20 lg:py-28 relative overflow-hidden">
+  <section class="gradient-bg text-white py-20 lg:py-28 relative overflow-hidden">
     <!-- subtle background pattern -->
     <div class="absolute inset-0 opacity-5">
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -485,11 +126,16 @@
         <div>
           <!-- Biostream brand badge -->
           <div class="flex items-center gap-3 mb-6">
-            
-            <div class="leading-tight">
-              <div class="font-bold" style="font-size:1.25rem;"><span style="color:#f87171;">Bio</span><span class="text-white">stream</span></div>
-              <div class="text-blue-200 font-medium" style="font-size:0.95rem;">시험분석센터 | Analytics Center</div>
-              <div class="font-bold" style="font-size:0.82rem;color:#93c5fd;">의약품등 시험·검사 인증 시험기관</div>
+            <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+              <rect width="56" height="56" rx="12" fill="#C41E3A"/>
+              <text x="5" y="24" font-family="Arial Black,Arial" font-weight="900" font-size="17" fill="white">BIO</text>
+              <rect x="5" y="27" width="46" height="2" fill="white" opacity="0.5"/>
+              <text x="3" y="44" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="1.5">STREAM</text>
+            </svg>
+            <div>
+              <span class="text-white/90 font-bold text-lg">Biostream</span>
+              <div class="text-blue-200 text-xs">시험분석센터 | Analytics Center</div>
+              <span class="inline-block bg-white/20 px-3 py-0.5 rounded-full text-xs font-medium mt-1">의약품등 시험·검사 인증 시험기관</span>
             </div>
           </div>
           <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">
@@ -545,49 +191,12 @@
   </section>
 
   <!-- ===== 시험 개요 섹션 ===== -->
-  <section id="overview" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #0c2461 0%, #0369A1 40%, #0ea5e9 75%, #38bdf8 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">🔬</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Test Overview</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">MAT 시험이란?</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">인체 면역세포(단핵구)의 반응을 이용하여 발열성 물질을 검출하는 <em>in vitro</em> 시험법입니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="overview" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-      <!-- Synthesia 인사말 동영상 -->
-      <div style="max-width:780px;margin:0 auto 48px;text-align:center;">
-        <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:16px;color:#0c2461;">🎬 MAT 시험 소개 영상</h3>
-        <a href="https://share.synthesia.io/8e1a6378-f715-4f14-9991-2fc41a7ede74" target="_blank" rel="noopener"
-           style="display:block;text-decoration:none;">
-          <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18);background:linear-gradient(135deg,#0c2461 0%,#0369A1 50%,#0ea5e9 100%);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;"
-               onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 16px 48px rgba(0,0,0,0.28)'"
-               onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.18)'">
-            <!-- 배경 장식 -->
-            <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(255,255,255,0.07) 0%,transparent 60%);"></div>
-            <!-- 재생 버튼 원 -->
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
-              <div style="width:80px;height:80px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#0c2461">
-                  <polygon points="6,4 20,12 6,20"/>
-                </svg>
-              </div>
-              <div>
-                <p style="color:#fff;font-size:1.2rem;font-weight:700;margin:0 0 6px;">MAT 시험 소개</p>
-                <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin:0;">클릭하여 영상 시청하기 →</p>
-              </div>
-            </div>
-            <!-- 우측 하단 Synthesia 배지 -->
-            <div style="position:absolute;bottom:14px;right:18px;background:rgba(0,0,0,0.35);border-radius:6px;padding:4px 10px;">
-              <span style="color:rgba(255,255,255,0.75);font-size:0.72rem;">Powered by Synthesia</span>
-            </div>
-          </div>
-        </a>
-        <p style="color:#64748b;font-size:0.85rem;margin-top:10px;">▶ 클릭하면 새 창에서 영상이 재생됩니다</p>
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Test Overview</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">MAT 시험이란?</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">인체 면역세포(단핵구)의 반응을 이용하여 발열성 물질을 검출하는 <em>in vitro</em> 시험법입니다.</p>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
@@ -652,23 +261,16 @@
         </div>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== 역사/배경 섹션 ===== -->
-  <section id="history" class="tab-page" style="background:#EEF2F7;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #3b1f0a 0%, #78350f 40%, #b45309 75%, #d97706 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">📜</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">History & Background</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">발열성 물질 시험법의 역사와 변천</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">100여 년간의 발열성 물질 시험법 발전 과정과 MAT가 새로운 표준으로 자리잡기까지의 흐름을 살펴봅니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="history" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">History &amp; Background</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">발열성 물질 시험법의 역사와 변천</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">100여 년간의 발열성 물질 시험법 발전 과정과 MAT가 새로운 표준으로 자리잡기까지의 흐름을 살펴봅니다.</p>
+      </div>
       <div class="max-w-4xl mx-auto space-y-0">
         <!-- Timeline items -->
         <div class="flex gap-6 mb-10">
@@ -804,23 +406,16 @@
 
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== NEP 비내독소성 발열원 섹션 ===== -->
-  <section id="nep" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #4a0000 0%, #991b1b 40%, #dc2626 70%, #f97316 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">⚠️</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Non-Endotoxin Pyrogens</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">비내독소성 발열원 (NEP)이란?</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">LAL/BET로 검출되지 않는 비내독소성 발열원(NEP)은 의약품 및 의료기기 안전성에 중대한 위협입니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="nep" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Non-Endotoxin Pyrogens</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">비내독소성 발열원 (NEP)이란?</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">LAL/BET로 검출되지 않는 비내독소성 발열원(NEP)은 의약품 및 의료기기 안전성에 중대한 위협입니다. MAT만이 이를 <em>in vitro</em>로 검출할 수 있습니다.</p>
+      </div>
       <div class="grid lg:grid-cols-2 gap-12 mb-16">
         <div>
           <h3 class="text-2xl font-bold mb-6 text-dark">발열원의 분류</h3>
@@ -980,22 +575,15 @@
       </div>
 
     </div>
-  </div>
   </section>
   <!-- ===== 시험 방법 상세 섹션 ===== -->
-  <section id="method" class="tab-page" style="background:#EEF2F7;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #022c22 0%, #065f46 40%, #0f766e 70%, #14b8a6 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">🧫</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Test Methods</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">MAT 시험 방법 및 세포 소스 옵션</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">MAT 시험은 사용하는 세포 소스에 따라 세 가지 방법으로 수행되며, 각각의 특성과 장단점이 있습니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="method" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Test Methods</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">MAT 시험 방법 및 세포 소스 옵션</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">MAT 시험은 사용하는 세포 소스에 따라 세 가지 방법으로 수행되며, 각각의 특성과 장단점이 있습니다.</p>
+      </div>
       <div class="grid md:grid-cols-3 gap-8 mb-16">
         <!-- PBMC -->
         <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border-2 border-primary">
@@ -1062,23 +650,16 @@
         </div>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== MAT VALIDATION 섹션 (NEW) ===== -->
-  <section id="validation" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #1e1b4b 0%, #4338ca 40%, #7c3aed 70%, #a855f7 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">✅</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">MAT Validation</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">MAT Validation (PSV)</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">EP 2.6.30 기준의 제품별 검증(Product-Specific Validation) 절차와 핵심 파라미터를 안내합니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="validation" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">MAT Validation</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">MAT 시험법 검증 (Validation)</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">규제 목적의 MAT 시험은 방법 검증(Method Validation)과 제품별 검증(PSV)을 통해 과학적 타당성과 신뢰성을 확립해야 합니다.</p>
+      </div>
 
       <!-- 검증 유형 -->
       <div class="grid md:grid-cols-2 gap-8 mb-12">
@@ -1187,23 +768,16 @@
         </div>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== 적용 분야 섹션 ===== -->
-  <section id="applications" class="tab-page" style="background:#EEF2F7;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #0a2540 0%, #0369a1 40%, #0891b2 70%, #06b6d4 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">🏭</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Applications</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">MAT 시험 적용 분야</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">제약·바이오·혈액제제·세포치료제·의료기기 등 다양한 분야에서 MAT 시험이 활용됩니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="applications" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Applications</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">적용 분야</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">다양한 제약·바이오·혈액제제·세포치료제 제품 및 의료기기에 MAT 시험을 적용할 수 있습니다.</p>
+      </div>
       <!-- NEP 고위험군 -->
       <div class="mb-10">
         <div class="flex items-center gap-3 mb-6">
@@ -1367,21 +941,10 @@
       </div><!-- end NEP 중위험군 block -->
 
     </div>
-  </div>
   </section>
 
   <!-- ===== NEP 품질 위험성 관리 (QRM) 섹션 (NEW) ===== -->
-  <section id="qrm" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 70%, #64748b 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">🛡️</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Quality Risk Management</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">NEP 품질위험 관리 (QRM)</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">ICH Q9(R1) 기반 NEP 품질위험관리(QRM) 절차로 원료입고부터 완제품까지 체계적으로 관리합니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="qrm" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <div class="flex items-center justify-center gap-3 mb-4">
@@ -1785,23 +1348,16 @@
         <p class="text-xs text-gray-500 mt-4 text-center">* QRM 결과에 따른 시험전략은 제품 유형, 공정 특성, 규제 요건에 따라 Biostream 전문가와 사전 협의 후 결정합니다.</p>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== 규제 현황 섹션 ===== -->
-  <section id="regulatory" class="tab-page" style="background:#EEF2F7;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #052e16 0%, #166534 40%, #15803d 70%, #4ade80 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">📋</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Regulatory</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">글로벌 MAT 규제 현황</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">EP, FDA, USP, MFDS 등 주요 규제기관의 MAT 관련 최신 규제 현황을 정리합니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="regulatory" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Regulatory Framework</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">국제 규제 현황</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">MAT는 전 세계 주요 규제 기관에서 RPT의 대체 시험법으로 인정받고 있으며, 특히 유럽에서는 의무화가 진행 중입니다.</p>
+      </div>
       <div class="grid lg:grid-cols-2 gap-8 mb-12">
         <!-- EP -->
         <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-blue-600 card-hover">
@@ -1857,23 +1413,16 @@
         </div>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== 시험 절차 섹션 ===== -->
-  <section id="process" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">📊</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Test Process</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">MAT 시험 절차</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">의뢰 접수부터 성적서 발행까지 Biostream의 표준 MAT 시험 절차를 안내합니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="process" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Test Process</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">시험 의뢰 절차</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">시료 접수부터 성적서 발행까지, 체계적인 프로세스로 신뢰성 있는 결과를 제공합니다.</p>
+      </div>
       <div class="max-w-4xl mx-auto space-y-6">
         <div class="flex gap-6 md:gap-10">
           <div class="flex flex-col items-center"><div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">1</div><div class="w-0.5 bg-gray-200 flex-1 mt-2"></div></div>
@@ -1910,13 +1459,16 @@
         <p class="text-gray-500 text-sm">* 긴급 의뢰의 경우 별도 문의 바랍니다.</p>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== 장비 및 시설 섹션 ===== -->
-  <section id="facilities" class="tab-page py-20" style="background:#EEF2F7;">
+  <section id="facilities" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Facilities &amp; Equipment</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">장비 및 시설</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">최신 장비와 철저한 품질관리 시스템으로 정확한 시험 결과를 보장합니다.</p>
+      </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover"><div class="h-36 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center"><svg class="w-14 h-14 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg></div><div class="p-5"><h3 class="text-lg font-bold mb-1 text-dark">ELISA Reader</h3><p class="text-gray-600 text-sm">고감도 마이크로플레이트 리더로 IL-6 등 사이토카인 정량 분석.</p></div></div>
         <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover"><div class="h-36 bg-gradient-to-br from-secondary to-teal-700 flex items-center justify-center"><svg class="w-14 h-14 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div><div class="p-5"><h3 class="text-lg font-bold mb-1 text-dark">CO₂ Incubator</h3><p class="text-gray-600 text-sm">37°C ± 0.5°C, 5% CO₂ 정밀 제어. 온·습도 실시간 모니터링.</p></div></div>
@@ -1944,56 +1496,6 @@
     details.faq-item summary::after { content:'+'; font-size:1.4rem; font-weight:300; color:#0369A1; flex-shrink:0; margin-left:1rem; }
     details.faq-item[open] summary::after { content:'×'; }
     details.faq-item .faq-body { padding:0 1.5rem 1.5rem; color:#4B5563; font-size:0.875rem; line-height:1.75; }
-
-    /* ===== 탭 네비게이션 스타일 ===== */
-    .nav-tab {
-      background: #111827;
-      color: #ffffff;
-      border: none;
-      padding: 7px 12px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.18s, transform 0.1s;
-      font-family: 'Noto Sans KR', sans-serif;
-      white-space: nowrap;
-    }
-    .nav-tab:hover { background: #374151; transform: translateY(-1px); }
-    .nav-tab.tab-active { background: #1d4ed8; }
-    .tab-contact { background: #C41E3A !important; }
-    .tab-contact:hover { background: #9b1630 !important; }
-    .tab-contact.tab-active { background: #9b1630 !important; }
-    .lang-btn {
-      background: #374151;
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.18s;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    .lang-btn:hover { background: #1d4ed8; }
-    .mobile-nav-btn {
-      background: #111827;
-      color: white;
-      border: none;
-      padding: 11px 16px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: left;
-      font-family: 'Noto Sans KR', sans-serif;
-      transition: background 0.18s;
-      width: 100%;
-    }
-    .mobile-nav-btn:hover { background: #374151; }
-    .tab-page { display: none; }
-    .tab-page.tab-visible { display: block; }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2010,17 +1512,7 @@
     });
   </script>
   <!-- ===== 약어집 섹션 ===== -->
-  <section id="glossary" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #451a03 0%, #92400e 40%, #b45309 70%, #f59e0b 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">📖</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Glossary</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">MAT 주요 용어 및 약어집</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">MAT 시험과 발열성 물질 관련 핵심 용어를 정리한 전문 약어집입니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="glossary" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <span class="text-primary font-semibold text-sm tracking-wider uppercase">Glossary of Abbreviations</span>
@@ -2391,7 +1883,6 @@
       <p class="text-center text-xs text-gray-400 mt-5">* 본 약어집은 EP 2.6.30, ICH Q9(R1), ISO 10993 등 최신 규제 문서 기준으로 작성되었습니다.</p>
 
     </div>
-  </div>
   </section>
 
   <script>
@@ -2410,19 +1901,13 @@
   }
   </script>
 
-  <section id="faq" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #4a044e 0%, #9d174d 40%, #db2777 70%, #f472b6 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">💬</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">FAQ</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">자주 묻는 질문</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">MAT 시험에 대해 고객들이 가장 많이 묻는 질문들을 모았습니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="faq" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">FAQ</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">자주 묻는 질문</h2>
+        <p class="text-gray-600 text-lg">MAT 시험에 대해 고객들이 가장 많이 묻는 질문들을 모았습니다.</p>
+      </div>
       <div>
         <details class="faq-item">
           <summary>MAT 시험이 LAL(내독소) 시험을 완전히 대체할 수 있나요?</summary>
@@ -2454,23 +1939,16 @@
         </details>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== 최신 MAT 뉴스 섹션 ===== -->
-  <section id="news" class="tab-page" style="background:#EEF2F7;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #042f2e 0%, #0f766e 40%, #0d9488 70%, #2dd4bf 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">📰</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Latest News</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">최신 MAT 뉴스</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">MAT 시험 및 발열성 물질 관련 최신 규제·학술 동향을 소개합니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="news" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-10">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Latest News</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-4">최신 MAT 뉴스</h2>
+        <p class="text-gray-600 text-lg">MAT 시험 및 발열성 물질 관련 최신 규제·학술 동향을 소개합니다.</p>
+      </div>
       <!-- 카테고리 탭 -->
       <div class="flex justify-center mb-8 gap-3 flex-wrap">
         <button id="tab-regulatory" onclick="switchNewsTab('regulatory')"
@@ -2554,7 +2032,7 @@
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-dark mb-1">날짜</label>
-                <input id="nf-date" type="date" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                <input id="nf-date" type="month" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
               </div>
               <div>
                 <label class="block text-sm font-medium text-dark mb-1">제목 *</label>
@@ -2577,7 +2055,6 @@
         </div>
       </div>
     </div>
-  </div>
   </section>
 
   <script>
@@ -2619,7 +2096,7 @@
     showNewsList();
   }
   function formatNewsDate(d) {
-    if(!d) return ''; var p=d.split('-'); return p[0]+'년 '+(p[1]||'')+'월'+(p[2]?' '+p[2]+'일':'');
+    if(!d) return ''; var p=d.split('-'); return p[0]+'. '+(p[1]||'');
   }
   function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function showNewsList() {
@@ -2663,7 +2140,7 @@
     document.getElementById('news-detail-view').classList.remove('hidden');
     document.getElementById('news-form-view').classList.add('hidden');
   }
-  var ADMIN_PW = '3214';
+  var ADMIN_PW = 'biostream2025';
   function openAdminModal() {
     document.getElementById('adminModal').classList.remove('hidden');
     document.getElementById('admin-pw-input').value = '';
@@ -2733,24 +2210,18 @@
   </script>
 
   <!-- ===== 문의 섹션 ===== -->
-  <section id="contact" class="tab-page" style="background:#EEF2F7;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #3b0000 0%, #7f1d1d 40%, #C41E3A 70%, #f43f5e 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">📩</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Contact Us</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">문의 및 견적 요청</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">MAT 시험에 대해 궁금한 점이 있으시거나 견적이 필요하시면 아래 양식을 통해 문의해 주세요.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
+  <section id="contact" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold text-sm tracking-wider uppercase">Contact Us</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-6">문의 및 견적 요청</h2>
+        <p class="text-gray-600 text-lg">MAT 시험에 대해 궁금한 점이 있으시거나 견적이 필요하시면 아래 양식을 통해 문의해 주세요.</p>
+      </div>
       <div class="grid lg:grid-cols-2 gap-16">
         <div>
           <div class="space-y-6 mb-8">
             <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div><div><h4 class="font-semibold text-dark">전화 문의</h4><p class="text-gray-600">010-2320-3157</p><p class="text-sm text-gray-500">평일 09:00 - 18:00</p></div></div>
-            <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><h4 class="font-semibold text-dark">이메일</h4><p class="text-gray-600"><a href="/cdn-cgi/l/email-protection#e6858d8c938881a6848f8995929483878bc88589c88d94" class="hover:text-primary transition"><span class="__cf_email__" data-cfemail="c8aba3a2bda6af88aaa1a7bbbcbaada9a5e6aba7e6a3ba">[email&#160;protected]</span></a></p></div></div>
+            <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><h4 class="font-semibold text-dark">이메일</h4><p class="text-gray-600"><a href="mailto:ckjung@biostream.co.kr" class="hover:text-primary transition">ckjung@biostream.co.kr</a></p></div></div>
             <div class="flex items-start gap-4"><div class="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div><h4 class="font-semibold text-dark">주소</h4><p class="text-gray-600">경기도 용인시 기흥구 중부대로 184<br>기흥힉스유타워 2004호</p></div></div>
           </div>
           <div class="bg-primary-light rounded-2xl p-6">
@@ -2814,7 +2285,7 @@
         </div>
         <div>
           <p class="font-semibold text-dark mb-1">5. 개인정보 처리 책임자</p>
-          <p>Biostream 시험분석센터 | 이메일: <a href="/cdn-cgi/l/email-protection#8cefe7e6f9e2ebcceee5e3fff8fee9ede1a2efe3a2e7fe" class="text-primary hover:underline"><span class="__cf_email__" data-cfemail="9bf8f0f1eef5fcdbf9f2f4e8efe9fefaf6b5f8f4b5f0e9">[email&#160;protected]</span></a></p>
+          <p>Biostream 시험분석센터 | 이메일: <a href="mailto:ckjung@biostream.co.kr" class="text-primary hover:underline">ckjung@biostream.co.kr</a></p>
         </div>
       </div>
       <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="mt-6 w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">확인</button>
@@ -2825,7 +2296,6 @@
         </div>
       </div>
     </div>
-  </div>
   </section>
 
   <!-- ===== 푸터 ===== -->
@@ -2856,7 +2326,7 @@
           <h4 class="font-semibold text-white mb-4">연락처</h4>
           <ul class="space-y-2 text-sm">
             <li>전화: 010-2320-3157</li>
-            <li>이메일: <a href="/cdn-cgi/l/email-protection#dab9b1b0afb4bd9ab8b3b5a9aea8bfbbb7f4b9b5f4b1a8" class="hover:text-white transition"><span class="__cf_email__" data-cfemail="ea8981809f848daa888385999e988f8b87c48985c48198">[email&#160;protected]</span></a></li>
+            <li>이메일: <a href="mailto:ckjung@biostream.co.kr" class="hover:text-white transition">ckjung@biostream.co.kr</a></li>
             <li>경기도 용인시 기흥구 중부대로 184<br>기흥힉스유타워 2004호</li>
           </ul>
           <div class="mt-6">
@@ -2878,7 +2348,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // ===== FAQ 토글 =====
     function toggleFaq(btn) {
       var content = btn.nextElementSibling;
@@ -3013,311 +2483,27 @@
       }
     }
 
-    // ===== 탭 페이지 전환 =====
-    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','news','contact'];
-    var currentLang = 'ko';
-
-    function showTab(tabId) {
-      // 히어로 섹션: overview일 때만 표시
-      var hero = document.getElementById('hero-section');
-      if (hero) hero.style.display = (tabId === 'overview') ? '' : 'none';
-
-      // 모든 탭 숨기기
-      ALL_TABS.forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el) { el.classList.remove('tab-visible'); el.style.display = 'none'; }
-      });
-
-      // 선택 탭 표시
-      var target = document.getElementById(tabId);
-      if (target) { target.classList.add('tab-visible'); target.style.display = ''; }
-
-      // dd-item 활성화
-      document.querySelectorAll('.dd-item, .mobile-nav-btn').forEach(function(btn) {
-        btn.classList.remove('item-active');
-        if (btn.getAttribute('data-tab') === tabId) btn.classList.add('item-active');
-      });
-
-      // 카테고리 버튼 활성화 표시
-      var catMap = {
-        overview:'cat1', history:'cat1', nep:'cat1',
-        method:'cat2', validation:'cat2', applications:'cat2', process:'cat2',
-        regulatory:'cat3', qrm:'cat3', glossary:'cat3',
-        faq:'cat4', news:'cat4', contact:null
-      };
-      document.querySelectorAll('.dd-btn').forEach(function(b){ b.classList.remove('cat-active'); });
-      var catId = catMap[tabId];
-      if (catId) {
-        var catBtn = document.getElementById(catId + '-btn');
-        if (catBtn) catBtn.classList.add('cat-active');
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // ── 드롭다운 열기/닫기 ──
-    var openCat = null;
-    function toggleDD(catId) {
-      var panel = document.getElementById(catId + '-panel');
-      var btn   = document.getElementById(catId + '-btn');
-      if (!panel) return;
-      var isOpen = panel.classList.contains('open');
-      closeDD();
-      if (!isOpen) {
-        panel.classList.add('open');
-        btn.classList.add('open');
-        openCat = catId;
-      }
-    }
-    function closeDD() {
-      ['cat1','cat2','cat3','cat4'].forEach(function(id) {
-        var p = document.getElementById(id + '-panel');
-        var b = document.getElementById(id + '-btn');
-        if (p) p.classList.remove('open');
-        if (b) b.classList.remove('open');
-      });
-      openCat = null;
-    }
-    // 외부 클릭 시 드롭다운 닫기
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.dd-cat')) closeDD();
-    });
-
-    function closeMobile() {
-      document.getElementById('mobile-menu').classList.add('hidden');
-    }
-
-    // ===== 언어 전환 (KO <-> EN) =====
-    var KO_EN = {
-      // 탭 버튼
-      '시험 개요': 'Overview', '역사/배경': 'History/Background', 'NEP': 'NEP',
-      'NEP 발열원': 'NEP Pyrogens', '시험 방법': 'Test Method', 'Validation': 'Validation',
-      '적용 분야': 'Applications', 'QRM': 'QRM', 'NEP QRM': 'NEP QRM',
-      '규제': 'Regulatory', '규제 현황': 'Regulatory Status', '절차': 'Process',
-      '시험 절차': 'Test Process', '약어집': 'Glossary', 'FAQ': 'FAQ',
-      'MAT 뉴스': 'MAT News', '문의하기': 'Contact',
-      'MAT Validation': 'MAT Validation',
-    };
-    var EN_KO = {};
-    Object.keys(KO_EN).forEach(function(k){ EN_KO[KO_EN[k]] = k; });
-
-    function toggleLang() {
-      currentLang = (currentLang === 'ko') ? 'en' : 'ko';
-      var btn = document.getElementById('lang-btn');
-      var btnM = document.getElementById('lang-btn-mobile');
-      if (btn) btn.textContent = (currentLang === 'ko') ? 'EN' : 'KO';
-      if (btnM) btnM.textContent = (currentLang === 'ko') ? 'EN' : 'KO';
-
-      // Update all [data-ko] / [data-en] elements
-      document.querySelectorAll('[data-ko]').forEach(function(el) {
-        if (currentLang === 'en' && el.getAttribute('data-en')) {
-          el.textContent = el.getAttribute('data-en');
-        } else if (currentLang === 'ko' && el.getAttribute('data-ko')) {
-          el.textContent = el.getAttribute('data-ko');
-        }
-      });
-
-      // Update nav-tab and mobile-nav-btn text via KO_EN map
-      var allBtns = document.querySelectorAll('.nav-tab, .mobile-nav-btn');
-      allBtns.forEach(function(btn) {
-        var txt = btn.textContent.trim();
-        if (currentLang === 'en' && KO_EN[txt]) { btn.textContent = KO_EN[txt]; }
-        else if (currentLang === 'ko' && EN_KO[txt]) { btn.textContent = EN_KO[txt]; }
-      });
-
-      // Show language notice
-      var notice = document.getElementById('lang-notice');
-      if (!notice) {
-        notice = document.createElement('div');
-        notice.id = 'lang-notice';
-        notice.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#1d4ed8;color:white;padding:10px 18px;border-radius:8px;font-size:0.9rem;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.2)';
-        document.body.appendChild(notice);
-      }
-      notice.textContent = currentLang === 'en' ? '🌐 Language: English' : '🌐 언어: 한국어';
-      notice.style.display = 'block';
-      setTimeout(function(){ notice.style.display = 'none'; }, 2000);
-    }
-
-    // ===== DOMContentLoaded =====
+    // ===== 네비게이션 스무스 스크롤 (새 페이지 이동 방지) =====
     document.addEventListener('DOMContentLoaded', function() {
+      // FMEA 초기화
       updateFMEA();
-      showTab('overview');
 
-      // 히어로 내부 링크도 탭 전환으로
+      // 모든 앵커 링크에 스무스 스크롤 적용
       document.querySelectorAll('a[href^="#"]').forEach(function(link) {
         link.addEventListener('click', function(e) {
-          var tabId = this.getAttribute('href').replace('#','');
-          if (ALL_TABS.indexOf(tabId) !== -1) {
-            e.preventDefault();
-            showTab(tabId);
+          var href = link.getAttribute('href');
+          if (href && href.length > 1) {
+            var target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              // 모바일 메뉴 닫기
+              var mm = document.getElementById('mobile-menu');
+              if (mm) mm.classList.add('hidden');
+            }
           }
         });
       });
-    });
-  </script>
-
-  <!-- ===== 플로팅 문의하기 버튼 ===== -->
-  <button onclick="showTab('contact')"
-    style="position:fixed;bottom:28px;right:24px;z-index:9999;
-           background:linear-gradient(135deg,#C41E3A,#f43f5e);
-           color:#fff;border:none;border-radius:50px;
-           padding:14px 22px;font-size:0.95rem;font-weight:700;
-           box-shadow:0 6px 24px rgba(196,30,58,0.45);
-           cursor:pointer;font-family:'Noto Sans KR',sans-serif;
-           display:flex;align-items:center;gap:8px;
-           transition:transform 0.2s,box-shadow 0.2s;"
-    onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 30px rgba(196,30,58,0.5)';"
-    onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(196,30,58,0.45)';">
-    📩 <span>문의하기</span>
-  </button>
-
-  <!-- ===== QR코드 팝업 ===== -->
-  <div id="qr-modal" style="
-    display:none;position:fixed;inset:0;z-index:99998;
-    align-items:center;justify-content:center;
-    background:rgba(10,20,50,0.72);backdrop-filter:blur(4px);
-  ">
-    <div style="
-      background:#fff;border-radius:20px;
-      max-width:360px;width:90%;
-      box-shadow:0 24px 64px rgba(0,0,0,0.25);
-      overflow:hidden;animation:popupIn 0.4s cubic-bezier(.22,1,.36,1);
-      text-align:center;
-    ">
-      <!-- 상단 배너 -->
-      <div style="background:linear-gradient(135deg,#0a1f5c 0%,#1565C0 60%,#42a5f5 100%);padding:22px 24px 16px;">
-        <div style="color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:4px;">
-          <span style="color:#f87171;">Bio</span>stream 시험분석센터
-        </div>
-        <div style="color:rgba(255,255,255,0.75);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;">
-          QR코드로 바로 접속 · Scan to Visit
-        </div>
-      </div>
-
-      <!-- QR 이미지 -->
-      <div style="padding:28px 24px 12px;">
-        <div style="
-          display:inline-block;padding:12px;
-          background:#fff;border:2px solid #e2e8f0;border-radius:12px;
-          box-shadow:0 4px 16px rgba(0,0,0,0.08);
-        ">
-          <div id="qr-img" style="width:200px;height:200px;"></div>
-        </div>
-        <p style="color:#475569;font-size:0.82rem;margin:14px 0 4px;">
-          📱 카메라로 스캔하면 바로 접속됩니다
-        </p>
-        <p style="color:#94a3b8;font-size:0.75rem;margin:0 0 20px;">
-          Scan with your phone camera to visit
-        </p>
-        <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:10px 14px;margin-bottom:20px;">
-          <p style="color:#0369a1;font-size:0.78rem;margin:0;word-break:break-all;">
-            🔗 cklikeyou-jpg.github.io/biostream.github.io/
-          </p>
-        </div>
-        <button onclick="closeQR()" style="
-          width:100%;padding:12px;
-          background:linear-gradient(135deg,#1565C0,#42a5f5);
-          color:#fff;border:none;border-radius:10px;
-          font-size:0.93rem;font-weight:700;cursor:pointer;
-          font-family:'Noto Sans KR',sans-serif;
-        ">닫기 / Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- QRCode.js 라이브러리 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script>
-    var QR_URL = "https://cklikeyou-jpg.github.io/biostream.github.io/";
-    var _qrGenerated = false;
-
-    function showQR() {
-      var modal = document.getElementById("qr-modal");
-      modal.style.display = "flex";
-
-      // QR 한 번만 생성
-      if (!_qrGenerated) {
-        var container = document.getElementById("qr-img");
-        container.innerHTML = "";
-        new QRCode(container, {
-          text: QR_URL,
-          width: 200,
-          height: 200,
-          colorDark: "#0a1f5c",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H
-        });
-        _qrGenerated = true;
-      }
-    }
-
-    function closeQR() {
-      var modal = document.getElementById("qr-modal");
-      modal.style.transition = "opacity 0.3s";
-      modal.style.opacity = "0";
-      setTimeout(function(){
-        modal.style.display = "none";
-        modal.style.opacity = "1";
-      }, 300);
-    }
-
-    window.addEventListener("load", function() {
-      var modal = document.getElementById("qr-modal");
-      if (modal) {
-        modal.addEventListener("click", function(e){
-          if (e.target === modal) closeQR();
-        });
-      }
-    });
-  </script>
-
-  <!-- ===== 팝업 스크립트 ===== -->
-  <script>
-    // 닫기 함수 - 전역으로 선언
-    function closePopup() {
-      var el = document.getElementById('launch-popup');
-      if (!el) return;
-      el.style.transition = 'opacity 0.35s';
-      el.style.opacity = '0';
-      setTimeout(function() { el.style.display = 'none'; }, 370);
-    }
-
-    // 카운트다운
-    function _updateCountdown() {
-      var el = document.getElementById('popup-countdown');
-      if (!el) return;
-      var target = new Date('2026-05-04T00:00:00+09:00');
-      var diff = target - new Date();
-      if (diff <= 0) {
-        el.textContent = '🎉 정식 오픈! Grand Open!';
-        return;
-      }
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      var s = Math.floor((diff % 60000) / 1000);
-      el.textContent = d + '일 ' + h + '시간 ' + m + '분 ' + s + '초 남음';
-    }
-
-    // 페이지 완전 로드 후 실행
-    window.addEventListener('load', function() {
-      // 카운트다운 즉시 시작
-      _updateCountdown();
-      setInterval(_updateCountdown, 1000);
-
-      // 닫기 버튼 - onclick 직접 연결
-      var btn = document.getElementById('popup-close-btn');
-      if (btn) {
-        btn.onclick = function() { closePopup(); return false; };
-      }
-
-      // 팝업 바깥 클릭시 닫기
-      var popup = document.getElementById('launch-popup');
-      if (popup) {
-        popup.onclick = function(e) {
-          if (e.target === popup) closePopup();
-        };
-      }
     });
   </script>
 </body>
