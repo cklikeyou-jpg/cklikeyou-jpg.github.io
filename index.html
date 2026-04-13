@@ -302,29 +302,9 @@
           <div style="color:#0369a1;font-size:0.78rem;font-weight:600;margin-bottom:6px;">🗓️ D-DAY COUNTDOWN</div>
           <div id="popup-countdown" style="color:#0c2461;font-weight:800;font-size:1.1rem;letter-spacing:0.05em;">-</div>
         </div>
-        <!-- 버튼 2개: 오늘 하루 보지 않기 + 확인 -->
-        <div style="display:flex;gap:10px;">
-          <button id="popup-hide-btn" style="
-            flex:1;padding:13px;
-            background:#f1f5f9;color:#475569;
-            border:1px solid #e2e8f0;border-radius:10px;
-            font-size:0.84rem;font-weight:600;cursor:pointer;
-            font-family:'Noto Sans KR',sans-serif;
-            transition:background 0.15s;
-          " onmouseover="this.style.background='#e2e8f0'"
-             onmouseout="this.style.background='#f1f5f9'">
-            오늘 하루 보지 않기
-          </button>
-          <button id="popup-close-btn" style="
-            flex:1;padding:13px;
-            background:linear-gradient(135deg,#C41E3A,#f43f5e);
-            color:#fff;border:none;border-radius:10px;
-            font-size:0.97rem;font-weight:700;cursor:pointer;
-            font-family:'Noto Sans KR',sans-serif;
-          ">
-            확인했습니다 ✓
-          </button>
-        </div>
+        <button id="popup-close-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#C41E3A,#f43f5e);color:#fff;border:none;border-radius:10px;font-size:0.97rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
+          확인했습니다 &nbsp;/&nbsp; Got it ✓
+        </button>
       </div>
     </div>
   </div>
@@ -578,37 +558,6 @@
   <div style="padding:48px 0;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-
-      <!-- Synthesia 인사말 동영상 -->
-      <div style="max-width:780px;margin:0 auto 48px;text-align:center;">
-        <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:16px;color:#0c2461;">🎬 MAT 시험 소개 영상</h3>
-        <a href="https://share.synthesia.io/8e1a6378-f715-4f14-9991-2fc41a7ede74" target="_blank" rel="noopener"
-           style="display:block;text-decoration:none;">
-          <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18);background:linear-gradient(135deg,#0c2461 0%,#0369A1 50%,#0ea5e9 100%);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;"
-               onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 16px 48px rgba(0,0,0,0.28)'"
-               onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.18)'">
-            <!-- 배경 장식 -->
-            <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(255,255,255,0.07) 0%,transparent 60%);"></div>
-            <!-- 재생 버튼 원 -->
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
-              <div style="width:80px;height:80px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#0c2461">
-                  <polygon points="6,4 20,12 6,20"/>
-                </svg>
-              </div>
-              <div>
-                <p style="color:#fff;font-size:1.2rem;font-weight:700;margin:0 0 6px;">MAT 시험 소개</p>
-                <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin:0;">클릭하여 영상 시청하기 →</p>
-              </div>
-            </div>
-            <!-- 우측 하단 Synthesia 배지 -->
-            <div style="position:absolute;bottom:14px;right:18px;background:rgba(0,0,0,0.35);border-radius:6px;padding:4px 10px;">
-              <span style="color:rgba(255,255,255,0.75);font-size:0.72rem;">Powered by Synthesia</span>
-            </div>
-          </div>
-        </a>
-        <p style="color:#64748b;font-size:0.85rem;margin-top:10px;">▶ 클릭하면 새 창에서 영상이 재생됩니다</p>
-      </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
         <div>
@@ -3293,16 +3242,7 @@
 
   <!-- ===== 팝업 스크립트 ===== -->
   <script>
-    // ── 쿠키 확인: 오늘 하루 보지 않기를 눌렀는지 판단 ──
-    function _shouldShowPopup() {
-      var cookies = document.cookie.split('; ');
-      for (var i = 0; i < cookies.length; i++) {
-        if (cookies[i].startsWith('hidePopup=')) return false; // 쿠키 있으면 숨김
-      }
-      return true; // 쿠키 없으면 팝업 표시
-    }
-
-    // ── 팝업 닫기 (페이드 아웃) ──
+    // 닫기 함수 - 전역으로 선언
     function closePopup() {
       var el = document.getElementById('launch-popup');
       if (!el) return;
@@ -3311,15 +3251,7 @@
       setTimeout(function() { el.style.display = 'none'; }, 370);
     }
 
-    // ── 오늘 하루 보지 않기: 자정까지 쿠키 저장 후 팝업 닫기 ──
-    function hideForToday() {
-      var now = new Date();
-      var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-      document.cookie = 'hidePopup=1; expires=' + midnight.toUTCString() + '; path=/';
-      closePopup();
-    }
-
-    // ── D-DAY 카운트다운 (일 단위만 표시) ──
+    // 카운트다운
     function _updateCountdown() {
       var el = document.getElementById('popup-countdown');
       if (!el) return;
@@ -3329,38 +3261,26 @@
         el.textContent = '🎉 정식 오픈! Grand Open!';
         return;
       }
-      // Math.ceil: 오늘 남은 시간도 하루로 카운트
-      var days = Math.ceil(diff / 86400000);
-      el.textContent = '📅 D - ' + days + '일 남았습니다';
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      el.textContent = d + '일 ' + h + '시간 ' + m + '분 ' + s + '초 남음';
     }
 
-    // ── 페이지 완전 로드 후 실행 ──
+    // 페이지 완전 로드 후 실행
     window.addEventListener('load', function() {
-
-      // 오늘 하루 보지 않기 쿠키가 있으면 팝업 즉시 숨김
-      if (!_shouldShowPopup()) {
-        var el = document.getElementById('launch-popup');
-        if (el) el.style.display = 'none';
-        return;
-      }
-
-      // 카운트다운 표시 (일 단위이므로 1분마다 갱신으로 충분)
+      // 카운트다운 즉시 시작
       _updateCountdown();
-      setInterval(_updateCountdown, 60000);
+      setInterval(_updateCountdown, 1000);
 
-      // 확인 버튼 → 그냥 닫기
+      // 닫기 버튼 - onclick 직접 연결
       var btn = document.getElementById('popup-close-btn');
       if (btn) {
         btn.onclick = function() { closePopup(); return false; };
       }
 
-      // 오늘 하루 보지 않기 버튼 → 쿠키 저장 후 닫기
-      var hideBtn = document.getElementById('popup-hide-btn');
-      if (hideBtn) {
-        hideBtn.onclick = function() { hideForToday(); return false; };
-      }
-
-      // 팝업 배경(바깥) 클릭 시 닫기
+      // 팝업 바깥 클릭시 닫기
       var popup = document.getElementById('launch-popup');
       if (popup) {
         popup.onclick = function(e) {
