@@ -559,6 +559,37 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 
+      <!-- Synthesia 인사말 동영상 -->
+      <div style="max-width:780px;margin:0 auto 48px;text-align:center;">
+        <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:16px;color:#0c2461;">🎬 MAT 시험 소개 영상</h3>
+        <a href="https://share.synthesia.io/8e1a6378-f715-4f14-9991-2fc41a7ede74" target="_blank" rel="noopener"
+           style="display:block;text-decoration:none;">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18);background:linear-gradient(135deg,#0c2461 0%,#0369A1 50%,#0ea5e9 100%);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;"
+               onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 16px 48px rgba(0,0,0,0.28)'"
+               onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.18)'">
+            <!-- 배경 장식 -->
+            <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(255,255,255,0.07) 0%,transparent 60%);"></div>
+            <!-- 재생 버튼 원 -->
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
+              <div style="width:80px;height:80px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#0c2461">
+                  <polygon points="6,4 20,12 6,20"/>
+                </svg>
+              </div>
+              <div>
+                <p style="color:#fff;font-size:1.2rem;font-weight:700;margin:0 0 6px;">MAT 시험 소개</p>
+                <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin:0;">클릭하여 영상 시청하기 →</p>
+              </div>
+            </div>
+            <!-- 우측 하단 Synthesia 배지 -->
+            <div style="position:absolute;bottom:14px;right:18px;background:rgba(0,0,0,0.35);border-radius:6px;padding:4px 10px;">
+              <span style="color:rgba(255,255,255,0.75);font-size:0.72rem;">Powered by Synthesia</span>
+            </div>
+          </div>
+        </a>
+        <p style="color:#64748b;font-size:0.85rem;margin-top:10px;">▶ 클릭하면 새 창에서 영상이 재생됩니다</p>
+      </div>
+
       <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
         <div>
           <h3 class="text-2xl font-bold mb-6 text-dark">시험 원리</h3>
@@ -3159,7 +3190,7 @@
           <span style="color:#f87171;">Bio</span>stream 시험분석센터
         </div>
         <div style="color:rgba(255,255,255,0.75);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;">
-          QR코드로 바로 접속 · Scan to Visit
+          QR코드로 동영상 바로 보기 · Scan to Watch
         </div>
       </div>
 
@@ -3173,14 +3204,14 @@
           <div id="qr-img" style="width:200px;height:200px;"></div>
         </div>
         <p style="color:#475569;font-size:0.82rem;margin:14px 0 4px;">
-          📱 카메라로 스캔하면 바로 접속됩니다
+          📱 카메라로 스캔하면 동영상이 바로 재생됩니다
         </p>
         <p style="color:#94a3b8;font-size:0.75rem;margin:0 0 20px;">
           Scan with your phone camera to visit
         </p>
         <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:10px 14px;margin-bottom:20px;">
           <p style="color:#0369a1;font-size:0.78rem;margin:0;word-break:break-all;">
-            🔗 cklikeyou-jpg.github.io/biostream.github.io/
+            🔗 share.synthesia.io · MAT 시험 소개 영상
           </p>
         </div>
         <button onclick="closeQR()" style="
@@ -3197,7 +3228,7 @@
   <!-- QRCode.js 라이브러리 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    var QR_URL = "https://cklikeyou-jpg.github.io/biostream.github.io/";
+    var QR_URL = "https://share.synthesia.io/8e1a6378-f715-4f14-9991-2fc41a7ede74";
     var _qrGenerated = false;
 
     function showQR() {
