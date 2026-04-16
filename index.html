@@ -402,6 +402,12 @@
     <button class="dd-item" onclick="showTab('library');setDrawer('pharmacopeia');closeDD()" data-tab="library">
       <span class="dd-icon">📘</span> MAT Pharmacopoeia
     </button>
+    <button onclick="openPDF('EP_2.6.30.pdf')" style="color:blue; text-decoration:underline; font-size:16px;">
+  📄 EP 2.6.30 보기
+</button>
+    <div style="width:100%; height:800px; margin-top:20px;">
+  <iframe id="pdf-frame" src="" width="100%" height="100%" style="border:none;"></iframe>
+</div>
     <button class="dd-item" onclick="showTab('library');setDrawer('technology');closeDD()" data-tab="library">
       <span class="dd-icon">⚗️</span> MAT Technology
     </button>
@@ -488,6 +494,9 @@
 <div class="mob-cat-label" style="margin-top:8px;">🗂️ 자료 서랍함</div>
 <button onclick="showTab('library');setDrawer('pharmacopeia');closeMobile()" class="mobile-nav-btn" data-tab="library">
   <span>📘</span>MAT Pharmacopoeia
+  <div style="width:100%; height:800px; margin-top:20px;">
+  <iframe id="pdf-frame" src="" width="100%" height="100%" style="border:none;"></iframe>
+</div>
 </button>
 <button onclick="showTab('library');setDrawer('technology');closeMobile()" class="mobile-nav-btn" data-tab="library">
   <span>⚗️</span>MAT Technology
@@ -4237,6 +4246,15 @@ const analytics = getAnalytics(app);
   window._bsUser = null;
   renderAuthUI();
 </script>
-  
+<script>
+function openPDF(file) {
+  document.getElementById('pdf-frame').src = file;
+}
+</script>
+ <script>
+function openPDF(file) {
+  document.getElementById('pdf-frame').src = file;
+}
+</script>
 </body>
 </html>
