@@ -390,6 +390,32 @@
           </div>
 
           <!-- 4. 고객 지원 -->
+          <!-- 5. 자료 서랍함 -->
+<div class="dd-cat" id="cat5">
+  <button class="dd-btn" onclick="toggleDD('cat5')" id="cat5-btn">
+    <span>🗂️ 자료 서랍함</span>
+    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </button>
+  <div class="dd-panel" id="cat5-panel" style="border-top:3px solid #7c3aed;min-width:220px;">
+    <button class="dd-item" onclick="showTab('library');setDrawer('pharmacopeia');closeDD()" data-tab="library">
+      <span class="dd-icon">📘</span> MAT Pharmacopoeia
+    </button>
+    <button class="dd-item" onclick="showTab('library');setDrawer('technology');closeDD()" data-tab="library">
+      <span class="dd-icon">⚗️</span> MAT Technology
+    </button>
+    <button class="dd-item" onclick="showTab('library');setDrawer('approach');closeDD()" data-tab="library">
+      <span class="dd-icon">🎯</span> MAT Approach
+    </button>
+    <button class="dd-item" onclick="showTab('library');setDrawer('nepra');closeDD()" data-tab="library">
+      <span class="dd-icon">⚠️</span> MAT NEP RA
+    </button>
+    <button class="dd-item" onclick="showTab('library');setDrawer('challenge');closeDD()" data-tab="library">
+      <span class="dd-icon">🔥</span> MAT Challenge
+    </button>
+  </div>
+</div>
           <div class="dd-cat" id="cat4">
             <button class="dd-btn" onclick="toggleDD('cat4')" id="cat4-btn">
               <span>💬 고객 지원</span>
@@ -457,6 +483,24 @@
           <button onclick="showTab('regulatory');closeMobile()" class="mobile-nav-btn" data-tab="regulatory"><span>📋</span>규제 현황</button>
           <button onclick="showTab('qrm');closeMobile()"        class="mobile-nav-btn" data-tab="qrm"><span>🛡️</span>QRM 관리</button>
           <button onclick="showTab('glossary');closeMobile()"   class="mobile-nav-btn" data-tab="glossary"><span>📖</span>약어집</button>
+         
+          <!-- 자료 서랍함 (모바일) -->
+<div class="mob-cat-label" style="margin-top:8px;">🗂️ 자료 서랍함</div>
+<button onclick="showTab('library');setDrawer('pharmacopeia');closeMobile()" class="mobile-nav-btn" data-tab="library">
+  <span>📘</span>MAT Pharmacopoeia
+</button>
+<button onclick="showTab('library');setDrawer('technology');closeMobile()" class="mobile-nav-btn" data-tab="library">
+  <span>⚗️</span>MAT Technology
+</button>
+<button onclick="showTab('library');setDrawer('approach');closeMobile()" class="mobile-nav-btn" data-tab="library">
+  <span>🎯</span>MAT Approach
+</button>
+<button onclick="showTab('library');setDrawer('nepra');closeMobile()" class="mobile-nav-btn" data-tab="library">
+  <span>⚠️</span>MAT NEP RA
+</button>
+<button onclick="showTab('library');setDrawer('challenge');closeMobile()" class="mobile-nav-btn" data-tab="library">
+  <span>🔥</span>MAT Challenge
+</button>
           <!-- 고객 지원 -->
           <div class="mob-cat-label" style="margin-top:8px;">💬 고객 지원</div>
           <button onclick="showTab('faq');closeMobile()"  class="mobile-nav-btn" data-tab="faq"><span>💬</span>FAQ</button>
@@ -2827,7 +2871,539 @@
     </div>
   </div>
   </section>
+<!-- ===== 🗂️ 자료 서랍함 섹션 ===== -->
+<section id="library" class="tab-page" style="background:#F7F9FC;padding-top:0;">
 
+  <!-- 그라데이션 배너 -->
+  <div class="tab-banner" style="background:linear-gradient(135deg,#1e1b4b 0%,#4338ca 40%,#7c3aed 70%,#a855f7 100%);padding:48px 0 40px;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div style="font-size:2.5rem;margin-bottom:12px;">🗂️</div>
+      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Resource Library</span>
+      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">MAT 자료 서랍함</h2>
+      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">
+        MAT 관련 핵심 자료를 5개 카테고리로 분류하여 제공합니다.<br>
+        자료를 클릭하면 새 창에서 바로 확인하실 수 있습니다.
+      </p>
+    </div>
+  </div>
+
+  <div style="padding:48px 0;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- ── 서랍 탭 선택 버튼 ── -->
+      <div id="drawer-tabs" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px;">
+
+        <button onclick="setDrawer('pharmacopeia')" data-drawer="pharmacopeia"
+          style="display:flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;
+                 font-size:0.88rem;font-weight:700;cursor:pointer;border:2px solid #3b82f6;
+                 background:#eff6ff;color:#1d4ed8;font-family:'Noto Sans KR',sans-serif;
+                 transition:all 0.2s;" class="drawer-tab-btn active-drawer">
+          📘 MAT Pharmacopoeia
+        </button>
+        <button onclick="setDrawer('technology')" data-drawer="technology"
+          style="display:flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;
+                 font-size:0.88rem;font-weight:700;cursor:pointer;border:2px solid #e2e8f0;
+                 background:#f8fafc;color:#64748b;font-family:'Noto Sans KR',sans-serif;
+                 transition:all 0.2s;" class="drawer-tab-btn">
+          ⚗️ MAT Technology
+        </button>
+        <button onclick="setDrawer('approach')" data-drawer="approach"
+          style="display:flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;
+                 font-size:0.88rem;font-weight:700;cursor:pointer;border:2px solid #e2e8f0;
+                 background:#f8fafc;color:#64748b;font-family:'Noto Sans KR',sans-serif;
+                 transition:all 0.2s;" class="drawer-tab-btn">
+          🎯 MAT Approach
+        </button>
+        <button onclick="setDrawer('nepra')" data-drawer="nepra"
+          style="display:flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;
+                 font-size:0.88rem;font-weight:700;cursor:pointer;border:2px solid #e2e8f0;
+                 background:#f8fafc;color:#64748b;font-family:'Noto Sans KR',sans-serif;
+                 transition:all 0.2s;" class="drawer-tab-btn">
+          ⚠️ MAT NEP RA
+        </button>
+        <button onclick="setDrawer('challenge')" data-drawer="challenge"
+          style="display:flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;
+                 font-size:0.88rem;font-weight:700;cursor:pointer;border:2px solid #e2e8f0;
+                 background:#f8fafc;color:#64748b;font-family:'Noto Sans KR',sans-serif;
+                 transition:all 0.2s;" class="drawer-tab-btn">
+          🔥 MAT Challenge
+        </button>
+
+      </div><!-- /drawer-tabs -->
+
+      <!-- ── 서랍별 헤더 설명 ── -->
+      <div id="drawer-header" style="margin-bottom:32px;text-align:center;">
+        <!-- JS가 채움 -->
+      </div>
+
+      <!-- ── 관리자 자료 추가 버튼 (비번 확인 후 노출) ── -->
+      <div style="text-align:right;margin-bottom:20px;">
+        <button onclick="openLibraryAdmin()"
+          style="display:inline-flex;align-items:center;gap:6px;
+                 background:#1e293b;color:#fff;border:none;
+                 padding:9px 18px;border-radius:8px;font-size:0.82rem;
+                 font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;
+                 transition:background 0.15s;"
+          onmouseover="this.style.background='#334155'"
+          onmouseout="this.style.background='#1e293b'">
+          🔒 관리자 — 자료 추가
+        </button>
+      </div>
+
+      <!-- ── 자료 카드 그리드 ── -->
+      <div id="library-grid" style="
+        display:grid;
+        grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+        gap:20px;min-height:200px;
+      ">
+        <!-- JS가 렌더링 -->
+      </div>
+
+      <!-- 자료 없을 때 -->
+      <div id="library-empty" style="display:none;text-align:center;padding:80px 0;">
+        <div style="font-size:3rem;margin-bottom:16px;">📭</div>
+        <p style="color:#94a3b8;font-size:1rem;font-weight:600;">등록된 자료가 없습니다.</p>
+        <p style="color:#cbd5e1;font-size:0.85rem;margin-top:6px;">관리자 버튼으로 첫 자료를 등록해 보세요.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section><!-- /library -->
+
+
+<!-- ===== 관리자 자료 추가 모달 ===== -->
+<div id="lib-admin-modal" style="
+  display:none;position:fixed;inset:0;z-index:99995;
+  align-items:center;justify-content:center;
+  background:rgba(10,20,50,0.72);backdrop-filter:blur(4px);
+">
+  <div style="
+    background:#fff;border-radius:20px;max-width:500px;width:92%;
+    box-shadow:0 24px 64px rgba(0,0,0,0.25);overflow:hidden;
+  ">
+    <!-- 모달 헤더 -->
+    <div style="background:linear-gradient(135deg,#1e1b4b,#4338ca);padding:22px 28px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="color:#fff;font-weight:800;font-size:1.05rem;">🗂️ 자료 서랍함 관리</div>
+        <div style="color:rgba(255,255,255,0.7);font-size:0.78rem;margin-top:2px;">자료 추가 · 삭제</div>
+      </div>
+      <button onclick="closeLibraryAdmin()" style="
+        background:rgba(255,255,255,0.15);color:#fff;border:none;
+        width:32px;height:32px;border-radius:50%;font-size:1.2rem;
+        cursor:pointer;line-height:1;
+      ">×</button>
+    </div>
+
+    <!-- 비밀번호 확인 단계 -->
+    <div id="lib-pw-step" style="padding:28px;">
+      <label style="display:block;font-size:0.85rem;font-weight:700;color:#1e293b;margin-bottom:8px;">관리자 비밀번호</label>
+      <input id="lib-pw-input" type="password" placeholder="비밀번호 입력"
+        style="width:100%;padding:11px 14px;border:1px solid #e2e8f0;border-radius:8px;
+               font-size:0.9rem;box-sizing:border-box;font-family:'Noto Sans KR',sans-serif;margin-bottom:8px;"
+        onkeydown="if(event.key==='Enter') checkLibPw()">
+      <p id="lib-pw-error" style="color:#ef4444;font-size:0.82rem;margin:0 0 14px;display:none;">비밀번호가 올바르지 않습니다.</p>
+      <button onclick="checkLibPw()" style="
+        width:100%;padding:12px;background:#4338ca;color:#fff;
+        border:none;border-radius:8px;font-size:0.92rem;font-weight:700;
+        cursor:pointer;font-family:'Noto Sans KR',sans-serif;">확인</button>
+    </div>
+
+    <!-- 자료 추가 폼 단계 -->
+    <div id="lib-form-step" style="display:none;padding:28px;">
+
+      <!-- 서랍 선택 -->
+      <label style="display:block;font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:6px;">서랍 선택 *</label>
+      <select id="lib-drawer-select" style="
+        width:100%;padding:11px 14px;border:1px solid #e2e8f0;border-radius:8px;
+        font-size:0.9rem;box-sizing:border-box;background:#fff;
+        font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">
+        <option value="pharmacopeia">📘 MAT Pharmacopoeia</option>
+        <option value="technology">⚗️ MAT Technology</option>
+        <option value="approach">🎯 MAT Approach</option>
+        <option value="nepra">⚠️ MAT NEP RA</option>
+        <option value="challenge">🔥 MAT Challenge</option>
+      </select>
+
+      <!-- 자료 유형 -->
+      <label style="display:block;font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:6px;">자료 유형 *</label>
+      <select id="lib-type-select" style="
+        width:100%;padding:11px 14px;border:1px solid #e2e8f0;border-radius:8px;
+        font-size:0.9rem;box-sizing:border-box;background:#fff;
+        font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">
+        <option value="pdf">📄 PDF 문서</option>
+        <option value="link">🔗 외부 링크 (논문/웹페이지)</option>
+        <option value="pptx">📊 발표자료 (PPT/슬라이드)</option>
+        <option value="video">🎬 영상 링크</option>
+        <option value="excel">📈 데이터/엑셀</option>
+      </select>
+
+      <!-- 제목 -->
+      <label style="display:block;font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:6px;">자료 제목 *</label>
+      <input id="lib-title" type="text" placeholder="예: EP 2.6.30 MAT 가이드라인 2024"
+        style="width:100%;padding:11px 14px;border:1px solid #e2e8f0;border-radius:8px;
+               font-size:0.9rem;box-sizing:border-box;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">
+
+      <!-- 설명 -->
+      <label style="display:block;font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:6px;">간단 설명</label>
+      <input id="lib-desc" type="text" placeholder="예: 유럽약전 최신 개정판 전문"
+        style="width:100%;padding:11px 14px;border:1px solid #e2e8f0;border-radius:8px;
+               font-size:0.9rem;box-sizing:border-box;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">
+
+      <!-- URL -->
+      <label style="display:block;font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:4px;">URL 링크 *</label>
+      <p style="color:#64748b;font-size:0.76rem;margin:0 0 6px;">
+        ※ PDF는 GitHub에 올린 후 Raw 링크를 사용하세요.<br>
+        예: https://github.com/아이디/저장소/raw/main/파일명.pdf
+      </p>
+      <input id="lib-url" type="url" placeholder="https://..."
+        style="width:100%;padding:11px 14px;border:1px solid #e2e8f0;border-radius:8px;
+               font-size:0.9rem;box-sizing:border-box;font-family:'Noto Sans KR',sans-serif;margin-bottom:20px;">
+
+      <!-- 버튼 -->
+      <div style="display:flex;gap:10px;">
+        <button onclick="saveLibraryItem()" style="
+          flex:1;padding:12px;background:linear-gradient(135deg,#4338ca,#7c3aed);
+          color:#fff;border:none;border-radius:8px;font-size:0.92rem;
+          font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
+          ✅ 자료 추가
+        </button>
+        <button onclick="closeLibraryAdmin()" style="
+          flex:1;padding:12px;background:#f1f5f9;color:#64748b;
+          border:none;border-radius:8px;font-size:0.92rem;
+          font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
+          취소
+        </button>
+      </div>
+
+      <!-- 기존 자료 삭제 목록 -->
+      <div style="margin-top:24px;border-top:1px solid #e2e8f0;padding-top:20px;">
+        <p style="font-size:0.82rem;font-weight:700;color:#1e293b;margin:0 0 12px;">🗑 현재 서랍 자료 삭제</p>
+        <div id="lib-delete-list" style="max-height:180px;overflow-y:auto;"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== 자료 서랍함 스크립트 ===== -->
+<script>
+/* ────────────────────────────────────────────
+   자료 서랍함 전역 설정
+──────────────────────────────────────────── */
+
+// 서랍 메타 정보 (아이콘·색상·설명)
+var DRAWER_META = {
+  pharmacopeia: {
+    label: 'MAT Pharmacopoeia',
+    icon:  '📘',
+    color: '#1d4ed8',
+    bg:    '#eff6ff',
+    border:'#3b82f6',
+    desc:  'EP 2.6.30, USP, KP 등 주요 약전의 MAT 관련 공식 문서 모음입니다.',
+    tag:   '약전 / 규제문서'
+  },
+  technology: {
+    label: 'MAT Technology',
+    icon:  '⚗️',
+    color: '#0f766e',
+    bg:    '#f0fdfa',
+    border:'#14b8a6',
+    desc:  'PBMC 시험법, ELISA, 세포배양 등 MAT 핵심 기술 관련 자료입니다.',
+    tag:   '기술 / 방법론'
+  },
+  approach: {
+    label: 'MAT Approach',
+    icon:  '🎯',
+    color: '#7c3aed',
+    bg:    '#faf5ff',
+    border:'#a855f7',
+    desc:  'MAT 도입 전략, PSV 설계, 제품별 적용 접근법 자료입니다.',
+    tag:   '전략 / 접근법'
+  },
+  nepra: {
+    label: 'MAT NEP RA',
+    icon:  '⚠️',
+    color: '#b45309',
+    bg:    '#fffbeb',
+    border:'#f59e0b',
+    desc:  '비내독소성 발열원(NEP) 위험성 평가(RA) 관련 자료 및 QRM 문서입니다.',
+    tag:   'NEP / 위험성 평가'
+  },
+  challenge: {
+    label: 'MAT Challenge',
+    icon:  '🔥',
+    color: '#be123c',
+    bg:    '#fff1f2',
+    border:'#f43f5e',
+    desc:  'MAT 시험의 한계, 간섭 문제, LER 극복 전략 등 도전 과제 자료입니다.',
+    tag:   '도전 과제 / 심화'
+  }
+};
+
+// 자료 유형별 아이콘
+var TYPE_ICON = {
+  pdf:   '📄',
+  link:  '🔗',
+  pptx:  '📊',
+  video: '🎬',
+  excel: '📈'
+};
+
+// 현재 열린 서랍
+var currentDrawer = 'pharmacopeia';
+
+// 관리자 비밀번호
+var LIB_ADMIN_PW = '3214';
+
+
+/* ────────────────────────────────────────────
+   로컬스토리지 CRUD
+──────────────────────────────────────────── */
+function getLibItems(drawer) {
+  try {
+    var s = localStorage.getItem('lib_' + drawer);
+    return s ? JSON.parse(s) : [];
+  } catch(e) { return []; }
+}
+
+function setLibItems(drawer, list) {
+  try { localStorage.setItem('lib_' + drawer, JSON.stringify(list)); } catch(e) {}
+}
+
+
+/* ────────────────────────────────────────────
+   서랍 전환
+──────────────────────────────────────────── */
+function setDrawer(drawer) {
+  currentDrawer = drawer;
+  var meta = DRAWER_META[drawer];
+
+  // 탭 버튼 스타일 갱신
+  document.querySelectorAll('.drawer-tab-btn').forEach(function(btn) {
+    var isActive = btn.getAttribute('data-drawer') === drawer;
+    btn.style.background = isActive ? meta.bg    : '#f8fafc';
+    btn.style.color      = isActive ? meta.color : '#64748b';
+    btn.style.borderColor= isActive ? meta.border: '#e2e8f0';
+  });
+
+  // 헤더 설명 갱신
+  document.getElementById('drawer-header').innerHTML =
+    '<div style="display:inline-flex;align-items:center;gap:12px;' +
+    'background:' + meta.bg + ';border:1px solid ' + meta.border + ';' +
+    'border-radius:16px;padding:14px 24px;">' +
+    '<span style="font-size:1.8rem;">' + meta.icon + '</span>' +
+    '<div style="text-align:left;">' +
+    '<p style="margin:0;font-weight:800;color:' + meta.color + ';font-size:1.05rem;">' +
+    meta.label + '</p>' +
+    '<p style="margin:4px 0 0;color:#64748b;font-size:0.82rem;">' + meta.desc + '</p>' +
+    '</div></div>';
+
+  // 관리자 모달 서랍 select 동기화
+  var sel = document.getElementById('lib-drawer-select');
+  if (sel) sel.value = drawer;
+
+  renderLibraryGrid();
+}
+
+
+/* ────────────────────────────────────────────
+   자료 카드 렌더링
+──────────────────────────────────────────── */
+function renderLibraryGrid() {
+  var items = getLibItems(currentDrawer);
+  var grid  = document.getElementById('library-grid');
+  var empty = document.getElementById('library-empty');
+
+  if (!items.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  var meta = DRAWER_META[currentDrawer];
+  grid.innerHTML = items.map(function(item, idx) {
+    return [
+      '<div style="',
+        'background:#fff;border-radius:16px;',
+        'border:1px solid #e2e8f0;',
+        'border-top:4px solid ' + meta.border + ';',
+        'padding:22px 22px 18px;',
+        'box-shadow:0 2px 8px rgba(0,0,0,0.04);',
+        'transition:transform 0.2s,box-shadow 0.2s;',
+        'display:flex;flex-direction:column;gap:10px;',
+        '" onmouseover="this.style.transform=\'translateY(-4px)\';',
+        'this.style.boxShadow=\'0 10px 28px rgba(0,0,0,0.1)\'"',
+        ' onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 2px 8px rgba(0,0,0,0.04)\'">',
+
+      /* 상단: 유형 배지 + 번호 */
+      '<div style="display:flex;justify-content:space-between;align-items:center;">',
+        '<span style="background:' + meta.bg + ';color:' + meta.color + ';',
+        'font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:20px;">',
+        TYPE_ICON[item.type] + ' ' + item.type.toUpperCase() + '</span>',
+        '<span style="color:#cbd5e1;font-size:0.72rem;">No.' + (idx + 1) + '</span>',
+      '</div>',
+
+      /* 제목 */
+      '<p style="font-weight:700;font-size:0.97rem;color:#1e293b;margin:0;line-height:1.4;">',
+        escLibStr(item.title),
+      '</p>',
+
+      /* 설명 */
+      item.desc
+        ? '<p style="font-size:0.8rem;color:#64748b;margin:0;line-height:1.5;">' + escLibStr(item.desc) + '</p>'
+        : '',
+
+      /* 태그 */
+      '<div style="display:flex;gap:6px;flex-wrap:wrap;">',
+        '<span style="background:#f1f5f9;color:#475569;font-size:0.7rem;',
+        'padding:3px 8px;border-radius:20px;font-weight:600;">' + meta.tag + '</span>',
+      '</div>',
+
+      /* 하단 버튼 */
+      '<div style="display:flex;gap:8px;margin-top:4px;">',
+        '<a href="' + escLibStr(item.url) + '" target="_blank" rel="noopener"',
+        ' style="flex:1;text-align:center;padding:9px 0;',
+        'background:' + meta.color + ';color:#fff;',
+        'border-radius:8px;font-size:0.82rem;font-weight:700;',
+        'text-decoration:none;transition:opacity 0.15s;"',
+        ' onmouseover="this.style.opacity=\'0.85\'"',
+        ' onmouseout="this.style.opacity=\'1\'">',
+        '↗ 열기</a>',
+      '</div>',
+
+      '</div>'
+    ].join('');
+  }).join('');
+}
+
+
+/* ────────────────────────────────────────────
+   관리자 모달
+──────────────────────────────────────────── */
+function openLibraryAdmin() {
+  document.getElementById('lib-admin-modal').style.display = 'flex';
+  document.getElementById('lib-pw-step').style.display    = 'block';
+  document.getElementById('lib-form-step').style.display  = 'none';
+  document.getElementById('lib-pw-input').value           = '';
+  document.getElementById('lib-pw-error').style.display   = 'none';
+  setTimeout(function(){ document.getElementById('lib-pw-input').focus(); }, 100);
+}
+
+function closeLibraryAdmin() {
+  document.getElementById('lib-admin-modal').style.display = 'none';
+}
+
+function checkLibPw() {
+  var pw = document.getElementById('lib-pw-input').value;
+  if (pw === LIB_ADMIN_PW) {
+    document.getElementById('lib-pw-step').style.display   = 'none';
+    document.getElementById('lib-form-step').style.display = 'block';
+    // 현재 서랍 서랍 선택에 반영
+    document.getElementById('lib-drawer-select').value = currentDrawer;
+    // 삭제 목록 갱신
+    refreshDeleteList();
+  } else {
+    document.getElementById('lib-pw-error').style.display = 'block';
+    document.getElementById('lib-pw-input').value = '';
+    document.getElementById('lib-pw-input').focus();
+  }
+}
+
+/* 서랍 select 변경 시 삭제 목록도 갱신 */
+document.getElementById('lib-drawer-select').addEventListener('change', function() {
+  refreshDeleteList();
+});
+
+/* 자료 저장 */
+function saveLibraryItem() {
+  var drawer = document.getElementById('lib-drawer-select').value;
+  var type   = document.getElementById('lib-type-select').value;
+  var title  = document.getElementById('lib-title').value.trim();
+  var desc   = document.getElementById('lib-desc').value.trim();
+  var url    = document.getElementById('lib-url').value.trim();
+
+  if (!title || !url) { alert('제목과 URL은 필수입니다.'); return; }
+
+  var list = getLibItems(drawer);
+  list.push({ id: Date.now(), type: type, title: title, desc: desc, url: url });
+  setLibItems(drawer, list);
+
+  // 입력 초기화
+  document.getElementById('lib-title').value = '';
+  document.getElementById('lib-desc').value  = '';
+  document.getElementById('lib-url').value   = '';
+
+  // 현재 서랍이면 즉시 반영
+  if (drawer === currentDrawer) renderLibraryGrid();
+  refreshDeleteList();
+
+  alert('✅ 자료가 추가되었습니다!\n서랍: ' + DRAWER_META[drawer].label);
+}
+
+/* 삭제 목록 렌더 */
+function refreshDeleteList() {
+  var drawer = document.getElementById('lib-drawer-select').value;
+  var list   = getLibItems(drawer);
+  var el     = document.getElementById('lib-delete-list');
+
+  if (!list.length) {
+    el.innerHTML = '<p style="color:#94a3b8;font-size:0.8rem;text-align:center;padding:12px 0;">이 서랍에 등록된 자료가 없습니다.</p>';
+    return;
+  }
+
+  el.innerHTML = list.map(function(item) {
+    return '<div style="display:flex;justify-content:space-between;align-items:center;' +
+      'padding:8px 0;border-bottom:1px solid #f1f5f9;">' +
+      '<span style="font-size:0.8rem;color:#334155;flex:1;padding-right:8px;line-height:1.4;">' +
+        TYPE_ICON[item.type] + ' ' + escLibStr(item.title) +
+      '</span>' +
+      '<button onclick="deleteLibItem(\'' + drawer + '\',' + item.id + ')" style="' +
+        'background:#fee2e2;color:#ef4444;border:none;' +
+        'padding:5px 10px;border-radius:6px;font-size:0.75rem;' +
+        'font-weight:700;cursor:pointer;flex-shrink:0;">' +
+        '삭제' +
+      '</button>' +
+      '</div>';
+  }).join('');
+}
+
+/* 자료 삭제 */
+function deleteLibItem(drawer, id) {
+  if (!confirm('이 자료를 삭제하시겠습니까?')) return;
+  var list = getLibItems(drawer).filter(function(x){ return x.id !== id; });
+  setLibItems(drawer, list);
+  if (drawer === currentDrawer) renderLibraryGrid();
+  refreshDeleteList();
+}
+
+/* XSS 방지 */
+function escLibStr(s) {
+  return String(s||'')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+/* 모달 바깥 클릭 닫기 */
+document.getElementById('lib-admin-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeLibraryAdmin();
+});
+
+/* ALL_TABS에 library 추가 (showTab 함수가 인식하도록) */
+if (typeof ALL_TABS !== 'undefined' && ALL_TABS.indexOf('library') === -1) {
+  ALL_TABS.push('library');
+}
+
+/* DOMContentLoaded 시 초기 렌더 */
+document.addEventListener('DOMContentLoaded', function() {
+  setDrawer('pharmacopeia');
+});
+</script>
+  
   <!-- ===== 푸터 ===== -->
   <footer class="bg-dark text-gray-400 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -3014,7 +3590,7 @@
     }
 
     // ===== 탭 페이지 전환 =====
-    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','news','contact'];
+    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','news','contact','library'];
     var currentLang = 'ko';
 
     function showTab(tabId) {
