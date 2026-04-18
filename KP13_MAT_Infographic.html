@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KP13 단핵구활성화시험법 (MAT) 통합 분석 대시보드</title>
+    
+    <!-- Favicon: 하늘색 배경의 대문자 M -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2300BFFF'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='60' font-weight='bold' fill='white'>M</text></svg>">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- Chosen Palette: Clinical Precision (Background: #F8FAFC, Text: #1E293B, Primary: #2563EB (Vibrant Blue), Success: #10B981 (Emerald), Warning: #F59E0B (Amber)) -->
-    <!-- Application Structure Plan: The SPA is designed as a linear, highly interactive dashboard that guides the user through the logical flow of the MAT process. It begins with an 'Overview' to establish context, moves into an 'Interactive Calculator' section for critical parameter setup (CLC/MVD), visualizes the 'Validation Parameters' (Standard Curve & Recovery) to explain the data requirements, and concludes with an interactive 'Methods & Interpretation' section. This structure transforms a dense procedural document into a digestible, task-oriented workflow. -->
-    <!-- Visualization & Content Choices: 
-         1. Intro Section -> Goal: Inform -> Method: Styled HTML cards with Unicode icons -> Justification: Organizes cell sources clearly without SVG.
-         2. CLC/MVD Calculator -> Goal: Interact/Inform -> Method: Dynamic HTML form with JS -> Justification: Simplifies complex equations from the text into an immediate feedback tool.
-         3. Standard Curve Chart -> Goal: Relationships -> Method: Chart.js Line Chart -> Justification: Visually demonstrates the non-linear dose-response and R-squared requirement. Includes required tooltip config. NO SVG used.
-         4. Interference Recovery Chart -> Goal: Compare -> Method: Chart.js Bar Chart -> Justification: Clearly shows the 50-200% valid range for spike recovery.
-         5. Methods Tabs -> Goal: Organize -> Method: HTML/JS Tabs -> Justification: Compares Method 1 and Method 2 side-by-side without overwhelming the user.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
     <style>
         body {
             font-family: 'Noto Sans KR', sans-serif;
@@ -63,9 +56,9 @@
 
     <nav class="bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="font-black text-xl text-blue-800 flex items-center gap-2">
-                <span class="text-2xl">&#128300;</span> KP13 MAT Dashboard
-            </div>
+            <a href="https://cklikeyou-jpg.github.io/" class="font-black text-xl text-blue-800 flex items-center gap-2 hover:text-blue-600 transition-colors">
+                <span class="text-2xl">🏠</span> Home으로 돌아가기
+            </a>
             <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
                 <a href="#overview" class="hover:text-blue-600 transition-colors">개요 및 세포원</a>
                 <a href="#calculator" class="hover:text-blue-600 transition-colors">파라미터 계산</a>
@@ -375,9 +368,8 @@
         // Initialize Charts
         window.onload = function() {
             updateCalculations();
-            document.getElementById('contentMethod2').style.display = 'none'; // Initially hide tab 2
+            document.getElementById('contentMethod2').style.display = 'none';
 
-            // 1. Standard Curve Chart (Line)
             const ctxCurve = document.getElementById('standardCurveChart').getContext('2d');
             new Chart(ctxCurve, {
                 type: 'line',
@@ -385,7 +377,7 @@
                     labels: ['0.01', '0.05', '0.1', '0.5', '1.0', '5.0'].map(l => wrapLabel(`${l} EE/mL`)),
                     datasets: [{
                         label: 'Optical Density (OD)',
-                        data: [0.05, 0.15, 0.35, 1.2, 1.8, 2.4], // Mock 4-PL sigmoidal shape
+                        data: [0.05, 0.15, 0.35, 1.2, 1.8, 2.4],
                         borderColor: '#2563EB',
                         backgroundColor: 'rgba(37, 99, 235, 0.1)',
                         borderWidth: 3,
@@ -417,7 +409,6 @@
                 }
             });
 
-            // 2. Interference Recovery Chart (Bar)
             const ctxRecovery = document.getElementById('recoveryChart').getContext('2d');
             new Chart(ctxRecovery, {
                 type: 'bar',
@@ -425,10 +416,10 @@
                     labels: ['1/1 희석액 (원액)', '1/10 희석액', '1/50 희석액 (MVD 근접)'].map(l => wrapLabel(l)),
                     datasets: [{
                         label: 'Spike Recovery (%)',
-                        data: [30, 85, 110], // Demonstrating interference at low dilution, recovery at higher
+                        data: [30, 85, 110],
                         backgroundColor: [
-                            '#F43F5E', // Red for out of bounds (<50)
-                            '#10B981', // Green for valid
+                            '#F43F5E',
+                            '#10B981',
                             '#10B981'
                         ],
                         borderRadius: 6
@@ -439,10 +430,7 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
-                        tooltip: commonTooltipConfig,
-                        annotation: {
-                            // Optional: Could add lines for 50 and 200, handled via visual bounds here
-                        }
+                        tooltip: commonTooltipConfig
                     },
                     scales: {
                         y: {
@@ -461,7 +449,6 @@
                     beforeDraw: (chart) => {
                         const {ctx, chartArea: {top, right, bottom, left, width, height}, scales: {y}} = chart;
                         ctx.save();
-                        // 50% Line
                         const y50 = y.getPixelForValue(50);
                         ctx.strokeStyle = '#94A3B8';
                         ctx.setLineDash([5, 5]);
@@ -470,7 +457,6 @@
                         ctx.lineTo(right, y50);
                         ctx.stroke();
                         
-                        // 200% Line
                         const y200 = y.getPixelForValue(200);
                         ctx.beginPath();
                         ctx.moveTo(left, y200);
