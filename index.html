@@ -421,6 +421,9 @@
               <button class="dd-item" onclick="showTab('news');closeDD()" data-tab="news">
                 <span class="dd-icon">📰</span> MAT 뉴스
               </button>
+              <button class="dd-item" onclick="showTab('break');closeDD()" data-tab="break">
+                <span class="dd-icon">☕</span> 휴식시간
+              </button>
             </div>
           </div>
 
@@ -480,6 +483,7 @@
           <div class="mob-cat-label" style="margin-top:8px;">💬 고객 지원</div>
           <button onclick="showTab('faq');closeMobile()"  class="mobile-nav-btn" data-tab="faq"><span>💬</span>FAQ</button>
           <button onclick="showTab('news');closeMobile()" class="mobile-nav-btn" data-tab="news"><span>📰</span>MAT 뉴스</button>
+          <button onclick="showTab('break');closeMobile()" class="mobile-nav-btn" data-tab="break"><span>☕</span>휴식시간</button>
           <!-- 문의하기 -->
           <button onclick="showTab('contact');closeMobile()" class="mobile-nav-btn" data-tab="contact"
             style="margin-top:10px;background:#C41E3A;color:#fff;font-weight:700;border-radius:8px;">
@@ -2751,6 +2755,92 @@
   document.addEventListener('DOMContentLoaded', function(){ switchNewsTab('regulatory'); });
   </script>
 
+  <!-- ===== 휴식시간 섹션 ===== -->
+  <section id="break" class="tab-page" style="background:#F7F9FC;padding-top:0;">
+  <div class="tab-banner" style="background:linear-gradient(135deg,#064e3b 0%,#065f46 40%,#059669 75%,#34d399 100%);padding:48px 0 40px;margin-bottom:0;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div style="font-size:2.5rem;margin-bottom:12px;">☕</div>
+      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Break Time</span>
+      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">휴식시간</h2>
+      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:600px;margin:0 auto;line-height:1.7;">잠깐 쉬어가세요. 좋은 연구는 충분한 휴식에서 시작됩니다.</p>
+    </div>
+  </div>
+  <div style="padding:56px 0;">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <!-- 인용구 카드 -->
+      <div style="background:#fff;border-radius:20px;padding:40px 36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:32px;border-top:4px solid #059669;">
+        <div style="font-size:2.5rem;margin-bottom:16px;">🌿</div>
+        <blockquote style="font-size:1.25rem;font-weight:600;color:#1e293b;line-height:1.7;margin:0 0 14px;font-style:italic;">
+          "Rest is not idleness.<br>It is the key to better work."
+        </blockquote>
+        <p style="color:#64748b;font-size:0.88rem;margin:0;">— 잠깐의 여유가 더 나은 내일을 만듭니다</p>
+      </div>
+
+      <!-- 타이머 카드 -->
+      <div style="background:#fff;border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:32px;">
+        <p style="font-size:1rem;font-weight:600;color:#475569;margin:0 0 20px;">⏱️ 5분 휴식 타이머</p>
+        <div id="break-timer-display" style="font-size:3.5rem;font-weight:800;color:#059669;letter-spacing:0.05em;margin-bottom:24px;font-variant-numeric:tabular-nums;">05:00</div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <button onclick="startBreakTimer()" style="background:#059669;color:#fff;border:none;padding:11px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#047857'" onmouseout="this.style.background='#059669'">▶ 시작</button>
+          <button onclick="resetBreakTimer()" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:11px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">↺ 초기화</button>
+        </div>
+      </div>
+
+      <!-- 팁 카드들 -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px;">
+        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
+          <div style="font-size:2rem;margin-bottom:10px;">🧘</div>
+          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">스트레칭</p>
+          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">목·어깨를 천천히<br>돌려보세요</p>
+        </div>
+        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
+          <div style="font-size:2rem;margin-bottom:10px;">💧</div>
+          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">수분 보충</p>
+          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">물 한 잔으로<br>집중력을 높이세요</p>
+        </div>
+        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
+          <div style="font-size:2rem;margin-bottom:10px;">👀</div>
+          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">눈 휴식</p>
+          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">먼 곳을 20초간<br>바라보세요</p>
+        </div>
+      </div>
+
+      <button onclick="showTab('contact')" style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;border:none;padding:13px 36px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 4px 16px rgba(5,150,105,0.3);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        충분히 쉬셨나요? 문의하기로 →
+      </button>
+    </div>
+  </div>
+  </section>
+
+  <script>
+    var _breakInterval = null;
+    var _breakSeconds = 300;
+    function _renderBreakTimer(s) {
+      var m = Math.floor(s / 60);
+      var sec = s % 60;
+      document.getElementById('break-timer-display').textContent =
+        String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+    }
+    function startBreakTimer() {
+      if (_breakInterval) return;
+      _breakInterval = setInterval(function() {
+        if (_breakSeconds <= 0) {
+          clearInterval(_breakInterval); _breakInterval = null;
+          document.getElementById('break-timer-display').textContent = '🎉 완료!';
+          return;
+        }
+        _breakSeconds--;
+        _renderBreakTimer(_breakSeconds);
+      }, 1000);
+    }
+    function resetBreakTimer() {
+      clearInterval(_breakInterval); _breakInterval = null;
+      _breakSeconds = 300;
+      _renderBreakTimer(_breakSeconds);
+    }
+  </script>
+
   <!-- ===== 문의 섹션 ===== -->
   <section id="contact" class="tab-page" style="background:#EEF2F7;padding-top:0;">
   <!-- gradient banner -->
@@ -3033,7 +3123,7 @@
     }
 
     // ===== 탭 페이지 전환 =====
-    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','news','contact'];
+    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','news','break','contact'];
     var currentLang = 'ko';
 
     function showTab(tabId) {
