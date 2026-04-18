@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KP13 단핵구활성화시험법 (MAT) 통합 분석 대시보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Clinical Precision (Background: #F8FAFC, Text: #1E293B, Primary: #2563EB (Vibrant Blue), Success: #10B981 (Emerald), Warning: #F59E0B (Amber)) -->
+    <!-- Application Structure Plan: The SPA is designed as a linear, highly interactive dashboard that guides the user through the logical flow of the MAT process. It begins with an 'Overview' to establish context, moves into an 'Interactive Calculator' section for critical parameter setup (CLC/MVD), visualizes the 'Validation Parameters' (Standard Curve & Recovery) to explain the data requirements, and concludes with an interactive 'Methods & Interpretation' section. This structure transforms a dense procedural document into a digestible, task-oriented workflow. -->
+    <!-- Visualization & Content Choices: 
+         1. Intro Section -> Goal: Inform -> Method: Styled HTML cards with Unicode icons -> Justification: Organizes cell sources clearly without SVG.
+         2. CLC/MVD Calculator -> Goal: Interact/Inform -> Method: Dynamic HTML form with JS -> Justification: Simplifies complex equations from the text into an immediate feedback tool.
+         3. Standard Curve Chart -> Goal: Relationships -> Method: Chart.js Line Chart -> Justification: Visually demonstrates the non-linear dose-response and R-squared requirement. Includes required tooltip config. NO SVG used.
+         4. Interference Recovery Chart -> Goal: Compare -> Method: Chart.js Bar Chart -> Justification: Clearly shows the 50-200% valid range for spike recovery.
+         5. Methods Tabs -> Goal: Organize -> Method: HTML/JS Tabs -> Justification: Compares Method 1 and Method 2 side-by-side without overwhelming the user.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .tab-btn.active {
+            border-bottom: 4px solid #2563EB;
+            color: #2563EB;
+            font-weight: 700;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #1E3A8A, #2563EB);
+        }
+    </style>
+</head>
+<body class="antialiased leading-relaxed">
+
+    <nav class="bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="font-black text-xl text-blue-800 flex items-center gap-2">
+                <span class="text-2xl">&#128300;</span> KP13 MAT Dashboard
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="#overview" class="hover:text-blue-600 transition-colors">개요 및 세포원</a>
+                <a href="#calculator" class="hover:text-blue-600 transition-colors">파라미터 계산</a>
+                <a href="#validation" class="hover:text-blue-600 transition-colors">예비시험 검증</a>
+                <a href="#methods" class="hover:text-blue-600 transition-colors">시험법 및 판정</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <header class="text-center space-y-4 pt-8">
+            <h1 class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight">단핵구활성화시험법 <span class="gradient-text">(MAT)</span> 분석</h1>
+            <p class="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto">대한민국 약전(KP) 가이드라인 기반. 사람 단핵구 세포를 활용하여 엔도톡신 및 비엔도톡신 발열성 물질을 정밀하게 검출하는 프로세스 시각화.</p>
+        </header>
+
+        <section id="overview" class="scroll-mt-24">
+            <div class="mb-6 border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">1. 시험 개요 및 세포 공급원</h2>
+                <p class="text-slate-600 mt-2">단핵구활성화시험법은 염증유발 사이토카인(TNF-α, IL-1β, IL-6) 방출을 측정하여 발열원을 검출합니다. 신뢰성 있는 결과를 위해 검증된 세포 공급원을 확보하는 것이 시험의 첫 단계입니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-blue-500 transition hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-4xl mb-4">&#129656;</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">전혈 (Whole Blood)</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>항응고 처리된 사람 말초혈액</li>
+                        <li>최소 <strong>4명의 공여자</strong> 풀링(Pooling) 필수</li>
+                        <li>배양 배지 또는 식염수로 2~50 vol% 희석</li>
+                    </ul>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-500 transition hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-4xl mb-4">&#129418;</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">말초혈액단핵구 (PBMC)</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>밀도-기울기 원심분리 등으로 분리</li>
+                        <li>신선 세포 또는 동결보존 세포 사용 가능</li>
+                        <li>최종 농도 <strong>0.1 ~ 1.0 × 10⁶ cells/mL</strong></li>
+                    </ul>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-amber-500 transition hover:-translate-y-1 hover:shadow-lg">
+                    <div class="text-4xl mb-4">&#129516;</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">단핵구 세포주</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>연속계대성 사람 단핵구 세포주</li>
+                        <li><strong>기능적 안정성</strong> (성장, 최대 신호 등) 모니터링 필수</li>
+                        <li>단일 적격성 평가 통과 후 지속 사용 가능</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="scroll-mt-24">
+            <div class="mb-6 border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">2. 핵심 파라미터 시뮬레이터 (CLC & MVD)</h2>
+                <p class="text-slate-600 mt-2">시험의 타당성을 위해 검체의 최대유효희석배수(MVD)를 산출해야 합니다. MVD를 초과하여 희석할 경우 오염물질 한계농도(CLC) 이하의 발열원을 검출할 수 없습니다.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 lg:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 text-blue-800 p-4 rounded-xl text-sm font-medium mb-6">
+                            &#9881; 입력값을 변경하여 CLC와 MVD를 실시간으로 확인하세요.
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">투여 경로에 따른 발열 엔도톡신 양 (K)</label>
+                            <select id="inputK" class="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-slate-700 transition">
+                                <option value="5.0">정맥내 (5.0 EE/kg)</option>
+                                <option value="2.5">정맥내 방사성 의약품 (2.5 EE/kg)</option>
+                                <option value="0.2">척수강내 (0.2 EE/kg)</option>
+                                <option value="100">체표면적 투여 (100 EE/m²)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">최대 권장 투여량 (M)</label>
+                            <div class="flex">
+                                <input type="number" id="inputM" value="10" step="0.1" class="w-full bg-white border border-slate-300 rounded-l-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700">
+                                <span class="inline-flex items-center px-4 rounded-r-lg border border-l-0 border-slate-300 bg-slate-50 text-slate-500">kg당/1시간</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">검액의 농도 (C)</label>
+                            <div class="flex">
+                                <input type="number" id="inputC" value="20" step="0.1" class="w-full bg-white border border-slate-300 rounded-l-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700">
+                                <span class="inline-flex items-center px-4 rounded-r-lg border border-l-0 border-slate-300 bg-slate-50 text-slate-500">mg/mL</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">시험 감도 (Test Sensitivity)</label>
+                            <div class="flex">
+                                <input type="number" id="inputS" value="0.05" step="0.01" class="w-full bg-white border border-slate-300 rounded-l-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700">
+                                <span class="inline-flex items-center px-4 rounded-r-lg border border-l-0 border-slate-300 bg-slate-50 text-slate-500">EE/mL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-center space-y-8 bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                        <div>
+                            <div class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">오염물질 한계농도 (CLC)</div>
+                            <div class="text-xs text-slate-400 font-mono mb-2">공식: K / M</div>
+                            <div class="flex items-baseline gap-2">
+                                <span id="valCLC" class="text-5xl font-black text-blue-600 tracking-tight">0.50</span>
+                                <span class="text-xl font-bold text-slate-500">EE/mg</span>
+                            </div>
+                        </div>
+                        
+                        <div class="h-px bg-slate-200 w-full"></div>
+
+                        <div>
+                            <div class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">최대유효희석배수 (MVD)</div>
+                            <div class="text-xs text-slate-400 font-mono mb-2">공식: (CLC × C) / 시험감도</div>
+                            <div class="flex items-baseline gap-2">
+                                <span id="valMVD" class="text-6xl font-black text-emerald-500 tracking-tight">200</span>
+                                <span class="text-2xl font-bold text-slate-500">배</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-4 bg-emerald-50 p-3 rounded-lg border border-emerald-100">
+                                &#10003; 예비 및 본 시험에서 검액은 <strong class="text-emerald-700">MVD 배수</strong>를 초과하여 희석할 수 없습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="validation" class="scroll-mt-24">
+            <div class="mb-6 border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">3. 예비시험: 반응성 및 간섭 밸리데이션</h2>
+                <p class="text-slate-600 mt-2">검체의 실제 시험 전, 시스템의 유효성을 확보하기 위해 엔도톡신 표준곡선 적합성과 반응간섭인자(Spike Recovery)를 시각적으로 확인합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">엔도톡신 표준곡선 (결정계수 기준)</h3>
+                    <p class="text-sm text-slate-500 mb-6">4-PL 비선형 모델 기준. R² 값이 반드시 0.975 이상이어야 시험이 유효합니다.</p>
+                    <div class="flex-grow w-full flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="standardCurveChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold">R² ≥ 0.975 합격 기준 충족</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">반응간섭인자 시험 (Spike Recovery)</h3>
+                    <p class="text-sm text-slate-500 mb-6">검액에 엔도톡신을 첨가했을 때의 회수율입니다. 50% ~ 200% 범위 내에 들어와야 간섭이 없는 것으로 간주합니다.</p>
+                    <div class="flex-grow w-full flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="recoveryChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-bold">허용 범위: 50% ~ 200%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methods" class="scroll-mt-24 pb-20">
+            <div class="mb-6 border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">4. 시험법 적용 및 최종 판정</h2>
+                <p class="text-slate-600 mt-2">제품의 특성(간섭 여부, 비엔도톡신 함유 여부)에 따라 적절한 방법을 선택하여 데이터를 분석하고 합격 여부를 판정합니다.</p>
+            </div>
+
+            <div class="glass-card rounded-2xl overflow-hidden">
+                <div class="flex border-b border-slate-200">
+                    <button id="btnMethod1" class="tab-btn active flex-1 py-4 text-center text-slate-600 font-medium bg-slate-50 hover:bg-white transition" onclick="switchMethod(1)">
+                        제1법: 반정량적 방법
+                    </button>
+                    <button id="btnMethod2" class="tab-btn flex-1 py-4 text-center text-slate-600 font-medium bg-slate-50 hover:bg-white transition border-l border-slate-200" onclick="switchMethod(2)">
+                        제2법: 표준 배치 비교 방법
+                    </button>
+                </div>
+
+                <div class="p-8">
+                    <div id="contentMethod1" class="block animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="flex-1 space-y-4">
+                                <h3 class="text-xl font-bold text-blue-700 flex items-center gap-2">&#128202; 반정량적 분석 프로세스</h3>
+                                <p class="text-slate-600">가장 일반적인 접근법으로, 검체의 사이토카인 방출 반응을 표준 엔도톡신 용량-반응곡선과 직접 비교하여 엔도톡신 당량(EE)을 산출합니다.</p>
+                                
+                                <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                                    <h4 class="font-bold text-slate-800 mb-3">시험액 구성 조작</h4>
+                                    <ul class="space-y-2 text-sm text-slate-600">
+                                        <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-slate-300 inline-block"></span> <strong>용액 A, B, C:</strong> MVD 내 다양한 희석 인자 적용 (최저 희석 포함)</li>
+                                        <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-amber-400 inline-block"></span> <strong>용액 AS, BS, CS:</strong> 각 용액에 엔도톡신 첨가 (Spike)</li>
+                                        <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-blue-500 inline-block"></span> <strong>용액 R0 ~ Rx:</strong> 음성 대조군 및 표준 곡선 농도군</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-emerald-50 rounded-2xl p-6 border-2 border-emerald-200 w-full">
+                                <div class="text-center mb-4">
+                                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 text-2xl mb-2">&#10004;</div>
+                                    <h4 class="text-lg font-black text-emerald-800">최종 합격 기준</h4>
+                                </div>
+                                <p class="text-slate-700 text-center font-medium">희석 및 보정 후, 용액 A, B, C 각각의 반복 시험에서 측정된 평균 EE 농도가 모두 <br><strong class="text-xl text-emerald-700 mt-2 inline-block">오염물질 한계농도(CLC) 미만</strong>이어야 적합합니다.</p>
+                                <p class="text-xs text-center text-slate-500 mt-4">* 주의: 하나의 희석액이라도 CLC를 초과하면 첨가 회수율에 관계없이 부적합 처리됩니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="contentMethod2" class="hidden animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="flex-1 space-y-4">
+                                <h3 class="text-xl font-bold text-blue-700 flex items-center gap-2">&#128260; 표준 배치(Reference Batch) 비교</h3>
+                                <p class="text-slate-600">제품 자체의 고유 발열성이나 간섭이 강해 1법 적용이 어려운 경우, 임상적 안전성이 기 확보된 자사 '표준 배치'와의 직접 반응 비율을 산출합니다.</p>
+                                
+                                <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                                    <h4 class="font-bold text-slate-800 mb-3">적용 대상 제제 특성</h4>
+                                    <ul class="space-y-2 text-sm text-slate-600 list-disc list-inside">
+                                        <li>MVD 한계 내에서 간섭 현상이 극복되지 않는 경우</li>
+                                        <li>Spike 회수율이 일관되게 200%를 초과하는 고유 염증 유발성 제제</li>
+                                        <li>비엔도톡신 오염이 강하게 의심되어 가파른 곡선이 예상되는 경우</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-blue-50 rounded-2xl p-6 border-2 border-blue-200 w-full">
+                                <div class="text-center mb-4">
+                                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 text-2xl mb-2">&#10004;</div>
+                                    <h4 class="text-lg font-black text-blue-800">최종 합격 기준</h4>
+                                </div>
+                                <div class="bg-white rounded-lg p-3 text-center border border-blue-100 mb-3">
+                                    <span class="text-sm font-bold text-slate-500 block border-b border-slate-200 pb-1 mb-1">시험 배치 반응 합 (D,E,F)</span>
+                                    <span class="text-sm font-bold text-slate-500 block">표준 배치 반응 합 (A,B,C)</span>
+                                </div>
+                                <p class="text-slate-700 text-center font-medium">산출된 반응 비율 결과값이 사전 밸리데이션을 통해 정의된 <strong class="text-lg text-blue-700">허용 기준(Ratio) 이하</strong>일 때 적합으로 판정합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Utilities & State
+        function wrapLabel(label, maxLength = 16) {
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength) {
+                    if (currentLine.trim() !== '') lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine.trim() !== '') lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const commonTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // Calculator Logic
+        function updateCalculations() {
+            const k = parseFloat(document.getElementById('inputK').value);
+            const m = parseFloat(document.getElementById('inputM').value);
+            const c = parseFloat(document.getElementById('inputC').value);
+            const s = parseFloat(document.getElementById('inputS').value);
+
+            if (m > 0 && s > 0) {
+                const clc = k / m;
+                const mvd = (clc * c) / s;
+
+                document.getElementById('valCLC').innerText = clc.toFixed(2);
+                document.getElementById('valMVD').innerText = Math.floor(mvd);
+            }
+        }
+
+        ['inputK', 'inputM', 'inputC', 'inputS'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateCalculations);
+        });
+
+        // Tab Switching Logic
+        function switchMethod(methodNum) {
+            document.getElementById('btnMethod1').classList.remove('active', 'bg-white');
+            document.getElementById('btnMethod2').classList.remove('active', 'bg-white');
+            document.getElementById('contentMethod1').style.display = 'none';
+            document.getElementById('contentMethod2').style.display = 'none';
+
+            document.getElementById('btnMethod' + methodNum).classList.add('active', 'bg-white');
+            document.getElementById('contentMethod' + methodNum).style.display = 'block';
+        }
+
+        // Initialize Charts
+        window.onload = function() {
+            updateCalculations();
+            document.getElementById('contentMethod2').style.display = 'none'; // Initially hide tab 2
+
+            // 1. Standard Curve Chart (Line)
+            const ctxCurve = document.getElementById('standardCurveChart').getContext('2d');
+            new Chart(ctxCurve, {
+                type: 'line',
+                data: {
+                    labels: ['0.01', '0.05', '0.1', '0.5', '1.0', '5.0'].map(l => wrapLabel(`${l} EE/mL`)),
+                    datasets: [{
+                        label: 'Optical Density (OD)',
+                        data: [0.05, 0.15, 0.35, 1.2, 1.8, 2.4], // Mock 4-PL sigmoidal shape
+                        borderColor: '#2563EB',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#1E3A8A',
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: commonTooltipConfig
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: '흡광도 반응 (OD)', color: '#64748B' },
+                            grid: { color: '#F1F5F9' }
+                        },
+                        x: {
+                            title: { display: true, text: '엔도톡신 농도 (Log Scale)', color: '#64748B' },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // 2. Interference Recovery Chart (Bar)
+            const ctxRecovery = document.getElementById('recoveryChart').getContext('2d');
+            new Chart(ctxRecovery, {
+                type: 'bar',
+                data: {
+                    labels: ['1/1 희석액 (원액)', '1/10 희석액', '1/50 희석액 (MVD 근접)'].map(l => wrapLabel(l)),
+                    datasets: [{
+                        label: 'Spike Recovery (%)',
+                        data: [30, 85, 110], // Demonstrating interference at low dilution, recovery at higher
+                        backgroundColor: [
+                            '#F43F5E', // Red for out of bounds (<50)
+                            '#10B981', // Green for valid
+                            '#10B981'
+                        ],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: commonTooltipConfig,
+                        annotation: {
+                            // Optional: Could add lines for 50 and 200, handled via visual bounds here
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 250,
+                            title: { display: true, text: '회수율 (%)', color: '#64748B' },
+                            grid: { color: '#F1F5F9' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                },
+                plugins: [{
+                    id: 'thresholdLines',
+                    beforeDraw: (chart) => {
+                        const {ctx, chartArea: {top, right, bottom, left, width, height}, scales: {y}} = chart;
+                        ctx.save();
+                        // 50% Line
+                        const y50 = y.getPixelForValue(50);
+                        ctx.strokeStyle = '#94A3B8';
+                        ctx.setLineDash([5, 5]);
+                        ctx.beginPath();
+                        ctx.moveTo(left, y50);
+                        ctx.lineTo(right, y50);
+                        ctx.stroke();
+                        
+                        // 200% Line
+                        const y200 = y.getPixelForValue(200);
+                        ctx.beginPath();
+                        ctx.moveTo(left, y200);
+                        ctx.lineTo(right, y200);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }]
+            });
+        };
+    </script>
+</body>
+</html>
