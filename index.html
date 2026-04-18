@@ -263,53 +263,53 @@
   </style>
 </head>
 <body class="text-dark" style="background-color:#EEF2F7;">
-  <!-- ===== 오픈 예정 팝업 ===== -->
-  <div id="launch-popup" style="position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(10,20,50,0.72);backdrop-filter:blur(4px);">
-    <div style="background:#fff;border-radius:20px;max-width:480px;width:90%;box-shadow:0 24px 64px rgba(0,0,0,0.25);overflow:hidden;">
-      <div style="background:linear-gradient(135deg,#0a1f5c 0%,#1565C0 60%,#42a5f5 100%);padding:28px 32px 22px;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-          <span style="font-size:1.5rem;">🔬</span>
-          <span style="color:#fff;font-weight:800;font-size:1.2rem;">
-            <span style="color:#f87171;">Bio</span>stream 시험분석센터
-          </span>
-        </div>
-        <div style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;">ANALYTICS CENTER WITH MAT</div>
-      </div>
-      <div style="padding:28px 32px;">
-        <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #e2e8f0;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="font-size:1.1rem;">🇰🇷</span>
-            <span style="font-weight:700;color:#1e293b;font-size:0.95rem;">안내말씀</span>
-          </div>
-          <p style="color:#334155;font-size:0.92rem;line-height:1.75;margin:0;">
-            현재 <strong style="color:#1565C0;">웹페이지를 개선 중</strong>이지만,<br>
-            모든 <strong>내용을 보시는 데 문제 없습니다.</strong><br>
-            <span style="color:#C41E3A;font-weight:700;">2026년 5월 4일</span>에 정식 오픈합니다.
-          </p>
-        </div>
-        <div style="margin-bottom:24px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="font-size:1.1rem;">🇺🇸</span>
-            <span style="font-weight:700;color:#1e293b;font-size:0.95rem;">Notice</span>
-          </div>
-          <p style="color:#334155;font-size:0.92rem;line-height:1.75;margin:0;">
-            Our website is currently <strong style="color:#1565C0;">under improvement</strong>,<br>
-            but you can <strong>browse all content without any issues.</strong><br>
-            Official launch: <span style="color:#C41E3A;font-weight:700;">May 4, 2026</span>.
-          </p>
-        </div>
-        <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:14px 18px;margin-bottom:22px;text-align:center;">
-          <div style="color:#0369a1;font-size:0.78rem;font-weight:600;margin-bottom:6px;">🗓️ D-DAY COUNTDOWN</div>
-          <div id="popup-countdown" style="color:#0c2461;font-weight:800;font-size:1.1rem;letter-spacing:0.05em;">-</div>
-        </div>
-        <button id="popup-close-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#C41E3A,#f43f5e);color:#fff;border:none;border-radius:10px;font-size:0.97rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
-          확인했습니다 &nbsp;/&nbsp; Got it ✓
-        </button>
-      </div>
-    </div>
-  </div>
+
 
   
+
+  <!-- ===== 슬라이딩 오픈 배너 ===== -->
+  <div id="open-banner" style="
+    position: fixed;
+    top: -70px;
+    left: 0; right: 0;
+    z-index: 99999;
+    background: linear-gradient(90deg, #16a34a 0%, #22c55e 50%, #16a34a 100%);
+    color: #111827;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-shadow: 0 4px 18px rgba(22,163,74,0.35);
+    letter-spacing: 0.03em;
+    transition: top 0.6s cubic-bezier(.22,1,.36,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  ">
+    <span style="font-size:1.2rem;">🎉</span>
+    2026년 5월 4일 새롭게 open합니다
+    <span style="font-size:1.2rem;">🎉</span>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      var banner = document.getElementById('open-banner');
+      if (!banner) return;
+      // 0.3초 후 슬라이드 인
+      setTimeout(function() {
+        banner.style.top = '0px';
+      }, 300);
+      // 3.5초 후 슬라이드 아웃
+      setTimeout(function() {
+        banner.style.top = '-70px';
+      }, 3800);
+      // 완전 사라진 후 DOM에서 제거
+      setTimeout(function() {
+        banner.style.display = 'none';
+      }, 4500);
+    });
+  </script>
 
   <!-- ===== 헤더 네비게이션 ===== -->
   <header class="shadow-sm sticky top-0 z-50" style="background:#F0F5FA;">
@@ -372,13 +372,8 @@
 <li class="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100 hover:bg-blue-100 transition-all cursor-pointer group" 
     onclick="location.href='KP13_MAT_Infographic.html'">
     <div class="flex items-center gap-3">
-        <!-- NEW 배지 크기 조정 (기존 텍스트와 조화) -->
-        <span class="text-blue-600 text-xs font-bold px-1.5 py-0.5 bg-blue-100 rounded">NEW</span>
         <div>
-            <!-- 제목 크기를 표준 항목 수준(text-base)으로 조정 -->
-            <h4 class="text-base font-bold text-slate-800">KP13 단핵구활성시험 (MAT)</h4>
-            <!-- 부제목 크기를 소형(text-sm)으로 조정 -->
-            <p class="text-sm text-slate-500 font-medium">Monocyte-Activation Test Analysis Dashboard</p>
+            <h4 class="text-base font-bold text-slate-800">KP13 단핵구활성시험</h4>
         </div>
     </div>
     <div class="text-blue-500 group-hover:translate-x-1 transition-transform">
@@ -3295,54 +3290,6 @@
     });
   </script>
 
-  <!-- ===== 팝업 스크립트 ===== -->
-  <script>
-    // 닫기 함수 - 전역으로 선언
-    function closePopup() {
-      var el = document.getElementById('launch-popup');
-      if (!el) return;
-      el.style.transition = 'opacity 0.35s';
-      el.style.opacity = '0';
-      setTimeout(function() { el.style.display = 'none'; }, 370);
-    }
 
-    // 카운트다운
-    function _updateCountdown() {
-      var el = document.getElementById('popup-countdown');
-      if (!el) return;
-      var target = new Date('2026-05-04T00:00:00+09:00');
-      var diff = target - new Date();
-      if (diff <= 0) {
-        el.textContent = '🎉 정식 오픈! Grand Open!';
-        return;
-      }
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      var s = Math.floor((diff % 60000) / 1000);
-      el.textContent = d + '일 ' + h + '시간 ' + m + '분 ' + s + '초 남음';
-    }
-
-    // 페이지 완전 로드 후 실행
-    window.addEventListener('load', function() {
-      // 카운트다운 즉시 시작
-      _updateCountdown();
-      setInterval(_updateCountdown, 1000);
-
-      // 닫기 버튼 - onclick 직접 연결
-      var btn = document.getElementById('popup-close-btn');
-      if (btn) {
-        btn.onclick = function() { closePopup(); return false; };
-      }
-
-      // 팝업 바깥 클릭시 닫기
-      var popup = document.getElementById('launch-popup');
-      if (popup) {
-        popup.onclick = function(e) {
-          if (e.target === popup) closePopup();
-        };
-      }
-    });
-  </script>
 </body>
 </html>
