@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monocyte Activation Test (MAT) Global Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; scroll-behavior: smooth; }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- 로고 및 홈 이동 -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-700 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.675.337a2 2 0 00-1.022.547l-3.376 3.377a2 2 0 01-2.828 0L2.373 17.3a2 2 0 010-2.828l3.377-3.376a2 2 0 01.547-1.022l.337-.675a6 6 0 00.517-3.86l-.477-2.387a2 2 0 01.547-1.022L10.5 2.373a2 2 0 012.828 0L17.3 6.347a2 2 0 010 2.828l-3.376 3.377a2 2 0 00-.547 1.022l-.337.675a6 6 0 00-.517 3.86l.477 2.387a2 2 0 001.022.547l3.376 3.377a2 2 0 010 2.828l-3.974 3.974a2 2 0 01-2.828 0L12.3 21.373a2 2 0 010-2.828l3.377-3.376z" />
+                    </svg>
+                    <span class="text-2xl font-bold text-blue-700">MAT Global Hub</span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <!-- 홈으로 돌아가기 버튼 추가 -->
+                        <a href="#" class="text-blue-700 hover:bg-blue-50 px-3 py-2 rounded-md font-bold flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            홈
+                        </a>
+                        <a href="#intro" class="hover:text-blue-600 px-3 py-2 font-medium">개요</a>
+                        <a href="#regulatory" class="hover:text-blue-600 px-3 py-2 font-medium">국제 규제</a>
+                        <a href="#comparison" class="hover:text-blue-600 px-3 py-2 font-medium">방법론 비교</a>
+                        <a href="#validation" class="hover:text-blue-600 px-3 py-2 font-medium">밸리데이션</a>
+                        <a href="#future" class="hover:text-blue-600 px-3 py-2 font-medium">미래 전망</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white py-20 px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Monocyte Activation Test (MAT)</h1>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">차세대 인체 유래 세포 기반 발열성 시험: 안전성 확보와 동물 복지의 조화</p>
+    </header>
+
+    <!-- 1. Intro Section -->
+    <section id="intro" class="py-16 max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 border-l-4 border-blue-600 pl-4">MAT란 무엇인가?</h2>
+                <p class="mb-4 leading-relaxed">단핵구 활성화 시험(MAT)은 인간의 면역 반응을 모방하여 의약품 내 발열물질을 검출하는 <em>In-vitro</em> 시험법입니다. 전통적인 토끼 시험(RPT)을 대체하기 위해 고안되었습니다.</p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li><strong>인체 유사성:</strong> 인간 단핵구를 사용하여 인체 내 실제 면역 반응을 가장 정확하게 반영.</li>
+                    <li><strong>3Rs 원칙 준수:</strong> 실험 동물(토끼) 사용을 배제하여 윤리적 이슈 해결.</li>
+                    <li><strong>광범위한 검출:</strong> 내독소(Endotoxin)뿐만 아니라 비-내독소 발열원(NEP)까지 검출 가능.</li>
+                </ul>
+            </div>
+            <div class="bg-blue-100 p-8 rounded-2xl flex items-center justify-center">
+                <div class="text-center">
+                    <p class="text-lg font-semibold text-blue-800">[단핵구 활성화 및 사이토카인 분비 메커니즘 이미지]</p>
+                    <p class="text-sm text-gray-600 mt-2">TLR 수용체 결합 → 사이토카인(IL-1β, IL-6) 방출 → ELISA 측정</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Regulatory Section -->
+    <section id="regulatory" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">글로벌 규제 현황 및 전략</h2>
+            <p class="text-gray-600">유럽과 미국을 중심으로 한 발열성 시험의 대전환</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8">
+            <div class="border p-6 rounded-xl bg-gray-50 card-hover">
+                <h3 class="text-xl font-bold text-blue-700 mb-3">유럽 약전 (EDQM / Ph. Eur.)</h3>
+                <ul class="space-y-3 text-sm">
+                    <li>📌 <strong>2026년까지 RPT 완전 폐지:</strong> 유럽 약전 위원회는 5년 내 모든 모노그래프에서 토끼 시험을 삭제하기로 결정.</li>
+                    <li>📌 <strong>Chapter 2.6.30:</strong> MAT를 주요 대체 시험법으로 지정 및 가이드라인 세분화.</li>
+                    <li>📌 <strong>Chapter 5.1.13:</strong> 발열성 시험 전략 수립 시 위해성 평가 기반의 MAT 우선 고려 권고.</li>
+                </ul>
+            </div>
+            <div class="border p-6 rounded-xl bg-gray-50 card-hover">
+                <h3 class="text-xl font-bold text-blue-700 mb-3">미국 FDA (FDA Modernization Act)</h3>
+                <ul class="space-y-3 text-sm">
+                    <li>📌 <strong>동물 실험 우선주의 폐지:</strong> 법적 근거 마련을 통해 In-vitro 시험법의 우선순위 상향.</li>
+                    <li>📌 <strong>Case Studies:</strong> FDA는 단클론 항체(mAb) 등 바이오 의약품의 배치 승인 시 MAT 데이터를 적극 검토 중.</li>
+                    <li>📌 <strong>유연한 정책:</strong> USP 모노그래프에 규정되어 있지 않더라도 제품 특이적 밸리데이션(PSV)을 통해 허용.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Comparison Section -->
+    <section id="comparison" class="py-16 max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center">전통 시험법 vs. MAT 비교</h2>
+        <div class="overflow-x-auto bg-white rounded-xl shadow">
+            <table class="min-w-full leading-normal">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase">비교 항목</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase">토끼 시험 (RPT)</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase">LAL (BET) 시험</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase">단핵구 활성화 시험 (MAT)</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr>
+                        <td class="px-5 py-4 border-b border-gray-200">측정 원리</td>
+                        <td class="px-5 py-4 border-b border-gray-200">동물의 체온 상승</td>
+                        <td class="px-5 py-4 border-b border-gray-200">투구게 혈액의 응고 반응</td>
+                        <td class="px-5 py-4 border-b border-gray-200 text-blue-700 font-bold">인간 세포의 사이토카인 분비</td>
+                    </tr>
+                    <tr>
+                        <td class="px-5 py-4 border-b border-gray-200">검출 범위</td>
+                        <td class="px-5 py-4 border-b border-gray-200">광범위 (비정량적)</td>
+                        <td class="px-5 py-4 border-b border-gray-200">내독소(LPS)에 국한</td>
+                        <td class="px-5 py-4 border-b border-gray-200 text-blue-700 font-bold">내독소 + 비-내독소 발열원(NEP)</td>
+                    </tr>
+                    <tr>
+                        <td class="px-5 py-4 border-b border-gray-200">인체 상관성</td>
+                        <td class="px-5 py-4 border-b border-gray-200">보통 (종 간 차이 존재)</td>
+                        <td class="px-5 py-4 border-b border-gray-200">낮음</td>
+                        <td class="px-5 py-4 border-b border-gray-200 text-blue-700 font-bold">매우 높음 (Human Cell 기반)</td>
+                    </tr>
+                    <tr>
+                        <td class="px-5 py-4 border-b border-gray-200">데이터 신뢰성</td>
+                        <td class="px-5 py-4 border-b border-gray-200">변동성 큼</td>
+                        <td class="px-5 py-4 border-b border-gray-200">방해 물질 영향 큼 (LER 현상)</td>
+                        <td class="px-5 py-4 border-b border-gray-200 text-blue-700 font-bold">높은 재현성 및 정량 가능</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 4. Validation Section -->
+    <section id="validation" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 text-center">성공적인 MAT 적용 및 밸리데이션</h2>
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Case 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500">
+                    <h4 class="font-bold text-lg mb-2">항체 의약품 (mAbs)</h4>
+                    <p class="text-sm text-gray-600">세 가지 단클론 항체 제품군에 대한 제품 특이적 밸리데이션(Method A) 완료 사례. NEP 검출 능력이 핵심 성능 지표로 확인됨.</p>
+                </div>
+                <!-- Case 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500">
+                    <h4 class="font-bold text-lg mb-2">혈액 제제 (HSA)</h4>
+                    <p class="text-sm text-gray-600">Human Serum Albumin 내 β-glucan의 LAL 간섭 현상을 MAT(IL-6 Readout)를 통해 해결하여 정밀한 안전성 평가 가능.</p>
+                </div>
+                <!-- Case 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500">
+                    <h4 class="font-bold text-lg mb-2">의료기기 테스트</h4>
+                    <p class="text-sm text-gray-600">용출물 및 코팅 재료에서 발생하는 미세 발열원 검출을 위해 직접 배양법(Direct Incubation) 적용 활성화.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white p-8 rounded-2xl shadow-md border">
+                <h3 class="text-xl font-bold mb-4">밸리데이션 체크리스트 (Ph. Eur. 2.6.30 준수)</h3>
+                <div class="flex flex-wrap gap-4">
+                    <span class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-200 text-sm">✓ MVD (최대 유효 희석배수) 설정</span>
+                    <span class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-200 text-sm">✓ Spike Recovery (85-125%)</span>
+                    <span class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-200 text-sm">✓ 공여체 간 변동성 관리 (Pooled PBMC)</span>
+                    <span class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-200 text-sm">✓ 표준물질(LPS/NEP) 반응성 확인</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Future Section -->
+    <section id="future" class="py-16 max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6">MAT의 미래와 기술 혁신</h2>
+        <div class="grid md:grid-cols-3 gap-8 mt-10">
+            <div class="p-6">
+                <div class="text-4xl mb-4">🧬</div>
+                <h4 class="font-bold mb-2">iPSC 기반 단핵구</h4>
+                <p class="text-sm text-gray-600">혈액 공여체의 변동성을 해결하기 위한 유도만능줄기세포 유래 단핵구 세포주 개발.</p>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl mb-4">🤖</div>
+                <h4 class="font-bold mb-2">자동화 플랫폼</h4>
+                <p class="text-sm text-gray-600">High-throughput 처리가 가능한 로봇 자동화 시스템 및 전용 분석 소프트웨어 도입.</p>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl mb-4">🌍</div>
+                <h4 class="font-bold mb-2">글로벌 표준화</h4>
+                <p class="text-sm text-gray-600">WHO 및 주요국 약전(USP, JP)과의 조화를 통한 전 세계적 원스톱 규제 승인 체계 구축.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+            <div>
+                <p class="text-lg font-bold mb-2">MAT Global Information Portal</p>
+                <p class="text-sm text-gray-400">본 사이트는 FDA, EDQM, PEI의 최신 가이드라인 및 학술 데이터를 기반으로 정리되었습니다.</p>
+            </div>
+            <div class="text-right text-xs text-gray-500">
+                &copy; 2024 MAT Tech Solutions. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 맨 위로 가기 플로팅 버튼 (모바일용) -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-blue-700 text-white p-3 rounded-full shadow-lg hover:bg-blue-800 transition-colors z-50 md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+</body>
+</html>
