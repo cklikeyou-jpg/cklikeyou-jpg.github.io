@@ -405,6 +405,9 @@
               <button class="dd-item" onclick="showTab('glossary');closeDD()" data-tab="glossary">
                 <span class="dd-icon">📖</span> 약어집
               </button>
+              <button class="dd-item" onclick="location.href='Global trend.html';closeDD()">
+                <span class="dd-icon">🌐</span> 글로벌 동향
+              </button>
             </div>
           </div>
 
@@ -479,6 +482,7 @@
           <button onclick="showTab('regulatory');closeMobile()" class="mobile-nav-btn" data-tab="regulatory"><span>📋</span>규제 현황</button>
           <button onclick="showTab('qrm');closeMobile()"        class="mobile-nav-btn" data-tab="qrm"><span>🛡️</span>QRM 관리</button>
           <button onclick="showTab('glossary');closeMobile()"   class="mobile-nav-btn" data-tab="glossary"><span>📖</span>약어집</button>
+          <button onclick="location.href='Global trend.html'" class="mobile-nav-btn"><span>🌐</span>글로벌 동향</button>
           <!-- 고객 지원 -->
           <div class="mob-cat-label" style="margin-top:8px;">💬 고객 지원</div>
           <button onclick="showTab('faq');closeMobile()"  class="mobile-nav-btn" data-tab="faq"><span>💬</span>FAQ</button>
@@ -2765,79 +2769,318 @@
       <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:600px;margin:0 auto;line-height:1.7;">잠깐 쉬어가세요. 좋은 연구는 충분한 휴식에서 시작됩니다.</p>
     </div>
   </div>
-  <div style="padding:56px 0;">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-      <!-- 인용구 카드 -->
-      <div style="background:#fff;border-radius:20px;padding:40px 36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:32px;border-top:4px solid #059669;">
-        <div style="font-size:2.5rem;margin-bottom:16px;">🌿</div>
-        <blockquote style="font-size:1.25rem;font-weight:600;color:#1e293b;line-height:1.7;margin:0 0 14px;font-style:italic;">
-          "Rest is not idleness.<br>It is the key to better work."
-        </blockquote>
-        <p style="color:#64748b;font-size:0.88rem;margin:0;">— 잠깐의 여유가 더 나은 내일을 만듭니다</p>
+  <div style="padding:48px 0 64px;">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- 서브탭 선택 버튼 -->
+      <div style="display:flex;justify-content:center;gap:16px;margin-bottom:40px;flex-wrap:wrap;">
+        <button id="btn-mind" onclick="showBreakTab('mind')" style="
+          padding:13px 36px;border-radius:50px;font-size:1rem;font-weight:700;
+          cursor:pointer;font-family:'Noto Sans KR',sans-serif;
+          border:2px solid #7c3aed;background:#7c3aed;color:#fff;
+          box-shadow:0 4px 16px rgba(124,58,237,0.3);
+          transition:all 0.2s;">
+          🧠 Mind Break
+        </button>
+        <button id="btn-eye" onclick="showBreakTab('eye')" style="
+          padding:13px 36px;border-radius:50px;font-size:1rem;font-weight:700;
+          cursor:pointer;font-family:'Noto Sans KR',sans-serif;
+          border:2px solid #0284c7;background:#fff;color:#0284c7;
+          box-shadow:0 4px 16px rgba(0,0,0,0.06);
+          transition:all 0.2s;">
+          👁️ Eye Break
+        </button>
       </div>
 
-      <!-- 타이머 카드 -->
-      <div style="background:#fff;border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:32px;">
-        <p style="font-size:1rem;font-weight:600;color:#475569;margin:0 0 20px;">⏱️ 5분 휴식 타이머</p>
-        <div id="break-timer-display" style="font-size:3.5rem;font-weight:800;color:#059669;letter-spacing:0.05em;margin-bottom:24px;font-variant-numeric:tabular-nums;">05:00</div>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <button onclick="startBreakTimer()" style="background:#059669;color:#fff;border:none;padding:11px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#047857'" onmouseout="this.style.background='#059669'">▶ 시작</button>
-          <button onclick="resetBreakTimer()" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:11px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">↺ 초기화</button>
+      <!-- ===== MIND BREAK ===== -->
+      <div id="break-mind" style="display:block;">
+
+        <!-- 명언 카드 -->
+        <div style="background:#fff;border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:28px;border-top:4px solid #7c3aed;text-align:center;">
+          <div style="font-size:2.2rem;margin-bottom:14px;">💭</div>
+          <p style="font-size:0.75rem;font-weight:700;color:#7c3aed;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 16px;">Today's Quote</p>
+          <div id="mind-quote" style="font-size:1.15rem;font-weight:600;color:#1e293b;line-height:1.8;font-style:italic;margin-bottom:14px;">"The mind is everything. What you think, you become."</div>
+          <div id="mind-author" style="font-size:0.85rem;color:#94a3b8;">— Buddha</div>
+          <button onclick="nextMindQuote()" style="
+            margin-top:20px;background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;
+            padding:9px 24px;border-radius:8px;font-size:0.88rem;font-weight:700;
+            cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;"
+            onmouseover="this.style.background='#ede9fe'" onmouseout="this.style.background='#f5f3ff'">
+            🔀 다음 명언
+          </button>
+        </div>
+
+        <!-- 호흡 타이머 + 마음 챙김 -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:28px;">
+
+          <!-- 호흡 타이머 -->
+          <div style="background:#fff;border-radius:20px;padding:32px;box-shadow:0 8px 32px rgba(0,0,0,0.08);text-align:center;">
+            <div style="font-size:1.8rem;margin-bottom:8px;">🫁</div>
+            <p style="font-size:0.95rem;font-weight:700;color:#1e293b;margin:0 0 6px;">박스 호흡법</p>
+            <p style="font-size:0.78rem;color:#94a3b8;margin:0 0 20px;">4초 들이쉬기 → 4초 참기 → 4초 내쉬기 → 4초 참기</p>
+            <!-- 애니메이션 원 -->
+            <div style="position:relative;width:120px;height:120px;margin:0 auto 20px;">
+              <svg viewBox="0 0 120 120" style="width:120px;height:120px;">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#ede9fe" stroke-width="8"/>
+                <circle id="breath-ring" cx="60" cy="60" r="50" fill="none" stroke="#7c3aed" stroke-width="8"
+                  stroke-dasharray="314" stroke-dashoffset="314"
+                  stroke-linecap="round" transform="rotate(-90 60 60)"
+                  style="transition:stroke-dashoffset 1s linear;"/>
+              </svg>
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                <div id="breath-label" style="font-size:0.75rem;font-weight:700;color:#7c3aed;letter-spacing:0.05em;">준비</div>
+                <div id="breath-count" style="font-size:2rem;font-weight:800;color:#1e293b;">4</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;">
+              <button onclick="startBreath()" style="background:#7c3aed;color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#6d28d9'" onmouseout="this.style.background='#7c3aed'">▶ 시작</button>
+              <button onclick="stopBreath()" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:9px 22px;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">■ 정지</button>
+            </div>
+          </div>
+
+          <!-- 마음 챙김 체크리스트 -->
+          <div style="background:#fff;border-radius:20px;padding:32px;box-shadow:0 8px 32px rgba(0,0,0,0.08);">
+            <div style="text-align:center;margin-bottom:20px;">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🌱</div>
+              <p style="font-size:0.95rem;font-weight:700;color:#1e293b;margin:0;">지금 이 순간 체크</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <label style="display:flex;align-items:center;gap:12px;cursor:pointer;padding:10px 14px;border-radius:10px;background:#faf5ff;border:1px solid #ede9fe;transition:background 0.15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='#faf5ff'">
+                <input type="checkbox" onclick="checkMindItem(this)" style="width:18px;height:18px;accent-color:#7c3aed;cursor:pointer;">
+                <span style="font-size:0.88rem;color:#334155;font-weight:500;">물 한 잔 마셨나요?</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:12px;cursor:pointer;padding:10px 14px;border-radius:10px;background:#faf5ff;border:1px solid #ede9fe;transition:background 0.15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='#faf5ff'">
+                <input type="checkbox" onclick="checkMindItem(this)" style="width:18px;height:18px;accent-color:#7c3aed;cursor:pointer;">
+                <span style="font-size:0.88rem;color:#334155;font-weight:500;">어깨 힘을 빼고 있나요?</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:12px;cursor:pointer;padding:10px 14px;border-radius:10px;background:#faf5ff;border:1px solid #ede9fe;transition:background 0.15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='#faf5ff'">
+                <input type="checkbox" onclick="checkMindItem(this)" style="width:18px;height:18px;accent-color:#7c3aed;cursor:pointer;">
+                <span style="font-size:0.88rem;color:#334155;font-weight:500;">오늘 잘 하고 있나요?</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:12px;cursor:pointer;padding:10px 14px;border-radius:10px;background:#faf5ff;border:1px solid #ede9fe;transition:background 0.15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='#faf5ff'">
+                <input type="checkbox" onclick="checkMindItem(this)" style="width:18px;height:18px;accent-color:#7c3aed;cursor:pointer;">
+                <span style="font-size:0.88rem;color:#334155;font-weight:500;">지금 이 순간에 집중하고 있나요?</span>
+              </label>
+            </div>
+            <div id="mind-check-result" style="margin-top:16px;text-align:center;font-size:0.85rem;color:#7c3aed;font-weight:700;min-height:22px;"></div>
+          </div>
         </div>
       </div>
 
-      <!-- 팁 카드들 -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px;">
-        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
-          <div style="font-size:2rem;margin-bottom:10px;">🧘</div>
-          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">스트레칭</p>
-          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">목·어깨를 천천히<br>돌려보세요</p>
+      <!-- ===== EYE BREAK ===== -->
+      <div id="break-eye" style="display:none;">
+
+        <!-- 20-20-20 규칙 안내 -->
+        <div style="background:#fff;border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:28px;border-top:4px solid #0284c7;text-align:center;">
+          <div style="font-size:2.2rem;margin-bottom:12px;">👁️</div>
+          <p style="font-size:0.75rem;font-weight:700;color:#0284c7;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">20-20-20 Rule</p>
+          <p style="font-size:1.05rem;font-weight:600;color:#1e293b;margin:0 0 18px;line-height:1.7;">
+            매 <strong style="color:#0284c7;">20분</strong>마다 <strong style="color:#0284c7;">20피트(6m)</strong> 떨어진 곳을<br>
+            <strong style="color:#0284c7;">20초</strong>간 바라보세요
+          </p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:400px;margin:0 auto;">
+            <div style="background:#eff6ff;border-radius:12px;padding:16px 10px;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:800;color:#0284c7;">20</div>
+              <div style="font-size:0.72rem;color:#64748b;font-weight:600;">분마다</div>
+            </div>
+            <div style="background:#eff6ff;border-radius:12px;padding:16px 10px;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:800;color:#0284c7;">6m</div>
+              <div style="font-size:0.72rem;color:#64748b;font-weight:600;">거리 (20ft)</div>
+            </div>
+            <div style="background:#eff6ff;border-radius:12px;padding:16px 10px;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:800;color:#0284c7;">20</div>
+              <div style="font-size:0.72rem;color:#64748b;font-weight:600;">초 동안</div>
+            </div>
+          </div>
         </div>
-        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
-          <div style="font-size:2rem;margin-bottom:10px;">💧</div>
-          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">수분 보충</p>
-          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">물 한 잔으로<br>집중력을 높이세요</p>
+
+        <!-- 20초 타이머 + 눈 운동 -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:28px;">
+
+          <!-- 20초 눈 휴식 타이머 -->
+          <div style="background:#fff;border-radius:20px;padding:32px;box-shadow:0 8px 32px rgba(0,0,0,0.08);text-align:center;">
+            <div style="font-size:1.8rem;margin-bottom:8px;">⏱️</div>
+            <p style="font-size:0.95rem;font-weight:700;color:#1e293b;margin:0 0 6px;">20초 눈 휴식 타이머</p>
+            <p style="font-size:0.78rem;color:#94a3b8;margin:0 0 20px;">지금 바로 멀리 바라보세요</p>
+            <!-- 원형 프로그레스 -->
+            <div style="position:relative;width:130px;height:130px;margin:0 auto 20px;">
+              <svg viewBox="0 0 130 130" style="width:130px;height:130px;">
+                <circle cx="65" cy="65" r="55" fill="none" stroke="#e0f2fe" stroke-width="9"/>
+                <circle id="eye-ring" cx="65" cy="65" r="55" fill="none" stroke="#0284c7" stroke-width="9"
+                  stroke-dasharray="345.4" stroke-dashoffset="0"
+                  stroke-linecap="round" transform="rotate(-90 65 65)"
+                  style="transition:stroke-dashoffset 1s linear;"/>
+              </svg>
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                <div id="eye-timer-num" style="font-size:2.6rem;font-weight:800;color:#0284c7;line-height:1;">20</div>
+                <div style="font-size:0.7rem;color:#94a3b8;font-weight:600;">초</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;">
+              <button onclick="startEyeTimer()" style="background:#0284c7;color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#0369a1'" onmouseout="this.style.background='#0284c7'">▶ 시작</button>
+              <button onclick="resetEyeTimer()" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:9px 22px;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">↺ 초기화</button>
+            </div>
+          </div>
+
+          <!-- 눈 운동 가이드 -->
+          <div style="background:#fff;border-radius:20px;padding:32px;box-shadow:0 8px 32px rgba(0,0,0,0.08);">
+            <div style="text-align:center;margin-bottom:18px;">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🔄</div>
+              <p style="font-size:0.95rem;font-weight:700;color:#1e293b;margin:0;">눈 운동 가이드</p>
+              <p style="font-size:0.75rem;color:#94a3b8;margin:4px 0 0;">천천히 따라해보세요</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;background:#eff6ff;border:1px solid #bae6fd;">
+                <span style="font-size:1.3rem;">↔️</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:700;color:#0369a1;margin:0 0 2px;">좌우 운동</p>
+                  <p style="font-size:0.75rem;color:#64748b;margin:0;">눈동자를 천천히 좌우로 5회</p>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;background:#eff6ff;border:1px solid #bae6fd;">
+                <span style="font-size:1.3rem;">↕️</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:700;color:#0369a1;margin:0 0 2px;">상하 운동</p>
+                  <p style="font-size:0.75rem;color:#64748b;margin:0;">눈동자를 천천히 상하로 5회</p>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;background:#eff6ff;border:1px solid #bae6fd;">
+                <span style="font-size:1.3rem;">🔁</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:700;color:#0369a1;margin:0 0 2px;">원형 운동</p>
+                  <p style="font-size:0.75rem;color:#64748b;margin:0;">눈동자를 시계·반시계 방향으로 3회씩</p>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;background:#eff6ff;border:1px solid #bae6fd;">
+                <span style="font-size:1.3rem;">😌</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:700;color:#0369a1;margin:0 0 2px;">손바닥 온찜질</p>
+                  <p style="font-size:0.75rem;color:#64748b;margin:0;">손 비빈 후 따뜻하게 눈 위에 30초</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
-          <div style="font-size:2rem;margin-bottom:10px;">👀</div>
-          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">눈 휴식</p>
-          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">먼 곳을 20초간<br>바라보세요</p>
+
+        <!-- 깜빡임 리마인더 -->
+        <div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:16px;padding:22px 28px;text-align:center;border:1px solid #bae6fd;">
+          <p style="font-size:0.88rem;font-weight:700;color:#0369a1;margin:0 0 6px;">💡 알고 계셨나요?</p>
+          <p style="font-size:0.82rem;color:#334155;margin:0;line-height:1.7;">
+            컴퓨터 작업 중에는 평소보다 눈 깜빡임이 <strong>3분의 1</strong>로 줄어듭니다.<br>
+            의식적으로 자주 깜빡여 눈물막을 유지해주세요. 👁️✨
+          </p>
         </div>
       </div>
 
-      <button onclick="showTab('contact')" style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;border:none;padding:13px 36px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 4px 16px rgba(5,150,105,0.3);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
-        충분히 쉬셨나요? 문의하기로 →
-      </button>
+      <!-- 하단 버튼 -->
+      <div style="text-align:center;margin-top:40px;">
+        <button onclick="showTab('contact')" style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;border:none;padding:13px 36px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 4px 16px rgba(5,150,105,0.3);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          충분히 쉬셨나요? 문의하기로 →
+        </button>
+      </div>
+
     </div>
   </div>
   </section>
 
   <script>
-    var _breakInterval = null;
-    var _breakSeconds = 300;
-    function _renderBreakTimer(s) {
-      var m = Math.floor(s / 60);
-      var sec = s % 60;
-      document.getElementById('break-timer-display').textContent =
-        String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+    /* ===== 서브탭 전환 ===== */
+    function showBreakTab(tab) {
+      document.getElementById('break-mind').style.display = tab === 'mind' ? 'block' : 'none';
+      document.getElementById('break-eye').style.display  = tab === 'eye'  ? 'block' : 'none';
+      var btnMind = document.getElementById('btn-mind');
+      var btnEye  = document.getElementById('btn-eye');
+      if (tab === 'mind') {
+        btnMind.style.background = '#7c3aed'; btnMind.style.color = '#fff'; btnMind.style.border = '2px solid #7c3aed';
+        btnEye.style.background  = '#fff';    btnEye.style.color  = '#0284c7'; btnEye.style.border = '2px solid #0284c7';
+      } else {
+        btnEye.style.background  = '#0284c7'; btnEye.style.color  = '#fff'; btnEye.style.border = '2px solid #0284c7';
+        btnMind.style.background = '#fff';    btnMind.style.color = '#7c3aed'; btnMind.style.border = '2px solid #7c3aed';
+      }
     }
-    function startBreakTimer() {
-      if (_breakInterval) return;
-      _breakInterval = setInterval(function() {
-        if (_breakSeconds <= 0) {
-          clearInterval(_breakInterval); _breakInterval = null;
-          document.getElementById('break-timer-display').textContent = '🎉 완료!';
-          return;
+
+    /* ===== MIND: 명언 ===== */
+    var _quotes = [
+      { q: '"The mind is everything. What you think, you become."', a: '— Buddha' },
+      { q: '"Almost everything will work again if you unplug it for a few minutes — including you."', a: '— Anne Lamott' },
+      { q: '"Take rest; a field that has rested gives a bountiful crop."', a: '— Ovid' },
+      { q: '"Your calm mind is the ultimate weapon against your challenges."', a: '— Bryant McGill' },
+      { q: '"Rest when you\'re weary. Refresh and renew yourself."', a: '— Ralph Marston' },
+      { q: '"In the middle of difficulty lies opportunity."', a: '— Albert Einstein' },
+    ];
+    var _qIdx = 0;
+    function nextMindQuote() {
+      _qIdx = (_qIdx + 1) % _quotes.length;
+      document.getElementById('mind-quote').textContent  = _quotes[_qIdx].q;
+      document.getElementById('mind-author').textContent = _quotes[_qIdx].a;
+    }
+
+    /* ===== MIND: 호흡 ===== */
+    var _breathPhases = [
+      { label:'들이쉬기', duration:4, offset:0 },
+      { label:'참  기', duration:4, offset:314 },
+      { label:'내쉬기', duration:4, offset:314 },
+      { label:'참  기', duration:4, offset:0 },
+    ];
+    var _breathTimer = null, _breathPhaseIdx = 0, _breathSec = 0;
+    function startBreath() {
+      if (_breathTimer) return;
+      _breathPhaseIdx = 0; _breathSec = _breathPhases[0].duration;
+      _runBreathTick();
+      _breathTimer = setInterval(_runBreathTick, 1000);
+    }
+    function _runBreathTick() {
+      var p = _breathPhases[_breathPhaseIdx];
+      document.getElementById('breath-label').textContent = p.label;
+      document.getElementById('breath-count').textContent = _breathSec;
+      var ring = document.getElementById('breath-ring');
+      var progress = (_breathPhases[_breathPhaseIdx].duration - _breathSec) / _breathPhases[_breathPhaseIdx].duration;
+      if (_breathPhaseIdx === 0) ring.style.strokeDashoffset = 314 * (1 - progress);
+      else if (_breathPhaseIdx === 2) ring.style.strokeDashoffset = 314 * progress;
+      _breathSec--;
+      if (_breathSec < 0) {
+        _breathPhaseIdx = (_breathPhaseIdx + 1) % _breathPhases.length;
+        _breathSec = _breathPhases[_breathPhaseIdx].duration;
+      }
+    }
+    function stopBreath() {
+      clearInterval(_breathTimer); _breathTimer = null;
+      document.getElementById('breath-label').textContent = '준비';
+      document.getElementById('breath-count').textContent = '4';
+      document.getElementById('breath-ring').style.strokeDashoffset = '314';
+    }
+
+    /* ===== MIND: 체크리스트 ===== */
+    function checkMindItem(cb) {
+      var labels = document.querySelectorAll('#break-mind input[type=checkbox]');
+      var checked = 0;
+      labels.forEach(function(c){ if(c.checked) checked++; });
+      var msgs = ['','한 가지 실천했어요 👍','둘 다 챙기고 있군요! 😊','세 가지나! 정말 잘 하고 있어요 🌟','완벽해요! 지금 이 순간을 즐기세요 ✨'];
+      document.getElementById('mind-check-result').textContent = msgs[checked] || '';
+    }
+
+    /* ===== EYE: 20초 타이머 ===== */
+    var _eyeTimer = null, _eyeSec = 20;
+    var EYE_CIRC = 345.4;
+    function startEyeTimer() {
+      if (_eyeTimer) return;
+      _eyeSec = 20;
+      _eyeTimer = setInterval(function() {
+        _eyeSec--;
+        document.getElementById('eye-timer-num').textContent = _eyeSec;
+        document.getElementById('eye-ring').style.strokeDashoffset = EYE_CIRC * (1 - _eyeSec / 20);
+        if (_eyeSec <= 0) {
+          clearInterval(_eyeTimer); _eyeTimer = null;
+          document.getElementById('eye-timer-num').textContent = '✓';
         }
-        _breakSeconds--;
-        _renderBreakTimer(_breakSeconds);
       }, 1000);
     }
-    function resetBreakTimer() {
-      clearInterval(_breakInterval); _breakInterval = null;
-      _breakSeconds = 300;
-      _renderBreakTimer(_breakSeconds);
+    function resetEyeTimer() {
+      clearInterval(_eyeTimer); _eyeTimer = null;
+      _eyeSec = 20;
+      document.getElementById('eye-timer-num').textContent = '20';
+      document.getElementById('eye-ring').style.strokeDashoffset = '0';
     }
   </script>
 
