@@ -270,17 +270,17 @@
   <!-- ===== 슬라이딩 오픈 배너 ===== -->
   <div id="open-banner" style="
     position: fixed;
-    top: -70px;
+    top: -80px;
     left: 0; right: 0;
     z-index: 99999;
-    background: linear-gradient(90deg, #16a34a 0%, #22c55e 50%, #16a34a 100%);
-    color: #111827;
+    background: linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #0284c7 100%);
+    color: #ffffff;
     text-align: center;
-    padding: 14px 20px;
-    font-size: 1.05rem;
+    padding: 16px 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     font-family: 'Noto Sans KR', sans-serif;
-    box-shadow: 0 4px 18px rgba(22,163,74,0.35);
+    box-shadow: 0 4px 18px rgba(2,132,199,0.4);
     letter-spacing: 0.03em;
     transition: top 0.6s cubic-bezier(.22,1,.36,1);
     display: flex;
@@ -288,9 +288,9 @@
     justify-content: center;
     gap: 10px;
   ">
-    <span style="font-size:1.2rem;">🎉</span>
+    <span style="font-size:1.4rem;">🎉</span>
     2026년 5월 4일 새롭게 open합니다
-    <span style="font-size:1.2rem;">🎉</span>
+    <span style="font-size:1.4rem;">🎉</span>
   </div>
   <script>
     window.addEventListener('load', function() {
@@ -300,14 +300,14 @@
       setTimeout(function() {
         banner.style.top = '0px';
       }, 300);
-      // 3.5초 후 슬라이드 아웃
+      // 5초 머무른 후 슬라이드 아웃
       setTimeout(function() {
-        banner.style.top = '-70px';
-      }, 3800);
+        banner.style.top = '-80px';
+      }, 5300);
       // 완전 사라진 후 DOM에서 제거
       setTimeout(function() {
         banner.style.display = 'none';
-      }, 4500);
+      }, 6100);
     });
   </script>
 
