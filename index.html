@@ -264,53 +264,6 @@
 </head>
 <body class="text-dark" style="background-color:#EEF2F7;">
 
-
-  
-
-  <!-- ===== 슬라이딩 오픈 배너 ===== -->
-  <div id="open-banner" style="
-    position: fixed;
-    top: -80px;
-    left: 0; right: 0;
-    z-index: 99999;
-    background: linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #0284c7 100%);
-    color: #ffffff;
-    text-align: center;
-    padding: 16px 20px;
-    font-size: 1.25rem;
-    font-weight: 700;
-    font-family: 'Noto Sans KR', sans-serif;
-    box-shadow: 0 4px 18px rgba(2,132,199,0.4);
-    letter-spacing: 0.03em;
-    transition: top 0.6s cubic-bezier(.22,1,.36,1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  ">
-    <span style="font-size:1.4rem;">🎉</span>
-    2026년 5월 4일 새롭게 open합니다
-    <span style="font-size:1.4rem;">🎉</span>
-  </div>
-  <script>
-    window.addEventListener('load', function() {
-      var banner = document.getElementById('open-banner');
-      if (!banner) return;
-      // 0.3초 후 슬라이드 인
-      setTimeout(function() {
-        banner.style.top = '0px';
-      }, 300);
-      // 5초 머무른 후 슬라이드 아웃
-      setTimeout(function() {
-        banner.style.top = '-80px';
-      }, 5300);
-      // 완전 사라진 후 DOM에서 제거
-      setTimeout(function() {
-        banner.style.display = 'none';
-      }, 6100);
-    });
-  </script>
-
   <!-- ===== 헤더 네비게이션 ===== -->
   <header class="shadow-sm sticky top-0 z-50" style="background:#F0F5FA;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
