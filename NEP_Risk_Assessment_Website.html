@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEP Risk Assessment | 비내독소성 발열물질 위험성 평가</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D1117;
+    --ink-mid: #2A3340;
+    --ink-light: #5A6578;
+    --ink-faint: #8C9AAA;
+    --paper: #F8F6F1;
+    --paper-warm: #EFEBE2;
+    --paper-mid: #E4DDD0;
+    --accent: #1A4F8B;
+    --accent-bright: #2563EB;
+    --accent-light: #DBEAFE;
+    --bio: #14532D;
+    --bio-mid: #166534;
+    --bio-light: #DCFCE7;
+    --chem: #78350F;
+    --chem-mid: #92400E;
+    --chem-light: #FEF3C7;
+    --red: #991B1B;
+    --red-light: #FEE2E2;
+    --amber: #92400E;
+    --amber-light: #FEF3C7;
+    --green: #14532D;
+    --green-light: #DCFCE7;
+    --rule: #C8C0B0;
+    --shadow: rgba(13,17,23,0.08);
+    --shadow-deep: rgba(13,17,23,0.16);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ──── HEADER / HERO ──── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(248,246,241,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248,246,241,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  .hero-glow-1 { background: #2563EB; top: -200px; right: -100px; }
+  .hero-glow-2 { background: #166534; bottom: -200px; left: -100px; }
+
+  .topbar {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 60px;
+    border-bottom: 1px solid rgba(248,246,241,0.1);
+  }
+
+  .topbar-logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    color: rgba(248,246,241,0.6);
+    text-transform: uppercase;
+  }
+
+  .topbar-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: rgba(248,246,241,0.5);
+    border: 1px solid rgba(248,246,241,0.2);
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 100px;
+    position: relative; z-index: 5;
+    max-width: 1100px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #60A5FA;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block; width: 32px; height: 1px;
+    background: #60A5FA;
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 1.05;
+    color: var(--paper);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title-sub {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(18px, 2.5vw, 32px);
+    color: rgba(248,246,241,0.5);
+    font-style: italic;
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: rgba(248,246,241,0.65);
+    max-width: 680px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  .hero-meta-row {
+    display: flex; flex-wrap: wrap; gap: 24px;
+  }
+
+  .hero-meta {
+    display: flex; flex-direction: column; gap: 4px;
+    border-left: 2px solid rgba(248,246,241,0.2);
+    padding-left: 16px;
+  }
+  .hero-meta-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.5);
+  }
+  .hero-meta-value {
+    font-size: 15px;
+    color: rgba(248,246,241,0.8);
+    font-weight: 500;
+  }
+
+  .hero-products {
+    position: absolute; right: 60px; bottom: 80px;
+    display: flex; flex-direction: column; gap: 16px;
+    z-index: 5;
+  }
+
+  .product-chip {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 24px;
+    background: rgba(248,246,241,0.05);
+    border: 1px solid rgba(248,246,241,0.12);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .product-chip:hover {
+    background: rgba(248,246,241,0.1);
+    border-color: rgba(248,246,241,0.25);
+    transform: translateX(-4px);
+  }
+
+  .chip-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .chip-dot.bio { background: #4ADE80; box-shadow: 0 0 8px #4ADE80; }
+  .chip-dot.chem { background: #FCD34D; box-shadow: 0 0 8px #FCD34D; }
+
+  .chip-text { display: flex; flex-direction: column; gap: 2px; }
+  .chip-label { font-size: 13px; color: rgba(248,246,241,0.5); font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; }
+  .chip-name { font-size: 16px; color: rgba(248,246,241,0.85); font-weight: 600; }
+
+  /* ──── NAV ──── */
+  .sticky-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(248,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 60px;
+    display: flex; align-items: center; gap: 0;
+  }
+
+  .nav-item {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-light);
+    padding: 18px 20px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .nav-item:hover, .nav-item.active {
+    color: var(--accent-bright);
+    border-bottom-color: var(--accent-bright);
+  }
+
+  /* ──── MAIN LAYOUT ──── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  section { padding: 80px 0; }
+  section + section { border-top: 1px solid var(--rule); }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .section-sub {
+    font-size: 18px;
+    color: var(--ink-light);
+    max-width: 680px;
+    margin-bottom: 48px;
+    line-height: 1.75;
+  }
+
+  /* ──── REG TABLE ──── */
+  .reg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .reg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+  .reg-card:hover {
+    border-color: var(--accent-bright);
+    box-shadow: 0 8px 32px var(--shadow);
+    transform: translateY(-2px);
+  }
+  .reg-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  }
+
+  .reg-code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    color: var(--accent-bright);
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .reg-title { font-size: 19px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .reg-desc { font-size: 14px; color: var(--ink-light); line-height: 1.7; }
+
+  /* ──── NEP SOURCES ──── */
+  .nep-sources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+
+  .nep-source-item {
+    background: var(--paper);
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+  .nep-source-item:hover { background: var(--paper-warm); }
+
+  .nep-source-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .nep-source-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .nep-source-items { font-size: 15px; color: var(--ink-light); line-height: 1.75; }
+
+  /* ──── PRODUCT SECTION TABS ──── */
+  .product-tabs {
+    display: flex; gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    margin-bottom: 40px;
+    background: var(--paper-warm);
+  }
+
+  .product-tab {
+    flex: 1;
+    padding: 20px 28px;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 14px;
+    transition: all 0.2s;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .product-tab.active-bio { background: var(--ink); }
+  .product-tab.active-chem { background: var(--chem); }
+  .product-tab + .product-tab { border-left: 1px solid var(--rule); }
+
+  .tab-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .tab-text { display: flex; flex-direction: column; gap: 3px; }
+  .tab-klass { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'IBM Plex Mono', monospace; }
+  .tab-name { font-size: 15px; font-weight: 600; }
+
+  .product-tab:not(.active-bio):not(.active-chem) .tab-klass { color: var(--ink-faint); }
+  .product-tab:not(.active-bio):not(.active-chem) .tab-name { color: var(--ink); }
+
+  .product-tab.active-bio .tab-klass, .product-tab.active-bio .tab-name { color: rgba(248,246,241,0.7); }
+  .product-tab.active-bio .tab-name { color: rgba(248,246,241,1); }
+  .product-tab.active-chem .tab-klass, .product-tab.active-chem .tab-name { color: rgba(248,246,241,0.7); }
+  .product-tab.active-chem .tab-name { color: rgba(248,246,241,1); }
+
+  /* ──── PRODUCT INFO BOX ──── */
+  .product-info-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  .info-cell {
+    padding: 20px 24px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .info-cell:nth-child(3n) { border-right: none; }
+  .info-cell:nth-last-child(-n+3) { border-bottom: none; }
+
+  .info-label { font-size: 12px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; }
+  .info-value { font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.55; }
+
+  /* ──── RA TABLE ──── */
+  .ra-table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 4px 24px var(--shadow);
+  }
+
+  .ra-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .ra-table thead tr {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .ra-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+    border-right: 1px solid rgba(248,246,241,0.08);
+  }
+  .ra-table th:last-child { border-right: none; }
+
+  .ra-table td {
+    padding: 16px 18px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    line-height: 1.65;
+    color: var(--ink-mid);
+    font-size: 14px;
+  }
+  .ra-table td:last-child { border-right: none; }
+
+  .ra-table tbody tr:last-child td { border-bottom: none; }
+  .ra-table tbody tr:nth-child(even) td { background: var(--paper-warm); }
+  .ra-table tbody tr:hover td { background: var(--accent-light); }
+
+  .td-step { font-weight: 700; color: var(--ink); font-size: 15px; }
+  .td-step-num { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-faint); display: block; margin-bottom: 4px; }
+
+  .risk-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+  .risk-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+  .risk-high { background: var(--red-light); color: var(--red); }
+  .risk-high::before { background: var(--red); }
+  .risk-med { background: var(--amber-light); color: var(--amber); }
+  .risk-med::before { background: var(--amber); }
+  .risk-low { background: var(--green-light); color: var(--green); }
+  .risk-low::before { background: var(--green); }
+
+  .mat-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* ──── RISK SUMMARY GRID ──── */
+  .risk-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .risk-summary-card {
+    border-radius: 14px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .risk-card-header {
+    padding: 20px 24px 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .risk-card-icon {
+    width: 46px; height: 46px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+
+  .risk-card-title { font-size: 16px; font-weight: 600; }
+  .risk-card-sub { font-size: 12px; color: var(--ink-faint); font-family: 'IBM Plex Mono', monospace; }
+
+  .risk-card-body { padding: 0 24px 24px; }
+
+  .risk-step-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 12px;
+  }
+  .risk-step-row:last-child { border-bottom: none; }
+  .risk-step-name { font-size: 13px; color: var(--ink-mid); flex: 1; }
+  .priority-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--paper-warm);
+    color: var(--ink-light);
+  }
+  .priority-1 { background: #FFF1F2; color: #9F1239; }
+
+  /* ──── COMPARISON TABLE ──── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    box-shadow: 0 4px 24px var(--shadow);
+  }
+
+  .compare-table th {
+    padding: 20px 24px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .compare-table th:first-child { background: var(--ink); color: var(--paper); }
+  .compare-table th.bio-col { background: var(--bio); color: #fff; }
+  .compare-table th.chem-col { background: var(--chem); color: #fff; }
+
+  .compare-table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    vertical-align: top;
+    line-height: 1.65;
+  }
+  .compare-table td:first-child { font-weight: 600; color: var(--ink); background: var(--paper-warm); }
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+
+  /* ──── MAT SECTION ──── */
+  .mat-timeline {
+    position: relative;
+    padding-left: 32px;
+    margin-top: 40px;
+  }
+  .mat-timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 12px; bottom: 12px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-bright), var(--bio-mid));
+  }
+
+  .mat-step {
+    position: relative;
+    padding: 0 0 36px 28px;
+  }
+  .mat-step::before {
+    content: '';
+    position: absolute; left: -5px; top: 5px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent-bright);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--accent-bright);
+  }
+
+  .mat-step-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+    margin-bottom: 6px;
+  }
+  .mat-step-title { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+  .mat-step-desc { font-size: 16px; color: var(--ink-light); max-width: 700px; line-height: 1.75; }
+
+  .mat-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 10px;
+  }
+  .mat-pill {
+    font-size: 14px;
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+    color: var(--ink-mid);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ──── BET LIMITS TABLE ──── */
+  .bet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 32px;
+  }
+  .bet-cell {
+    background: var(--paper);
+    padding: 24px;
+    transition: background 0.2s;
+  }
+  .bet-cell:hover { background: var(--paper-warm); }
+  .bet-cell-type { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .bet-cell-source { font-size: 14px; color: var(--ink-light); margin-bottom: 8px; }
+  .bet-cell-process { font-size: 14px; font-family: 'IBM Plex Mono', monospace; color: var(--accent); }
+  .bet-no { display: inline-block; padding: 3px 10px; background: var(--red-light); color: var(--red); border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; }
+
+  /* ──── CHECKLIST ──── */
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .check-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 20px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: var(--paper);
+    transition: all 0.2s;
+  }
+  .check-item:hover { border-color: var(--accent-bright); background: var(--accent-light); }
+
+  .check-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .check-icon.done { background: var(--green-light); }
+  .check-icon.required { background: var(--accent-light); }
+  .check-icon.recommended { background: var(--amber-light); }
+
+  .check-text { display: flex; flex-direction: column; gap: 4px; }
+  .check-title { font-size: 16px; font-weight: 700; color: var(--ink); }
+  .check-detail { font-size: 14px; color: var(--ink-light); line-height: 1.65; }
+  .check-tags { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  .check-tag {
+    font-size: 12px; padding: 3px 9px;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+  }
+  .tag-bio { background: var(--bio-light); color: var(--bio); }
+  .tag-chem { background: var(--chem-light); color: var(--chem); }
+  .tag-both { background: var(--paper-mid); color: var(--ink-mid); }
+
+  /* ──── FOOTER ──── */
+  footer {
+    background: var(--ink);
+    color: rgba(248,246,241,0.5);
+    padding: 48px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px;
+  }
+
+  .footer-left { display: flex; flex-direction: column; gap: 8px; }
+  .footer-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--paper); }
+  .footer-meta { font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.07em; }
+
+  .footer-refs { display: flex; flex-direction: column; gap: 4px; text-align: right; }
+  .footer-ref { font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.03em; }
+  .footer-ref a { color: #60A5FA; text-decoration: none; }
+  .footer-ref a:hover { text-decoration: underline; }
+
+  /* ──── ANIMATIONS ──── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fadeUp 0.6s ease both; }
+  .fade-in-1 { animation-delay: 0.1s; }
+  .fade-in-2 { animation-delay: 0.25s; }
+  .fade-in-3 { animation-delay: 0.4s; }
+  .fade-in-4 { animation-delay: 0.55s; }
+
+  /* ──── PANEL TOGGLE ──── */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeUp 0.35s ease both; }
+
+  /* ──── RESPONSIVE ──── */
+  @media (max-width: 900px) {
+    .topbar { padding: 20px 24px; }
+    .hero-content { padding: 60px 24px 80px; }
+    .hero-products { display: none; }
+    .container { padding: 0 24px; }
+    .sticky-nav { padding: 0 24px; overflow-x: auto; }
+    .nep-sources-grid { grid-template-columns: 1fr; }
+    .bet-grid { grid-template-columns: 1fr; }
+    footer { padding: 40px 24px; }
+    .footer-refs { text-align: left; }
+    .product-info-box { grid-template-columns: 1fr 1fr; }
+    .product-info-box .info-cell:nth-child(2n) { border-right: none; }
+    .product-info-box .info-cell:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .compare-table { font-size: 13px; }
+    .compare-table th, .compare-table td { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+
+  <div class="topbar">
+    <div class="topbar-logo">GMP Quality Systems · NEP Case Study</div>
+    <div class="topbar-badge">Ph. Eur. 5.1.10 Compliant</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-in fade-in-1">Non-Endotoxin Pyrogen Risk Assessment</div>
+    <h1 class="hero-title fade-in fade-in-2">비내독소성 발열물질<br>위험성 평가</h1>
+    <p class="hero-title-sub fade-in fade-in-2">NEP Risk Assessment Case Study</p>
+    <p class="hero-desc fade-in fade-in-3">Ph. Eur. 5.1.10 지침에 따라 BET(내독소 시험) 적용 의약품에 필수적으로 수반되는 비내독소성 발열물질 위험성 평가. 생물학적 제제(단일클론항체) 및 화학합성 제제(포도당 주사) 생산라인의 원료 입고부터 완제품 출하까지 전 공정에 대한 NEP RA 사례 분석.</p>
+    <div class="hero-meta-row fade-in fade-in-4">
+      <div class="hero-meta">
+        <span class="hero-meta-label">문서번호</span>
+        <span class="hero-meta-value">NEP-RA-2025-001</span>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-meta-label">버전</span>
+        <span class="hero-meta-value">Ver. 1.0</span>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-meta-label">평가시험법</span>
+        <span class="hero-meta-value">MAT (Ph. Eur. 2.6.30)</span>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-meta-label">평가근거</span>
+        <span class="hero-meta-value">Ph. Eur. 5.1.10 · ICH Q9</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-products">
+    <a class="product-chip" href="#mab">
+      <div class="chip-dot bio"></div>
+      <div class="chip-text">
+        <span class="chip-label">생물학적 제제</span>
+        <span class="chip-name">단일클론항체 (mAb)</span>
+      </div>
+    </a>
+    <a class="product-chip" href="#glucose">
+      <div class="chip-dot chem"></div>
+      <div class="chip-text">
+        <span class="chip-label">화학합성 제제</span>
+        <span class="chip-name">포도당 주사 (Glucose Inj.)</span>
+      </div>
+    </a>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="#background" class="nav-item">규제 배경</a>
+  <a href="#nep-sources" class="nav-item">NEP 발생원</a>
+  <a href="#mab" class="nav-item">mAb 생산라인</a>
+  <a href="#glucose" class="nav-item">포도당 주사</a>
+  <a href="#comparison" class="nav-item">비교 분석</a>
+  <a href="#mat-plan" class="nav-item">MAT 적용 계획</a>
+  <a href="#checklist" class="nav-item">이행 체크리스트</a>
+</nav>
+
+<main>
+
+<!-- SECTION 1: BACKGROUND -->
+<section id="background">
+  <div class="container">
+    <div class="section-label">Section 01</div>
+    <h2 class="section-title">규제적 배경 및 평가 목적</h2>
+    <p class="section-sub">BET(Bacterial Endotoxin Test)가 제품 release 시험에 사용되는 모든 경우, Ph. Eur. 5.1.10은 NEP에 대한 별도의 위험성 평가를 의무화한다.</p>
+
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-code">Ph. Eur. 5.1.10</div>
+        <div class="reg-title">세균내독소 시험 지침</div>
+        <div class="reg-desc">BET 사용 시 NEP 위험성 평가 수행 의무화. 생산 공정 개발 또는 배치 출하 시 발열물질 시험 필수. 비내독소성 발열물질의 존재를 배제해야만 BET 음성을 근거로 발열성 부재를 결론지을 수 있음.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-code">Ph. Eur. 2.6.30 (MAT)</div>
+        <div class="reg-title">Monocyte Activation Test</div>
+        <div class="reg-desc">NEP 시험의 표준 방법으로 MAT를 권고. 2021년 6월 Ph. Eur. Commission은 5년 이내 토끼 발열물질 시험(RPT) 완전 대체 계획 발표. 인간 전혈 기반의 in vitro 시험으로 전체 발열물질 스펙트럼 검출.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-code">ICH Q9</div>
+        <div class="reg-title">품질 위험관리</div>
+        <div class="reg-desc">의약품 품질 위험관리 원칙 적용. 위험 식별 → 분석 → 평가 → 통제의 체계적 접근 요구. NEP RA는 ICH Q9 프레임워크에 따라 전 공정 단계별로 수행되어야 함.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-code">EU GMP Annex 1 (2022)</div>
+        <div class="reg-title">무균 의약품 제조</div>
+        <div class="reg-desc">오염 통제 전략(CCS, Contamination Control Strategy) 수립 의무. 발열물질 포함 모든 오염원에 대한 위험 평가 요구. CCS는 NEP RA와 연계되어야 함.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-code">EU GMP Annex 2</div>
+        <div class="reg-title">생물의약품 제조</div>
+        <div class="reg-desc">세포 배양 기반 생물의약품에 대한 추가 요건. 세포은행, 배양 공정, 바이러스 안전성 관련 NEP 위험 평가 포함. 동물유래 원료의 NEP 위험 특별 관리 요구.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-code">21 CFR 211.167</div>
+        <div class="reg-title">FDA 발열성 시험 요건</div>
+        <div class="reg-desc">주사제의 발열성 시험 요구. FDA는 MAT를 대체 시험법으로 승인. BET 음성 제품에 대해서도 NEP 위험 평가 수행을 권고.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; padding: 32px; background: var(--ink); border-radius: 14px; color: var(--paper);">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#60A5FA; margin-bottom:12px;">Ph. Eur. 5.1.10 핵심 원문</div>
+      <p style="font-family:'DM Serif Display',serif; font-size:18px; line-height:1.7; color:rgba(248,246,241,0.85); font-style:italic;">"...the conclusion is generally justified that the absence of bacterial endotoxins in a substance or product implies the absence of pyrogenic components, <strong style="color:#F8F6F1; font-style:normal;">provided the presence of non-endotoxin pyrogenic substances can be ruled out</strong>...at release or during development of the production process..."</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: NEP SOURCES -->
+<section id="nep-sources">
+  <div class="container">
+    <div class="section-label">Section 02</div>
+    <h2 class="section-title">NEP 발생원 및 임상적 위해</h2>
+    <p class="section-sub">비내독소성 발열물질(NEP)은 광범위한 외인성 발열물질군으로, BET로 검출되지 않으며 환자 안전에 심각한 위해를 유발할 수 있다.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:40px;">
+      <div style="padding:28px; background:var(--red-light); border:1px solid #FCA5A5; border-radius:14px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--red); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">임상적 위해 — Reason 1</div>
+        <div style="font-size:16px; font-weight:600; color:var(--ink); margin-bottom:10px;">환자 생명 위협</div>
+        <div style="font-size:14px; color:var(--ink-mid); line-height:1.7;">발열, 발진, 두통, 근육통, 오심, 구토, 장기부전, 내독소성 쇼크. 주사제 또는 의료기기에 NEP 존재 시 환자의 발열반응 유발로 심각한 안전 위해 초래.</div>
+      </div>
+      <div style="padding:28px; background:var(--amber-light); border:1px solid #FCD34D; border-radius:14px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">시너지 효과 — Reason 2</div>
+        <div style="font-size:16px; font-weight:600; color:var(--ink); margin-bottom:10px;">복합 발열물질 상승작용</div>
+        <div style="font-size:14px; color:var(--ink-mid); line-height:1.7;">LPS(75 pg/mL) + R848(50 pg/mL) 단독 → IL-6 합산 125 pg/mL 예상. 동시 존재 시 → <strong>IL-6 300 pg/mL 실제 발생</strong> (2.4배 증폭). BET 음성만으로는 시너지 효과 위험 배제 불가.</div>
+      </div>
+    </div>
+
+    <div class="nep-sources-grid">
+      <div class="nep-source-item">
+        <div class="nep-source-icon" style="background:#EFF6FF;">🧫</div>
+        <div class="nep-source-title">그람양성균 유래</div>
+        <div class="nep-source-items">리포테이코산 (LTA)<br>펩티도글리칸 (PGN)<br>벽 테이코산 (WTA)<br>지단백질 (Lipoproteins)</div>
+      </div>
+      <div class="nep-source-item">
+        <div class="nep-source-icon" style="background:#F0FDF4;">🦠</div>
+        <div class="nep-source-title">진균/효모/바이러스 유래</div>
+        <div class="nep-source-items">베타글루칸 (β-Glucan)<br>바이러스 dsRNA/ssRNA<br>효모 세포벽 성분<br>곰팡이 대사산물</div>
+      </div>
+      <div class="nep-source-item">
+        <div class="nep-source-icon" style="background:#FFF7ED;">🏭</div>
+        <div class="nep-source-title">일반 환경</div>
+        <div class="nep-source-items">공기·표면 환경<br>공기 조화 시스템 (HVAC)<br>청정실 반입 물품<br>작업자 피부 세균</div>
+      </div>
+      <div class="nep-source-item">
+        <div class="nep-source-icon" style="background:#FDF4FF;">🧪</div>
+        <div class="nep-source-title">원자재/공정 보조제</div>
+        <div class="nep-source-items">원자재 (동물유래 포함)<br>주사용수 (WFI)<br>용매·부형제<br>공정 보조 물질</div>
+      </div>
+      <div class="nep-source-item">
+        <div class="nep-source-icon" style="background:#FFF1F2;">📦</div>
+        <div class="nep-source-title">포장재/용기</div>
+        <div class="nep-source-items">바이알·앰플 소재<br>고무 스토퍼 추출물<br>플라스틱 백 침출물<br>2차 포장 잔류물</div>
+      </div>
+      <div class="nep-source-item">
+        <div class="nep-source-icon" style="background:#F0F9FF;">⚙️</div>
+        <div class="nep-source-title">설비/장비</div>
+        <div class="nep-source-items">생산 설비 표면<br>필터 추출물 (Leachable)<br>배관 바이오필름<br>크로마토그래피 레진</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: mAb RA -->
+<section id="mab">
+  <div class="container">
+    <div class="section-label">Section 03 — 생물학적 제제 GMP</div>
+    <h2 class="section-title">단일클론항체(mAb) 생산라인 NEP RA</h2>
+    <p class="section-sub">CHO 세포 기반 fed-batch 배양 → 다단계 크로마토그래피 정제 → 바이러스 처리 → 무균 충전의 전 공정에 대한 NEP 위험성 평가.</p>
+
+    <div class="product-info-box" style="border-top: 3px solid var(--bio);">
+      <div class="info-cell"><div class="info-label">제품 유형</div><div class="info-value">생물학적 제제 – 단일클론항체 (IgG class)</div></div>
+      <div class="info-cell"><div class="info-label">투여 경로</div><div class="info-value">정맥주사(IV) / 피하주사(SC)</div></div>
+      <div class="info-cell"><div class="info-label">숙주 세포</div><div class="info-value">CHO (Chinese Hamster Ovary)</div></div>
+      <div class="info-cell"><div class="info-label">생산 방식</div><div class="info-value">Fed-batch 세포 배양</div></div>
+      <div class="info-cell"><div class="info-label">적용 GMP</div><div class="info-value">EU GMP Annex 1&2 · ICH Q5A/E</div></div>
+      <div class="info-cell"><div class="info-label">전반적 NEP 위험</div><div class="info-value"><span class="risk-badge risk-high">높음 (High)</span></div></div>
+    </div>
+
+    <div class="ra-table-wrap">
+      <table class="ra-table">
+        <thead>
+          <tr>
+            <th style="width:140px;">공정 단계</th>
+            <th style="width:160px;">NEP 오염원</th>
+            <th style="width:200px;">발생 기전</th>
+            <th style="width:90px;">위험도</th>
+            <th style="width:190px;">현행 통제수단</th>
+            <th>추가 조치 / MAT 적용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="td-step-num">STEP 01</span><span class="td-step">원료/원자재 입고</span></td>
+            <td>세포배양 배지 성분<br>동물유래: FBS, BSA, 가수분해물<br>미생물 오염 원자재</td>
+            <td>동물혈청 내 바이러스·LTA·PGN 함유<br>공급사 보관·운송 중 미생물 오염</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>공급사 CoA/TSE 인증<br>BET 시험<br>원자재 규격서 관리</td>
+            <td>MAT 적용 권고. 동물유래 원료는 NEP 위험 높음. 공급사 감사(Audit) 필수.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 02</span><span class="td-step">세포은행 관리</span></td>
+            <td>마이코플라즈마<br>Adventitious virus<br>세균 (Gram+/−)</td>
+            <td>MCB/WCB 오염 시 배양 전 공정 오염원화<br>세포주 자체 내재성 오염</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>마이코플라즈마 시험<br>Adventitious virus 시험<br>Sterility test</td>
+            <td>MAT 적용: WCB/MCB 발열성 평가. 세포은행 정기 재평가.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 03</span><span class="td-step">세포 배양 (Upstream)</span></td>
+            <td>미생물 오염 (세균, 곰팡이, 마이코플라즈마)<br>배지 성분 분해산물<br>산소공급라인·교반기 오염</td>
+            <td>배양 중 오염 발생 시 대량의 LTA·PGN 생성<br>장기 배양으로 오염 축적</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>In-process 미생물 시험<br>Bioburden 모니터링<br>Closed system<br>Single-use bioreactor</td>
+            <td>MAT 적용: 배양액 발열성 모니터링. In-process NEP 평가 도입.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 04</span><span class="td-step">회수 및 청징</span></td>
+            <td>세포 용해물 (Cell Lysate)<br>세포 파편 유래 PGN·LTA<br>원심분리기·여과 장비 오염</td>
+            <td>세포 파괴 시 세포내 성분 방출<br>장비 표면 바이오필름</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>Depth filtration<br>0.2 μm 여과<br>장비 CIP/SIP</td>
+            <td>MAT 적용: 회수액 NEP 평가. 여과 전후 비교 MAT.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 05</span><span class="td-step">Protein A 정제</span></td>
+            <td>컬럼 리간드 용출물<br>세균 오염<br>세척액 내 NEP 잔류</td>
+            <td>Protein A 레진 내 미생물 성장<br>불완전한 컬럼 세척</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>컬럼 재생 절차 (NaOH 처리)<br>Bioburden 관리<br>컬럼 사용 횟수 제한</td>
+            <td>MAT 적용: 컬럼 용출액 평가. Leachable/Extractable 평가 병행.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 06</span><span class="td-step">바이러스 불활화</span></td>
+            <td>저 pH 처리 후 잔류 미생물 단편<br>중화 후 침전물</td>
+            <td>불완전한 불활화 시 바이러스 성분 (dsRNA 등) NEP 잔류</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>pH/시간 모니터링<br>공정 밸리데이션<br>Virus clearance study</td>
+            <td>MAT 적용: 불활화 전후 NEP 평가. TLR3 활성 바이러스 유래 NEP 확인.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 07</span><span class="td-step">정밀 정제 (IEX/HIC)</span></td>
+            <td>레진 유래 침출물<br>세균 오염<br>공정 중 교차오염</td>
+            <td>레진 표면 미생물 부착·성장<br>용출 조건 최적화 미달</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>컬럼 세척·재생<br>Extractable 시험<br>일회용 크로마토그래피 검토</td>
+            <td>MAT 적용: 각 크로마토그래피 단계 용출액 평가. 공정 개선 후 재평가.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 08</span><span class="td-step">바이러스 여과</span></td>
+            <td>필터 추출물 (Extractable)<br>필터 완전성 실패 시 오염</td>
+            <td>막 소재 추출물이 MAT 반응 유발 가능<br>필터 파손 시 오염</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>필터 완전성 시험 (Pre/Post)<br>Extractable 시험<br>공급사 인증</td>
+            <td>MAT 적용: 필터 추출물 Material-mediated 발열성 평가.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 09</span><span class="td-step">UF/DF</span></td>
+            <td>막 추출물<br>세균 오염<br>농축 중 오염 축적</td>
+            <td>장기 처리 중 오염 기회 증가<br>막 소재 추출물</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>막 완전성 시험<br>Bioburden 모니터링<br>Closed system</td>
+            <td>MAT 적용: UF/DF 완료 원액 평가.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 10</span><span class="td-step">제형화/충전</span></td>
+            <td>부형제 (Polysorbate, His, Suc 등)<br>포장재/바이알/스토퍼<br>충전 환경 (공기, 표면)<br>작업자</td>
+            <td>부형제 내 미생물 오염<br>포장재 소재 유래 NEP<br>충전 중 환경 오염</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>Grade A/B 환경 모니터링<br>부형제 BET/Bioburden 시험<br>포장재 세척·멸균</td>
+            <td>MAT 적용: 부형제 NEP 평가, 포장재 Material-mediated pyrogenicity, 충전 완료품 MAT 시험.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 11</span><span class="td-step">멸균 여과</span></td>
+            <td>필터 추출물<br>Breakthrough 오염</td>
+            <td>0.22 μm 필터 파손 시 오염<br>필터 소재 추출물</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>필터 완전성 시험<br>이중 필터 사용<br>필터 인증</td>
+            <td>MAT 적용: 최종 여과 전후 발열성 비교.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 12</span><span class="td-step">동결건조 (해당 시)</span></td>
+            <td>챔버 오염<br>스토퍼 적용 불량<br>재구성 용매</td>
+            <td>동결건조기 청결 불량<br>마개 완전 밀봉 실패</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>챔버 CIP<br>스토퍼 세척·멸균<br>Stoppering 완전성 확인</td>
+            <td>MAT 적용: 재구성 후 최종 제품 평가.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr style="background: rgba(153,27,27,0.04);">
+            <td><span class="td-step-num">STEP 13</span><span class="td-step">완제품 출하</span></td>
+            <td>전 공정 누적 NEP</td>
+            <td>공정 전반에서 생성된 NEP의 최종 축적</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>BET (내독소 시험)<br>무균 시험</td>
+            <td><strong>MAT 적용 필수:</strong> BET 음성이라도 NEP 배제 불가. 공정 이력 기반 NEP RA 서면 유지. Ph. Eur. 5.1.10 의무 이행.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 14</span><span class="td-step">공정 변경 발생 시</span></td>
+            <td>새 원자재, 공급사, 공정 파라미터</td>
+            <td>변경된 공정에서 신규 NEP 오염원 도입 가능</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>변경 관리 절차 (Change Control)</td>
+            <td><strong>MAT 재평가 필수.</strong> 변경 전후 NEP RA 비교. Ph. Eur. 5.1.10 명시적 요구.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: GLUCOSE RA -->
+<section id="glucose">
+  <div class="container">
+    <div class="section-label">Section 04 — 화학합성 의약품 GMP</div>
+    <h2 class="section-title">포도당 주사(Glucose Injection) 생산라인 NEP RA</h2>
+    <p class="section-sub">포도당 원료 용해 → WFI 조제 → 여과 → 충전 → 최종 멸균의 공정 전반에 대한 NEP 위험성 평가. 화학합성 특성상 동물유래 원료 없으나 WFI 바이오필름 및 내열성 NEP 위험 존재.</p>
+
+    <div class="product-info-box" style="border-top: 3px solid var(--chem);">
+      <div class="info-cell"><div class="info-label">제품 유형</div><div class="info-value">화학합성 – 포도당 주사 (5%/10%/50%)</div></div>
+      <div class="info-cell"><div class="info-label">투여 경로</div><div class="info-value">정맥주사 (IV Infusion)</div></div>
+      <div class="info-cell"><div class="info-label">원료의약품</div><div class="info-value">포도당 (Dextrose) – 화학 정제</div></div>
+      <div class="info-cell"><div class="info-label">생산 방식</div><div class="info-value">용해 → 여과 → 충전 → 최종멸균</div></div>
+      <div class="info-cell"><div class="info-label">적용 GMP</div><div class="info-value">EU GMP Annex 1 · 대한민국 의약품 GMP</div></div>
+      <div class="info-cell"><div class="info-label">전반적 NEP 위험</div><div class="info-value"><span class="risk-badge risk-med">중간 (Medium)</span></div></div>
+    </div>
+
+    <div class="ra-table-wrap">
+      <table class="ra-table">
+        <thead>
+          <tr style="background: var(--chem);">
+            <th style="width:140px;">공정 단계</th>
+            <th style="width:160px;">NEP 오염원</th>
+            <th style="width:200px;">발생 기전</th>
+            <th style="width:90px;">위험도</th>
+            <th style="width:190px;">현행 통제수단</th>
+            <th>추가 조치 / MAT 적용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="td-step-num">STEP 01</span><span class="td-step">원료 포도당 입고</span></td>
+            <td>미생물 오염 포도당 분말<br>공급사 환경 유래 NEP<br>포장재 유래 오염</td>
+            <td>원료 생산 공정에서 미생물 성장<br>불량 보관 조건 (온도, 습도)</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>공급사 CoA 검토<br>BET 시험<br>Bioburden 시험</td>
+            <td>MAT 적용 권고: 신규 공급사 또는 공급사 변경 시. 원료 NEP 이력 평가.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 02</span><span class="td-step">주사용수 생산 (WFI)</span></td>
+            <td>생물막 (Biofilm) 형성<br>배관 오염<br>정제수→WFI 전환 중 오염<br>미생물 재성장</td>
+            <td>배관 내 정체 구간에서 그람양성균 성장<br>바이오필름 형성 시 LTA·PGN 다량 방출</td>
+            <td><span class="risk-badge risk-high">높음</span></td>
+            <td>다중증류/멤브레인 WFI 시스템<br>TOC/내독소/미생물 정기 모니터링<br>배관 열순환 (65°C 이상 유지)</td>
+            <td>MAT 적용: WFI 정기 NEP 모니터링. 바이오필름 위험 구간 집중 평가. 내독소 시험과 병행.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 03</span><span class="td-step">용액 조제</span></td>
+            <td>조제 탱크·교반기 오염<br>칭량 환경 오염<br>작업자 오염</td>
+            <td>조제 중 환경 노출로 미생물 오염<br>장비 세척 불량 시 NEP 잔류</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>CIP/SIP 적용<br>In-process Bioburden 시험<br>칭량실 환경 관리</td>
+            <td>MAT 적용: 조제 완료액 NEP 평가. 공정 변경 시 (탱크 교체 등) 재평가.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 04</span><span class="td-step">여과 (Prefiltration)</span></td>
+            <td>필터 추출물 (Leachable)<br>여과 전 오염 미생물 단편</td>
+            <td>심층 여과 필터 소재 추출물<br>고압 여과 시 세포 파괴로 NEP 방출</td>
+            <td><span class="risk-badge risk-low">낮음</span></td>
+            <td>필터 인증 시험<br>Extractable/Leachable 시험<br>필터 사용 전 세척 (Flushing)</td>
+            <td>MAT 적용: 필터 추출물 Material-mediated 발열성 평가. 신규 필터 도입 시 수행.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 05</span><span class="td-step">가열/멸균</span></td>
+            <td>내열성 NEP (LTA 일부 성분)<br>멸균 후 재오염<br>열교환기 오염</td>
+            <td>일부 NEP는 고압증기멸균 (121°C)에서도 불활화 불완전<br>멸균 완료 후 배관 오염</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>Validated 멸균 사이클<br>멸균 후 Bioburden 시험<br>열교환기 정기 세척</td>
+            <td>MAT 적용: 멸균 전후 NEP 비교 평가. 내열성 NEP 잔류 여부 확인.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 06</span><span class="td-step">용기/포장재 처리</span></td>
+            <td>바이알·앰플·플라스틱 백 소재 추출물<br>세척수 NEP 오염<br>고무 스토퍼 추출물</td>
+            <td>유리/플라스틱 소재 제조 잔류물<br>세척 불량 시 미생물 성장<br>고무 성분 침출</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>WFI 세척 + 건열멸균/고압증기멸균<br>용기 규격 시험<br>스토퍼 세척·처리 밸리데이션</td>
+            <td>MAT 적용: 용기 추출물 Material-mediated 발열성 평가. 특히 플라스틱 백 (Infusion bag) 소재.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 07</span><span class="td-step">충전 (Filling)</span></td>
+            <td>충전 환경 (공기, 표면)<br>작업자 오염<br>충전기 오염<br>세척수·윤활유</td>
+            <td>Grade A/B 청정실에서의 잔류 오염<br>충전기 부품 교체 후 불완전 세척</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>Grade A/B 환경 관리<br>환경 모니터링<br>충전기 CIP/SIP</td>
+            <td>MAT 적용: 충전 완료 제품 샘플 NEP 평가. 환경 모니터링과 NEP 상관관계 분석.<br><span class="mat-tag">MAT 권고</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 08</span><span class="td-step">최종 멸균 (Terminal)</span></td>
+            <td>내열성 NEP 잔류<br>재오염 방지 실패</td>
+            <td>LPS는 파괴되나 일부 그람양성균 유래 NEP는 내열성<br>불완전 멸균 시 미생물 사멸 후 NEP 잔류</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>Validated 멸균 파라미터<br>멸균 사이클 모니터링<br>F₀ 값 관리</td>
+            <td>MAT 적용: 멸균 완료 제품 NEP 평가 필수. 내독소 (BET 음성)와 NEP 독립적 평가.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr style="background: rgba(120,53,15,0.04);">
+            <td><span class="td-step-num">STEP 09</span><span class="td-step">완제품 출하</span></td>
+            <td>전 공정 누적 NEP</td>
+            <td>BET 음성이어도 NEP 존재 가능. 특히 WFI·포장재·환경 유래 NEP.</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>BET (내독소 시험)<br>무균 시험<br>미립자 시험</td>
+            <td><strong>MAT 적용 필수:</strong> 출하 시 NEP 평가 (Ph. Eur. 5.1.10 이행). 공정 이력 기반 RA 서면 유지.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 10</span><span class="td-step">보관/유통</span></td>
+            <td>포장 완전성 손상<br>온도 이탈로 미생물 성장</td>
+            <td>유통 중 포장 파손으로 오염<br>냉장 불량 시 플라스틱 성분 침출 가능</td>
+            <td><span class="risk-badge risk-low">낮음</span></td>
+            <td>포장 완전성 시험<br>유통 온도 모니터링<br>유효기간 설정</td>
+            <td>유통 조건 변경 시 안정성 시험과 NEP 평가 병행. 포장재 추출물 MAT 평가.<br><span class="mat-tag">조건부 MAT</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-step-num">STEP 11</span><span class="td-step">공정 변경 발생 시</span></td>
+            <td>새 공급사·원자재·장비·공정 파라미터</td>
+            <td>변경된 공정에서 신규 NEP 오염원 도입</td>
+            <td><span class="risk-badge risk-med">중간</span></td>
+            <td>변경 관리 절차 (Change Control)<br>Re-validation</td>
+            <td><strong>MAT 재평가 필수 (Ph. Eur. 5.1.10).</strong> 변경 전후 NEP RA 비교.<br><span class="mat-tag">MAT 필수</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: COMPARISON -->
+<section id="comparison">
+  <div class="container">
+    <div class="section-label">Section 05</div>
+    <h2 class="section-title">두 생산라인 NEP RA 비교 분석</h2>
+    <p class="section-sub">생물학적 제제와 화학합성 제제의 NEP 위험 특성, BET 한계, MAT 필요성 비교.</p>
+
+    <table class="compare-table" style="margin-bottom: 48px;">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th class="bio-col">🧬 단일클론항체 (mAb)</th>
+          <th class="chem-col">💊 포도당 주사</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>전반적 NEP 위험도</td>
+          <td><span class="risk-badge risk-high">높음 (High)</span> — 구조적 고위험</td>
+          <td><span class="risk-badge risk-med">중간 (Medium)</span></td>
+        </tr>
+        <tr>
+          <td>주요 NEP 오염원</td>
+          <td>동물유래 원료, 세포 용해물, 복잡한 정제 공정</td>
+          <td>WFI 바이오필름, 내열성 NEP, 포장재 추출물</td>
+        </tr>
+        <tr>
+          <td>고위험 공정 수</td>
+          <td>5개 단계 (높음: 원료입고, 세포은행, 세포배양, 회수/청징, 충전/출하)</td>
+          <td>1개 단계 (높음: WFI 생산)</td>
+        </tr>
+        <tr>
+          <td>NEP 발생 원인</td>
+          <td>생물학적 복잡성 (세포 배양, 바이오소재, 다단계 정제)</td>
+          <td>공정 환경 (WFI, 포장재, 내열성 NEP 잔류)</td>
+        </tr>
+        <tr>
+          <td>공정 복잡도</td>
+          <td>매우 복잡 (다단계 정제, 바이러스 처리, 동결건조)</td>
+          <td>단순 (용해-여과-충전-멸균)</td>
+        </tr>
+        <tr>
+          <td>MAT 적용 시급성</td>
+          <td>매우 시급 — 전 공정 MAT 적용 권고</td>
+          <td>시급 — WFI 및 완제품 우선 MAT 적용</td>
+        </tr>
+        <tr>
+          <td>BET 단독 평가 충분성</td>
+          <td>불충분 — NEP 위험 매우 높음</td>
+          <td>불충분 — 내열성 NEP, WFI 바이오필름 위험</td>
+        </tr>
+        <tr>
+          <td>적용 규정</td>
+          <td>Ph. Eur. 5.1.10, Annex 1&2, ICH Q5A/E, Q9</td>
+          <td>Ph. Eur. 5.1.10, Annex 1, 대한민국 GMP</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:20px; font-weight:600; margin-bottom:16px;">현행 BET 시험으로 검출 불가한 NEP 유형</h3>
+    <p style="font-size:15px; color:var(--ink-light); margin-bottom:28px;">BET는 그람음성균 유래 내독소(LPS)만 검출하며, 다음 NEP 유형은 BET 음성 결과와 무관하게 존재할 수 있다.</p>
+
+    <div class="bet-grid">
+      <div class="bet-cell">
+        <div class="bet-no">BET 검출 불가</div>
+        <div class="bet-cell-type">리포테이코산 (LTA)</div>
+        <div class="bet-cell-source">그람양성균 (Staph., Strep.) 세포벽</div>
+        <div class="bet-cell-process">세포배양, 환경, WFI — 양쪽 제품</div>
+      </div>
+      <div class="bet-cell">
+        <div class="bet-no">BET 검출 불가</div>
+        <div class="bet-cell-type">펩티도글리칸 (PGN)</div>
+        <div class="bet-cell-source">그람양성/음성균 세포벽</div>
+        <div class="bet-cell-process">모든 공정 단계 — 양쪽 제품</div>
+      </div>
+      <div class="bet-cell">
+        <div class="bet-no">BET 검출 불가</div>
+        <div class="bet-cell-type">바이러스 유래 NEP (dsRNA)</div>
+        <div class="bet-cell-source">바이러스 오염, TLR3 활성 성분</div>
+        <div class="bet-cell-process">세포 배양, 바이러스 불활화 — mAb</div>
+      </div>
+      <div class="bet-cell">
+        <div class="bet-no">BET 검출 불가</div>
+        <div class="bet-cell-type">베타글루칸 (β-Glucan)</div>
+        <div class="bet-cell-source">진균·효모 오염, 세포벽 성분</div>
+        <div class="bet-cell-process">환경, 배지 성분 — mAb</div>
+      </div>
+      <div class="bet-cell">
+        <div class="bet-no">BET 검출 불가</div>
+        <div class="bet-cell-type">지단백질 (Lipoproteins)</div>
+        <div class="bet-cell-source">세균 막 성분, 동물유래 원료</div>
+        <div class="bet-cell-process">동물유래 원료, 세포 배양 — mAb</div>
+      </div>
+      <div class="bet-cell">
+        <div class="bet-no">BET 검출 불가</div>
+        <div class="bet-cell-type">내열성 NEP 잔류물</div>
+        <div class="bet-cell-source">멸균 후 잔류 그람양성균 성분</div>
+        <div class="bet-cell-process">최종 멸균 후 — 포도당 주사</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: MAT PLAN -->
+<section id="mat-plan">
+  <div class="container">
+    <div class="section-label">Section 06</div>
+    <h2 class="section-title">MAT 적용 계획 및 시험 방법</h2>
+    <p class="section-sub">Ph. Eur. 2.6.30에 따른 Monocyte Activation Test 적용 계획. 공정 개발 단계, 배치 출하, 공정 변경별 MAT 수행 시점 및 방법.</p>
+
+    <div class="mat-timeline">
+      <div class="mat-step">
+        <div class="mat-step-tag">적용 시점 01 — 공정 개발 단계</div>
+        <div class="mat-step-title">생산 공정 개발·설계 시 MAT 수행</div>
+        <div class="mat-step-desc">Ph. Eur. 5.1.10은 생산 공정 개발 중 NEP 시험 수행을 명시적으로 요구한다. 각 공정 단계에서 NEP 발생 여부를 사전에 확인하고, 공정 파라미터 최적화에 활용한다.</div>
+        <div class="mat-pills">
+          <span class="mat-pill">세포 배양 조건 최적화</span>
+          <span class="mat-pill">정제 컬럼 선정</span>
+          <span class="mat-pill">부형제 적합성 평가</span>
+          <span class="mat-pill">포장재 소재 선정</span>
+        </div>
+      </div>
+      <div class="mat-step">
+        <div class="mat-step-tag">적용 시점 02 — 배치 출하 시험</div>
+        <div class="mat-step-title">완제품 배치 출하 시 BET 병행 MAT 수행</div>
+        <div class="mat-step-desc">BET로 내독소를 확인하는 동시에 MAT로 전체 발열물질(NEP 포함)을 평가한다. BET 음성 결과만으로는 발열성 부재를 보장할 수 없으므로, MAT를 통해 NEP 위험을 독립적으로 평가한다.</div>
+        <div class="mat-pills">
+          <span class="mat-pill">완제품 (mAb) 필수</span>
+          <span class="mat-pill">완제품 (포도당 주사) 필수</span>
+          <span class="mat-pill">BET 병행 수행</span>
+        </div>
+      </div>
+      <div class="mat-step">
+        <div class="mat-step-tag">적용 시점 03 — 공정 변경 후</div>
+        <div class="mat-step-title">공정 변경 발생 시 NEP RA 재평가 및 MAT 재수행</div>
+        <div class="mat-step-desc">원자재 변경, 공급사 변경, 생산 공정 파라미터 변경, 생산 시설 변경 등 NEP 위험에 영향을 줄 수 있는 모든 변경 사항 발생 시 MAT를 포함한 NEP RA를 재수행해야 한다. 이는 Ph. Eur. 5.1.10의 명시적 요구사항이다.</div>
+        <div class="mat-pills">
+          <span class="mat-pill">원자재 공급사 변경</span>
+          <span class="mat-pill">공정 파라미터 변경</span>
+          <span class="mat-pill">생산 설비 변경</span>
+          <span class="mat-pill">생산 부지 변경</span>
+        </div>
+      </div>
+      <div class="mat-step">
+        <div class="mat-step-tag">적용 시점 04 — 원자재 및 포장재</div>
+        <div class="mat-step-title">원자재·포장재 Material-mediated Pyrogenicity 평가</div>
+        <div class="mat-step-desc">동물유래 원자재(mAb), 포장재(플라스틱 백, 고무 스토퍼), 공정 보조 물질 등에 대해 Material-mediated pyrogenicity MAT를 수행한다. 소재 자체가 MAT 반응을 유발하는 경우 공정 오염 여부와 독립적으로 NEP 위험이 존재한다.</div>
+        <div class="mat-pills">
+          <span class="mat-pill">동물유래 원료 (FBS, BSA)</span>
+          <span class="mat-pill">플라스틱 백 추출물</span>
+          <span class="mat-pill">고무 스토퍼 추출물</span>
+          <span class="mat-pill">필터 소재 추출물</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; padding:32px; background:var(--paper-warm); border:1px solid var(--rule); border-radius:14px;">
+      <h3 style="font-size:18px; font-weight:600; margin-bottom:20px;">MAT 시험 방법 (Ph. Eur. 2.6.30)</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); letter-spacing:0.15em; margin-bottom:8px; text-transform:uppercase;">시험 원리</div>
+          <p style="font-size:14px; color:var(--ink-mid); line-height:1.7;">발열물질 → 단핵구(Monocyte) TLR 수용체 활성화 → IL-1β, IL-6, TNF-α 등 사이토카인 방출 → ELISA/Luminex 정량. 그람음성균(LPS), 그람양성균(LTA, PGN), 바이러스, 진균 유래 NEP 전체 검출 가능.</p>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); letter-spacing:0.15em; margin-bottom:8px; text-transform:uppercase;">결과 판정</div>
+          <p style="font-size:14px; color:var(--ink-mid); line-height:1.7;">샘플 사이토카인 농도 > 역치(Cut-off) → 발열성 양성(Pyrogenic). 양성 대조: 표준 내독소(LPS, 1 IU/mL) + 비내독소 양성 대조(LTA 또는 PGN). 음성 대조: WFI 또는 희석 배지.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: CHECKLIST -->
+<section id="checklist">
+  <div class="container">
+    <div class="section-label">Section 07</div>
+    <h2 class="section-title">규제 준수 이행 체크리스트</h2>
+    <p class="section-sub">Ph. Eur. 5.1.10 완전 이행을 위한 항목별 조치 현황. 각 생산라인별 필수/권고 이행 사항.</p>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-icon done">✅</div>
+        <div class="check-text">
+          <div class="check-title">NEP RA 문서 작성 완료</div>
+          <div class="check-detail">전 공정 단계별 NEP 위험 식별, 분석, 평가, 통제 수단 서면 문서화 완료.</div>
+          <div class="check-tags"><span class="check-tag tag-both">mAb</span><span class="check-tag tag-both">포도당 주사</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon required">🔬</div>
+        <div class="check-text">
+          <div class="check-title">공정 개발 단계 MAT 수행 [필수]</div>
+          <div class="check-detail">생산 공정 설계 중 각 공정 단계에서 NEP 시험(MAT) 수행. Ph. Eur. 5.1.10 명시 요건.</div>
+          <div class="check-tags"><span class="check-tag tag-bio">mAb — 전 공정</span><span class="check-tag tag-chem">포도당 — WFI, 조제, 완제품</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon required">📦</div>
+        <div class="check-text">
+          <div class="check-title">배치 출하 MAT 수행 (BET 병행) [필수]</div>
+          <div class="check-detail">완제품 출하 시 BET와 병행하여 MAT 수행. BET 음성만으로 NEP 위험 배제 불가.</div>
+          <div class="check-tags"><span class="check-tag tag-both">mAb</span><span class="check-tag tag-both">포도당 주사</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon required">🐄</div>
+        <div class="check-text">
+          <div class="check-title">동물유래 원자재 MAT 평가 [mAb 필수]</div>
+          <div class="check-detail">FBS, BSA, 가수분해물 등 동물유래 원료에 대해 NEP 위험 평가 및 MAT 수행.</div>
+          <div class="check-tags"><span class="check-tag tag-bio">mAb 전용</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon required">💧</div>
+        <div class="check-text">
+          <div class="check-title">WFI NEP 정기 모니터링 [포도당 필수]</div>
+          <div class="check-detail">WFI 배관 바이오필름 위험에 대해 내독소 시험과 병행하여 MAT 정기 모니터링 수행.</div>
+          <div class="check-tags"><span class="check-tag tag-chem">포도당 전용</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon recommended">📋</div>
+        <div class="check-text">
+          <div class="check-title">포장재 Material-mediated MAT [권고]</div>
+          <div class="check-detail">바이알, 스토퍼, 플라스틱 백 등 포장재 소재에 대해 Material-mediated pyrogenicity 평가.</div>
+          <div class="check-tags"><span class="check-tag tag-both">mAb</span><span class="check-tag tag-both">포도당 주사</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon required">🔄</div>
+        <div class="check-text">
+          <div class="check-title">공정 변경 후 NEP RA 재평가 [필수]</div>
+          <div class="check-detail">원자재, 공급사, 공정 파라미터, 시설 변경 시 즉시 NEP RA 재평가 및 MAT 재수행.</div>
+          <div class="check-tags"><span class="check-tag tag-both">mAb</span><span class="check-tag tag-both">포도당 주사</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon required">🏛️</div>
+        <div class="check-text">
+          <div class="check-title">MAT 시험 자격 기관 선정 [필수]</div>
+          <div class="check-detail">GMP 인증 MAT 시험 기관 위탁 또는 자사 MAT 인프라 구축. 시험 결과 문서화 및 기록 유지.</div>
+          <div class="check-tags"><span class="check-tag tag-both">mAb</span><span class="check-tag tag-both">포도당 주사</span></div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon required">📅</div>
+        <div class="check-text">
+          <div class="check-title">정기 NEP RA 재검토 [필수]</div>
+          <div class="check-detail">연 1회 이상 NEP RA 전체 검토. 신규 규제 동향, 공정 이상, 시험 결과 이력 반영하여 갱신.</div>
+          <div class="check-tags"><span class="check-tag tag-both">mAb</span><span class="check-tag tag-both">포도당 주사</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div style="padding:28px; border:2px solid #14532D; border-radius:14px; background:var(--green-light);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--bio); margin-bottom:10px;">mAb 라인 결론</div>
+        <p style="font-size:14px; color:var(--ink-mid); line-height:1.7;">전 공정에 걸쳐 높은 NEP 위험 존재. 동물유래 원료, 세포 배양, 바이러스 처리 등 생물학적 복잡성에 기인. BET만으로 NEP 위험 완전 배제 불가. <strong>MAT를 공정 개발 및 배치 출하 시 필수 적용</strong>하여야 하며, 특히 동물유래 원자재, 세포 배양액, 충전 완제품에 대한 MAT 적용이 시급하다.</p>
+      </div>
+      <div style="padding:28px; border:2px solid #92400E; border-radius:14px; background:var(--chem-light);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--chem); margin-bottom:10px;">포도당 주사 라인 결론</div>
+        <p style="font-size:14px; color:var(--ink-mid); line-height:1.7;">전반적 NEP 위험은 중간 수준이나, WFI 시스템 관련 바이오필름 형성 위험은 높음으로 분류. 내열성 NEP의 최종 멸균 후 잔류 위험 중간. BET 음성이어도 NEP 존재 가능성 배제 불가. <strong>MAT를 WFI 및 완제품 출하 시 우선 적용</strong>하고, 포장재 추출물에 대한 Material-mediated pyrogenicity 평가가 필요하다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-left">
+    <div class="footer-title">NEP Risk Assessment</div>
+    <div class="footer-meta">NEP-RA-2025-001 · Ver. 1.0 · 비내독소성 발열물질 위험성 평가</div>
+    <div class="footer-meta" style="margin-top:4px;">본 문서는 Ph. Eur. 5.1.10 지침에 따른 공식 NEP RA 사례 자료입니다.</div>
+  </div>
+  <div class="footer-refs">
+    <div class="footer-ref">Ph. Eur. 5.1.10 — Guidelines for Bacterial Endotoxins Test</div>
+    <div class="footer-ref">Ph. Eur. 2.6.30 — Monocyte Activation Test (MAT)</div>
+    <div class="footer-ref">ICH Q9 — Quality Risk Management</div>
+    <div class="footer-ref">EU GMP Annex 1 (2022) · Annex 2</div>
+    <div class="footer-ref"><a href="https://www.mat-biotech.com/non-endotoxin-pyrogen-risk-assessment-mat" target="_blank">MAT BioTech — NEP Risk Assessment Guidance ↗</a></div>
+  </div>
+</footer>
+
+<script>
+  // Active nav highlighting on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  function updateNav() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
+      if (top <= 100) current = sec.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reg-card, .nep-source-item, .check-item, .bet-cell, .mat-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
