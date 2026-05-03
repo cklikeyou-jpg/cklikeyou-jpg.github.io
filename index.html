@@ -66,7 +66,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
     body { font-family: 'Noto Sans KR', sans-serif; background-color: #EEF2F7; }
-    .gradient-bg { background: linear-gradient(160deg, #050d1f 0%, #0a1f5c 30%, #1565C0 65%, #64B5F6 100%); }
+    .gradient-bg { background: linear-gradient(160deg, #022c1a 0%, #064e3b 30%, #065f46 60%, #059669 85%, #34d399 100%); }
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
     .faq-content { display: none; }
@@ -411,6 +411,15 @@
           <!-- 문의하기 강조 버튼 -->
           <button onclick="showTab('contact');closeDD()" class="contact-btn ml-2" data-tab="contact">📩 문의하기</button>
 
+          <!-- 회원가입 버튼 -->
+          <button onclick="showTab('register');closeDD()" data-tab="register"
+            style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;border:none;
+            padding:9px 18px;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;
+            font-family:'Noto Sans KR',sans-serif;white-space:nowrap;transition:opacity 0.15s;"
+            onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            🔑 회원가입
+          </button>
+
           <!-- QR코드 버튼 -->
           <button onclick="showQR()" id="qr-btn" title="QR코드로 접속" style="
             background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;
@@ -468,6 +477,11 @@
             style="margin-top:10px;background:#C41E3A;color:#fff;font-weight:700;border-radius:8px;">
             📩 문의하기
           </button>
+          <!-- 회원가입 -->
+          <button onclick="showTab('register');closeMobile()" class="mobile-nav-btn" data-tab="register"
+            style="margin-top:6px;background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-weight:700;border-radius:8px;">
+            🔑 회원가입
+          </button>
         </nav>
       </div>
     </div>
@@ -491,21 +505,21 @@
             <div class="leading-tight">
               <div class="font-bold" style="font-size:1.25rem;"><span style="color:#f87171;">Bio</span><span class="text-white">stream</span></div>
               <div class="text-blue-200 font-medium" style="font-size:0.95rem;">시험분석센터 | Analytics Center</div>
-              <div class="font-bold" style="font-size:0.82rem;color:#93c5fd;">의약품등 시험·검사 인증 시험기관</div>
+              <div class="font-bold" style="font-size:0.82rem;color:#6ee7b7;">의약품등 시험·검사 인증 시험기관</div>
             </div>
           </div>
           <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">
             MAT 시험<br>
-            <span class="text-blue-200">Monocyte Activation Test</span>
+            <span style="color:#6ee7b7;">Monocyte Activation Test</span>
           </h1>
-          <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+          <p class="text-lg mb-8 leading-relaxed" style="color:#a7f3d0;">
             동물실험을 대체하는 차세대 발열성 물질 검출 시험으로,<br>
             제약·바이오·혈액제제·세포치료제 제품의 안전성을 과학적으로 검증합니다.<br>
             MAT는 Rabbit Pyrogen Test(RPT)의 공식 대체 시험법이며,<br>
             <strong class="text-white">내독소(ET) + 비내독소성 발열원(NEP) 동시 검출</strong>이 가능한 유일한 <em>in vitro</em> 시험입니다.
           </p>
           <div class="flex flex-wrap gap-4">
-            <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">견적 요청하기</a>
+            <a href="#contact" class="bg-white px-8 py-3 rounded-lg font-semibold transition" style="color:#065f46;" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='#fff'">견적 요청하기</a>
             <a href="#overview" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition">자세히 알아보기</a>
           </div>
         </div>
@@ -514,30 +528,30 @@
             <div class="grid grid-cols-2 gap-4 mb-4">
               <div class="text-center p-4 bg-white/10 rounded-xl">
                 <div class="text-3xl font-bold mb-1">3R</div>
-                <div class="text-blue-200 text-xs">동물실험 대체 원칙</div>
+                <div style="color:#6ee7b7;" class="text-xs">동물실험 대체 원칙</div>
               </div>
               <div class="text-center p-4 bg-white/10 rounded-xl">
                 <div class="text-3xl font-bold mb-1">ISO</div>
-                <div class="text-blue-200 text-xs">ISO 10993·21993</div>
+                <div style="color:#6ee7b7;" class="text-xs">ISO 10993·21993</div>
               </div>
               <div class="text-center p-4 bg-white/10 rounded-xl">
                 <div class="text-3xl font-bold mb-1">EP</div>
-                <div class="text-blue-200 text-xs">유럽약전 2.6.30</div>
+                <div style="color:#6ee7b7;" class="text-xs">유럽약전 2.6.30</div>
               </div>
               <div class="text-center p-4 bg-white/10 rounded-xl">
                 <div class="text-2xl font-bold mb-1" style="font-size:1.1rem;line-height:1.2">시험검사<br>인증</div>
-                <div class="text-blue-200 text-xs">비임상시험관리기준</div>
+                <div style="color:#6ee7b7;" class="text-xs">비임상시험관리기준</div>
               </div>
             </div>
             <!-- Biostream QRM highlight -->
-            <div class="bg-red-600/30 border border-red-400/40 rounded-xl p-4">
+            <div style="background:rgba(5,150,105,0.25);border:1px solid rgba(52,211,153,0.4);" class="rounded-xl p-4">
               <div class="flex items-center gap-2 mb-2">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#FCA5A5" stroke-width="1.5"/><path d="M10 6v4m0 3h.01" stroke="#FCA5A5" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#6ee7b7" stroke-width="1.5"/><path d="M10 6v4m0 3h.01" stroke="#6ee7b7" stroke-width="1.5" stroke-linecap="round"/></svg>
                 <span class="text-white font-semibold text-sm">Biostream QRM for NEP</span>
               </div>
-              <p class="text-blue-100 text-xs leading-relaxed">ICH Q9(R1) 기반 NEP 품질위험성관리(QRM) 절차(BST-TMG-16)를 통해 원료입고부터 완제품까지 NEP 오염 위험을 체계적으로 관리합니다.</p>
+              <p style="color:#a7f3d0;" class="text-xs leading-relaxed">ICH Q9(R1) 기반 NEP 품질위험성관리(QRM) 절차(BST-TMG-16)를 통해 원료입고부터 완제품까지 NEP 오염 위험을 체계적으로 관리합니다.</p>
             </div>
-            <div class="mt-3 text-center text-xs text-blue-200">
+            <div class="mt-3 text-center text-xs" style="color:#6ee7b7;">
               🎯 EP 5.1.13 — 2026년 MAT 기본 방법화 예정
             </div>
           </div>
@@ -2526,6 +2540,157 @@
   </div>
   </section>
 
+  <!-- ===== 회원가입 섹션 ===== -->
+  <section id="register" class="tab-page" style="background:#EEF2F7;padding-top:0;">
+  <div class="tab-banner" style="background:linear-gradient(135deg,#064e3b 0%,#065f46 40%,#059669 70%,#34d399 100%);padding:48px 0 40px;margin-bottom:0;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div style="font-size:2.5rem;margin-bottom:12px;">🔑</div>
+      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Member Registration</span>
+      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">회원 가입 신청</h2>
+      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">회원으로 가입하시면 NEP 발열원, Validation, QRM 관리 전문 콘텐츠를 열람하실 수 있습니다.</p>
+    </div>
+  </div>
+  <div style="padding:48px 0;">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid lg:grid-cols-5 gap-10 items-start">
+
+        <!-- 왼쪽: 안내 -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-2xl p-7 shadow-sm mb-6">
+            <h3 class="font-bold text-lg text-dark mb-4">🎁 회원 혜택</h3>
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 font-bold text-base mt-0.5">✓</span>
+                <div><span class="font-semibold text-dark">NEP 발열원 전문 자료</span><p class="text-gray-500 mt-0.5">NEP 종류별 특성, 검출 전략, 최신 규제 동향</p></div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 font-bold text-base mt-0.5">✓</span>
+                <div><span class="font-semibold text-dark">MAT Validation 프로토콜</span><p class="text-gray-500 mt-0.5">EP 2.6.30 기반 PSV 가이드라인 및 실무 데이터</p></div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 font-bold text-base mt-0.5">✓</span>
+                <div><span class="font-semibold text-dark">ICH Q9(R1) QRM 절차서</span><p class="text-gray-500 mt-0.5">BST-TMG-16 기반 NEP 품질위험관리 전체 문서</p></div>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-sm text-amber-800">
+            <p class="font-bold mb-2">📋 가입 승인 안내</p>
+            <p class="leading-relaxed">신청서 접수 후 <strong>영업일 1~2일 내</strong>에 담당자가 검토 후 비밀번호를 이메일로 전달드립니다.</p>
+          </div>
+        </div>
+
+        <!-- 오른쪽: 폼 -->
+        <div class="lg:col-span-3">
+
+          <!-- 폼 영역 -->
+          <div id="reg-form-wrap">
+            <form id="registerForm" class="bg-white rounded-2xl p-8 shadow-sm" onsubmit="submitRegisterForm(event)">
+              <h3 class="font-bold text-xl text-dark mb-6">신청서 작성</h3>
+
+              <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="block text-sm font-medium text-dark mb-1.5">회사명 / 기관명 <span class="text-red-500">*</span></label>
+                  <input id="r_company" type="text" required placeholder="Biostream Inc."
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-500 text-sm transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-dark mb-1.5">부서 / 소속 <span class="text-red-500">*</span></label>
+                  <input id="r_dept" type="text" required placeholder="QC팀, 연구소 등"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-500 text-sm transition">
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="block text-sm font-medium text-dark mb-1.5">성명 <span class="text-red-500">*</span></label>
+                  <input id="r_name" type="text" required placeholder="홍길동"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-500 text-sm transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-dark mb-1.5">직책 / 직급</label>
+                  <input id="r_position" type="text" placeholder="책임연구원, 과장 등"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-500 text-sm transition">
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="block text-sm font-medium text-dark mb-1.5">이메일 <span class="text-red-500">*</span></label>
+                  <input id="r_email" type="email" required placeholder="name@company.com"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-500 text-sm transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-dark mb-1.5">연락처 <span class="text-red-500">*</span></label>
+                  <input id="r_tel" type="tel" required placeholder="010-XXXX-XXXX"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-500 text-sm transition">
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-dark mb-1.5">가입 목적 <span class="text-red-500">*</span></label>
+                <select id="r_purpose" required
+                  class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-500 text-sm bg-white transition">
+                  <option value="">선택해주세요</option>
+                  <option>NEP 발열원 자료 열람</option>
+                  <option>MAT Validation 자료 열람</option>
+                  <option>QRM 절차서 열람</option>
+                  <option>전체 콘텐츠 열람</option>
+                  <option>시험 의뢰 사전 검토</option>
+                  <option>규제/허가 자료 수집</option>
+                  <option>기타</option>
+                </select>
+              </div>
+
+              <!-- 개인정보 동의 -->
+              <div class="bg-gray-50 rounded-xl p-4 mb-6 text-xs text-gray-500 leading-relaxed border border-gray-200">
+                <p class="font-semibold text-gray-700 mb-2">개인정보 수집 및 이용 동의 <span class="text-red-500">*</span></p>
+                <p class="mb-2">수집 항목: 회사명, 부서, 성명, 직책, 이메일, 연락처, 가입목적<br>
+                이용 목적: 회원 가입 신청 검토 및 승인 안내<br>
+                보유 기간: 회원 탈퇴 시 또는 서비스 종료 시까지</p>
+                <label class="flex items-center gap-2 cursor-pointer mt-3">
+                  <input id="r_agree" type="checkbox" required
+                    style="width:16px;height:16px;accent-color:#059669;cursor:pointer;">
+                  <span class="text-gray-700 font-medium text-sm">개인정보 수집 및 이용에 동의합니다.</span>
+                </label>
+              </div>
+
+              <button id="reg-submit-btn" type="submit"
+                style="width:100%;padding:14px;background:linear-gradient(135deg,#059669,#34d399);
+                color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;
+                cursor:pointer;font-family:'Noto Sans KR',sans-serif;
+                box-shadow:0 4px 16px rgba(5,150,105,0.3);transition:opacity 0.15s;"
+                onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                🔑 회원 가입 신청하기
+              </button>
+            </form>
+          </div>
+
+          <!-- 제출 완료 화면 -->
+          <div id="reg-success" style="display:none;" class="bg-white rounded-2xl p-10 shadow-sm flex-col items-center text-center">
+            <div style="font-size:3.5rem;margin-bottom:16px;">✅</div>
+            <h3 class="font-bold text-xl text-dark mb-3">신청이 완료되었습니다!</h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              회원가입 신청서가 Biostream 담당자에게 전달되었습니다.<br>
+              <strong>영업일 1~2일 내</strong>에 입력하신 이메일로 승인 안내 및 비밀번호를 보내드립니다.
+            </p>
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl px-6 py-4 text-sm text-emerald-800 mb-6">
+              📧 승인 이메일이 오지 않는 경우 스팸함을 확인하시거나<br>
+              <strong>ckjung@biostream.co.kr</strong> 로 문의해 주세요.
+            </div>
+            <button onclick="showTab('overview')"
+              style="padding:12px 32px;background:#0369a1;color:#fff;border:none;border-radius:10px;
+              font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
+              홈으로 돌아가기
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
   <!-- ===== 푸터 ===== -->
   <footer class="bg-dark text-gray-400 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2711,8 +2876,76 @@
       }
     }
 
+    // ===== 회원가입 신청 전송 (EmailJS) =====
+    function submitRegisterForm(e) {
+      e.preventDefault();
+      var btn = document.getElementById('reg-submit-btn');
+      var origText = btn.textContent;
+      btn.textContent = '전송 중...';
+      btn.disabled = true;
+
+      var params = {
+        to_email:    'ckjung@biostream.co.kr',
+        reg_company: document.getElementById('r_company').value,
+        reg_dept:    document.getElementById('r_dept').value,
+        reg_name:    document.getElementById('r_name').value,
+        reg_position:document.getElementById('r_position').value,
+        reg_email:   document.getElementById('r_email').value,
+        from_email:  document.getElementById('r_email').value,
+        email:       document.getElementById('r_email').value,
+        reg_tel:     document.getElementById('r_tel').value,
+        reg_purpose: document.getElementById('r_purpose').value,
+        reg_agree:   '동의함',
+        name:        document.getElementById('r_name').value,
+        company:     document.getElementById('r_company').value,
+        message:     '[회원가입 신청]\n소속: ' + document.getElementById('r_dept').value +
+                     '\n직책: ' + document.getElementById('r_position').value +
+                     '\n가입목적: ' + document.getElementById('r_purpose').value,
+      };
+
+      function fallbackMailto() {
+        var subject = encodeURIComponent('[Biostream 회원가입 신청] ' + params.reg_company + ' ' + params.reg_name);
+        var body = encodeURIComponent(
+          '■ 회원가입 신청서\n\n' +
+          '회사명: ' + params.reg_company + '\n' +
+          '부서/소속: ' + params.reg_dept + '\n' +
+          '성명: ' + params.reg_name + '\n' +
+          '직책: ' + params.reg_position + '\n' +
+          '이메일: ' + params.reg_email + '\n' +
+          '연락처: ' + params.reg_tel + '\n' +
+          '가입 목적: ' + params.reg_purpose + '\n\n' +
+          '개인정보 수집 및 이용 동의: 동의함'
+        );
+        window.location.href = 'mailto:ckjung@biostream.co.kr?subject=' + subject + '&body=' + body;
+      }
+
+      if (typeof emailjs !== 'undefined') {
+        emailjs.send('service_3yawdy9', 'template_p84vc2p', params)
+          .then(function() {
+            showRegisterSuccess();
+            document.getElementById('registerForm').reset();
+            btn.textContent = origText;
+            btn.disabled = false;
+          })
+          .catch(function() {
+            fallbackMailto();
+            btn.textContent = origText;
+            btn.disabled = false;
+          });
+      } else {
+        fallbackMailto();
+        btn.textContent = origText;
+        btn.disabled = false;
+      }
+    }
+
+    function showRegisterSuccess() {
+      document.getElementById('reg-form-wrap').style.display = 'none';
+      document.getElementById('reg-success').style.display = 'flex';
+    }
+
     // ===== 탭 페이지 전환 =====
-    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','contact'];
+    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','contact','register'];
     var currentLang = 'ko';
 
     // ===== 회원 전용 탭 잠금 설정 =====
@@ -2929,6 +3162,14 @@
         ">
           취소
         </button>
+        <p style="margin-top:14px;text-align:center;font-size:0.82rem;color:#94a3b8;">
+          아직 회원이 아니신가요?
+          <button onclick="closePasswordModal();showTab('register');"
+            style="background:none;border:none;color:#059669;font-weight:700;cursor:pointer;
+            font-size:0.82rem;font-family:'Noto Sans KR',sans-serif;text-decoration:underline;padding:0;">
+            회원가입 신청하기 →
+          </button>
+        </p>
       </div>
     </div>
   </div>
