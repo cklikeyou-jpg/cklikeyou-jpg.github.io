@@ -40,12 +40,197 @@
   <meta name="twitter:description" content="Pyrogen detected by PBMC MAT. MAT validation 및 Cytokine IL-6 기반 발열원 시험 대체 솔루션.">
   <meta name="twitter:image" content="https://cklikeyou-jpg.github.io/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     window.addEventListener('load', function() {
       emailjs.init({ publicKey: 'VBUAv0CbejDxLQYED' }); // Public Key 동일
     });
   </script>
+  <script>
+    // ===== Supabase 초기화 및 인증 =====
+    var SUPA_URL = 'https://udjmdqbbtjsuqcvvpele.supabase.co';
+    var SUPA_KEY = 'sb_publishable_sgm-S_8tri1fbWeZ0hJ0Xg_QHeJc85m';
+    var _supabase = null;
+    var _currentUser = null;
+    var _pendingTab = null;
+
+    window.addEventListener('load', function() {
+      _supabase = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+      // 세션 복원
+      _supabase.auth.getSession().then(function(ref) {
+        if (ref.data && ref.data.session) {
+          _currentUser = ref.data.session.user;
+          sessionStorage.setItem('bs_member_auth', 'true');
+          updateAuthUI();
+        }
+      });
+
+      // 로그인 상태 변화 감지
+      _supabase.auth.onAuthStateChange(function(event, session) {
+        if (event === 'SIGNED_IN' && session) {
+          _currentUser = session.user;
+          sessionStorage.setItem('bs_member_auth', 'true');
+          updateAuthUI();
+        } else if (event === 'SIGNED_OUT') {
+          _currentUser = null;
+          sessionStorage.removeItem('bs_member_auth');
+          updateAuthUI();
+        }
+      });
+    });
+
+    function updateAuthUI() {
+      var loginBtn    = document.getElementById('auth-login-btn');
+      var logoutBtn   = document.getElementById('auth-logout-btn');
+      var loginBtnMob = document.getElementById('auth-login-btn-mob');
+      var logoutBtnMob= document.getElementById('auth-logout-btn-mob');
+      var userInfo    = document.getElementById('auth-user-info');
+      if (!loginBtn) return;
+      if (_currentUser) {
+        loginBtn.style.display   = 'none';
+        logoutBtn.style.display  = '';
+        if (loginBtnMob)  loginBtnMob.style.display  = 'none';
+        if (logoutBtnMob) logoutBtnMob.style.display = '';
+        if (userInfo) {
+          var em = _currentUser.email || '';
+          userInfo.textContent = em.length > 20 ? em.substring(0, 18) + '...' : em;
+          userInfo.style.display = '';
+        }
+      } else {
+        loginBtn.style.display   = '';
+        logoutBtn.style.display  = 'none';
+        if (loginBtnMob)  loginBtnMob.style.display  = '';
+        if (logoutBtnMob) logoutBtnMob.style.display = 'none';
+        if (userInfo) userInfo.style.display = 'none';
+      }
+    }
+
+    // ===== 로그인 =====
+    async function supaLogin() {
+      var email = document.getElementById('auth-email').value.trim();
+      var pw    = document.getElementById('auth-pw').value;
+      var errEl = document.getElementById('auth-error');
+      var btn   = document.getElementById('auth-submit-btn');
+      errEl.textContent = '';
+      if (!email || !pw) { errEl.textContent = '이메일과 비밀번호를 입력하세요.'; return; }
+      btn.textContent = '로그인 중...'; btn.disabled = true;
+      var ref = await _supabase.auth.signInWithPassword({ email: email, password: pw });
+      btn.textContent = '로그인'; btn.disabled = false;
+      if (ref.error) {
+        errEl.textContent = '⚠️ 이메일 또는 비밀번호가 올바르지 않습니다.';
+      } else {
+        closeAuthModal();
+        if (_pendingTab) { showTab(_pendingTab); _pendingTab = null; }
+      }
+    }
+
+    // ===== 회원가입 =====
+    async function supaRegister() {
+      var email = document.getElementById('auth-email').value.trim();
+      var pw    = document.getElementById('auth-pw').value;
+      var pw2   = document.getElementById('auth-pw2') ? document.getElementById('auth-pw2').value : pw;
+      var errEl = document.getElementById('auth-error');
+      var btn   = document.getElementById('auth-submit-btn');
+      errEl.textContent = '';
+      if (!email || !pw) { errEl.textContent = '이메일과 비밀번호를 입력하세요.'; return; }
+      if (pw !== pw2)    { errEl.textContent = '⚠️ 비밀번호가 일치하지 않습니다.'; return; }
+      if (pw.length < 6) { errEl.textContent = '⚠️ 비밀번호는 6자 이상이어야 합니다.'; return; }
+      btn.textContent = '가입 중...'; btn.disabled = true;
+      var ref = await _supabase.auth.signUp({ email: email, password: pw });
+      btn.textContent = '회원가입'; btn.disabled = false;
+      if (ref.error) {
+        errEl.textContent = '⚠️ ' + (ref.error.message || '가입 중 오류가 발생했습니다.');
+      } else {
+        // 관리자 알림 메일 발송 (EmailJS)
+        var now = new Date();
+        var timeStr = now.getFullYear() + '.' +
+          String(now.getMonth()+1).padStart(2,'0') + '.' +
+          String(now.getDate()).padStart(2,'0') + ' ' +
+          String(now.getHours()).padStart(2,'0') + ':' +
+          String(now.getMinutes()).padStart(2,'0');
+        var notifyParams = {
+          to_email:     'ckjung@biostream.co.kr',
+          company:      '[신규 회원가입 알림]',
+          name:         '새 회원',
+          from_email:   email,
+          email:        email,
+          tel:          '-',
+          inquiry_type: '회원가입',
+          sample:       '-',
+          message:      '■ 신규 회원 가입 알림\n\n' +
+                        '가입 이메일: ' + email + '\n' +
+                        '가입 시각: ' + timeStr + '\n\n' +
+                        '▶ Supabase 대시보드에서 회원을 확인하세요.\n' +
+                        'https://supabase.com/dashboard/project/udjmdqbbtjsuqcvvpele/auth/users',
+        };
+        if (typeof emailjs !== 'undefined') {
+          emailjs.send('service_3yawdy9', 'template_p84vc2p', notifyParams).catch(function(){});
+        }
+        var body = document.getElementById('auth-modal-body');
+        var succ = document.getElementById('auth-success-msg');
+        if (body) body.style.display = 'none';
+        if (succ) succ.style.display = 'block';
+      }
+    }
+
+    // ===== 로그아웃 =====
+    async function supaLogout() {
+      if (_supabase) await _supabase.auth.signOut();
+    }
+
+    // ===== 모달 열기/닫기 =====
+    function openAuthModal(tab, pendingTab) {
+      if (pendingTab) _pendingTab = pendingTab;
+      var modal = document.getElementById('auth-modal');
+      var body  = document.getElementById('auth-modal-body');
+      var succ  = document.getElementById('auth-success-msg');
+      if (modal) modal.style.display = 'flex';
+      if (body) body.style.display = '';
+      if (succ) succ.style.display = 'none';
+      document.getElementById('auth-email').value = '';
+      document.getElementById('auth-pw').value = '';
+      if (document.getElementById('auth-pw2')) document.getElementById('auth-pw2').value = '';
+      document.getElementById('auth-error').textContent = '';
+      switchAuthTab(tab || 'login');
+      setTimeout(function(){ var el = document.getElementById('auth-email'); if(el) el.focus(); }, 120);
+    }
+    function closeAuthModal() {
+      var modal = document.getElementById('auth-modal');
+      if (modal) { modal.style.opacity='0'; modal.style.transition='opacity 0.22s'; setTimeout(function(){ modal.style.display='none'; modal.style.opacity='1'; modal.style.transition=''; },220); }
+    }
+
+    // ===== 탭(로그인/회원가입) 전환 =====
+    function switchAuthTab(tab) {
+      var loginTab  = document.getElementById('auth-tab-login');
+      var regTab    = document.getElementById('auth-tab-reg');
+      var pw2Row    = document.getElementById('auth-pw2-row');
+      var submitBtn = document.getElementById('auth-submit-btn');
+      var subtitle  = document.getElementById('auth-subtitle');
+      var errEl     = document.getElementById('auth-error');
+      if (errEl) errEl.textContent = '';
+      var activeStyle   = 'border-bottom:3px solid #0284C7;color:#0284C7;font-weight:700;';
+      var inactiveStyle = 'border-bottom:3px solid transparent;color:#94a3b8;font-weight:400;';
+      if (tab === 'login') {
+        if (loginTab) loginTab.setAttribute('style', activeStyle + loginTab.getAttribute('style').replace(/border-bottom[^;]+;|color[^;]+;|font-weight[^;]+;/g,''));
+        if (regTab)   regTab.setAttribute('style',   inactiveStyle + regTab.getAttribute('style').replace(/border-bottom[^;]+;|color[^;]+;|font-weight[^;]+;/g,''));
+        if (loginTab) { loginTab.style.borderBottom='3px solid #0284C7'; loginTab.style.color='#0284C7'; loginTab.style.fontWeight='700'; }
+        if (regTab)   { regTab.style.borderBottom='3px solid transparent'; regTab.style.color='#94a3b8'; regTab.style.fontWeight='400'; }
+        if (pw2Row)    pw2Row.style.display = 'none';
+        if (submitBtn) { submitBtn.textContent = '로그인'; submitBtn.onclick = supaLogin; }
+        if (subtitle)  subtitle.textContent = '로그인하여 회원 전용 콘텐츠를 열람하세요.';
+      } else {
+        if (loginTab) { loginTab.style.borderBottom='3px solid transparent'; loginTab.style.color='#94a3b8'; loginTab.style.fontWeight='400'; }
+        if (regTab)   { regTab.style.borderBottom='3px solid #0284C7'; regTab.style.color='#0284C7'; regTab.style.fontWeight='700'; }
+        if (pw2Row)    pw2Row.style.display = '';
+        if (submitBtn) { submitBtn.textContent = '회원가입'; submitBtn.onclick = supaRegister; }
+        if (subtitle)  subtitle.textContent = '가입 후 NEP, Validation, QRM 콘텐츠를 열람하실 수 있습니다.';
+      }
+    }
+  </script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -411,13 +596,22 @@
           <!-- 문의하기 강조 버튼 -->
           <button onclick="showTab('contact');closeDD()" class="contact-btn ml-2" data-tab="contact">📩 문의하기</button>
 
-          <!-- 회원가입 버튼 -->
-          <button onclick="showTab('register');closeDD()" data-tab="register"
-            style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;border:none;
-            padding:9px 18px;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;
-            font-family:'Noto Sans KR',sans-serif;white-space:nowrap;transition:opacity 0.15s;"
+
+          <!-- 로그인/로그아웃 버튼 -->
+          <button id="auth-login-btn" onclick="openAuthModal('login')"
+            style="background:#1565C0;color:#fff;border:none;padding:9px 18px;border-radius:8px;
+            font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;
+            white-space:nowrap;transition:opacity 0.15s;"
             onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-            🔑 회원가입
+            🔐 로그인
+          </button>
+          <span id="auth-user-info" style="display:none;font-size:0.78rem;color:#475569;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+          <button id="auth-logout-btn" onclick="supaLogout()" style="display:none;
+            background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:8px 14px;border-radius:8px;
+            font-size:0.85rem;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;
+            white-space:nowrap;transition:background 0.15s;"
+            onmouseover="this.style.background='#fee2e2';this.style.color='#ef4444'" onmouseout="this.style.background='#f1f5f9';this.style.color='#475569'">
+            로그아웃
           </button>
 
           <!-- QR코드 버튼 -->
@@ -477,10 +671,14 @@
             style="margin-top:10px;background:#C41E3A;color:#fff;font-weight:700;border-radius:8px;">
             📩 문의하기
           </button>
-          <!-- 회원가입 -->
-          <button onclick="showTab('register');closeMobile()" class="mobile-nav-btn" data-tab="register"
-            style="margin-top:6px;background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-weight:700;border-radius:8px;">
-            🔑 회원가입
+          <!-- 로그인 -->
+          <button id="auth-login-btn-mob" onclick="openAuthModal('login');closeMobile()" class="mobile-nav-btn"
+            style="margin-top:6px;background:#1565C0;color:#fff;font-weight:700;border-radius:8px;">
+            🔐 로그인
+          </button>
+          <button id="auth-logout-btn-mob" onclick="supaLogout()" class="mobile-nav-btn" style="display:none;
+            margin-top:6px;background:#f1f5f9;color:#ef4444;font-weight:700;border-radius:8px;border:1px solid #fecaca;">
+            로그아웃
           </button>
         </nav>
       </div>
@@ -2945,19 +3143,17 @@
     }
 
     // ===== 탭 페이지 전환 =====
-    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','contact','register'];
+    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','contact'];
     var currentLang = 'ko';
 
     // ===== 회원 전용 탭 잠금 설정 =====
     var LOCKED_TABS = ['nep', 'validation', 'qrm'];
-    var MEMBER_PASSWORD = 'biostream2026'; // ← 비밀번호 여기서 변경
-    var SESSION_KEY = 'bs_member_auth';
 
     function showTab(tabId) {
-      // 잠금 탭 접근 시 비밀번호 확인
+      // 잠금 탭 접근 시 로그인 확인
       if (LOCKED_TABS.indexOf(tabId) !== -1) {
-        if (sessionStorage.getItem(SESSION_KEY) !== 'true') {
-          showPasswordModal(tabId);
+        if (sessionStorage.getItem('bs_member_auth') !== 'true') {
+          openAuthModal('login', tabId);
           return;
         }
       }
@@ -3099,127 +3295,103 @@
     });
   </script>
 
-  <!-- ===== 회원 전용 비밀번호 모달 ===== -->
-  <div id="pw-modal" style="
+  <!-- ===== Supabase 로그인/회원가입 모달 ===== -->
+  <div id="auth-modal" style="
     display:none; position:fixed; inset:0; z-index:99999;
     align-items:center; justify-content:center;
     background:rgba(10,20,50,0.72); backdrop-filter:blur(4px);
-  ">
+  " onclick="if(event.target===this)closeAuthModal()">
     <div style="
       background:#fff; border-radius:20px;
-      max-width:380px; width:92%;
+      max-width:400px; width:93%;
       box-shadow:0 24px 64px rgba(0,0,0,0.28);
       overflow:hidden; animation:popupIn 0.35s cubic-bezier(.22,1,.36,1);
       font-family:'Noto Sans KR',sans-serif;
     ">
       <!-- 상단 배너 -->
-      <div style="background:linear-gradient(135deg,#0a1f5c 0%,#1565C0 60%,#42a5f5 100%);padding:28px 24px 22px;text-align:center;">
-        <div style="font-size:2.2rem;margin-bottom:8px;">🔒</div>
-        <div style="color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:4px;">회원 전용 콘텐츠</div>
-        <div style="color:rgba(255,255,255,0.75);font-size:0.78rem;letter-spacing:0.05em;">Members Only Content</div>
+      <div style="background:linear-gradient(135deg,#0a1f5c 0%,#1565C0 60%,#42a5f5 100%);padding:26px 24px 20px;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:8px;">🔒</div>
+        <div style="color:#fff;font-weight:800;font-size:1.08rem;margin-bottom:4px;">회원 전용 콘텐츠</div>
+        <div id="auth-subtitle" style="color:rgba(255,255,255,0.78);font-size:0.78rem;">로그인하여 회원 전용 콘텐츠를 열람하세요.</div>
       </div>
-      <!-- 입력 영역 -->
-      <div style="padding:28px 24px 24px;">
-        <p style="color:#475569;font-size:0.88rem;margin:0 0 16px;text-align:center;line-height:1.6;">
-          이 페이지는 회원에게만 공개됩니다.<br>비밀번호를 입력하세요.
-        </p>
-        <input
-          id="pw-input"
-          type="password"
-          placeholder="비밀번호 입력"
-          onkeydown="if(event.key==='Enter')verifyPassword()"
-          style="
-            width:100%; box-sizing:border-box;
-            border:2px solid #e2e8f0; border-radius:10px;
-            padding:12px 14px; font-size:1rem;
-            font-family:'Noto Sans KR',sans-serif;
-            outline:none; transition:border-color 0.2s;
-            margin-bottom:8px;
-          "
-          onfocus="this.style.borderColor='#0284C7'"
-          onblur="this.style.borderColor='#e2e8f0'"
-        />
-        <div id="pw-error" style="
-          color:#ef4444; font-size:0.8rem; min-height:18px;
-          margin-bottom:12px; text-align:center;
-        "></div>
-        <button onclick="verifyPassword()" style="
-          width:100%; padding:13px;
-          background:linear-gradient(135deg,#1565C0,#42a5f5);
-          color:#fff; border:none; border-radius:10px;
-          font-size:0.95rem; font-weight:700; cursor:pointer;
-          font-family:'Noto Sans KR',sans-serif;
-          margin-bottom:10px; transition:opacity 0.15s;
-        " onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-          확인 / Enter
+
+      <!-- 탭 -->
+      <div style="display:flex;border-bottom:1px solid #e2e8f0;">
+        <button id="auth-tab-login" onclick="switchAuthTab('login')"
+          style="flex:1;padding:13px 0;font-size:0.92rem;border:none;background:#fff;cursor:pointer;
+          font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid #0284C7;color:#0284C7;font-weight:700;transition:all 0.15s;">
+          로그인
         </button>
-        <button onclick="closePasswordModal()" style="
-          width:100%; padding:10px;
-          background:#f1f5f9; color:#64748b;
-          border:none; border-radius:10px;
-          font-size:0.88rem; font-weight:600; cursor:pointer;
-          font-family:'Noto Sans KR',sans-serif;
-        ">
+        <button id="auth-tab-reg" onclick="switchAuthTab('register')"
+          style="flex:1;padding:13px 0;font-size:0.92rem;border:none;background:#fff;cursor:pointer;
+          font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid transparent;color:#94a3b8;font-weight:400;transition:all 0.15s;">
+          회원가입
+        </button>
+      </div>
+
+      <!-- 폼 영역 -->
+      <div id="auth-modal-body" style="padding:24px 24px 20px;">
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:0.83rem;font-weight:600;color:#374151;margin-bottom:5px;">이메일</label>
+          <input id="auth-email" type="email" placeholder="name@company.com"
+            onkeydown="if(event.key==='Enter')document.getElementById('auth-pw').focus()"
+            style="width:100%;box-sizing:border-box;border:2px solid #e2e8f0;border-radius:10px;
+            padding:11px 13px;font-size:0.95rem;font-family:'Noto Sans KR',sans-serif;
+            outline:none;transition:border-color 0.18s;"
+            onfocus="this.style.borderColor='#0284C7'" onblur="this.style.borderColor='#e2e8f0'"/>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:0.83rem;font-weight:600;color:#374151;margin-bottom:5px;">비밀번호</label>
+          <input id="auth-pw" type="password" placeholder="6자 이상"
+            onkeydown="if(event.key==='Enter'){ var r=document.getElementById('auth-pw2-row'); if(r&&r.style.display!='none'){document.getElementById('auth-pw2').focus();}else{document.getElementById('auth-submit-btn').click();}}"
+            style="width:100%;box-sizing:border-box;border:2px solid #e2e8f0;border-radius:10px;
+            padding:11px 13px;font-size:0.95rem;font-family:'Noto Sans KR',sans-serif;
+            outline:none;transition:border-color 0.18s;"
+            onfocus="this.style.borderColor='#0284C7'" onblur="this.style.borderColor='#e2e8f0'"/>
+        </div>
+        <div id="auth-pw2-row" style="margin-bottom:14px;display:none;">
+          <label style="display:block;font-size:0.83rem;font-weight:600;color:#374151;margin-bottom:5px;">비밀번호 확인</label>
+          <input id="auth-pw2" type="password" placeholder="비밀번호 재입력"
+            onkeydown="if(event.key==='Enter')document.getElementById('auth-submit-btn').click()"
+            style="width:100%;box-sizing:border-box;border:2px solid #e2e8f0;border-radius:10px;
+            padding:11px 13px;font-size:0.95rem;font-family:'Noto Sans KR',sans-serif;
+            outline:none;transition:border-color 0.18s;"
+            onfocus="this.style.borderColor='#0284C7'" onblur="this.style.borderColor='#e2e8f0'"/>
+        </div>
+        <div id="auth-error" style="color:#ef4444;font-size:0.8rem;min-height:18px;margin-bottom:10px;text-align:center;"></div>
+        <button id="auth-submit-btn" onclick="supaLogin()"
+          style="width:100%;padding:13px;background:linear-gradient(135deg,#1565C0,#42a5f5);
+          color:#fff;border:none;border-radius:10px;font-size:0.97rem;font-weight:700;cursor:pointer;
+          font-family:'Noto Sans KR',sans-serif;margin-bottom:10px;transition:opacity 0.15s;"
+          onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          로그인
+        </button>
+        <button onclick="closeAuthModal()"
+          style="width:100%;padding:10px;background:#f1f5f9;color:#64748b;border:none;border-radius:10px;
+          font-size:0.88rem;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
           취소
         </button>
-        <p style="margin-top:14px;text-align:center;font-size:0.82rem;color:#94a3b8;">
-          아직 회원이 아니신가요?
-          <button onclick="closePasswordModal();showTab('register');"
-            style="background:none;border:none;color:#059669;font-weight:700;cursor:pointer;
-            font-size:0.82rem;font-family:'Noto Sans KR',sans-serif;text-decoration:underline;padding:0;">
-            회원가입 신청하기 →
-          </button>
+      </div>
+
+      <!-- 가입 완료 메시지 -->
+      <div id="auth-success-msg" style="display:none;padding:32px 24px;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:12px;">✅</div>
+        <p style="font-weight:700;font-size:1.05rem;color:#1e293b;margin-bottom:8px;">가입이 완료되었습니다!</p>
+        <p style="font-size:0.85rem;color:#64748b;line-height:1.6;margin-bottom:20px;">
+          가입하신 이메일로 확인 메일이 발송되었습니다.<br>
+          이메일 인증 후 로그인하시면 회원 전용 콘텐츠를 이용할 수 있습니다.
         </p>
+        <button onclick="closeAuthModal();switchAuthTab('login');"
+          style="padding:11px 28px;background:#1565C0;color:#fff;border:none;border-radius:10px;
+          font-size:0.93rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
+          로그인 하러가기
+        </button>
       </div>
     </div>
   </div>
 
-  <script>
-    var _pendingTab = null;
-
-    function showPasswordModal(tabId) {
-      _pendingTab = tabId;
-      document.getElementById('pw-input').value = '';
-      document.getElementById('pw-error').textContent = '';
-      var modal = document.getElementById('pw-modal');
-      modal.style.display = 'flex';
-      setTimeout(function(){ document.getElementById('pw-input').focus(); }, 100);
-    }
-
-    function verifyPassword() {
-      var input = document.getElementById('pw-input').value;
-      if (input === MEMBER_PASSWORD) {
-        sessionStorage.setItem(SESSION_KEY, 'true');
-        closePasswordModal();
-        if (_pendingTab) { showTab(_pendingTab); _pendingTab = null; }
-      } else {
-        document.getElementById('pw-error').textContent = '⚠️ 비밀번호가 올바르지 않습니다.';
-        document.getElementById('pw-input').value = '';
-        document.getElementById('pw-input').focus();
-      }
-    }
-
-    function closePasswordModal() {
-      var modal = document.getElementById('pw-modal');
-      modal.style.opacity = '0';
-      modal.style.transition = 'opacity 0.25s';
-      setTimeout(function(){
-        modal.style.display = 'none';
-        modal.style.opacity = '1';
-        modal.style.transition = '';
-      }, 250);
-    }
-
-    // 모달 바깥 클릭 시 닫기
-    document.addEventListener('click', function(e) {
-      var modal = document.getElementById('pw-modal');
-      if (modal && modal.style.display === 'flex' && e.target === modal) {
-        closePasswordModal();
-      }
-    });
-  </script>
-
   <!-- ===== 플로팅 문의하기 버튼 ===== -->
+    <!-- ===== 플로팅 문의하기 버튼 ===== -->
   <button onclick="showTab('contact')"
     style="position:fixed;bottom:28px;right:24px;z-index:9999;
            background:linear-gradient(135deg,#C41E3A,#f43f5e);
