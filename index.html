@@ -24,21 +24,21 @@
   <meta name="keywords" content="Pyrogen detected by PBMC MAT, MAT validation, MAT 시험, Monocyte Activation Test, PBMC, 단핵구활성시험, Cytokine IL-6, Pyrogen test, 발열원 시험">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <link rel="canonical" href="https://cklikeyou-jpg.github.io/biostream.github.io/">
+  <link rel="canonical" href="https://cklikeyou-jpg.github.io/">
   <!-- Open Graph / Google 검색 결과 -->
   <meta property="og:site_name" content="Biostream 시험분석센터">
   <meta property="og:title" content="Pyrogen detected by PBMC MAT | Biostream 시험분석센터">
   <meta property="og:description" content="Pyrogen detected by PBMC MAT. MAT validation 및 Cytokine IL-6 기반 발열원 시험 대체 솔루션. 제약·바이오·혈액제제 제품의 안전성 검증 전문 기관.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cklikeyou-jpg.github.io/biostream.github.io/">
-  <meta property="og:image" content="https://cklikeyou-jpg.github.io/biostream.github.io/favicon.png">
+  <meta property="og:url" content="https://cklikeyou-jpg.github.io/">
+  <meta property="og:image" content="https://cklikeyou-jpg.github.io/favicon.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Pyrogen detected by PBMC MAT | Biostream 시험분석센터">
   <meta name="twitter:description" content="Pyrogen detected by PBMC MAT. MAT validation 및 Cytokine IL-6 기반 발열원 시험 대체 솔루션.">
-  <meta name="twitter:image" content="https://cklikeyou-jpg.github.io/biostream.github.io/favicon.png">
+  <meta name="twitter:image" content="https://cklikeyou-jpg.github.io/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
@@ -225,7 +225,7 @@
     /* ===== 배경색 오버라이드 (Tailwind 우선순위 제압) ===== */
     body { background-color: #EEF2F7 !important; }
     .tab-page { background-color: #F7F9FC !important; }
-    #history, #applications, #regulatory, #facilities, #news, #contact {
+    #history, #applications, #regulatory, #facilities, #contact {
       background-color: #EEF2F7 !important;
     }
     header { background-color: #F0F5FA !important; }
@@ -251,7 +251,6 @@
     #method .tab-banner::after,
     #applications .tab-banner::after,
     #regulatory .tab-banner::after,
-    #news .tab-banner::after,
     #contact .tab-banner::after {
       background: #EEF2F7;
     }
@@ -343,7 +342,8 @@
                 <span class="dd-icon"> </span> 역사/배경
               </button>
               <button class="dd-item" onclick="showTab('nep');closeDD()" data-tab="nep">
-                <span class="dd-icon"> </span> NEP 발열원
+                <span class="dd-icon">🔒</span> NEP 발열원
+                <span style="margin-left:auto;font-size:0.68rem;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:10px;font-weight:700;">회원전용</span>
               </button>
             </div>
           </div>
@@ -359,7 +359,8 @@
                 <span class="dd-icon"> </span> 시험 방법
               </button>
               <button class="dd-item" onclick="showTab('validation');closeDD()" data-tab="validation">
-                <span class="dd-icon"> </span> Validation
+                <span class="dd-icon">🔒</span> Validation
+                <span style="margin-left:auto;font-size:0.68rem;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:10px;font-weight:700;">회원전용</span>
               </button>
               <button class="dd-item" onclick="showTab('applications');closeDD()" data-tab="applications">
                 <span class="dd-icon"> </span> 적용 분야
@@ -367,24 +368,7 @@
               <button class="dd-item" onclick="showTab('process');closeDD()" data-tab="process">
                 <span class="dd-icon"> </span> 시험 절차
               </button>
-              <!-- KP13 MAT 대시보드 연결 항목 추가 -->
-<!-- KP13 MAT 대시보드 연결 항목 추가 -->
-<li class="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100 hover:bg-blue-100 transition-all cursor-pointer group" 
-    onclick="location.href='KP13_MAT_Infographic.html'">
-    <div class="flex items-center gap-3">
-        <div>
-            <h4 class="text-base font-bold text-slate-800">KP13 단핵구활성시험</h4>
-        </div>
-    </div>
-    <div class="text-blue-500 group-hover:translate-x-1 transition-transform">
-        <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-    </div>
-</li>
 
-    </div>
-</li>
 
             </div>
           </div>
@@ -400,7 +384,8 @@
                 <span class="dd-icon"> </span> 규제 현황
               </button>
               <button class="dd-item" onclick="showTab('qrm');closeDD()" data-tab="qrm">
-                <span class="dd-icon"> </span> QRM 관리
+                <span class="dd-icon">🔒</span> QRM 관리
+                <span style="margin-left:auto;font-size:0.68rem;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:10px;font-weight:700;">회원전용</span>
               </button>
               <button class="dd-item" onclick="showTab('glossary');closeDD()" data-tab="glossary">
                 <span class="dd-icon"> </span> 약어집
@@ -418,12 +403,8 @@
               <button class="dd-item" onclick="showTab('faq');closeDD()" data-tab="faq">
                 <span class="dd-icon"> </span> FAQ
               </button>
-              <button class="dd-item" onclick="showTab('news');closeDD()" data-tab="news">
-                <span class="dd-icon"> </span> MAT 뉴스
-              </button>
-              <button class="dd-item" onclick="showTab('break');closeDD()" data-tab="break">
-                <span class="dd-icon"> </span> 휴식시간
-              </button>
+
+
             </div>
           </div>
 
@@ -467,23 +448,21 @@
           <div class="mob-cat-label">📘 MAT 소개</div>
           <button onclick="showTab('overview');closeMobile()" class="mobile-nav-btn" data-tab="overview"><span> </span>시험 개요</button>
           <button onclick="showTab('history');closeMobile()"  class="mobile-nav-btn" data-tab="history"><span> </span>역사/배경</button>
-          <button onclick="showTab('nep');closeMobile()"      class="mobile-nav-btn" data-tab="nep"><span> </span>NEP 발열원</button>
+          <button onclick="showTab('nep');closeMobile()"      class="mobile-nav-btn" data-tab="nep"><span>🔒</span>NEP 발열원 <span style="font-size:0.68rem;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:10px;font-weight:700;margin-left:4px;">회원전용</span></button>
           <!-- 기술 및 서비스 -->
           <div class="mob-cat-label" style="margin-top:8px;">  기술 및 서비스</div>
           <button onclick="showTab('method');closeMobile()"       class="mobile-nav-btn" data-tab="method"><span> </span>시험 방법</button>
-          <button onclick="showTab('validation');closeMobile()"   class="mobile-nav-btn" data-tab="validation"><span> </span>Validation</button>
+          <button onclick="showTab('validation');closeMobile()"   class="mobile-nav-btn" data-tab="validation"><span>🔒</span>Validation <span style="font-size:0.68rem;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:10px;font-weight:700;margin-left:4px;">회원전용</span></button>
           <button onclick="showTab('applications');closeMobile()" class="mobile-nav-btn" data-tab="applications"><span> </span>적용 분야</button>
           <button onclick="showTab('process');closeMobile()"      class="mobile-nav-btn" data-tab="process"><span> </span>시험 절차</button>
           <!-- 규제 및 품질 -->
           <div class="mob-cat-label" style="margin-top:8px;"> 규제 및 품질</div>
           <button onclick="showTab('regulatory');closeMobile()" class="mobile-nav-btn" data-tab="regulatory"><span> </span>규제 현황</button>
-          <button onclick="showTab('qrm');closeMobile()"        class="mobile-nav-btn" data-tab="qrm"><span> </span>QRM 관리</button>
+          <button onclick="showTab('qrm');closeMobile()"        class="mobile-nav-btn" data-tab="qrm"><span>🔒</span>QRM 관리 <span style="font-size:0.68rem;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:10px;font-weight:700;margin-left:4px;">회원전용</span></button>
           <button onclick="showTab('glossary');closeMobile()"   class="mobile-nav-btn" data-tab="glossary"><span> </span>약어집</button>
           <!-- 고객 지원 -->
           <div class="mob-cat-label" style="margin-top:8px;">💬 고객 지원</div>
           <button onclick="showTab('faq');closeMobile()"  class="mobile-nav-btn" data-tab="faq"><span> </span>FAQ</button>
-          <button onclick="showTab('news');closeMobile()" class="mobile-nav-btn" data-tab="news"><span> </span>MAT 뉴스</button>
-          <button onclick="showTab('break');closeMobile()" class="mobile-nav-btn" data-tab="break"><span> </span>휴식시간</button>
           <!-- 문의하기 -->
           <button onclick="showTab('contact');closeMobile()" class="mobile-nav-btn" data-tab="contact"
             style="margin-top:10px;background:#C41E3A;color:#fff;font-weight:700;border-radius:8px;">
@@ -2451,367 +2430,6 @@
   </div>
   </section>
 
-  <!-- ===== 최신 MAT 뉴스 섹션 ===== -->
-  <section id="news" class="tab-page" style="background:#EEF2F7;padding-top:0;">
-  <!-- gradient banner -->
-  <div class="tab-banner" style="background:linear-gradient(135deg, #042f2e 0%, #0f766e 40%, #0d9488 70%, #2dd4bf 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">📰</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Latest News</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">최신 MAT 뉴스</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:680px;margin:0 auto;line-height:1.7;">MAT 시험 및 발열성 물질 관련 최신 규제·학술 동향을 소개합니다.</p>
-    </div>
-  </div>
-  <div style="padding:48px 0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <!-- 카테고리 탭 -->
-      <div class="flex justify-center mb-8 gap-3 flex-wrap">
-        <button id="tab-regulatory" onclick="switchNewsTab('regulatory')"
-          class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-primary text-white shadow-md">
-          📋 규제 및 동향
-        </button>
-        <button id="tab-academic" onclick="switchNewsTab('academic')"
-          class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-green-600 hover:text-green-600">
-          🔬 제약/바이오계 MAT 학술동향
-        </button>
-        <button onclick="openAdminModal()"
-          class="px-5 py-2.5 rounded-full font-semibold text-sm transition-all bg-slate-700 text-white hover:bg-slate-800 shadow-md flex items-center gap-1.5">
-          🔒 관리자
-        </button>
-      </div>
-
-      <!-- 관리자 비밀번호 모달 -->
-      <div id="adminModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-        <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-8 relative">
-          <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
-          <div class="text-center mb-6">
-            <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-            </div>
-            <h3 class="text-xl font-bold text-dark">관리자 로그인</h3>
-            <p class="text-sm text-gray-500 mt-1">게시판 글쓰기 권한이 필요합니다</p>
-          </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium text-dark mb-2">비밀번호</label>
-            <input id="admin-pw-input" type="password" placeholder="관리자 비밀번호 입력"
-              class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-              onkeydown="if(event.key==='Enter') checkAdminPw()">
-          </div>
-          <p id="admin-pw-error" class="text-red-500 text-sm mb-3 hidden">비밀번호가 올바르지 않습니다.</p>
-          <button onclick="checkAdminPw()" class="w-full bg-slate-700 text-white py-3 rounded-lg font-semibold hover:bg-slate-800 transition">
-            확인
-          </button>
-        </div>
-      </div>
-      <!-- 게시판 -->
-      <div id="news-board" class="max-w-4xl mx-auto">
-        <!-- 목록 뷰 -->
-        <div id="news-list-view">
-          <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-            <table class="w-full text-sm">
-              <thead><tr class="bg-slate-800 text-white">
-                <th class="py-3 px-4 text-left font-semibold w-14">번호</th>
-                <th class="py-3 px-4 text-left font-semibold">제목</th>
-                <th class="py-3 px-4 text-left font-semibold w-28 hidden sm:table-cell">날짜</th>
-              </tr></thead>
-              <tbody id="news-tbody"></tbody>
-            </table>
-          </div>
-          <p id="news-empty" class="text-center text-gray-400 py-16 hidden">등록된 게시글이 없습니다. 새 글 작성 버튼을 눌러 첫 글을 등록하세요.</p>
-        </div>
-        <!-- 상세 뷰 -->
-        <div id="news-detail-view" class="hidden">
-          <div class="bg-white rounded-2xl shadow-sm p-8">
-            <div class="mb-6 pb-4 border-b border-gray-100">
-              <div class="flex items-center gap-2 mb-3">
-                <span id="detail-cat-badge" class="text-xs font-semibold px-3 py-1 rounded-full"></span>
-                <span id="detail-date" class="text-xs text-gray-400"></span>
-              </div>
-              <h2 id="detail-title" class="text-xl font-bold text-dark leading-tight"></h2>
-            </div>
-            <div id="detail-content" class="text-gray-700 leading-relaxed text-sm whitespace-pre-wrap mb-6"></div>
-            <div id="detail-link-wrap" class="mb-6 hidden">
-              <a id="detail-link" href="#" target="_blank" class="inline-flex items-center gap-2 text-primary text-sm hover:underline font-medium">🔗 원문 보기</a>
-            </div>
-            <div class="flex gap-3 flex-wrap">
-              <button onclick="showNewsList()" class="px-5 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition">← 목록으로</button>
-              <button onclick="editCurrentPost()" class="px-5 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition">✏️ 수정</button>
-              <button onclick="deleteCurrentPost()" class="px-5 py-2 bg-red-50 text-red-600 rounded-lg text-sm font-medium hover:bg-red-100 transition">🗑 삭제</button>
-            </div>
-          </div>
-        </div>
-        <!-- 작성/수정 폼 -->
-        <div id="news-form-view" class="hidden">
-          <div class="bg-white rounded-2xl shadow-sm p-8">
-            <h3 id="form-title-label" class="text-lg font-bold text-dark mb-6">새 글 작성</h3>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-dark mb-1">날짜</label>
-                <input id="nf-date" type="date" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-dark mb-1">제목 *</label>
-                <input id="nf-title" type="text" placeholder="제목을 입력하세요" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-dark mb-1">내용 *</label>
-                <textarea id="nf-content" rows="8" placeholder="내용을 입력하세요" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"></textarea>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-dark mb-1">외부 링크 (선택)</label>
-                <input id="nf-link" type="url" placeholder="https://..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-              </div>
-            </div>
-            <div class="flex gap-3 mt-6">
-              <button onclick="saveNewsPost()" class="flex-1 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">저장</button>
-              <button onclick="showNewsList()" class="flex-1 bg-gray-100 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-200 transition">취소</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </section>
-
-  <script>
-  /* ===== MAT 뉴스 게시판 (카테고리 2개, 비번 없음) ===== */
-  var currentTab = 'regulatory';
-  var currentPostId = null;
-  var editingPostId = null;
-  var editingTab = null;
-
-  var DEFAULT_REGULATORY = [
-    {id:'r1',date:'2025-03',title:'Biostream, MAT 시험 서비스 정식 개시',content:'Biostream 시험분석센터가 EP 2.6.30 기준 MAT 시험 서비스를 정식 개시하였습니다. 혈액제제, 바이오의약품, 세포치료제 등 다양한 제품에 대한 PSV 및 배치 출하 시험을 지원합니다.',link:''},
-    {id:'r2',date:'2025-01',title:'유럽약전(EP) 2.6.30 MAT 개정판 적용 확대',content:'EP 10판에서 MAT(Monocyte Activation Test)가 발열성 물질 시험의 공식 대안법으로 확정되었으며, 혈액제제 및 바이오의약품에 대한 적용 권고가 강화되었습니다.',link:''},
-    {id:'r3',date:'2024-09',title:'식약처(MFDS) MAT 도입 검토 본격화',content:'한국 식품의약품안전처가 비임상 안전성 시험에서 MAT 활용 가능성에 대한 공식 검토를 시작하였으며, 의약품 허가 신청 시 MAT 데이터 제출 기준 마련이 예상됩니다.',link:''},
-    {id:'r4',date:'2024-07',title:'FDA, LER 문제 제품에 MAT 사용 권고 강화',content:'미국 FDA가 저내독소 회수율(LER) 현상이 보고된 의약품에 대해 LAL 단독 시험의 한계를 인정하고, MAT 병행 시험을 적극 권고하는 지침을 발표하였습니다.',link:''},
-  ];
-  var DEFAULT_ACADEMIC = [
-    {id:'a1',date:'2024-11',title:'CAR-T 세포치료제 MAT 적용 가이드라인 발표',content:'세포치료제 특성에 맞춘 PSV 프로토콜 및 배경 사이토카인 보정 방법에 관한 국제 가이드라인이 발표되어 CAR-T 제품의 안전성 시험 기준이 정립되고 있습니다.',link:''},
-    {id:'a2',date:'2024-05',title:'NEP(비내독소성 발열원) 위험성 연구 증가',content:'그람양성균 유래 Peptidoglycan, Lipoteichoic acid 등 NEP가 임상에서 발열 반응을 유발한 사례 보고가 증가하며, MAT를 통한 포괄적 발열원 검출의 중요성이 재조명되고 있습니다.',link:''},
-  ];
-
-  function getNewsList(tab) {
-    try {
-      var s = localStorage.getItem('mat_news_' + tab);
-      if (s) return JSON.parse(s);
-    } catch(e) {}
-    return tab==='regulatory' ? JSON.parse(JSON.stringify(DEFAULT_REGULATORY)) : JSON.parse(JSON.stringify(DEFAULT_ACADEMIC));
-  }
-  function setNewsList(tab, list) {
-    try { localStorage.setItem('mat_news_' + tab, JSON.stringify(list)); } catch(e) {}
-  }
-  function switchNewsTab(tab) {
-    currentTab = tab;
-    var regActive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-primary text-white shadow-md';
-    var regInactive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-primary hover:text-primary';
-    var acaActive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-green-600 text-white shadow-md';
-    var acaInactive = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-gray-600 border border-gray-200 hover:border-green-600 hover:text-green-600';
-    document.getElementById('tab-regulatory').className = tab==='regulatory' ? regActive : regInactive;
-    document.getElementById('tab-academic').className = tab==='academic' ? acaActive : acaInactive;
-    showNewsList();
-  }
-  function formatNewsDate(d) {
-    if(!d) return ''; var p=d.split('-'); return p[0]+'년 '+(p[1]||'')+'월'+(p[2]?' '+p[2]+'일':'');
-  }
-  function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-  function showNewsList() {
-    document.getElementById('news-list-view').classList.remove('hidden');
-    document.getElementById('news-detail-view').classList.add('hidden');
-    document.getElementById('news-form-view').classList.add('hidden');
-    renderNewsTable();
-  }
-  function renderNewsTable() {
-    var list = getNewsList(currentTab).slice().sort(function(a,b){ return b.date > a.date ? 1 : -1; });
-    var tbody = document.getElementById('news-tbody');
-    var empty = document.getElementById('news-empty');
-    tbody.innerHTML = '';
-    if(!list.length){ empty.classList.remove('hidden'); return; }
-    empty.classList.add('hidden');
-    list.forEach(function(item, idx){
-      var tr = document.createElement('tr');
-      tr.className = 'border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition';
-      tr.onclick = function(){ showPostDetail(item.id); };
-      tr.innerHTML = '<td class="py-3 px-4 text-gray-400 text-xs">'+(list.length-idx)+'</td>'
-        +'<td class="py-3 px-4 text-dark font-medium">'+escH(item.title)+'</td>'
-        +'<td class="py-3 px-4 text-gray-400 text-xs hidden sm:table-cell">'+formatNewsDate(item.date)+'</td>';
-      tbody.appendChild(tr);
-    });
-  }
-  function showPostDetail(id) {
-    var list = getNewsList(currentTab);
-    var item = list.find(function(x){ return x.id===id; });
-    if(!item) return;
-    currentPostId = id;
-    var catLabel = currentTab==='regulatory' ? '규제 및 동향' : '제약/바이오계 MAT 학술동향';
-    var catColor = currentTab==='regulatory' ? 'background:#E0F2FE;color:#0369A1' : 'background:#D1FAE5;color:#0F766E';
-    var badge = document.getElementById('detail-cat-badge');
-    badge.textContent = catLabel; badge.style.cssText = catColor+';display:inline-block';
-    document.getElementById('detail-date').textContent = formatNewsDate(item.date);
-    document.getElementById('detail-title').textContent = item.title;
-    document.getElementById('detail-content').textContent = item.content;
-    if(item.link){ document.getElementById('detail-link-wrap').classList.remove('hidden'); document.getElementById('detail-link').href=item.link; }
-    else { document.getElementById('detail-link-wrap').classList.add('hidden'); }
-    document.getElementById('news-list-view').classList.add('hidden');
-    document.getElementById('news-detail-view').classList.remove('hidden');
-    document.getElementById('news-form-view').classList.add('hidden');
-  }
-  var ADMIN_PW = '3214';
-  function openAdminModal() {
-    document.getElementById('adminModal').classList.remove('hidden');
-    document.getElementById('admin-pw-input').value = '';
-    document.getElementById('admin-pw-error').classList.add('hidden');
-    setTimeout(function(){ document.getElementById('admin-pw-input').focus(); }, 100);
-  }
-  function closeAdminModal() {
-    document.getElementById('adminModal').classList.add('hidden');
-  }
-  function checkAdminPw() {
-    var pw = document.getElementById('admin-pw-input').value;
-    if(pw === ADMIN_PW) {
-      closeAdminModal();
-      openNewsForm(null);
-    } else {
-      document.getElementById('admin-pw-error').classList.remove('hidden');
-      document.getElementById('admin-pw-input').value = '';
-      document.getElementById('admin-pw-input').focus();
-    }
-  }
-  function editCurrentPost() {
-    var pw = prompt('관리자 비밀번호를 입력하세요:');
-    if(pw !== ADMIN_PW) { alert('비밀번호가 올바르지 않습니다.'); return; }
-    var list = getNewsList(currentTab);
-    var item = list.find(function(x){ return x.id===currentPostId; });
-    if(!item) return;
-    openNewsForm(item);
-  }
-  function deleteCurrentPost() {
-    var pw = prompt('관리자 비밀번호를 입력하세요:');
-    if(pw !== ADMIN_PW) { alert('비밀번호가 올바르지 않습니다.'); return; }
-    if(!confirm('이 게시글을 삭제하시겠습니까?')) return;
-    var list = getNewsList(currentTab).filter(function(x){ return x.id!==currentPostId; });
-    setNewsList(currentTab, list);
-    showNewsList();
-  }
-  function openNewsForm(item) {
-    editingPostId = item ? item.id : null;
-    editingTab = currentTab;
-    document.getElementById('form-title-label').textContent = item ? '게시글 수정' : '새 글 작성';
-    document.getElementById('nf-date').value = item ? item.date : '';
-    document.getElementById('nf-title').value = item ? item.title : '';
-    document.getElementById('nf-content').value = item ? item.content : '';
-    document.getElementById('nf-link').value = item ? (item.link||'') : '';
-    document.getElementById('news-list-view').classList.add('hidden');
-    document.getElementById('news-detail-view').classList.add('hidden');
-    document.getElementById('news-form-view').classList.remove('hidden');
-    setTimeout(function(){ document.getElementById('nf-title').focus(); }, 50);
-  }
-  function saveNewsPost() {
-    var title = document.getElementById('nf-title').value.trim();
-    var cont = document.getElementById('nf-content').value.trim();
-    if(!title||!cont){ alert('제목과 내용을 모두 입력해주세요.'); return; }
-    var date = document.getElementById('nf-date').value;
-    var link = document.getElementById('nf-link').value.trim();
-    var list = getNewsList(editingTab);
-    if(editingPostId){
-      list = list.map(function(x){ return x.id===editingPostId ? {id:x.id,date:date,title:title,content:cont,link:link} : x; });
-    } else {
-      var newId=(editingTab==='regulatory'?'r':'a')+Date.now();
-      list.push({id:newId,date:date,title:title,content:cont,link:link});
-    }
-    setNewsList(editingTab, list);
-    showNewsList();
-  }
-  document.addEventListener('DOMContentLoaded', function(){ switchNewsTab('regulatory'); });
-  </script>
-
-  <!-- ===== 휴식시간 섹션 ===== -->
-  <section id="break" class="tab-page" style="background:#F7F9FC;padding-top:0;">
-  <div class="tab-banner" style="background:linear-gradient(135deg,#064e3b 0%,#065f46 40%,#059669 75%,#34d399 100%);padding:48px 0 40px;margin-bottom:0;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div style="font-size:2.5rem;margin-bottom:12px;">☕</div>
-      <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;">Break Time</span>
-      <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin:10px 0 14px;line-height:1.25;">휴식시간</h2>
-      <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:600px;margin:0 auto;line-height:1.7;">잠깐 쉬어가세요. 좋은 연구는 충분한 휴식에서 시작됩니다.</p>
-    </div>
-  </div>
-  <div style="padding:56px 0;">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-      <!-- 인용구 카드 -->
-      <div style="background:#fff;border-radius:20px;padding:40px 36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:32px;border-top:4px solid #059669;">
-        <div style="font-size:2.5rem;margin-bottom:16px;">🌿</div>
-        <blockquote style="font-size:1.25rem;font-weight:600;color:#1e293b;line-height:1.7;margin:0 0 14px;font-style:italic;">
-          "Rest is not idleness.<br>It is the key to better work."
-        </blockquote>
-        <p style="color:#64748b;font-size:0.88rem;margin:0;">— 잠깐의 여유가 더 나은 내일을 만듭니다</p>
-      </div>
-
-      <!-- 타이머 카드 -->
-      <div style="background:#fff;border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,0.08);margin-bottom:32px;">
-        <p style="font-size:1rem;font-weight:600;color:#475569;margin:0 0 20px;">⏱️ 5분 휴식 타이머</p>
-        <div id="break-timer-display" style="font-size:3.5rem;font-weight:800;color:#059669;letter-spacing:0.05em;margin-bottom:24px;font-variant-numeric:tabular-nums;">05:00</div>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <button onclick="startBreakTimer()" style="background:#059669;color:#fff;border:none;padding:11px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#047857'" onmouseout="this.style.background='#059669'">▶ 시작</button>
-          <button onclick="resetBreakTimer()" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:11px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">↺ 초기화</button>
-        </div>
-      </div>
-
-      <!-- 팁 카드들 -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px;">
-        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
-          <div style="font-size:2rem;margin-bottom:10px;">🧘</div>
-          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">스트레칭</p>
-          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">목·어깨를 천천히<br>돌려보세요</p>
-        </div>
-        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
-          <div style="font-size:2rem;margin-bottom:10px;">💧</div>
-          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">수분 보충</p>
-          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">물 한 잔으로<br>집중력을 높이세요</p>
-        </div>
-        <div style="background:#fff;border-radius:16px;padding:24px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.07);text-align:center;">
-          <div style="font-size:2rem;margin-bottom:10px;">👀</div>
-          <p style="font-size:0.88rem;font-weight:600;color:#334155;margin:0 0 6px;">눈 휴식</p>
-          <p style="font-size:0.78rem;color:#94a3b8;margin:0;">먼 곳을 20초간<br>바라보세요</p>
-        </div>
-      </div>
-
-      <button onclick="showTab('contact')" style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;border:none;padding:13px 36px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 4px 16px rgba(5,150,105,0.3);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
-        충분히 쉬셨나요? 문의하기로 →
-      </button>
-    </div>
-  </div>
-  </section>
-
-  <script>
-    var _breakInterval = null;
-    var _breakSeconds = 300;
-    function _renderBreakTimer(s) {
-      var m = Math.floor(s / 60);
-      var sec = s % 60;
-      document.getElementById('break-timer-display').textContent =
-        String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
-    }
-    function startBreakTimer() {
-      if (_breakInterval) return;
-      _breakInterval = setInterval(function() {
-        if (_breakSeconds <= 0) {
-          clearInterval(_breakInterval); _breakInterval = null;
-          document.getElementById('break-timer-display').textContent = '🎉 완료!';
-          return;
-        }
-        _breakSeconds--;
-        _renderBreakTimer(_breakSeconds);
-      }, 1000);
-    }
-    function resetBreakTimer() {
-      clearInterval(_breakInterval); _breakInterval = null;
-      _breakSeconds = 300;
-      _renderBreakTimer(_breakSeconds);
-    }
-  </script>
-
   <!-- ===== 문의 섹션 ===== -->
   <section id="contact" class="tab-page" style="background:#EEF2F7;padding-top:0;">
   <!-- gradient banner -->
@@ -3094,10 +2712,22 @@
     }
 
     // ===== 탭 페이지 전환 =====
-    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','news','break','contact'];
+    var ALL_TABS = ['overview','history','nep','method','validation','applications','qrm','regulatory','process','facilities','glossary','faq','contact'];
     var currentLang = 'ko';
 
+    // ===== 회원 전용 탭 잠금 설정 =====
+    var LOCKED_TABS = ['nep', 'validation', 'qrm'];
+    var MEMBER_PASSWORD = 'biostream2026'; // ← 비밀번호 여기서 변경
+    var SESSION_KEY = 'bs_member_auth';
+
     function showTab(tabId) {
+      // 잠금 탭 접근 시 비밀번호 확인
+      if (LOCKED_TABS.indexOf(tabId) !== -1) {
+        if (sessionStorage.getItem(SESSION_KEY) !== 'true') {
+          showPasswordModal(tabId);
+          return;
+        }
+      }
       // 히어로 섹션: overview일 때만 표시
       var hero = document.getElementById('hero-section');
       if (hero) hero.style.display = (tabId === 'overview') ? '' : 'none';
@@ -3123,7 +2753,7 @@
         overview:'cat1', history:'cat1', nep:'cat1',
         method:'cat2', validation:'cat2', applications:'cat2', process:'cat2',
         regulatory:'cat3', qrm:'cat3', glossary:'cat3',
-        faq:'cat4', news:'cat4', contact:null
+        faq:'cat4', contact:null
       };
       document.querySelectorAll('.dd-btn').forEach(function(b){ b.classList.remove('cat-active'); });
       var catId = catMap[tabId];
@@ -3175,7 +2805,7 @@
       '적용 분야': 'Applications', 'QRM': 'QRM', 'NEP QRM': 'NEP QRM',
       '규제': 'Regulatory', '규제 현황': 'Regulatory Status', '절차': 'Process',
       '시험 절차': 'Test Process', '약어집': 'Glossary', 'FAQ': 'FAQ',
-      'MAT 뉴스': 'MAT News', '문의하기': 'Contact',
+      '문의하기': 'Contact',
       'MAT Validation': 'MAT Validation',
     };
     var EN_KO = {};
@@ -3236,6 +2866,118 @@
     });
   </script>
 
+  <!-- ===== 회원 전용 비밀번호 모달 ===== -->
+  <div id="pw-modal" style="
+    display:none; position:fixed; inset:0; z-index:99999;
+    align-items:center; justify-content:center;
+    background:rgba(10,20,50,0.72); backdrop-filter:blur(4px);
+  ">
+    <div style="
+      background:#fff; border-radius:20px;
+      max-width:380px; width:92%;
+      box-shadow:0 24px 64px rgba(0,0,0,0.28);
+      overflow:hidden; animation:popupIn 0.35s cubic-bezier(.22,1,.36,1);
+      font-family:'Noto Sans KR',sans-serif;
+    ">
+      <!-- 상단 배너 -->
+      <div style="background:linear-gradient(135deg,#0a1f5c 0%,#1565C0 60%,#42a5f5 100%);padding:28px 24px 22px;text-align:center;">
+        <div style="font-size:2.2rem;margin-bottom:8px;">🔒</div>
+        <div style="color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:4px;">회원 전용 콘텐츠</div>
+        <div style="color:rgba(255,255,255,0.75);font-size:0.78rem;letter-spacing:0.05em;">Members Only Content</div>
+      </div>
+      <!-- 입력 영역 -->
+      <div style="padding:28px 24px 24px;">
+        <p style="color:#475569;font-size:0.88rem;margin:0 0 16px;text-align:center;line-height:1.6;">
+          이 페이지는 회원에게만 공개됩니다.<br>비밀번호를 입력하세요.
+        </p>
+        <input
+          id="pw-input"
+          type="password"
+          placeholder="비밀번호 입력"
+          onkeydown="if(event.key==='Enter')verifyPassword()"
+          style="
+            width:100%; box-sizing:border-box;
+            border:2px solid #e2e8f0; border-radius:10px;
+            padding:12px 14px; font-size:1rem;
+            font-family:'Noto Sans KR',sans-serif;
+            outline:none; transition:border-color 0.2s;
+            margin-bottom:8px;
+          "
+          onfocus="this.style.borderColor='#0284C7'"
+          onblur="this.style.borderColor='#e2e8f0'"
+        />
+        <div id="pw-error" style="
+          color:#ef4444; font-size:0.8rem; min-height:18px;
+          margin-bottom:12px; text-align:center;
+        "></div>
+        <button onclick="verifyPassword()" style="
+          width:100%; padding:13px;
+          background:linear-gradient(135deg,#1565C0,#42a5f5);
+          color:#fff; border:none; border-radius:10px;
+          font-size:0.95rem; font-weight:700; cursor:pointer;
+          font-family:'Noto Sans KR',sans-serif;
+          margin-bottom:10px; transition:opacity 0.15s;
+        " onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+          확인 / Enter
+        </button>
+        <button onclick="closePasswordModal()" style="
+          width:100%; padding:10px;
+          background:#f1f5f9; color:#64748b;
+          border:none; border-radius:10px;
+          font-size:0.88rem; font-weight:600; cursor:pointer;
+          font-family:'Noto Sans KR',sans-serif;
+        ">
+          취소
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var _pendingTab = null;
+
+    function showPasswordModal(tabId) {
+      _pendingTab = tabId;
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-error').textContent = '';
+      var modal = document.getElementById('pw-modal');
+      modal.style.display = 'flex';
+      setTimeout(function(){ document.getElementById('pw-input').focus(); }, 100);
+    }
+
+    function verifyPassword() {
+      var input = document.getElementById('pw-input').value;
+      if (input === MEMBER_PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        closePasswordModal();
+        if (_pendingTab) { showTab(_pendingTab); _pendingTab = null; }
+      } else {
+        document.getElementById('pw-error').textContent = '⚠️ 비밀번호가 올바르지 않습니다.';
+        document.getElementById('pw-input').value = '';
+        document.getElementById('pw-input').focus();
+      }
+    }
+
+    function closePasswordModal() {
+      var modal = document.getElementById('pw-modal');
+      modal.style.opacity = '0';
+      modal.style.transition = 'opacity 0.25s';
+      setTimeout(function(){
+        modal.style.display = 'none';
+        modal.style.opacity = '1';
+        modal.style.transition = '';
+      }, 250);
+    }
+
+    // 모달 바깥 클릭 시 닫기
+    document.addEventListener('click', function(e) {
+      var modal = document.getElementById('pw-modal');
+      if (modal && modal.style.display === 'flex' && e.target === modal) {
+        closePasswordModal();
+      }
+    });
+  </script>
+
   <!-- ===== 플로팅 문의하기 버튼 ===== -->
   <button onclick="showTab('contact')"
     style="position:fixed;bottom:28px;right:24px;z-index:9999;
@@ -3291,7 +3033,7 @@
         </p>
         <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:10px 14px;margin-bottom:20px;">
           <p style="color:#0369a1;font-size:0.78rem;margin:0;word-break:break-all;">
-            🔗 cklikeyou-jpg.github.io/biostream.github.io/
+            🔗 cklikeyou-jpg.github.io/
           </p>
         </div>
         <button onclick="closeQR()" style="
@@ -3308,7 +3050,7 @@
   <!-- QRCode.js 라이브러리 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    var QR_URL = "https://cklikeyou-jpg.github.io/biostream.github.io/";
+    var QR_URL = "https://cklikeyou-jpg.github.io/";
     var _qrGenerated = false;
 
     function showQR() {
