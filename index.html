@@ -450,49 +450,7 @@
 
   
 
-  <!-- ===== 슬라이딩 오픈 배너 ===== -->
-  <div id="open-banner" style="
-    position: fixed;
-    top: -70px;
-    left: 0; right: 0;
-    z-index: 99999;
-    background: linear-gradient(90deg, #16a34a 0%, #22c55e 50%, #16a34a 100%);
-    color: #111827;
-    text-align: center;
-    padding: 14px 20px;
-    font-size: 1.18rem;
-    font-weight: 700;
-    font-family: 'Noto Sans KR', sans-serif;
-    box-shadow: 0 4px 18px rgba(22,163,74,0.35);
-    letter-spacing: 0.03em;
-    transition: top 0.6s cubic-bezier(.22,1,.36,1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  ">
-    <span style="font-size:1.2rem;"> </span>
-    2026년 5월 14일 새롭게 Open합니다
-    <span style="font-size:1.2rem;"> </span>
-  </div>
-  <script>
-    window.addEventListener('load', function() {
-      var banner = document.getElementById('open-banner');
-      if (!banner) return;
-      // 0.3초 후 슬라이드 인
-      setTimeout(function() {
-        banner.style.top = '0px';
-      }, 300);
-      // 3.5초 후 슬라이드 아웃
-      setTimeout(function() {
-        banner.style.top = '-70px';
-      }, 3800);
-      // 완전 사라진 후 DOM에서 제거
-      setTimeout(function() {
-        banner.style.display = 'none';
-      }, 4500);
-    });
-  </script>
+
 
   <!-- ===== 헤더 네비게이션 ===== -->
   <header class="shadow-sm sticky top-0 z-50" style="background:#F0F5FA;">
