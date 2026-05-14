@@ -471,7 +471,29 @@
     justify-content: center;
     gap: 10px;
   ">
-  
+    <span style="font-size:1.2rem;"> </span>
+    2026년 5월 14일 새롭게 Open합니다
+    <span style="font-size:1.2rem;"> </span>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      var banner = document.getElementById('open-banner');
+      if (!banner) return;
+      // 0.3초 후 슬라이드 인
+      setTimeout(function() {
+        banner.style.top = '0px';
+      }, 300);
+      // 3.5초 후 슬라이드 아웃
+      setTimeout(function() {
+        banner.style.top = '-70px';
+      }, 3800);
+      // 완전 사라진 후 DOM에서 제거
+      setTimeout(function() {
+        banner.style.display = 'none';
+      }, 4500);
+    });
+  </script>
+
   <!-- ===== 헤더 네비게이션 ===== -->
   <header class="shadow-sm sticky top-0 z-50" style="background:#F0F5FA;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
